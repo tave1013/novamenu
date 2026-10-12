@@ -249,7 +249,7 @@ export default function Home() {
       </section>
 
       {/* Al fianco dei piccoli locali */}
-      <section aria-label="Al fianco dei piccoli locali" className="border-t border-line-soft py-20 md:py-26">
+      <section aria-label="Al fianco dei piccoli locali" className="border-t border-line-soft pb-10 pt-16 md:py-26">
         <PhotoSplit
           src="/images/settori/pasticceria.webp"
           alt="Pasticcera nel suo laboratorio con un dolce in mano, accanto alla vetrina"
@@ -268,7 +268,7 @@ export default function Home() {
       </section>
 
       {/* Settori */}
-      <section className="py-20 md:py-26">
+      <section className="pb-16 pt-4 md:py-26">
         <div className="wrap">
           <Reveal>
             <p className="eyebrow">Per chi</p>

@@ -67,7 +67,7 @@ export default async function GuideArticle({ params }: { params: Promise<{ slug:
               )}
               {fmt(g.date)}, {g.readMinutes} minuti di lettura
             </p>
-            <h1 className="mt-4 text-[clamp(2.1rem,1.4rem+2.8vw,3.5rem)] font-semibold leading-[1.04] tracking-[-0.04em]">{g.title}</h1>
+            <h1 className="mt-4 text-[clamp(2.1rem,1.4rem+2.8vw,3.5rem)] font-semibold leading-[1.12] md:leading-[1.04] tracking-[-0.04em]">{g.title}</h1>
             <p className="lead mt-5">{g.description}</p>
           </div></header>
           <div className="mx-auto mt-10 grid max-w-[1080px] gap-12 lg:grid-cols-[minmax(0,720px)_1fr] lg:gap-16">

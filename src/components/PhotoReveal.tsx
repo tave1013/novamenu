@@ -76,7 +76,7 @@ export function PhotoReveal({ src, alt, caption, eyebrow, pos = "50% 50%" }: { s
             <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-[50%] bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
             <div ref={text} className="absolute inset-x-0 bottom-0 p-6 opacity-0 md:p-12">
               {eyebrow && <span className="inline-flex items-center rounded-full bg-lime px-2.5 py-1 text-[12.5px] font-medium text-forest">{eyebrow}</span>}
-              <p className="mt-3 max-w-[720px] text-[clamp(1.5rem,1.1rem+2vw,2.75rem)] font-semibold leading-[1.06] tracking-[-0.035em] text-white">{caption}</p>
+              <p className="mt-3 max-w-[720px] text-[clamp(1.5rem,1.1rem+2vw,2.75rem)] font-semibold leading-[1.14] md:leading-[1.06] tracking-[-0.035em] text-white">{caption}</p>
             </div>
           </>
         )}

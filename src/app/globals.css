@@ -101,6 +101,12 @@
     letter-spacing: -0.028em;
     font-weight: 600;
   }
+  /* Su mobile i titoli vanno a capo più spesso: un po' più d'aria tra le righe. */
+  @media (max-width: 767px) {
+    .display { line-height: 1.1; }
+    .h-section { line-height: 1.14; }
+    .h-block { line-height: 1.17; }
+  }
   .lead {
     font-size: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
     line-height: 1.6;

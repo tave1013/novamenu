@@ -94,10 +94,10 @@ export function CtaBand({
   text?: string;
 }) {
   return (
-    <section id="demo" className="pb-20 md:pb-24">
-      <div className="wrap">
-        <div className="relative grid items-center gap-10 overflow-hidden rounded-[28px] bg-forest p-6 text-[#fafaf8] md:p-12 lg:grid-cols-2">
-          <div className="relative">
+    <section id="demo" className="md:pb-24">
+      <div className="wrap max-md:px-0">
+        <div className="relative grid items-center gap-9 overflow-hidden bg-forest px-3 py-12 text-[#fafaf8] md:gap-10 md:rounded-[28px] md:p-12 lg:grid-cols-2">
+          <div className="relative max-md:px-2">
             <h2 className="h-section text-[#fafaf8]">{title}</h2>
             <p className="mt-4 text-[17px] leading-relaxed text-[#b9cfa8]">{text}</p>
             <ul className="mt-6 flex flex-col gap-2.5 text-[15px] text-[#e3eed8]">
@@ -113,7 +113,7 @@ export function CtaBand({
               <Icon name="arrowRight" size={15} stroke={2} />
             </a>
           </div>
-          <div className="relative min-w-0 rounded-[20px] bg-[#fafaf8] p-5 text-ink md:p-7">
+          <div className="relative min-w-0 rounded-[20px] bg-[#fafaf8] px-4 py-6 text-ink md:p-7">
             <DemoBooking compact />
           </div>
         </div>

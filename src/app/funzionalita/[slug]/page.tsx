@@ -64,7 +64,7 @@ export default async function FeaturePage({ params }: { params: Promise<{ slug: 
                 <span className="text-[15px] font-medium text-ink">{f.name}</span>
                 <PlanTag plan={f.plan} />
               </div>
-              <h1 className="anim-fade-up mt-5 text-[clamp(2.1rem,1.5rem+2.2vw,3.25rem)] font-semibold leading-[1.05] tracking-[-0.035em]" style={{ animationDelay: "60ms" }}>
+              <h1 className="anim-fade-up mt-5 text-[clamp(2.1rem,1.5rem+2.2vw,3.25rem)] font-semibold leading-[1.12] md:leading-[1.05] tracking-[-0.035em]" style={{ animationDelay: "60ms" }}>
                 <Hl text={f.hero.title} word={heroHl[f.slug]} />
               </h1>
               <p className="anim-fade-up mt-4 text-[17px] leading-relaxed text-muted" style={{ animationDelay: "120ms" }}>

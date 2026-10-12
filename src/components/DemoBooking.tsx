@@ -92,7 +92,7 @@ export function DemoBooking({ compact = false }: { compact?: boolean }) {
         <div key="s1" className="anim-fade-up mt-7">
           {!compact && (
             <>
-              <h1 className="text-[clamp(2rem,1.5rem+2vw,2.75rem)] font-semibold leading-[1.06] tracking-[-0.035em] text-ink">Prenota la tua demo <span className="hl">gratuita</span></h1>
+              <h1 className="text-[clamp(2rem,1.5rem+2vw,2.75rem)] font-semibold leading-[1.14] md:leading-[1.06] tracking-[-0.035em] text-ink">Prenota la tua demo <span className="hl">gratuita</span></h1>
               <p className="mt-3 text-[17px] leading-relaxed text-muted">20 minuti con noi, sul tuo menu vero. Alla fine ti lasciamo tutto già pronto.</p>
               <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-[14px] text-[#3f3f46]">
                 {["Senza impegno", "Gratis", "Menu pronto alla fine"].map((x) => (
@@ -173,7 +173,7 @@ export function DemoBooking({ compact = false }: { compact?: boolean }) {
             </div>
             <fieldset>
               <legend className={lab}>Come preferisci fare la demo?</legend>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
                 {(
                   [
                     { id: "video", label: "Videochiamata", icon: "play" },
@@ -235,7 +235,7 @@ export function DemoBooking({ compact = false }: { compact?: boolean }) {
 
       {step === 2 && (
         <div key="s2" className="anim-fade-up mt-7">
-          <h2 className="text-[clamp(1.75rem,1.4rem+1.4vw,2.4rem)] font-semibold leading-[1.08] tracking-[-0.03em] text-ink">Scegli giorno e ora</h2>
+          <h2 className="text-[clamp(1.75rem,1.4rem+1.4vw,2.4rem)] font-semibold leading-[1.15] md:leading-[1.08] tracking-[-0.03em] text-ink">Scegli giorno e ora</h2>
           <p className="mt-2 text-[16px] text-muted">La demo dura 20 minuti. Orari in ora italiana.</p>
           <p className="mb-2.5 mt-6 text-[14px] font-medium text-ink">Giorno</p>
           <div role="group" aria-label="Giorno" className="grid grid-cols-5 gap-2">
@@ -307,7 +307,7 @@ export function DemoBooking({ compact = false }: { compact?: boolean }) {
           <span className="anim-pop inline-flex h-[72px] w-[72px] items-center justify-center rounded-full bg-p-green text-p-green-ink">
             <Icon name="check" size={32} stroke={2.4} />
           </span>
-          <h2 className="mt-5 text-[clamp(1.75rem,1.4rem+1.4vw,2.4rem)] font-semibold leading-[1.08] tracking-[-0.03em] text-ink">Ci vediamo {when} alle {time}</h2>
+          <h2 className="mt-5 text-[clamp(1.75rem,1.4rem+1.4vw,2.4rem)] font-semibold leading-[1.15] md:leading-[1.08] tracking-[-0.03em] text-ink">Ci vediamo {when} alle {time}</h2>
           <p className="mx-auto mt-3 max-w-[420px] text-[16px] leading-relaxed text-muted">
             Si è aperto WhatsApp con la richiesta già scritta: premi Invia e ti confermiamo l&apos;appuntamento. Se hai il menu in PDF o in foto, mandacelo lì.
           </p>

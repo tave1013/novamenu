@@ -37,7 +37,7 @@ export default function GuidePage() {
               <span className="text-[13.5px] text-[#cfdcc4]">
                 {fmt(first.date)}, {first.readMinutes} minuti di lettura
               </span>
-              <h2 className="mt-4 text-[clamp(1.6rem,1.2rem+1.6vw,2.5rem)] font-semibold leading-[1.08] tracking-[-0.035em] text-white">{first.title}</h2>
+              <h2 className="mt-4 text-[clamp(1.6rem,1.2rem+1.6vw,2.5rem)] font-semibold leading-[1.15] md:leading-[1.08] tracking-[-0.035em] text-white">{first.title}</h2>
               <p className="mt-4 text-[16px] leading-relaxed text-[#cfdcc4]">{first.description}</p>
               <span className="mt-8 inline-flex items-center gap-2 text-[15px] font-medium text-lime">
                 Leggi la guida
