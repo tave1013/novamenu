@@ -1,3 +1,4 @@
+import { tr } from "@/i18n";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { guides } from "@/content/guides";
@@ -23,10 +24,10 @@ export default function GuidePage() {
     <>
       <section className="pb-20 pt-8 md:pb-28 md:pt-12">
         <div className="wrap">
-          <Breadcrumbs items={[{ name: "Guide", href: "/guide/" }]} />
-          <h1 className="display anim-fade-up mt-10 max-w-[820px]">Guide per chi gestisce un <span className="hl">locale</span>.</h1>
+          <Breadcrumbs items={[{ name: tr("Guide"), href: "/guide/" }]} />
+          <h1 className="display anim-fade-up mt-10 max-w-[820px]">{tr("Guide per chi gestisce un")}{" "}<span className="hl">{tr("locale")}</span>.</h1>
           <p className="lead anim-fade-up mt-6 max-w-[600px]" style={{ animationDelay: "80ms" }}>
-            Consigli pratici, senza giri di parole, su menu, ordini, prenotazioni e clienti.
+            {tr("Consigli pratici, senza giri di parole, su menu, ordini, prenotazioni e clienti.")}
           </p>
 
           <Link
@@ -36,12 +37,12 @@ export default function GuidePage() {
           >
             <div className="flex flex-col p-7 md:p-10">
               <span className="text-[13.5px] text-[#cfdcc4]">
-                {fmt(first.date)}, {first.readMinutes} minuti di lettura
+                {fmt(first.date)}, {first.readMinutes}{" "}{tr("minuti di lettura")}
               </span>
               <h2 className="mt-4 text-[clamp(1.6rem,1.2rem+1.6vw,2.5rem)] font-semibold leading-[1.15] md:leading-[1.08] tracking-[-0.035em] text-white">{first.title}</h2>
               <p className="mt-4 text-[16px] leading-relaxed text-[#cfdcc4]">{first.description}</p>
               <span className="mt-8 inline-flex items-center gap-2 text-[15px] font-medium text-lime">
-                Leggi la guida
+                {tr("Leggi la guida")}
                 <Icon name="arrowRight" size={16} stroke={2} className="transition-transform group-hover:translate-x-1" />
               </span>
             </div>
@@ -66,12 +67,12 @@ export default function GuidePage() {
                         {sectorBySlug(g.sector)!.name}
                       </span>
                     )}
-                    {fmt(g.date)}, {g.readMinutes} minuti
+                    {fmt(g.date)}, {g.readMinutes}{" "}{tr("minuti")}
                   </span>
                   <h2 className="mt-3 text-[20px] font-semibold leading-snug tracking-[-0.02em] text-ink">{g.title}</h2>
                   <p className="mt-3 flex-1 text-[15px] leading-relaxed text-muted">{g.description}</p>
                   <span className="mt-6 inline-flex items-center gap-1.5 text-[14.5px] font-medium text-ink">
-                    Leggi
+                    {tr("Leggi")}
                     <Icon name="arrowRight" size={15} stroke={2} className="transition-transform group-hover:translate-x-1" />
                   </span>
                 </Link>

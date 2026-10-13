@@ -1,3 +1,4 @@
+import { tr } from "@/i18n";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Icon } from "@/components/Icon";
@@ -14,9 +15,9 @@ export default function ServiziPage() {
   return (
     <section className="pb-20 pt-6 md:pb-24 md:pt-8">
       <div className="wrap">
-        <Breadcrumbs items={[{ name: "Servizi", href: "/servizi/" }]} />
-        <h1 className="display mt-8 max-w-[760px]">Oltre alla piattaforma, ti aiutiamo a farti scegliere.</h1>
-        <p className="lead mt-5 max-w-[620px]">Foto, video e presenza online fatti da persone che conoscono la ristorazione, per un locale curato ovunque ti cerchino.</p>
+        <Breadcrumbs items={[{ name: tr("Servizi"), href: "/servizi/" }]} />
+        <h1 className="display mt-8 max-w-[760px]">{tr("Oltre alla piattaforma, ti aiutiamo a farti scegliere.")}</h1>
+        <p className="lead mt-5 max-w-[620px]">{tr("Foto, video e presenza online fatti da persone che conoscono la ristorazione, per un locale curato ovunque ti cerchino.")}</p>
         <div className="mt-12 grid gap-4 md:grid-cols-2">
           {services.map((s) => (
             <Link key={s.slug} href={`/servizi/${s.slug}/`} className="group rounded-[24px] border border-line bg-white p-7 transition-colors hover:border-[#d4d4cf]">
@@ -26,7 +27,7 @@ export default function ServiziPage() {
               <h2 className="mt-6 text-[24px] font-semibold tracking-[-0.025em] text-ink">{s.name}</h2>
               <p className="mt-2 text-[16px] text-muted">{s.desc}</p>
               <span className="mt-6 inline-flex items-center gap-1.5 text-[15px] font-medium text-ink">
-                Scopri il servizio
+                {tr("Scopri il servizio")}
                 <Icon name="arrowRight" size={15} stroke={2} className="transition-transform group-hover:translate-x-0.5" />
               </span>
             </Link>

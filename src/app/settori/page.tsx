@@ -1,3 +1,4 @@
+import { tr } from "@/i18n";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { sectors } from "@/content/sectors";
@@ -17,10 +18,10 @@ export default function SettoriPage() {
     <>
       <section className="pb-20 pt-8 md:pb-28 md:pt-12">
         <div className="wrap">
-          <Breadcrumbs items={[{ name: "Per chi", href: "/settori/" }]} />
-          <h1 className="display anim-fade-up mt-10 max-w-[860px]">Pensato per chi fa <span className="hl">ristorazione</span>.</h1>
+          <Breadcrumbs items={[{ name: tr("Per chi"), href: "/settori/" }]} />
+          <h1 className="display anim-fade-up mt-10 max-w-[860px]">{tr("Pensato per chi fa")}{" "}<span className="hl">{tr("ristorazione")}</span>.</h1>
           <p className="lead anim-fade-up mt-6 max-w-[620px]" style={{ animationDelay: "80ms" }}>
-            Nato in una pizzeria, oggi lavora per ristoranti, bar, pub e per le botteghe del cibo che vendono a peso, su prenotazione o da asporto.
+            {tr("Nato in una pizzeria, oggi lavora per ristoranti, bar, pub e per le botteghe del cibo che vendono a peso, su prenotazione o da asporto.")}
           </p>
           <ul className="mt-14 grid grid-cols-1 gap-px overflow-hidden rounded-[24px] bg-line ring-1 ring-line sm:grid-cols-2 lg:grid-cols-3">
             {sectors.map((s) => (
@@ -30,7 +31,7 @@ export default function SettoriPage() {
                   <span className="mt-8 text-[19px] font-semibold tracking-[-0.02em] text-ink">{s.name}</span>
                   <span className="mt-1 text-[15px] text-muted">{s.short}</span>
                   <span className="mt-5 inline-flex items-center gap-1.5 text-[14.5px] font-medium text-ink">
-                    Scopri di più
+                    {tr("Scopri di più")}
                     <Icon name="arrowRight" size={15} stroke={2} className="transition-transform group-hover:translate-x-1" />
                   </span>
                 </Link>

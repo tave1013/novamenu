@@ -1,3 +1,4 @@
+import { tr } from "@/i18n";
 import fs from "node:fs";
 import path from "node:path";
 import Link from "next/link";
@@ -32,7 +33,7 @@ export function PhotoSlot({ src, alt, label, pos = "50% 50%", className = "" }: 
         </span>
       </div>
       <div className="absolute inset-x-4 bottom-4 rounded-[14px] bg-white/90 px-3.5 py-2.5 text-[12.5px] leading-snug text-muted backdrop-blur">
-        <span className="font-medium text-ink">{label ?? "Foto da inserire"}</span>
+        <span className="font-medium text-ink">{label ?? tr("Foto da inserire")}</span>
         {src && <span className="mt-0.5 block font-mono text-[11px] text-faint">{src}</span>}
       </div>
     </div>
@@ -117,7 +118,7 @@ export function Packages({ items, note }: { items: Pack[]; note?: string }) {
               }`}
             >
               {p.popular && (
-                <span className="absolute right-6 top-6 rounded-full bg-lime px-2.5 py-1 text-[12px] font-medium text-forest">Il più scelto</span>
+                <span className="absolute right-6 top-6 rounded-full bg-lime px-2.5 py-1 text-[12px] font-medium text-forest">{tr("Il più scelto")}</span>
               )}
               <h3 className={`text-[22px] font-semibold tracking-[-0.02em] ${p.popular ? "text-white" : "text-ink"}`}>{p.name}</h3>
               <p className={`mt-1.5 text-[14.5px] ${p.popular ? "text-[#b9cfa8]" : "text-muted"}`}>{p.for}</p>
@@ -131,7 +132,7 @@ export function Packages({ items, note }: { items: Pack[]; note?: string }) {
                 ))}
               </ul>
               <Link href="/contatti/" className={`btn mt-8 w-full ${p.popular ? "btn-dark" : "btn-light"}`}>
-                Chiedi un preventivo
+                {tr("Chiedi un preventivo")}
               </Link>
             </div>
           </Reveal>
@@ -174,7 +175,7 @@ export function SectionHead({ eyebrow, title, text, center = false }: { eyebrow?
 const tones = ["#efe7da", "#e6dccb", "#ece3d3", "#e2d7c4", "#f1eadf", "#e8dfcf"];
 
 function WorkCard({ src, n }: { src: string; n: number }) {
-  const size = "w-[220px] sm:w-[280px] aspect-[4/5]";
+  const size = tr("w-[220px] sm:w-[280px] aspect-[4/5]");
   if (exists(src)) {
     return (
       <div className={`relative flex-none overflow-hidden rounded-[22px] bg-mist ${size}`}>
@@ -185,7 +186,7 @@ function WorkCard({ src, n }: { src: string; n: number }) {
   }
   return (
     <div className={`relative flex-none overflow-hidden rounded-[22px] ${size}`} style={{ background: tones[n % tones.length] }}>
-      <span className="absolute left-4 top-4 rounded-full bg-white/80 px-2.5 py-1 font-mono text-[11px] text-muted">lavoro-{String(n).padStart(2, "0")}</span>
+      <span className="absolute left-4 top-4 rounded-full bg-white/80 px-2.5 py-1 font-mono text-[11px] text-muted">{tr("lavoro-")}{String(n).padStart(2, "0")}</span>
     </div>
   );
 }
@@ -208,7 +209,7 @@ function WorkRow({ items, reverse }: { items: number[]; reverse?: boolean }) {
 /** Galleria dei lavori: solo foto, su due file che scorrono in direzioni opposte. */
 export function Portfolio({ eyebrow, title, text }: { eyebrow: string; title: React.ReactNode; text: string }) {
   return (
-    <section aria-label="Alcuni dei nostri lavori" className="overflow-hidden py-16 md:py-24">
+    <section aria-label={tr("Alcuni dei nostri lavori")} className="overflow-hidden py-16 md:py-24">
       <div className="wrap">
         <Reveal className="mx-auto max-w-[680px] text-center">
           <p className="eyebrow">{eyebrow}</p>

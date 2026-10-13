@@ -1,5 +1,6 @@
 "use client";
 
+import { tr } from "@/i18n";
 import { useEffect, useState } from "react";
 import { Icon } from "../Icon";
 import { Cursor, Toast, Toggle, useDemo, type Step } from "./engine";
@@ -21,43 +22,43 @@ const menuSteps: Step<MenuS>[] = [
   { dur: 1000, target: "cart" },
   { dur: 2600, target: "cart", click: true, patch: { open: true } },
 ];
-const cats = [
+const cats = () => ([
   {
-    name: "Pizze",
+    name: tr("Pizze"),
     items: [
-      { n: "Margherita", d: "Pomodoro, fiordilatte, basilico", p: "7,00", c: "#fde68a", a: "Glutine, latte" },
-      { n: "Diavola", d: "Salame piccante, fiordilatte", p: "8,50", c: "#fecaca", a: "Glutine, latte" },
-      { n: "Bufala e crudo", d: "Bufala campana, crudo 18 mesi", p: "11,00", c: "#e9d5ff", a: "Glutine, latte" },
+      { n: tr("Margherita"), d: tr("Pomodoro, fiordilatte, basilico"), p: "7,00", c: "#fde68a", a: tr("Glutine, latte") },
+      { n: tr("Diavola"), d: tr("Salame piccante, fiordilatte"), p: "8,50", c: "#fecaca", a: tr("Glutine, latte") },
+      { n: tr("Bufala e crudo"), d: tr("Bufala campana, crudo 18 mesi"), p: "11,00", c: "#e9d5ff", a: tr("Glutine, latte") },
     ],
   },
   {
-    name: "Fritti",
+    name: tr("Fritti"),
     items: [
-      { n: "Fiori di zucca", d: "Mozzarella e alici in pastella", p: "6,50", c: "#fed7aa", a: "Glutine, latte, pesce" },
-      { n: "Supplì", d: "Riso, ragù e mozzarella", p: "2,50", c: "#fde68a", a: "Glutine, latte, sedano" },
-      { n: "Olive ascolane", d: "Ripiene di carne, 6 pezzi", p: "5,00", c: "#d9f99d", a: "Glutine, uova" },
+      { n: tr("Fiori di zucca"), d: tr("Mozzarella e alici in pastella"), p: "6,50", c: "#fed7aa", a: tr("Glutine, latte, pesce") },
+      { n: tr("Supplì"), d: tr("Riso, ragù e mozzarella"), p: "2,50", c: "#fde68a", a: tr("Glutine, latte, sedano") },
+      { n: tr("Olive ascolane"), d: tr("Ripiene di carne, 6 pezzi"), p: "5,00", c: "#d9f99d", a: tr("Glutine, uova") },
     ],
   },
-];
+]);
 
 export function MenuVisual({ bare = false }: { bare?: boolean }) {
   const d = useDemo(menuSteps, menuInit, { restIndex: 7 });
   const s = d.state;
-  const cat = cats[s.cat];
+  const cat = cats()[s.cat];
   const content = (
       <div ref={d.rootRef} className="relative">
         <PhoneFrame width={300}>
           <div className="relative flex h-[560px] flex-col">
             <div className="h-24 bg-[#f6e7d8] px-4 pt-3">
-              <span className="flex h-10 w-10 items-center justify-center rounded-[12px] bg-white text-[12px] font-semibold text-ink">PF</span>
+              <span className="flex h-10 w-10 items-center justify-center rounded-[12px] bg-white text-[12px] font-semibold text-ink">{tr("PF")}</span>
             </div>
             <div className="px-4 pt-3">
-              <p className="text-[18px] font-semibold tracking-[-0.03em] text-ink">Pizzeria Fiore</p>
+              <p className="text-[18px] font-semibold tracking-[-0.03em] text-ink">{tr("Pizzeria Fiore")}</p>
               <p className="flex items-center gap-1.5 text-[11px] text-muted">
-                <span className="h-1.5 w-1.5 rounded-full bg-ios" /> Aperto, cucina fino alle 23:00
+                <span className="h-1.5 w-1.5 rounded-full bg-ios" />{" "}{tr("Aperto, cucina fino alle 23:00")}
               </p>
               <div className="mt-3 flex gap-1.5">
-                {[...cats.map((c) => c.name), "Dolci", "Bibite"].map((c, i) => (
+                {[...cats().map((c) => c.name), tr("Dolci"), tr("Bibite")].map((c, i) => (
                   <span
                     key={c}
                     data-t={`cat-${i}`}
@@ -99,7 +100,7 @@ export function MenuVisual({ bare = false }: { bare?: boolean }) {
                   <span key={s.cart} className="anim-pop flex h-6 min-w-6 items-center justify-center rounded-full bg-white/20 px-1 text-[11px]">
                     {s.cart}
                   </span>
-                  Vedi carrello
+                  {tr("Vedi carrello")}
                 </span>
                 <span className="tabular-nums">{s.total.toFixed(2).replace(".", ",")} €</span>
               </div>
@@ -107,8 +108,8 @@ export function MenuVisual({ bare = false }: { bare?: boolean }) {
             {s.open && (
               <div className="absolute inset-x-0 bottom-0 z-10 rounded-t-[22px] bg-white p-4 shadow-[0_-20px_40px_-20px_rgba(0,0,0,.3)] [animation:fadeUp_.4s_var(--ease-out-soft)_both]">
                 <span className="mx-auto mb-3 block h-1 w-9 rounded-full bg-line" />
-                <p className="text-[15px] font-semibold text-ink">Il tuo ordine</p>
-                <p className="mt-2 text-[12px] text-muted">Scegli l&apos;orario di ritiro</p>
+                <p className="text-[15px] font-semibold text-ink">{tr("Il tuo ordine")}</p>
+                <p className="mt-2 text-[12px] text-muted">{tr("Scegli l'orario di ritiro")}</p>
                 <div className="mt-2 grid grid-cols-4 gap-1.5">
                   {["19:30", "19:45", "20:00", "20:15"].map((t, i) => (
                     <span key={t} className={`rounded-[10px] py-2 text-center text-[11.5px] ${i === 1 ? "bg-black text-white" : "bg-mist text-text"}`}>
@@ -117,7 +118,7 @@ export function MenuVisual({ bare = false }: { bare?: boolean }) {
                   ))}
                 </div>
                 <span className="mt-4 flex h-11 items-center justify-center gap-2 rounded-[12px] bg-[#25d366] text-[13px] font-medium text-white">
-                  <Icon name="send" size={15} stroke={2} /> Invia l&apos;ordine su WhatsApp
+                  <Icon name="send" size={15} stroke={2} />{" "}{tr("Invia l'ordine su WhatsApp")}
                 </span>
               </div>
             )}
@@ -126,8 +127,8 @@ export function MenuVisual({ bare = false }: { bare?: boolean }) {
         <Cursor rootRef={d.rootRef} target={d.step.target} click={d.step.click} stepKey={d.i} hidden={d.reduced} touch />
         {!bare && (
           <>
-            <FloatCard className="-left-36 top-24 hidden xl:flex" icon="qr" title="QR sul tavolo" text="Si apre senza app" />
-            <FloatCard className="-right-36 bottom-32 hidden xl:flex" icon="bolt" title="Aggiornato al volo" text="Prezzi ed esauriti in tempo reale" />
+            <FloatCard className="-left-36 top-24 hidden xl:flex" icon="qr" title={tr("QR sul tavolo")} text={tr("Si apre senza app")} />
+            <FloatCard className="-right-36 bottom-32 hidden xl:flex" icon="bolt" title={tr("Aggiornato al volo")} text={tr("Prezzi ed esauriti in tempo reale")} />
           </>
         )}
       </div>
@@ -153,7 +154,7 @@ export function FloatCard({ className = "", icon, title, text }: { className?: s
 
 type AiS = { rows: number; scanning: boolean; published: boolean; toast: string | null };
 const aiInit: AiS = { rows: 0, scanning: true, published: false, toast: null };
-const aiSteps: Step<AiS>[] = [
+const aiSteps = (): Step<AiS>[] => ([
   { dur: 1600, patch: { ...aiInit } },
   { dur: 650, patch: { rows: 1 } },
   { dur: 650, patch: { rows: 2 } },
@@ -161,25 +162,25 @@ const aiSteps: Step<AiS>[] = [
   { dur: 650, patch: { rows: 4 } },
   { dur: 900, patch: { rows: 5, scanning: false }, target: "publish" },
   { dur: 900, target: "publish" },
-  { dur: 2800, target: "publish", click: true, patch: { published: true, toast: "Menu pubblicato: 5 piatti, 3 categorie" } },
-];
-const aiRows = [
-  { n: "Margherita", c: "Pizze", a: "Glutine, latte", p: "7,00 €" },
-  { n: "Diavola", c: "Pizze", a: "Glutine, latte", p: "8,50 €" },
-  { n: "Fiori di zucca", c: "Fritti", a: "Glutine, latte, pesce", p: "6,50 €", check: true },
-  { n: "Tiramisù", c: "Dolci", a: "Uova, latte", p: "5,00 €" },
-  { n: "Birra artigianale", c: "Bibite", a: "Glutine", p: "5,50 €" },
-];
+  { dur: 2800, target: "publish", click: true, patch: { published: true, toast: tr("Menu pubblicato: 5 piatti, 3 categorie") } },
+]);
+const aiRows = () => ([
+  { n: tr("Margherita"), c: "Pizze", a: tr("Glutine, latte"), p: "7,00 €" },
+  { n: tr("Diavola"), c: "Pizze", a: tr("Glutine, latte"), p: "8,50 €" },
+  { n: tr("Fiori di zucca"), c: "Fritti", a: tr("Glutine, latte, pesce"), p: "6,50 €", check: true },
+  { n: tr("Tiramisù"), c: "Dolci", a: tr("Uova, latte"), p: "5,00 €" },
+  { n: tr("Birra artigianale"), c: "Bibite", a: tr("Glutine"), p: "5,50 €" },
+]);
 
 export function AiVisual() {
-  const d = useDemo(aiSteps, aiInit, { restIndex: 6 });
+  const d = useDemo(aiSteps(), aiInit, { restIndex: 6 });
   const s = d.state;
   return (
     <Stage className="p-4 md:p-6">
       <div ref={d.rootRef} className="relative grid items-center gap-5 md:grid-cols-[0.75fr_1.25fr]">
         <div className="relative mx-auto w-[220px] rotate-[-3deg] rounded-[6px] bg-[#fffdf7] p-5 shadow-[0_30px_60px_-30px_rgba(0,0,0,.4)] md:w-full md:max-w-[260px]">
-          <p className="text-center font-serif text-[17px] italic text-[#3b2f2f]">Pizzeria Fiore</p>
-          {["Pizze", "Fritti", "Dolci"].map((c, k) => (
+          <p className="text-center font-serif text-[17px] italic text-[#3b2f2f]">{tr("Pizzeria Fiore")}</p>
+          {[tr("Pizze"), tr("Fritti"), tr("Dolci")].map((c, k) => (
             <div key={c} className="mt-3">
               <p className="font-serif text-[12px] font-semibold uppercase tracking-[0.12em] text-[#6b4f3a]">{c}</p>
               {[0, 1].map((j) => (
@@ -196,22 +197,22 @@ export function AiVisual() {
               style={{ animation: "scanY 1.8s ease-in-out infinite" }}
             />
           )}
-          <span className="absolute -right-2 -top-2 rounded-full bg-black px-2 py-0.5 text-[10.5px] font-medium text-white">foto_menu.jpg</span>
+          <span className="absolute -right-2 -top-2 rounded-full bg-black px-2 py-0.5 text-[10.5px] font-medium text-white">{tr("foto_menu.jpg")}</span>
         </div>
 
         <AppWindow className="min-w-0">
           <div className="relative p-4">
             <div className="flex items-center justify-between gap-3">
               <div className="min-w-0">
-                <p className="text-[14px] font-semibold leading-snug text-ink">Controlla il menu importato</p>
+                <p className="text-[14px] font-semibold leading-snug text-ink">{tr("Controlla il menu importato")}</p>
                 <p className="flex items-center gap-1.5 text-[11.5px] text-muted">
                   {s.scanning ? (
                     <>
-                      <Icon name="sparkle" size={13} className="text-p-green-ink" /> Lettura in corso
+                      <Icon name="sparkle" size={13} className="text-p-green-ink" />{" "}{tr("Lettura in corso")}
                     </>
                   ) : (
                     <>
-                      <Icon name="check" size={13} className="text-p-green-ink" /> 5 piatti trovati, 1 da controllare
+                      <Icon name="check" size={13} className="text-p-green-ink" />{" "}{tr("5 piatti trovati, 1 da controllare")}
                     </>
                   )}
                 </p>
@@ -222,18 +223,18 @@ export function AiVisual() {
                   s.published ? "bg-p-green text-p-green-ink" : s.scanning ? "bg-mist text-faint" : "bg-black text-white"
                 }`}
               >
-                {s.published ? "Pubblicato" : "Pubblica"}
+                {s.published ? tr("Pubblicato") : tr("Pubblica")}
               </span>
             </div>
             <div className="mt-3 overflow-hidden rounded-[12px] border border-line-soft">
               <div className="grid grid-cols-[1.3fr_0.8fr_1.3fr_0.7fr] gap-2 bg-mist px-3 py-2 text-[11px] text-muted max-sm:grid-cols-[1.4fr_1fr_0.8fr]">
-                <span>Piatto</span>
-                <span>Categoria</span>
-                <span className="max-sm:hidden">Allergeni</span>
-                <span className="text-right">Prezzo</span>
+                <span>{tr("Piatto")}</span>
+                <span>{tr("Categoria")}</span>
+                <span className="max-sm:hidden">{tr("Allergeni")}</span>
+                <span className="text-right">{tr("Prezzo")}</span>
               </div>
               <ul className="min-h-[205px]">
-                {aiRows.slice(0, s.rows).map((r) => (
+                {aiRows().slice(0, s.rows).map((r) => (
                   <li
                     key={r.n}
                     className={`anim-fade-up grid grid-cols-[1.3fr_0.8fr_1.3fr_0.7fr] items-center gap-2 border-t border-line-soft px-3 py-2.5 text-[12px] max-sm:grid-cols-[1.4fr_1fr_0.8fr] ${
@@ -266,13 +267,13 @@ const flags: Record<string, string> = {
   de: "linear-gradient(180deg,#000 33.3%,#dd0000 33.3% 66.6%,#ffce00 66.6%)",
   es: "linear-gradient(180deg,#aa151b 25%,#f1bf00 25% 75%,#aa151b 75%)",
 };
-const T: Record<string, { cat: string; name: string; desc: string; allergens: string; cta: string; lang: string }> = {
-  it: { lang: "Italiano", cat: "Fritti", name: "Fiori di zucca fritti", desc: "Ripieni di mozzarella e alici, in pastella leggera.", allergens: "Glutine, latte, pesce", cta: "Aggiungi" },
-  en: { lang: "English", cat: "Fried", name: "Fried courgette flowers", desc: "Stuffed with mozzarella and anchovies, in a light batter.", allergens: "Gluten, milk, fish", cta: "Add" },
-  fr: { lang: "Français", cat: "Fritures", name: "Fleurs de courgette frites", desc: "Farcies de mozzarella et d'anchois, en pâte légère.", allergens: "Gluten, lait, poisson", cta: "Ajouter" },
-  de: { lang: "Deutsch", cat: "Frittiertes", name: "Frittierte Zucchiniblüten", desc: "Gefüllt mit Mozzarella und Sardellen, in leichtem Teig.", allergens: "Gluten, Milch, Fisch", cta: "Hinzufügen" },
-  es: { lang: "Español", cat: "Fritos", name: "Flores de calabacín fritas", desc: "Rellenas de mozzarella y anchoas, en rebozado ligero.", allergens: "Gluten, leche, pescado", cta: "Añadir" },
-};
+const T = (): Record<string, { cat: string; name: string; desc: string; allergens: string; cta: string; lang: string }> => ({
+  it: { lang: tr("Italiano"), cat: tr("Fritti"), name: tr("Fiori di zucca fritti"), desc: tr("Ripieni di mozzarella e alici, in pastella leggera."), allergens: tr("Glutine, latte, pesce"), cta: tr("Aggiungi") },
+  en: { lang: tr("English"), cat: tr("Fried"), name: tr("Fried courgette flowers"), desc: tr("Stuffed with mozzarella and anchovies, in a light batter."), allergens: tr("Gluten, milk, fish"), cta: tr("Add") },
+  fr: { lang: tr("Français"), cat: tr("Fritures"), name: tr("Fleurs de courgette frites"), desc: tr("Farcies de mozzarella et d'anchois, en pâte légère."), allergens: tr("Gluten, lait, poisson"), cta: tr("Ajouter") },
+  de: { lang: tr("Deutsch"), cat: tr("Frittiertes"), name: tr("Frittierte Zucchiniblüten"), desc: tr("Gefüllt mit Mozzarella und Sardellen, in leichtem Teig."), allergens: tr("Gluten, Milch, Fisch"), cta: tr("Hinzufügen") },
+  es: { lang: tr("Español"), cat: tr("Fritos"), name: tr("Flores de calabacín fritas"), desc: tr("Rellenas de mozzarella y anchoas, en rebozado ligero."), allergens: tr("Gluten, leche, pescado"), cta: tr("Añadir") },
+});
 const order = ["it", "en", "fr", "de", "es"];
 
 export function LingueVisual() {
@@ -282,7 +283,7 @@ export function LingueVisual() {
     { restIndex: 1 }
   );
   const lang = order[d.state.k];
-  const t = T[lang];
+  const t = T()[lang];
   return (
     <Stage className="flex min-h-[500px] items-center justify-center p-6">
       <div ref={d.rootRef} className="w-full max-w-[340px]">
@@ -319,7 +320,7 @@ export function LingueVisual() {
           </div>
         </div>
         <p className="mt-4 text-center text-[13px] text-muted">
-          Lingua del telefono: <span className="font-medium text-ink">{t.lang}</span>
+          {tr("Lingua del telefono:")}{" "}<span className="font-medium text-ink">{t.lang}</span>
         </p>
       </div>
     </Stage>
@@ -328,19 +329,19 @@ export function LingueVisual() {
 
 /* ---------- Menu a orari ---------- */
 
-const bands = [
-  { from: 7, to: 11, name: "Colazione", c: "bg-p-amber", ink: "text-p-amber-ink" },
-  { from: 12, to: 15, name: "Pranzo", c: "bg-p-green", ink: "text-p-green-ink" },
-  { from: 18, to: 20.5, name: "Aperitivo", c: "bg-p-orange", ink: "text-p-orange-ink" },
-  { from: 19.5, to: 23.5, name: "Cena", c: "bg-p-violet", ink: "text-p-violet-ink" },
-];
-const preview: Record<string, string[]> = {
-  Colazione: ["Cornetto alla crema", "Cappuccino", "Spremuta d'arancia"],
-  Pranzo: ["Piatto del giorno", "Insalata di farro", "Tagliata con rucola"],
-  Aperitivo: ["Spritz", "Tagliere di salumi", "Negroni sbagliato"],
-  Cena: ["Tonnarelli cacio e pepe", "Filetto al pepe verde", "Tiramisù"],
-  Chiuso: ["Riapriamo alle 7:00"],
-};
+const bands = () => ([
+  { from: 7, to: 11, name: tr("Colazione"), c: "bg-p-amber", ink: "text-p-amber-ink" },
+  { from: 12, to: 15, name: tr("Pranzo"), c: "bg-p-green", ink: "text-p-green-ink" },
+  { from: 18, to: 20.5, name: tr("Aperitivo"), c: "bg-p-orange", ink: "text-p-orange-ink" },
+  { from: 19.5, to: 23.5, name: tr("Cena"), c: "bg-p-violet", ink: "text-p-violet-ink" },
+]);
+const preview = (): Record<string, string[]> => ({
+  Colazione: [tr("Cornetto alla crema"), tr("Cappuccino"), tr("Spremuta d'arancia")],
+  Pranzo: [tr("Piatto del giorno"), tr("Insalata di farro"), tr("Tagliata con rucola")],
+  Aperitivo: [tr("Spritz"), tr("Tagliere di salumi"), tr("Negroni sbagliato")],
+  Cena: [tr("Tonnarelli cacio e pepe"), tr("Filetto al pepe verde"), tr("Tiramisù")],
+  Chiuso: [tr("Riapriamo alle 7:00")],
+});
 
 export function OrariVisual() {
   const [h, setH] = useState(7.5);
@@ -350,7 +351,7 @@ export function OrariVisual() {
     const id = window.setInterval(() => setH((v) => (v >= 23.4 ? 7 : v + 0.11)), 60);
     return () => window.clearInterval(id);
   }, [d.running]);
-  const active = [...bands].reverse().find((b) => h >= b.from && h < b.to)?.name ?? "Chiuso";
+  const active = [...bands()].reverse().find((b) => h >= b.from && h < b.to)?.name ?? tr("Chiuso");
   const pct = ((h - 6) / 18) * 100;
   const hh = Math.floor(h);
   const mm = Math.floor((h - hh) * 60 / 15) * 15;
@@ -359,14 +360,14 @@ export function OrariVisual() {
       <div ref={d.rootRef} className="mx-auto max-w-[560px]">
         <div className="rounded-[20px] bg-white p-5 shadow-[0_30px_60px_-40px_rgba(0,0,0,.35)]">
           <div className="flex items-center justify-between">
-            <p className="text-[14px] font-semibold text-ink">Oggi, venerdì</p>
+            <p className="text-[14px] font-semibold text-ink">{tr("Oggi, venerdì")}</p>
             <span className="rounded-full bg-black px-2.5 py-1 text-[12px] font-medium tabular-nums text-white">
               {String(hh).padStart(2, "0")}:{String(mm).padStart(2, "0")}
             </span>
           </div>
           <div className="relative mt-5">
             <div className="relative h-[124px]">
-              {bands.map((b, i) => (
+              {bands().map((b, i) => (
                 <div
                   key={b.name}
                   className={`absolute flex h-9 items-center rounded-[10px] px-2.5 text-[12px] font-medium ${b.c} ${b.ink} transition-opacity duration-300 ${
@@ -390,12 +391,12 @@ export function OrariVisual() {
         </div>
 
         <div className="mx-auto mt-5 max-w-[300px] rounded-[22px] bg-white p-4 shadow-[0_30px_60px_-40px_rgba(0,0,0,.35)]">
-          <p className="text-[11.5px] text-muted">Menu mostrato ora dal QR</p>
+          <p className="text-[11.5px] text-muted">{tr("Menu mostrato ora dal QR")}</p>
           <p key={active} className="anim-fade-up mt-0.5 text-[20px] font-semibold tracking-[-0.03em] text-ink">
             {active}
           </p>
           <ul key={active + "l"} className="mt-2">
-            {preview[active].map((p, i) => (
+            {preview()[active].map((p, i) => (
               <li key={p} className="anim-fade-up border-t border-line-soft py-2 text-[13px] text-text" style={{ animationDelay: `${i * 70}ms` }}>
                 {p}
               </li>
@@ -429,11 +430,11 @@ export function PrenotazioniVisual() {
   const d = useDemo(prSteps, prInit, { restIndex: 8 });
   const s = d.state;
   const days = [
-    ["Oggi", "15"],
-    ["Ven", "16"],
-    ["Sab", "17"],
-    ["Dom", "18"],
-    ["Lun", "19"],
+    [tr("Oggi"), "15"],
+    [tr("Ven"), "16"],
+    [tr("Sab"), "17"],
+    [tr("Dom"), "18"],
+    [tr("Lun"), "19"],
   ];
   const slots = ["19:30", "20:00", "20:30", "21:00", "21:30", "22:00"];
   return (
@@ -443,9 +444,9 @@ export function PrenotazioniVisual() {
           <div className="relative h-[580px] px-4">
             {!s.done ? (
               <div className="pt-1">
-                <p className="text-[11.5px] text-muted">Trattoria Il Glicine</p>
-                <p className="text-[20px] font-semibold tracking-[-0.03em] text-ink">Prenota un tavolo</p>
-                <p className="mt-4 text-[12px] font-medium text-ink">Giorno</p>
+                <p className="text-[11.5px] text-muted">{tr("Trattoria Il Glicine")}</p>
+                <p className="text-[20px] font-semibold tracking-[-0.03em] text-ink">{tr("Prenota un tavolo")}</p>
+                <p className="mt-4 text-[12px] font-medium text-ink">{tr("Giorno")}</p>
                 <div className="mt-2 flex gap-1.5">
                   {days.map((x, i) => (
                     <span
@@ -461,7 +462,7 @@ export function PrenotazioniVisual() {
                   ))}
                 </div>
                 <div className="mt-4 flex items-center justify-between rounded-[14px] bg-mist px-3 py-2.5">
-                  <span className="text-[12.5px] font-medium text-ink">Persone</span>
+                  <span className="text-[12.5px] font-medium text-ink">{tr("Persone")}</span>
                   <span className="flex items-center gap-3">
                     <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white text-ink shadow-sm">
                       <Icon name="minus" size={13} stroke={2.4} />
@@ -475,10 +476,10 @@ export function PrenotazioniVisual() {
                   </span>
                 </div>
                 <div className="mt-2 flex items-center justify-between rounded-[14px] bg-mist px-3 py-2.5">
-                  <span className="text-[12.5px] font-medium text-ink">Serve un seggiolino</span>
+                  <span className="text-[12.5px] font-medium text-ink">{tr("Serve un seggiolino")}</span>
                   <Toggle on={s.seat} small t="seat" />
                 </div>
-                <p className="mt-4 text-[12px] font-medium text-ink">Orario</p>
+                <p className="mt-4 text-[12px] font-medium text-ink">{tr("Orario")}</p>
                 <div className="mt-2 grid grid-cols-3 gap-1.5">
                   {slots.map((t, i) => (
                     <span
@@ -498,7 +499,7 @@ export function PrenotazioniVisual() {
                     s.slot >= 0 ? "bg-black text-white" : "bg-mist text-faint"
                   }`}
                 >
-                  Prenota per {s.people} persone
+                  {tr("Prenota per")}{" "}{s.people}{" "}{tr("persone")}
                 </span>
               </div>
             ) : (
@@ -506,9 +507,9 @@ export function PrenotazioniVisual() {
                 <span className="anim-pop flex h-16 w-16 items-center justify-center rounded-full bg-p-green text-p-green-ink">
                   <Icon name="check" size={32} stroke={2.4} />
                 </span>
-                <p className="mt-4 text-[18px] font-semibold tracking-[-0.02em] text-ink">Richiesta inviata</p>
+                <p className="mt-4 text-[18px] font-semibold tracking-[-0.02em] text-ink">{tr("Richiesta inviata")}</p>
                 <p className="mt-1.5 max-w-[220px] text-[12.5px] leading-snug text-muted">
-                  Sabato 17 alle 20:30, 4 persone e un seggiolino. Ti confermiamo su WhatsApp.
+                  {tr("Sabato 17 alle 20:30, 4 persone e un seggiolino. Ti confermiamo su WhatsApp.")}
                 </p>
               </div>
             )}

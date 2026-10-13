@@ -1,10 +1,11 @@
 "use client";
 
+import { tr } from "@/i18n";
 import { useState } from "react";
 import { site, waLink } from "@/config/site";
 import { Icon } from "./Icon";
 
-const types = ["Pizzeria", "Ristorante o trattoria", "Pub o birreria", "Bar o caffetteria", "Gelateria", "Pastificio", "Panetteria o pasticceria", "Gastronomia o rosticceria", "Altro"];
+const types = () => ([tr("Pizzeria"), tr("Ristorante o trattoria"), tr("Pub o birreria"), tr("Bar o caffetteria"), tr("Gelateria"), tr("Pastificio"), tr("Panetteria o pasticceria"), tr("Gastronomia o rosticceria"), tr("Altro")]);
 
 /**
  * Modulo di contatto senza server: compone un messaggio WhatsApp (o una email) con i dati inseriti.
@@ -21,11 +22,11 @@ export function LeadForm({ kind, compact = false }: { kind: "demo" | "contatto";
     const venue = String(fd.get("locale") || "").trim();
     const phone = String(fd.get("telefono") || "").trim();
     if (!name || !phone || (kind === "demo" && !venue)) {
-      setErr("Compila nome, nome del locale e telefono per continuare.");
+      setErr(tr("Compila nome, nome del locale e telefono per continuare."));
       return;
     }
     if (!fd.get("privacy")) {
-      setErr("Per continuare accetta l'informativa privacy.");
+      setErr(tr("Per continuare accetta l'informativa privacy."));
       return;
     }
     setErr(null);
@@ -50,16 +51,16 @@ export function LeadForm({ kind, compact = false }: { kind: "demo" | "contatto";
         <span className="anim-pop flex h-14 w-14 items-center justify-center rounded-full bg-p-green text-p-green-ink">
           <Icon name="check" size={28} stroke={2.4} />
         </span>
-        <p className="mt-5 text-[22px] font-semibold tracking-[-0.02em] text-ink">Ci siamo quasi</p>
+        <p className="mt-5 text-[22px] font-semibold tracking-[-0.02em] text-ink">{tr("Ci siamo quasi")}</p>
         <p className="mt-2 max-w-sm text-[15.5px] leading-relaxed text-muted">
-          Abbiamo aperto WhatsApp con il messaggio già scritto: premi Invia e ti rispondiamo in giornata. Se non si è aperto, scrivici a{" "}
+          {tr("Abbiamo aperto WhatsApp con il messaggio già scritto: premi Invia e ti rispondiamo in giornata. Se non si è aperto, scrivici a")}{" "}
           <a className="text-ink underline underline-offset-4" href={`mailto:${site.email}`}>
             {site.email}
           </a>
           .
         </p>
         <button type="button" onClick={() => setSent(false)} className="btn btn-light mt-6">
-          Modifica i dati
+          {tr("Modifica i dati")}
         </button>
       </div>
     );
@@ -73,30 +74,30 @@ export function LeadForm({ kind, compact = false }: { kind: "demo" | "contatto";
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor={`${kind}-nome`} className={label}>
-            Nome e cognome
+            {tr("Nome e cognome")}
           </label>
-          <input id={`${kind}-nome`} name="nome" autoComplete="name" placeholder="Mario Rossi" className={input} required />
+          <input id={`${kind}-nome`} name="nome" autoComplete="name" placeholder={tr("Mario Rossi")} className={input} required />
         </div>
         <div>
           <label htmlFor={`${kind}-tel`} className={label}>
-            Telefono
+            {tr("Telefono")}
           </label>
           <input id={`${kind}-tel`} name="telefono" type="tel" autoComplete="tel" placeholder="333 123 4567" className={input} required />
         </div>
         <div className={kind === "demo" ? "" : "sm:col-span-2"}>
           <label htmlFor={`${kind}-locale`} className={label}>
-            {kind === "demo" ? "Nome del locale" : "Nome dell'attività (facoltativo)"}
+            {kind === "demo" ? tr("Nome del locale") : tr("Nome dell'attività (facoltativo)")}
           </label>
-          <input id={`${kind}-locale`} name="locale" autoComplete="organization" placeholder="Pizzeria da Mario" className={input} />
+          <input id={`${kind}-locale`} name="locale" autoComplete="organization" placeholder={tr("Pizzeria da Mario")} className={input} />
         </div>
         {kind === "demo" && (
           <div>
             <label htmlFor="demo-tipo" className={label}>
-              Tipo di attività
+              {tr("Tipo di attività")}
             </label>
             <div className="relative">
-              <select id="demo-tipo" name="tipo" className={`${input} appearance-none pr-10`} defaultValue="Pizzeria">
-                {types.map((t) => (
+              <select id="demo-tipo" name="tipo" className={`${input} appearance-none pr-10`} defaultValue={tr("Pizzeria")}>
+                {types().map((t) => (
                   <option key={t}>{t}</option>
                 ))}
               </select>
@@ -106,9 +107,9 @@ export function LeadForm({ kind, compact = false }: { kind: "demo" | "contatto";
         )}
         {kind === "demo" ? (
           <fieldset className="sm:col-span-2">
-            <legend className={label}>Quando preferisci?</legend>
+            <legend className={label}>{tr("Quando preferisci?")}</legend>
             <div className="grid grid-cols-3 gap-2">
-              {["Mattina", "Pomeriggio", "Sera"].map((q, i) => (
+              {[tr("Mattina"), tr("Pomeriggio"), tr("Sera")].map((q, i) => (
                 <label key={q} className="relative">
                   <input type="radio" name="quando" value={q} defaultChecked={i === 1} className="peer sr-only" />
                   <span className="flex h-11 cursor-pointer items-center justify-center rounded-[10px] border border-line text-[14.5px] text-text transition-colors peer-checked:border-black peer-checked:bg-black peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-black peer-focus-visible:ring-offset-2">
@@ -121,13 +122,13 @@ export function LeadForm({ kind, compact = false }: { kind: "demo" | "contatto";
         ) : (
           <div className="sm:col-span-2">
             <label htmlFor="contatto-msg" className={label}>
-              Messaggio
+              {tr("Messaggio")}
             </label>
             <textarea
               id="contatto-msg"
               name="messaggio"
               rows={4}
-              placeholder="Come possiamo aiutarti?"
+              placeholder={tr("Come possiamo aiutarti?")}
               className={`${input} h-auto resize-none py-3`}
             />
           </div>
@@ -140,11 +141,11 @@ export function LeadForm({ kind, compact = false }: { kind: "demo" | "contatto";
           <Icon name="check" size={13} stroke={3} />
         </span>
         <span>
-          Ho letto l&apos;
+          {tr("Ho letto l'")}
           <a href="/privacy/" className="text-ink underline underline-offset-2">
-            informativa privacy
+            {tr("informativa privacy")}
           </a>{" "}
-          e voglio essere ricontattato.
+          {tr("e voglio essere ricontattato.")}
         </span>
       </label>
 
@@ -155,9 +156,9 @@ export function LeadForm({ kind, compact = false }: { kind: "demo" | "contatto";
       )}
 
       <button type="submit" className="btn btn-dark mt-6 h-[50px] w-full text-[16px]">
-        {kind === "demo" ? "Prenota la demo" : "Invia il messaggio"}
+        {kind === "demo" ? tr("Prenota la demo") : tr("Invia il messaggio")}
       </button>
-      <p className="mt-3 text-center text-[13px] text-muted">Ti rispondiamo su WhatsApp, di solito in giornata.</p>
+      <p className="mt-3 text-center text-[13px] text-muted">{tr("Ti rispondiamo su WhatsApp, di solito in giornata.")}</p>
     </form>
   );
 }

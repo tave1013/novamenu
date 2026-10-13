@@ -1,3 +1,4 @@
+import { tr } from "@/i18n";
 import type { Feature } from "@/content/features";
 import { Icon, IconTile, type IconName } from "./Icon";
 
@@ -45,11 +46,11 @@ export function FeatureComposite({
           <IconTile name={feature.icon} tone={feature.tone} size={34} radius={9} />
           <span className="min-w-0 flex-1">
             <span className="block text-[14px] font-semibold leading-tight text-ink">{feature.name}</span>
-            <span className="block text-[12px] text-muted">{title.length > 34 ? "Impostazioni" : title}</span>
+            <span className="block text-[12px] text-muted">{title.length > 34 ? tr("Impostazioni") : title}</span>
           </span>
           <span className="flex flex-none items-center gap-1.5 rounded-full bg-p-green px-2 py-0.5 text-[11.5px] font-medium text-p-green-ink">
             <span className="h-1.5 w-1.5 rounded-full bg-[#16a34a]" />
-            Attivo
+            {tr("Attivo")}
           </span>
         </div>
         <ul className="px-4 py-1.5">
@@ -77,7 +78,7 @@ export function FeatureComposite({
       <div className="relative mx-auto mt-3 flex max-w-[400px] md:absolute md:bottom-5 md:left-5 md:mt-0">
         <span className="inline-flex items-center gap-2 rounded-full border border-line bg-white px-3 py-1.5 text-[12px] font-medium text-ink shadow-[0_12px_30px_-20px_rgba(0,0,0,.3)]">
           <Icon name="check" size={13} stroke={2.6} className="text-[#16a34a]" />
-          Dal piano {feature.plan}, senza commissioni
+          {tr("Dal piano")}{" "}{feature.plan}{tr(", senza commissioni")}
         </span>
       </div>
     </div>

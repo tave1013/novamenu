@@ -1,3 +1,4 @@
+import { tr } from "@/i18n";
 import Link from "next/link";
 import { signupUrl, site } from "@/config/site";
 import { Icon } from "./Icon";
@@ -12,7 +13,7 @@ export function Breadcrumbs({ items }: { items: { name: string; href: string }[]
   const all = [{ name: "Home", href: "/" }, ...items];
   return (
     <>
-      <nav aria-label="Percorso" className="text-[13.5px] text-muted">
+      <nav aria-label={tr("Percorso")} className="text-[13.5px] text-muted">
         <ol className="flex flex-wrap items-center gap-1.5">
           {all.map((it, i) => (
             <li key={it.href} className="flex items-center gap-1.5">
@@ -46,7 +47,7 @@ export function Breadcrumbs({ items }: { items: { name: string; href: string }[]
   );
 }
 
-export function Faq({ items, title = "Domande frequenti", schema = true }: { items: { q: string; a: string }[]; title?: string; schema?: boolean }) {
+export function Faq({ items, title = tr("Domande frequenti"), schema = true }: { items: { q: string; a: string }[]; title?: string; schema?: boolean }) {
   return (
     <section aria-labelledby="faq-title" className="py-14 md:py-18">
       <div className="wrap max-w-[880px]">
@@ -55,11 +56,11 @@ export function Faq({ items, title = "Domande frequenti", schema = true }: { ite
         </h2>
         <FaqList items={items} />
         <p className="mt-8 text-center text-[15px] text-muted">
-          Non trovi la risposta?{" "}
+          {tr("Non trovi la risposta?")}{" "}
           <Link href="/contatti/" className="font-medium text-ink underline decoration-line underline-offset-4 hover:decoration-ink">
-            Scrivici
+            {tr("Scrivici")}
           </Link>
-          , rispondiamo in giornata.
+          {tr(", rispondiamo in giornata.")}
         </p>
       </div>
       {schema && (
@@ -76,8 +77,8 @@ export function Faq({ items, title = "Domande frequenti", schema = true }: { ite
 }
 
 export function CtaBand({
-  title = "Vediamolo insieme sul tuo menu.",
-  text = "Una videochiamata di 20 minuti: carichiamo il tuo menu vero e ti mostriamo come lavorerebbe il tuo locale. Oppure prova da solo, gratis per 14 giorni.",
+  title = tr("Vediamolo insieme sul tuo menu."),
+  text = tr("Una videochiamata di 20 minuti: carichiamo il tuo menu vero e ti mostriamo come lavorerebbe il tuo locale. Oppure prova da solo, gratis per 14 giorni."),
 }: {
   title?: string;
   text?: string;
@@ -90,7 +91,7 @@ export function CtaBand({
             <h2 className="h-section text-[#fafaf8]">{title}</h2>
             <p className="mt-4 text-[17px] leading-relaxed text-[#b9cfa8]">{text}</p>
             <ul className="mt-6 flex flex-col gap-2.5 text-[15px] text-[#e3eed8]">
-              {["Senza impegno", "Ti lasciamo il menu già pronto", "Scegli tu giorno e ora"].map((x) => (
+              {[tr("Senza impegno"), tr("Ti lasciamo il menu già pronto"), tr("Scegli tu giorno e ora")].map((x) => (
                 <li key={x} className="flex items-center gap-2.5">
                   <Icon name="check" size={16} stroke={2.4} className="text-lime" />
                   {x}
@@ -98,7 +99,7 @@ export function CtaBand({
               ))}
             </ul>
             <a href={signupUrl} className="mt-8 inline-flex items-center gap-2 text-[15px] font-medium text-[#fafaf8] underline decoration-white/30 underline-offset-4 hover:decoration-white">
-              Preferisci provare da solo? Inizia gratis
+              {tr("Preferisci provare da solo? Inizia gratis")}
               <Icon name="arrowRight" size={15} stroke={2} />
             </a>
           </div>
@@ -115,7 +116,7 @@ export function PlanTag({ plan }: { plan: string }) {
   return (
     <span className="inline-flex h-7 items-center gap-1.5 rounded-full bg-mist px-3 text-[13px] font-medium text-text">
       <span className="h-1.5 w-1.5 rounded-full bg-ios" />
-      Dal piano {plan}
+      {tr("Dal piano")}{" "}{plan}
     </span>
   );
 }

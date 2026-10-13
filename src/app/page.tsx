@@ -1,3 +1,4 @@
+import { tr } from "@/i18n";
 import Link from "next/link";
 import { featureBySlug } from "@/content/features";
 import { sectors } from "@/content/sectors";
@@ -24,51 +25,51 @@ export const metadata = pageMeta({
 });
 
 /** Le funzionalità raccontate in grande, con animazione e testo alternati. */
-const spotlight = [
+const spotlight = () => ([
   {
     slug: "importa-menu-ai",
-    tag: "Carica il menu",
-    title: "Una foto del menu di carta. L'AI fa il resto.",
-    text: "Carichi una foto o un PDF: piatti, prezzi, ingredienti e allergeni vengono letti e messi in ordine nelle categorie. Tu controlli e pubblichi.",
-    points: ["Foto, PDF o più pagine insieme", "Allergeni proposti dagli ingredienti", "Niente va online finché non lo decidi tu"],
+    tag: tr("Carica il menu"),
+    title: tr("Una foto del menu di carta. L'AI fa il resto."),
+    text: tr("Carichi una foto o un PDF: piatti, prezzi, ingredienti e allergeni vengono letti e messi in ordine nelle categorie. Tu controlli e pubblichi."),
+    points: [tr("Foto, PDF o più pagine insieme"), tr("Allergeni proposti dagli ingredienti"), tr("Niente va online finché non lo decidi tu")],
   },
   {
     slug: "ordini-whatsapp",
     still: true,
-    tag: "Ordini da asporto",
-    title: "Il cliente ordina. Tu ricevi tutto scritto su WhatsApp.",
-    text: "Il cliente sceglie dal menu e l'ordine arriva sul WhatsApp del locale con piatti, orario di ritiro e totale. Senza commissioni e senza telefonate nel pieno del servizio.",
-    points: ["Fasce di ritiro con limite di ordini", "Pausa ordini con un tocco", "0% di commissioni, l'incasso è tutto tuo"],
+    tag: tr("Ordini da asporto"),
+    title: tr("Il cliente ordina. Tu ricevi tutto scritto su WhatsApp."),
+    text: tr("Il cliente sceglie dal menu e l'ordine arriva sul WhatsApp del locale con piatti, orario di ritiro e totale. Senza commissioni e senza telefonate nel pieno del servizio."),
+    points: [tr("Fasce di ritiro con limite di ordini"), tr("Pausa ordini con un tocco"), tr("0% di commissioni, l'incasso è tutto tuo")],
   },
   {
     slug: "prenotazioni",
-    tag: "Prenotazioni",
-    title: "Le prenotazioni arrivano anche di notte. Tu confermi con un tocco.",
-    text: "Il cliente sceglie giorno, orario e persone tra i posti davvero liberi. Tu accetti e lui riceve la conferma su WhatsApp.",
-    points: ["Solo gli orari disponibili", "Seggiolini e note per allergie", "Promemoria che riduce i tavoli vuoti"],
+    tag: tr("Prenotazioni"),
+    title: tr("Le prenotazioni arrivano anche di notte. Tu confermi con un tocco."),
+    text: tr("Il cliente sceglie giorno, orario e persone tra i posti davvero liberi. Tu accetti e lui riceve la conferma su WhatsApp."),
+    points: [tr("Solo gli orari disponibili"), tr("Seggiolini e note per allergie"), tr("Promemoria che riduce i tavoli vuoti")],
   },
   {
     slug: "assistente",
     still: true,
-    tag: "Assistente vocale",
-    title: "Hai le mani in pasta? Mandagli un vocale.",
-    text: "\"Tonnarelli finiti, stasera chiudiamo alle 22.\" L'assistente su Telegram capisce, ti chiede conferma e aggiorna menu, orari e prenotazioni.",
-    points: ["Vocale o messaggio scritto", "Conferma prima di ogni modifica", "Lo usa solo chi autorizzi tu"],
+    tag: tr("Assistente vocale"),
+    title: tr("Hai le mani in pasta? Mandagli un vocale."),
+    text: tr("\"Tonnarelli finiti, stasera chiudiamo alle 22.\" L'assistente su Telegram capisce, ti chiede conferma e aggiorna menu, orari e prenotazioni."),
+    points: [tr("Vocale o messaggio scritto"), tr("Conferma prima di ogni modifica"), tr("Lo usa solo chi autorizzi tu")],
   },
   {
     slug: "traduzioni",
-    tag: "Menu tradotto",
-    title: "Il turista legge il menu nella sua lingua.",
-    text: "Il menu si apre da solo nella lingua del telefono: inglese, francese, tedesco o spagnolo. Il cameriere non traduce più ogni piatto e i nomi tipici restano in italiano, con la spiegazione.",
-    points: ["Traduzione di tutto il menu in un tocco", "Allergeni tradotti correttamente", "Ogni frase si può ritoccare a mano"],
+    tag: tr("Menu tradotto"),
+    title: tr("Il turista legge il menu nella sua lingua."),
+    text: tr("Il menu si apre da solo nella lingua del telefono: inglese, francese, tedesco o spagnolo. Il cameriere non traduce più ogni piatto e i nomi tipici restano in italiano, con la spiegazione."),
+    points: [tr("Traduzione di tutto il menu in un tocco"), tr("Allergeni tradotti correttamente"), tr("Ogni frase si può ritoccare a mano")],
   },
-] as { slug: string; still?: boolean; tag: string; title: string; text: string; points: string[] }[];
+] as { slug: string; still?: boolean; tag: string; title: string; text: string; points: string[] }[]);
 
-const heroCards = [
-  { icon: "chat" as const, tone: "green", t: "Nuovo ordine da asporto", d: "Ritiro alle 19:45, 3 pizze", pos: "left-0 top-20", f: "float2", delay: "400ms" },
-  { icon: "calendarCheck" as const, tone: "blue", t: "Prenotazione accettata", d: "Sabato 20:30, 4 persone", pos: "right-0 top-64", f: "float3", delay: "1000ms" },
-  { icon: "globe" as const, tone: "amber", t: "Menu tradotto in 4 lingue", d: "Inglese, francese, tedesco, spagnolo", pos: "left-2 bottom-16", f: "float1", delay: "1600ms" },
-];
+const heroCards = () => ([
+  { icon: "chat" as const, tone: "green", t: tr("Nuovo ordine da asporto"), d: tr("Ritiro alle 19:45, 3 pizze"), pos: "left-0 top-20", f: "float2", delay: "400ms" },
+  { icon: "calendarCheck" as const, tone: "blue", t: tr("Prenotazione accettata"), d: tr("Sabato 20:30, 4 persone"), pos: "right-0 top-64", f: "float3", delay: "1000ms" },
+  { icon: "globe" as const, tone: "amber", t: tr("Menu tradotto in 4 lingue"), d: tr("Inglese, francese, tedesco, spagnolo"), pos: "left-2 bottom-16", f: "float1", delay: "1600ms" },
+]);
 
 export default function Home() {
   return (
@@ -80,27 +81,27 @@ export default function Home() {
         <div className="wrap grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
             <div className="anim-fade-up inline-flex flex-wrap items-center gap-2 rounded-full border border-line bg-white py-1.5 pl-1.5 pr-3 text-[13px]">
-              <span className="rounded-full bg-lime px-2 py-0.5 font-medium text-forest">Per la ristorazione</span>
-              <span className="hidden text-muted sm:inline">Ristoranti, pizzerie, bar, pub e botteghe del cibo</span>
+              <span className="rounded-full bg-lime px-2 py-0.5 font-medium text-forest">{tr("Per la ristorazione")}</span>
+              <span className="hidden text-muted sm:inline">{tr("Ristoranti, pizzerie, bar, pub e botteghe del cibo")}</span>
             </div>
             <h1 className="display anim-fade-up mt-5" style={{ animationDelay: "60ms" }}>
-              Tutto il tuo locale, gestito dal <span className="hl">telefono</span>.
+              {tr("Tutto il tuo locale, gestito dal")}{" "}<span className="hl">{tr("telefono")}</span>.
             </h1>
             <p className="anim-fade-up mt-5 max-w-[560px] text-[19px] leading-[1.55] text-muted" style={{ animationDelay: "120ms" }}>
-              Gli ordini da asporto arrivano scritti su WhatsApp, i tavoli si prenotano online e il menu lo aggiorni dal telefono, partendo da una foto. Senza commissioni sugli ordini.
+              {tr("Gli ordini da asporto arrivano scritti su WhatsApp, i tavoli si prenotano online e il menu lo aggiorni dal telefono, partendo da una foto. Senza commissioni sugli ordini.")}
             </p>
             <div className="anim-fade-up mt-7 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap" style={{ animationDelay: "180ms" }}>
               <a href={signupUrl} className="btn btn-dark">
-                Prova gratis 14 giorni
+                {tr("Prova gratis 14 giorni")}
                 <Icon name="arrowRight" size={16} stroke={2} />
               </a>
               <Link href="/demo/" className="btn btn-light">
                 <Icon name="calendarCheck" size={16} stroke={2} />
-                Prenota una demo
+                {tr("Prenota una demo")}
               </Link>
             </div>
             <ul className="anim-fade-up mt-6 flex flex-wrap gap-x-5 gap-y-2 text-[13.5px] text-muted" style={{ animationDelay: "220ms" }}>
-              {["Nessuna carta richiesta", "Zero commissioni sugli ordini", "Assistenza in italiano"].map((x) => (
+              {[tr("Nessuna carta richiesta"), tr("Zero commissioni sugli ordini"), tr("Assistenza in italiano")].map((x) => (
                 <li key={x} className="flex items-center gap-1.5">
                   <Check />
                   {x}
@@ -114,7 +115,7 @@ export default function Home() {
             <div className="relative pt-4">
               <MenuVisual bare />
             </div>
-            {heroCards.map((c) => (
+            {heroCards().map((c) => (
               <div
                 key={c.t}
                 className={`absolute z-30 hidden sm:block ${c.pos}`}
@@ -136,7 +137,7 @@ export default function Home() {
       </section>
 
       {/* Tipi di attività */}
-      <section aria-label="Per chi è" className="border-y border-line bg-white py-5">
+      <section aria-label={tr("Per chi è")} className="border-y border-line bg-white py-5">
         <div className="relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_6%,#000_94%,transparent)]">
           <ul className="flex w-max items-center gap-12 [animation:marquee_40s_linear_infinite] hover:[animation-play-state:paused]">
             {[...sectors, ...sectors].map((s, i) => (
@@ -160,10 +161,10 @@ export default function Home() {
       <section className="pt-20 md:pt-26">
         <div className="wrap">
           <Reveal className="mx-auto max-w-[760px] text-center">
-            <p className="eyebrow">La dashboard</p>
-            <h2 className="h-section mt-3">Tutto quello che succede nel locale, in una schermata.</h2>
+            <p className="eyebrow">{tr("La dashboard")}</p>
+            <h2 className="h-section mt-3">{tr("Tutto quello che succede nel locale, in una schermata.")}</h2>
             <p className="lead mx-auto mt-4 max-w-[600px]">
-              Prenotazioni da confermare, piatti esauriti, ordini in arrivo. Dal computer alla cassa o dal telefono in sala.
+              {tr("Prenotazioni da confermare, piatti esauriti, ordini in arrivo. Dal computer alla cassa o dal telefono in sala.")}
             </p>
           </Reveal>
           <Reveal delay={120} className="mt-12">
@@ -175,11 +176,11 @@ export default function Home() {
       {/* Funzionalità in evidenza */}
       <section id="funzionalita" className="pt-24 md:pt-32">
         <div className="wrap max-md:text-center">
-          <p className="eyebrow">Cosa puoi fare</p>
-          <h2 className="h-section mt-3 max-w-[820px]">Le cose che oggi fai a mano. Da domani le fai in un tocco.</h2>
+          <p className="eyebrow">{tr("Cosa puoi fare")}</p>
+          <h2 className="h-section mt-3 max-w-[820px]">{tr("Le cose che oggi fai a mano. Da domani le fai in un tocco.")}</h2>
         </div>
         <div className="mt-4" />
-        {spotlight.map((s, i) => {
+        {spotlight().map((s, i) => {
           const f = featureBySlug(s.slug)!;
           const t = toneClass[f.tone];
           const textFirst = i % 2 === 1;
@@ -202,7 +203,7 @@ export default function Home() {
                     ))}
                   </ul>
                   <Link href={`/funzionalita/${f.slug}/`} className="link-arrow mt-5 min-h-11 text-[15px]">
-                    Scopri di più
+                    {tr("Scopri di più")}
                     <Icon name="arrowRight" size={15} stroke={2} />
                   </Link>
                 </Reveal>
@@ -225,14 +226,14 @@ export default function Home() {
         <div className="wrap relative">
           <Reveal className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
             <div>
-              <p className="eyebrow">E poi</p>
+              <p className="eyebrow">{tr("E poi")}</p>
               <h2 className="h-section mt-3 max-w-[640px]">
-                E non è <span className="hl">finita</span> qui.
+                {tr("E non è")}{" "}<span className="hl">{tr("finita")}</span>{" "}{tr("qui.")}
               </h2>
-              <p className="lead mt-3 max-w-[560px]">Le altre cose che fanno girare il locale, già incluse.</p>
+              <p className="lead mt-3 max-w-[560px]">{tr("Le altre cose che fanno girare il locale, già incluse.")}</p>
             </div>
             <Link href="/funzionalita/" className="btn btn-light flex-none">
-              Tutte le funzionalità
+              {tr("Tutte le funzionalità")}
             </Link>
           </Reveal>
           <div className="mt-10">
@@ -242,19 +243,19 @@ export default function Home() {
       </section>
 
       {/* Al fianco dei piccoli locali */}
-      <section aria-label="Al fianco dei piccoli locali" className="border-t border-line-soft pb-10 pt-16 md:py-26">
+      <section aria-label={tr("Al fianco dei piccoli locali")} className="border-t border-line-soft pb-10 pt-16 md:py-26">
         <PhotoSplit
           src="/images/settori/pasticceria.webp"
-          alt="Pasticcera sorridente nel suo laboratorio, con un dolce alla frutta in mano accanto alla vetrina"
+          alt={tr("Pasticcera sorridente nel suo laboratorio, con un dolce alla frutta in mano accanto alla vetrina")}
           pos="50% 30%"
           side="right"
-          eyebrow="Perché esistiamo"
-          title={<>Al fianco dei <span className="hl">piccoli</span> locali.</>}
-          text="Una nova è una stella che esiste già e diventa più luminosa. È quello che vogliamo per la tua pizzeria, il tuo bar, la tua bottega: farti trovare online, lavorare con meno telefonate e far tornare i clienti."
-          points={["Pensato per chi ha poco tempo e nessun tecnico", "Più visibilità su Google, Instagram e WhatsApp", "Nessuna commissione: ogni euro resta nel locale"]}
+          eyebrow={tr("Perché esistiamo")}
+          title={<>{tr("Al fianco dei")}{" "}<span className="hl">{tr("piccoli")}</span>{" "}{tr("locali.")}</>}
+          text={tr("Una nova è una stella che esiste già e diventa più luminosa. È quello che vogliamo per la tua pizzeria, il tuo bar, la tua bottega: farti trovare online, lavorare con meno telefonate e far tornare i clienti.")}
+          points={[tr("Pensato per chi ha poco tempo e nessun tecnico"), tr("Più visibilità su Google, Instagram e WhatsApp"), tr("Nessuna commissione: ogni euro resta nel locale")]}
         >
           <Link href="/settori/" className="link-arrow mt-6 min-h-11 text-[15px]">
-            Scopri per chi lavoriamo
+            {tr("Scopri per chi lavoriamo")}
             <Icon name="arrowRight" size={15} stroke={2} />
           </Link>
         </PhotoSplit>
@@ -264,8 +265,8 @@ export default function Home() {
       <section className="pb-16 pt-4 md:py-26">
         <div className="wrap">
           <Reveal>
-            <p className="eyebrow">Per chi</p>
-            <h2 className="h-section mt-3">Pensato per il tuo tipo di attività.</h2>
+            <p className="eyebrow">{tr("Per chi")}</p>
+            <h2 className="h-section mt-3">{tr("Pensato per il tuo tipo di attività.")}</h2>
           </Reveal>
           <ul className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {sectors.map((s) => (
@@ -294,15 +295,15 @@ export default function Home() {
       <section id="prezzi" className="border-y border-line bg-white py-20 md:py-26">
         <div className="wrap">
           <Reveal className="text-center">
-            <p className="eyebrow">Prezzi</p>
-            <h2 className="h-section mt-3">Prezzi <span className="hl">chiari</span>. Disdici quando vuoi.</h2>
+            <p className="eyebrow">{tr("Prezzi")}</p>
+            <h2 className="h-section mt-3">{tr("Prezzi")}{" "}<span className="hl">{tr("chiari")}</span>{tr(". Disdici quando vuoi.")}</h2>
           </Reveal>
           <div className="mt-8">
             <Pricing />
           </div>
           <p className="mt-6 text-center">
             <Link href="/prezzi/" className="link-arrow min-h-11 text-[15px]">
-              Confronta i piani nel dettaglio
+              {tr("Confronta i piani nel dettaglio")}
               <Icon name="arrowRight" size={15} stroke={2} />
             </Link>
           </p>

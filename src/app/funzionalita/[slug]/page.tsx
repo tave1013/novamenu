@@ -1,3 +1,4 @@
+import { tr } from "@/i18n";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -11,21 +12,21 @@ import { HeroArt } from "@/components/HeroArt";
 import { Breadcrumbs, Check, CtaBand, Faq, Hl, PlanTag } from "@/components/ui";
 
 /** La parola evidenziata nel titolo di ogni funzionalità. */
-const heroHl: Record<string, string> = {
-  "menu-digitale": "sempre giusto",
+const heroHl = (): Record<string, string> => ({
+  "menu-digitale": tr("sempre giusto"),
   "importa-menu-ai": "foto",
-  traduzioni: "sua lingua",
+  traduzioni: tr("sua lingua"),
   "menu-a-orari": "aperitivo",
-  prenotazioni: "un tocco",
-  "sala-e-tavoli": "colpo d'occhio",
-  "ferie-e-chiusure": "lo sa già",
-  "ordini-whatsapp": "Zero commissioni",
-  clienti: "ogni cliente",
-  "automazioni-whatsapp": "da soli",
-  statistiche: "decidere meglio",
-  "staff-e-turni": "chi lavora",
-  assistente: "a voce",
-};
+  prenotazioni: tr("un tocco"),
+  "sala-e-tavoli": tr("colpo d'occhio"),
+  "ferie-e-chiusure": tr("lo sa già"),
+  "ordini-whatsapp": tr("Zero commissioni"),
+  clienti: tr("ogni cliente"),
+  "automazioni-whatsapp": tr("da soli"),
+  statistiche: tr("decidere meglio"),
+  "staff-e-turni": tr("chi lavora"),
+  assistente: tr("a voce"),
+});
 import { FeatureVisual } from "@/components/visuals/FeatureVisual";
 
 export function generateStaticParams() {
@@ -56,7 +57,7 @@ export default async function FeaturePage({ params }: { params: Promise<{ slug: 
       <section className="relative pb-12 pt-6 md:pb-16 md:pt-8">
         <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-[520px] opacity-70 [mask-image:linear-gradient(180deg,#000,transparent)]" style={{ backgroundImage: toneGlow[f.tone] }} />
         <div className="wrap relative">
-          <Breadcrumbs items={[{ name: "Funzionalità", href: "/funzionalita/" }, { name: f.name, href: `/funzionalita/${f.slug}/` }]} />
+          <Breadcrumbs items={[{ name: tr("Funzionalità"), href: "/funzionalita/" }, { name: f.name, href: `/funzionalita/${f.slug}/` }]} />
           <div className="mt-8 grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12">
             <div>
               <div className="anim-fade-up flex flex-wrap items-center gap-2.5">
@@ -65,19 +66,19 @@ export default async function FeaturePage({ params }: { params: Promise<{ slug: 
                 <PlanTag plan={f.plan} />
               </div>
               <h1 className="anim-fade-up mt-5 text-[clamp(2.1rem,1.5rem+2.2vw,3.25rem)] font-semibold leading-[1.12] md:leading-[1.05] tracking-[-0.035em]" style={{ animationDelay: "60ms" }}>
-                <Hl text={f.hero.title} word={heroHl[f.slug]} />
+                <Hl text={f.hero.title} word={heroHl()[f.slug]} />
               </h1>
               <p className="anim-fade-up mt-4 text-[17px] leading-relaxed text-muted" style={{ animationDelay: "120ms" }}>
                 {f.hero.lead}
               </p>
               <div className="anim-fade-up mt-6 flex flex-col gap-2.5 sm:flex-row" style={{ animationDelay: "160ms" }}>
                 <a href={signupUrl} className="btn btn-dark">
-                  Prova gratis 14 giorni
+                  {tr("Prova gratis 14 giorni")}
                   <Icon name="arrowRight" size={16} stroke={2} />
                 </a>
                 <Link href="/demo/" className="btn btn-light">
                   <Icon name="calendarCheck" size={16} stroke={2} />
-                  Prenota una demo
+                  {tr("Prenota una demo")}
                 </Link>
               </div>
             </div>
@@ -91,7 +92,7 @@ export default async function FeaturePage({ params }: { params: Promise<{ slug: 
       {/* Come funziona: tre passaggi in una riga */}
       <section className="border-y border-line bg-white py-10 md:py-12">
         <div className="wrap">
-          <h2 className="eyebrow">Come funziona</h2>
+          <h2 className="eyebrow">{tr("Come funziona")}</h2>
           <ol className="mt-5 grid gap-6 md:grid-cols-3 md:gap-8">
             {f.steps.map((s, i) => (
               <li key={s.title} className="flex gap-3.5">
@@ -113,7 +114,7 @@ export default async function FeaturePage({ params }: { params: Promise<{ slug: 
         <div className="wrap">
           <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
             <div>
-              <p className="eyebrow">Nel dettaglio</p>
+              <p className="eyebrow">{tr("Nel dettaglio")}</p>
               <h2 className="h-block mt-3">{f.sections[0].title}</h2>
               <p className="mt-3 text-[17px] leading-relaxed text-muted">{f.sections[0].text}</p>
               <ul className="mt-5 flex flex-col gap-2.5 text-[15px] text-text">
@@ -163,7 +164,7 @@ export default async function FeaturePage({ params }: { params: Promise<{ slug: 
       {/* Vantaggi: box con icone */}
       <section className="py-14 md:py-20" style={{ backgroundImage: toneGlow[f.tone], backgroundColor: "#f6f6f3" }}>
         <div className="wrap">
-          <h2 className="h-block text-center">Cosa cambia per il tuo locale</h2>
+          <h2 className="h-block text-center">{tr("Cosa cambia per il tuo locale")}</h2>
           <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {f.benefits.map((b, i) => (
               <div key={b.title} className="rounded-[16px] border border-line bg-white p-5 text-center shadow-[0_16px_36px_-28px_rgba(0,0,0,.35)]">
@@ -186,9 +187,9 @@ export default async function FeaturePage({ params }: { params: Promise<{ slug: 
       <section className="pb-14 md:pb-16">
         <div className="wrap">
           <div className="flex items-end justify-between gap-6">
-            <h2 className="h-block">Funziona ancora meglio con</h2>
+            <h2 className="h-block">{tr("Funziona ancora meglio con")}</h2>
             <Link href={`/funzionalita/${next.slug}/`} className="link-arrow hidden text-[15px] md:inline-flex">
-              Prossima: {next.name}
+              {tr("Prossima:")}{" "}{next.name}
               <Icon name="arrowRight" size={15} stroke={2} />
             </Link>
           </div>
@@ -214,7 +215,7 @@ export default async function FeaturePage({ params }: { params: Promise<{ slug: 
       {/* Settori che la usano di più */}
       <section className="pb-20 md:pb-24">
         <div className="wrap">
-          <h2 className="h-block">Chi la usa di più</h2>
+          <h2 className="h-block">{tr("Chi la usa di più")}</h2>
           <div className="mt-6 flex flex-wrap gap-2">
             {forSectors.map((s) => (
               <Link key={s.slug} href={`/settori/${s.slug}/`} className="btn btn-light gap-2.5">
@@ -223,7 +224,7 @@ export default async function FeaturePage({ params }: { params: Promise<{ slug: 
               </Link>
             ))}
             <Link href="/settori/" className="btn btn-light">
-              Tutti i settori
+              {tr("Tutti i settori")}
             </Link>
           </div>
         </div>

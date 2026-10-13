@@ -1,3 +1,4 @@
+import { tr } from "@/i18n";
 import Link from "next/link";
 import { features } from "@/content/features";
 import { sectors } from "@/content/sectors";
@@ -16,11 +17,11 @@ export function Footer() {
               <span className="text-[17px] font-semibold tracking-[-0.03em] text-white">{site.name}</span>
             </Link>
             <p className="mt-4 max-w-[300px] text-[14.5px] leading-relaxed">
-              Menu digitale, ordini, prenotazioni e clienti per la ristorazione. Senza commissioni, in italiano.
+              {tr("Menu digitale, ordini, prenotazioni e clienti per la ristorazione. Senza commissioni, in italiano.")}
             </p>
           </div>
 
-          <FooterCol title="Funzionalità">
+          <FooterCol title={tr("Funzionalità")}>
             {features.map((f) => (
               <FooterLink key={f.slug} href={`/funzionalita/${f.slug}/`}>
                 {f.name}
@@ -28,7 +29,7 @@ export function Footer() {
             ))}
           </FooterCol>
 
-          <FooterCol title="Settori">
+          <FooterCol title={tr("Settori")}>
             {sectors.map((s) => (
               <FooterLink key={s.slug} href={`/settori/${s.slug}/`}>
                 {s.name}
@@ -36,32 +37,32 @@ export function Footer() {
             ))}
           </FooterCol>
 
-          <FooterCol title="Azienda">
-            <FooterLink href="/prezzi/">Prezzi</FooterLink>
-            <FooterLink href="/servizi/foto-e-video/">Foto e video</FooterLink>
-            <FooterLink href="/servizi/presenza-online/">Presenza online</FooterLink>
-            <FooterLink href="/demo/">Prenota una demo</FooterLink>
-            <FooterLink href="/contatti/">Contatti</FooterLink>
-            <FooterLink href="/guide/">Guide</FooterLink>
+          <FooterCol title={tr("Azienda")}>
+            <FooterLink href="/prezzi/">{tr("Prezzi")}</FooterLink>
+            <FooterLink href="/servizi/foto-e-video/">{tr("Foto e video")}</FooterLink>
+            <FooterLink href="/servizi/presenza-online/">{tr("Presenza online")}</FooterLink>
+            <FooterLink href="/demo/">{tr("Prenota una demo")}</FooterLink>
+            <FooterLink href="/contatti/">{tr("Contatti")}</FooterLink>
+            <FooterLink href="/guide/">{tr("Guide")}</FooterLink>
             <li>
               <a href={loginUrl} className="inline-flex min-h-8 items-center text-[14px] transition-colors hover:text-white">
-                Accedi
+                {tr("Accedi")}
               </a>
             </li>
           </FooterCol>
 
-          <FooterCol title="Legale">
-            <FooterLink href="/privacy/">Privacy</FooterLink>
-            <FooterLink href="/cookie/">Cookie</FooterLink>
-            <FooterLink href="/termini/">Termini del servizio</FooterLink>
+          <FooterCol title={tr("Legale")}>
+            <FooterLink href="/privacy/">{tr("Privacy")}</FooterLink>
+            <FooterLink href="/cookie/">{tr("Cookie")}</FooterLink>
+            <FooterLink href="/termini/">{tr("Termini del servizio")}</FooterLink>
           </FooterCol>
         </div>
 
         <div className="mt-14 flex flex-col gap-3 border-t border-white/10 pt-6 text-[13px] md:flex-row md:items-center md:justify-between">
           <p>
-            © {year} {site.company.legalName}. P. IVA {site.company.vat}
+            © {year} {site.company.legalName}{tr(". P. IVA")}{" "}{site.company.vat}
           </p>
-          <p>Fatto in Italia, per la ristorazione.</p>
+          <p>{tr("Fatto in Italia, per la ristorazione.")}</p>
         </div>
       </div>
     </footer>

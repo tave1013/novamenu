@@ -1,3 +1,4 @@
+import { tr } from "@/i18n";
 import type { Metadata } from "next";
 import { comparison, generalFaq, plans } from "@/content/plans";
 import { signupUrl } from "@/config/site";
@@ -18,13 +19,13 @@ function Cell({ v }: { v: boolean | string }) {
   if (v === true)
     return (
       <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-p-green text-p-green-ink">
-        <Icon name="check" size={14} stroke={2.6} title="Incluso" />
+        <Icon name="check" size={14} stroke={2.6} title={tr("Incluso")} />
       </span>
     );
   if (v === false)
     return (
       <span className="inline-flex h-6 w-6 items-center justify-center text-[#c7c7cc]">
-        <Icon name="minus" size={16} stroke={2} title="Non incluso" />
+        <Icon name="minus" size={16} stroke={2} title={tr("Non incluso")} />
       </span>
     );
   return <span className="text-[14px] text-text">{v}</span>;
@@ -36,11 +37,11 @@ export default function PrezziPage() {
       <JsonLd data={softwareApplicationLd()} />
       <section className="pb-20 pt-8 md:pb-28 md:pt-12">
         <div className="wrap">
-          <Breadcrumbs items={[{ name: "Prezzi", href: "/prezzi/" }]} />
+          <Breadcrumbs items={[{ name: tr("Prezzi"), href: "/prezzi/" }]} />
           <div className="mx-auto mt-10 max-w-3xl text-center">
-            <h1 className="display anim-fade-up">Un abbonamento. <span className="hl">Zero commissioni</span>.</h1>
+            <h1 className="display anim-fade-up">{tr("Un abbonamento.")}{" "}<span className="hl">{tr("Zero commissioni")}</span>.</h1>
             <p className="lead anim-fade-up mx-auto mt-6 max-w-[600px]" style={{ animationDelay: "80ms" }}>
-              Scegli il piano per come lavori oggi e cambialo quando vuoi. Tutti i piani partono con 14 giorni gratis, senza carta di credito.
+              {tr("Scegli il piano per come lavori oggi e cambialo quando vuoi. Tutti i piani partono con 14 giorni gratis, senza carta di credito.")}
             </p>
           </div>
           <div className="anim-fade-up mt-12" style={{ animationDelay: "140ms" }}>
@@ -52,20 +53,20 @@ export default function PrezziPage() {
       <section className="bg-mist py-20 md:py-28">
         <div className="wrap">
           <Reveal className="max-w-2xl">
-            <h2 className="h-section">Confronta i piani</h2>
-            <p className="lead mt-4">Tutto quello che è incluso, voce per voce.</p>
+            <h2 className="h-section">{tr("Confronta i piani")}</h2>
+            <p className="lead mt-4">{tr("Tutto quello che è incluso, voce per voce.")}</p>
           </Reveal>
           <div className="mt-10 overflow-x-auto rounded-[20px] border border-line bg-white">
             <table className="w-full min-w-[640px] border-collapse text-left">
               <thead className="sticky top-0">
                 <tr className="border-b border-line">
                   <th scope="col" className="w-[40%] p-5 text-[14px] font-medium text-muted">
-                    <span className="sr-only">Funzione</span>
+                    <span className="sr-only">{tr("Funzione")}</span>
                   </th>
                   {plans.map((p) => (
                     <th key={p.id} scope="col" className="p-5 text-center">
                       <span className="block text-[17px] font-semibold text-ink">{p.name}</span>
-                      <span className="block text-[13px] font-normal text-muted">{p.monthly} € al mese</span>
+                      <span className="block text-[13px] font-normal text-muted">{p.monthly}{" "}{tr("€ al mese")}</span>
                     </th>
                   ))}
                 </tr>
@@ -101,7 +102,7 @@ export default function PrezziPage() {
                   {plans.map((p) => (
                     <td key={p.id} className="p-5 text-center">
                       <a href={`${signupUrl}?piano=${p.id}`} className={`btn btn-sm ${p.popular ? "btn-dark" : "btn-light"}`}>
-                        Prova {p.name}
+                        {tr("Prova")}{" "}{p.name}
                       </a>
                     </td>
                   ))}
@@ -111,9 +112,9 @@ export default function PrezziPage() {
           </div>
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {[
-              { t: "Prova gratuita", d: "14 giorni con tutte le funzioni del piano Pro. Non chiediamo la carta di credito." },
-              { t: "Nessun vincolo", d: "Con il piano mensile disdici quando vuoi, in tre passaggi dalla dashboard." },
-              { t: "Messaggi WhatsApp", d: "Alcuni messaggi hanno un costo fissato da Meta, di pochi centesimi. Lo vedi prima di ogni invio." },
+              { t: tr("Prova gratuita"), d: tr("14 giorni con tutte le funzioni del piano Pro. Non chiediamo la carta di credito.") },
+              { t: tr("Nessun vincolo"), d: tr("Con il piano mensile disdici quando vuoi, in tre passaggi dalla dashboard.") },
+              { t: tr("Messaggi WhatsApp"), d: tr("Alcuni messaggi hanno un costo fissato da Meta, di pochi centesimi. Lo vedi prima di ogni invio.") },
             ].map((x) => (
               <div key={x.t} className="border-t border-black pt-5">
                 <h3 className="text-[18px] font-semibold tracking-[-0.02em]">{x.t}</h3>

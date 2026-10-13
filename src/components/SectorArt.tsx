@@ -1,3 +1,4 @@
+import { tr } from "@/i18n";
 import type { BookingArt, CalcArt, KpisArt, CatalogArt, DaypartsArt, LangsArt, OrderArt, Sector, SectorArt as Art, SlotsArt } from "@/content/sectors";
 import { Icon } from "./Icon";
 import { toneGlow } from "./StaticArt";
@@ -39,7 +40,7 @@ export function Catalog({ a, className = "" }: { a: CatalogArt; className?: stri
               <span className="flex flex-wrap items-center gap-1.5 text-[13.5px] font-medium leading-tight text-ink">
                 {it.name}
                 {it.tag && <span className="rounded-full bg-lime-soft px-1.5 py-px text-[10.5px] font-medium text-forest">{it.tag}</span>}
-                {it.out && <span className="rounded-full bg-mist px-1.5 py-px text-[10.5px] font-medium text-muted">Esaurito</span>}
+                {it.out && <span className="rounded-full bg-mist px-1.5 py-px text-[10.5px] font-medium text-muted">{tr("Esaurito")}</span>}
               </span>
               {it.desc && <span className="mt-0.5 block text-[11.5px] leading-snug text-muted">{it.desc}</span>}
             </span>
@@ -71,7 +72,7 @@ function Slots({ a }: { a: SlotsArt }) {
           >
             {d.d}
             <span className="text-[16px] font-semibold tabular-nums">{d.n}</span>
-            {d.full && <span className="text-[9.5px]">pieno</span>}
+            {d.full && <span className="text-[9.5px]">{tr("pieno")}</span>}
           </span>
         ))}
       </div>
@@ -79,7 +80,7 @@ function Slots({ a }: { a: SlotsArt }) {
         {a.slots.map((s) => (
           <span key={s.t} className={`relative flex h-10 items-center justify-center rounded-[10px] text-[13px] font-medium tabular-nums ${st[s.s]}`}>
             {s.t}
-            {s.s === "few" && <span className="absolute -top-2 right-1 rounded-full bg-white px-1.5 text-[9.5px] font-medium text-p-amber-ink shadow-sm">ultimi</span>}
+            {s.s === "few" && <span className="absolute -top-2 right-1 rounded-full bg-white px-1.5 text-[9.5px] font-medium text-p-amber-ink shadow-sm">{tr("ultimi")}</span>}
           </span>
         ))}
       </div>
@@ -99,13 +100,13 @@ function Order({ a }: { a: OrderArt }) {
           <Icon name="bag" size={15} stroke={2} />
         </span>
         <span className="text-[13px] leading-tight">
-          <span className="block font-semibold">Nuovo ordine</span>
-          <span className="text-white/75">da {a.who}</span>
+          <span className="block font-semibold">{tr("Nuovo ordine")}</span>
+          <span className="text-white/75">{tr("da")}{" "}{a.who}</span>
         </span>
       </div>
       <div className="p-4">
         <div className="ml-auto max-w-[92%] rounded-[12px] rounded-tr-[4px] bg-[#d9fdd3] px-3.5 py-3 text-[13px] leading-[1.5] text-[#111b21] shadow-[0_2px_4px_rgba(0,0,0,.06)]">
-          <p className="font-semibold">🛍️ Ordine da asporto</p>
+          <p className="font-semibold">{tr("🛍️ Ordine da asporto")}</p>
           <ul className="mt-1">
             {a.lines.map((l) => (
               <li key={l}>{l}</li>
@@ -113,14 +114,14 @@ function Order({ a }: { a: OrderArt }) {
           </ul>
           {a.extra && <p className="mt-1.5 italic text-[#3b4a54]">{a.extra}</p>}
           <p className="mt-1.5">
-            <span className="font-semibold">Totale {a.total}</span>
+            <span className="font-semibold">{tr("Totale")}{" "}{a.total}</span>
           </p>
           <p className="font-semibold">🕒 {a.when}</p>
           <p className="mt-1 text-right text-[10px] text-[#667781]">18:42 ✓✓</p>
         </div>
         <div className="mt-3 flex gap-2">
-          <span className="flex h-9 flex-1 items-center justify-center rounded-[10px] bg-forest text-[12.5px] font-medium text-white">Conferma</span>
-          <span className="flex h-9 flex-1 items-center justify-center rounded-[10px] bg-white text-[12.5px] font-medium text-ink">Scrivi al cliente</span>
+          <span className="flex h-9 flex-1 items-center justify-center rounded-[10px] bg-forest text-[12.5px] font-medium text-white">{tr("Conferma")}</span>
+          <span className="flex h-9 flex-1 items-center justify-center rounded-[10px] bg-white text-[12.5px] font-medium text-ink">{tr("Scrivi al cliente")}</span>
         </div>
       </div>
     </div>
@@ -159,7 +160,7 @@ function Booking({ a }: { a: BookingArt }) {
           <span className="text-[12px] text-muted">{a.sub}</span>
         </span>
         <span className="rounded-full bg-lime-soft px-2.5 py-1 text-[12px] font-semibold tabular-nums text-forest">
-          {a.used} / {a.total} posti
+          {a.used} / {a.total}{" "}{tr("posti")}
         </span>
       </div>
       <div className="mt-3 h-2 overflow-hidden rounded-full bg-mist">
@@ -187,7 +188,7 @@ function Booking({ a }: { a: BookingArt }) {
 function Langs({ a }: { a: LangsArt }) {
   return (
     <div className={`${card} w-full max-w-[400px] p-5`}>
-      <p className="text-[11px] font-medium uppercase tracking-wide text-faint">Il nome resta in italiano</p>
+      <p className="text-[11px] font-medium uppercase tracking-wide text-faint">{tr("Il nome resta in italiano")}</p>
       <p className="mt-1 text-[18px] font-semibold tracking-[-0.02em] text-ink">{a.dish}</p>
       <ul className="mt-3 flex flex-col gap-2">
         {a.lines.map((l) => (
@@ -206,7 +207,7 @@ function Calc({ a }: { a: CalcArt }) {
     <div className={`${card} w-full max-w-[420px] p-5`}>
       <p className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-wide text-faint">
         <Icon name="chart" size={13} stroke={2} />
-        Fai i conti
+        {tr("Fai i conti")}
       </p>
       <p className="mt-1 text-[16px] font-semibold tracking-[-0.02em] text-ink">{a.title}</p>
       <ul className="mt-3">

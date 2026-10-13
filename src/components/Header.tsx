@@ -1,5 +1,6 @@
 "use client";
 
+import { tr } from "@/i18n";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -10,18 +11,18 @@ import { loginUrl, signupUrl } from "@/config/site";
 import { Icon } from "./Icon";
 import { Logo } from "./Logo";
 
-const links = [
-  { href: "/prezzi/", label: "Prezzi" },
-  { href: "/guide/", label: "Guide" },
-  { href: "/contatti/", label: "Contatti" },
-];
+const links = () => ([
+  { href: "/prezzi/", label: tr("Prezzi") },
+  { href: "/guide/", label: tr("Guide") },
+  { href: "/contatti/", label: tr("Contatti") },
+]);
 
 type Drop = "funz" | "sett" | "serv" | null;
 
-const sectorGroups = [
-  { name: "Locali", slugs: ["pizzerie", "ristoranti", "pub", "bar"] },
-  { name: "Botteghe del cibo", slugs: ["gelaterie", "pastifici", "panetterie", "gastronomie"] },
-];
+const sectorGroups = () => ([
+  { name: tr("Locali"), slugs: ["pizzerie", "ristoranti", "pub", "bar"] },
+  { name: tr("Botteghe del cibo"), slugs: ["gelaterie", "pastifici", "panetterie", "gastronomie"] },
+]);
 type Panel = "root" | "funz" | "sett" | "serv";
 
 function DropButton({ id, label, open, active, onToggle }: { id: string; label: string; open: boolean; active: boolean; onToggle: () => void }) {
@@ -111,12 +112,12 @@ export function Header() {
         <div ref={wrapRef} className="wrap flex h-16 items-center justify-between gap-6">
           <Logo />
 
-          <nav aria-label="Principale" className="hidden items-center gap-1 lg:flex">
+          <nav aria-label={tr("Principale")} className="hidden items-center gap-1 lg:flex">
             {/* Funzionalità */}
             <div onMouseEnter={() => enter("funz")} onMouseLeave={leave} className="relative">
               <DropButton
                 id="menu-funzionalita"
-                label="Funzionalità"
+                label={tr("Funzionalità")}
                 open={open === "funz"}
                 active={!!pathname?.startsWith("/funzionalita")}
                 onToggle={() => setOpen((v) => (v === "funz" ? null : "funz"))}
@@ -149,11 +150,11 @@ export function Header() {
                   </div>
                   <div className="mt-3 flex items-center justify-between gap-3 border-t border-line-soft px-2.5 pt-3">
                     <Link href="/funzionalita/" className="inline-flex items-center gap-1.5 text-[14px] font-semibold text-ink">
-                      Tutte le funzionalità
+                      {tr("Tutte le funzionalità")}
                       <Icon name="arrowRight" size={14} stroke={2} />
                     </Link>
                     <Link href="/demo/" className="text-[13px] text-muted hover:text-ink">
-                      Prenota una demo
+                      {tr("Prenota una demo")}
                     </Link>
                   </div>
                 </div>
@@ -164,7 +165,7 @@ export function Header() {
             <div onMouseEnter={() => enter("sett")} onMouseLeave={leave} className="relative">
               <DropButton
                 id="menu-settori"
-                label="Settori"
+                label={tr("Settori")}
                 open={open === "sett"}
                 active={!!pathname?.startsWith("/settori")}
                 onToggle={() => setOpen((v) => (v === "sett" ? null : "sett"))}
@@ -172,7 +173,7 @@ export function Header() {
               {open === "sett" && (
                 <div id="menu-settori" className={`${dropBox} left-[-8px] w-[520px]`}>
                   <div className="grid grid-cols-2 gap-x-4 gap-y-3">
-                    {sectorGroups.map((g) => (
+                    {sectorGroups().map((g) => (
                       <div key={g.name}>
                         <p className="eyebrow mb-1 px-2.5 !text-[11px]">{g.name}</p>
                         <ul>
@@ -197,11 +198,11 @@ export function Header() {
                   </div>
                   <div className="mt-3 flex items-center justify-between gap-3 border-t border-line-soft px-2.5 pt-3">
                     <Link href="/settori/" className="inline-flex items-center gap-1.5 text-[14px] font-semibold text-ink">
-                      Tutti i settori
+                      {tr("Tutti i settori")}
                       <Icon name="arrowRight" size={14} stroke={2} />
                     </Link>
                     <Link href="/demo/" className="text-[13px] text-muted hover:text-ink">
-                      Prenota una demo
+                      {tr("Prenota una demo")}
                     </Link>
                   </div>
                 </div>
@@ -212,14 +213,14 @@ export function Header() {
             <div onMouseEnter={() => enter("serv")} onMouseLeave={leave} className="relative">
               <DropButton
                 id="menu-servizi"
-                label="Servizi"
+                label={tr("Servizi")}
                 open={open === "serv"}
                 active={!!pathname?.startsWith("/servizi")}
                 onToggle={() => setOpen((v) => (v === "serv" ? null : "serv"))}
               />
               {open === "serv" && (
                 <div id="menu-servizi" className={`${dropBox} left-[-8px] w-[340px]`}>
-                  <p className="eyebrow mb-1 px-2.5 !text-[11px]">Per il tuo locale</p>
+                  <p className="eyebrow mb-1 px-2.5 !text-[11px]">{tr("Per il tuo locale")}</p>
                   <ul>
                     {services.map((s) => (
                       <li key={s.slug}>
@@ -240,18 +241,18 @@ export function Header() {
                   </ul>
                   <div className="mt-3 flex items-center justify-between gap-3 border-t border-line-soft px-2.5 pt-3">
                     <Link href="/servizi/" className="inline-flex items-center gap-1.5 text-[14px] font-semibold text-ink">
-                      Tutti i servizi
+                      {tr("Tutti i servizi")}
                       <Icon name="arrowRight" size={14} stroke={2} />
                     </Link>
                     <Link href="/contatti/" className="text-[13px] text-muted hover:text-ink">
-                      Chiedi un preventivo
+                      {tr("Chiedi un preventivo")}
                     </Link>
                   </div>
                 </div>
               )}
             </div>
 
-            {links.map((l) => (
+            {links().map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
@@ -267,16 +268,16 @@ export function Header() {
 
           <div className="hidden items-center gap-2 lg:flex">
             <a href={loginUrl} className="btn btn-sm text-text hover:bg-black/[0.04]">
-              Accedi
+              {tr("Accedi")}
             </a>
             <Link href="/demo/" className="btn btn-sm btn-dark pulse">
-              Prenota una demo
+              {tr("Prenota una demo")}
             </Link>
           </div>
 
           <div className="flex items-center gap-2 lg:hidden">
             <a href={signupUrl} className="btn btn-sm btn-dark h-9 px-3 text-[13.5px] sm:h-10 sm:px-4">
-              Prova gratis
+              {tr("Prova gratis")}
             </a>
             <button
               type="button"
@@ -286,7 +287,7 @@ export function Header() {
               }}
               aria-expanded={mobile}
               aria-controls="menu-mobile"
-              aria-label={mobile ? "Chiudi il menu" : "Apri il menu"}
+              aria-label={mobile ? tr("Chiudi il menu") : tr("Apri il menu")}
               className="-mr-2 inline-flex h-11 w-11 items-center justify-center rounded-[10px] text-ink hover:bg-black/[0.04]"
             >
               <Icon name={mobile ? "x" : "menu"} size={22} stroke={1.9} />
@@ -306,18 +307,18 @@ export function Header() {
             style={{ transform: `translateX(-${(["root", "funz", "sett", "serv"].indexOf(panel) * 100) / 4}%)` }}
           >
             {/* Principale */}
-            <nav aria-label="Menu" className="h-full w-1/4 overflow-y-auto px-5 pb-6 pt-2" aria-hidden={panel !== "root"}>
+            <nav aria-label={tr("Menu")} className="h-full w-1/4 overflow-y-auto px-5 pb-6 pt-2" aria-hidden={panel !== "root"}>
               <ul className="divide-y divide-line-soft">
                 <li>
                   <Link href="/" tabIndex={panel === "root" ? 0 : -1} className="flex items-center justify-between py-4 text-[22px] font-semibold tracking-[-0.03em] text-ink">
-                    Home
+                    {tr("Home")}
                   </Link>
                 </li>
                 {(
                   [
-                    ["funz", "Funzionalità"],
-                    ["sett", "Settori"],
-                    ["serv", "Servizi"],
+                    ["funz", tr("Funzionalità")],
+                    ["sett", tr("Settori")],
+                    ["serv", tr("Servizi")],
                   ] as const
                 ).map(([p, label]) => (
                   <li key={p}>
@@ -333,9 +334,9 @@ export function Header() {
                   </li>
                 ))}
                 {[
-                  { href: "/prezzi/", label: "Prezzi" },
-                  { href: "/guide/", label: "Guide" },
-                  { href: "/demo/", label: "Prenota una demo" },
+                  { href: "/prezzi/", label: tr("Prezzi") },
+                  { href: "/guide/", label: tr("Guide") },
+                  { href: "/demo/", label: tr("Prenota una demo") },
                 ].map((l) => (
                   <li key={l.href}>
                     <Link href={l.href} tabIndex={panel === "root" ? 0 : -1} className="flex items-center justify-between py-4 text-[22px] font-semibold tracking-[-0.03em] text-ink">
@@ -347,9 +348,9 @@ export function Header() {
             </nav>
 
             {/* Funzionalità */}
-            <nav aria-label="Funzionalità" className="h-full w-1/4 overflow-y-auto px-5 pb-6 pt-2" aria-hidden={panel !== "funz"}>
+            <nav aria-label={tr("Funzionalità")} className="h-full w-1/4 overflow-y-auto px-5 pb-6 pt-2" aria-hidden={panel !== "funz"}>
               <BackButton onClick={() => setPanel("root")} focusable={panel === "funz"} />
-              <p className="mt-1 text-[22px] font-semibold tracking-[-0.03em] text-ink">Funzionalità</p>
+              <p className="mt-1 text-[22px] font-semibold tracking-[-0.03em] text-ink">{tr("Funzionalità")}</p>
               {featureGroups.map((g) => (
                 <div key={g} className="mt-5">
                   <p className="eyebrow pb-1 !text-[11px]">{g}</p>
@@ -364,14 +365,14 @@ export function Header() {
                   </ul>
                 </div>
               ))}
-              <AllLink href="/funzionalita/" label="Vedi tutte le funzionalità" focusable={panel === "funz"} />
+              <AllLink href="/funzionalita/" label={tr("Vedi tutte le funzionalità")} focusable={panel === "funz"} />
             </nav>
 
             {/* Settori */}
-            <nav aria-label="Settori" className="h-full w-1/4 overflow-y-auto px-5 pb-6 pt-2" aria-hidden={panel !== "sett"}>
+            <nav aria-label={tr("Settori")} className="h-full w-1/4 overflow-y-auto px-5 pb-6 pt-2" aria-hidden={panel !== "sett"}>
               <BackButton onClick={() => setPanel("root")} focusable={panel === "sett"} />
-              <p className="mt-1 text-[22px] font-semibold tracking-[-0.03em] text-ink">Settori</p>
-              {sectorGroups.map((g) => (
+              <p className="mt-1 text-[22px] font-semibold tracking-[-0.03em] text-ink">{tr("Settori")}</p>
+              {sectorGroups().map((g) => (
                 <div key={g.name} className="mt-5">
                   <p className="eyebrow pb-1 !text-[11px]">{g.name}</p>
                   <ul>
@@ -385,15 +386,15 @@ export function Header() {
                   </ul>
                 </div>
               ))}
-              <AllLink href="/settori/" label="Vedi tutti i settori" focusable={panel === "sett"} />
+              <AllLink href="/settori/" label={tr("Vedi tutti i settori")} focusable={panel === "sett"} />
             </nav>
 
             {/* Servizi */}
-            <nav aria-label="Servizi" className="h-full w-1/4 overflow-y-auto px-5 pb-6 pt-2" aria-hidden={panel !== "serv"}>
+            <nav aria-label={tr("Servizi")} className="h-full w-1/4 overflow-y-auto px-5 pb-6 pt-2" aria-hidden={panel !== "serv"}>
               <BackButton onClick={() => setPanel("root")} focusable={panel === "serv"} />
-              <p className="mt-1 text-[22px] font-semibold tracking-[-0.03em] text-ink">Servizi</p>
+              <p className="mt-1 text-[22px] font-semibold tracking-[-0.03em] text-ink">{tr("Servizi")}</p>
               <div className="mt-5">
-                <p className="eyebrow pb-1 !text-[11px]">Per il tuo locale</p>
+                <p className="eyebrow pb-1 !text-[11px]">{tr("Per il tuo locale")}</p>
                 <ul>
                   {services.map((s) => (
                     <li key={s.slug}>
@@ -402,7 +403,7 @@ export function Header() {
                   ))}
                 </ul>
               </div>
-              <AllLink href="/servizi/" label="Vedi tutti i servizi" focusable={panel === "serv"} />
+              <AllLink href="/servizi/" label={tr("Vedi tutti i servizi")} focusable={panel === "serv"} />
             </nav>
           </div>
           </div>
@@ -417,7 +418,7 @@ function BackButton({ onClick, focusable }: { onClick: () => void; focusable: bo
   return (
     <button type="button" onClick={onClick} tabIndex={focusable ? 0 : -1} className="-ml-1 flex h-11 items-center gap-1 text-[15px] font-medium text-muted">
       <Icon name="chevronLeft" size={20} stroke={2} />
-      Indietro
+      {tr("Indietro")}
     </button>
   );
 }
@@ -445,13 +446,13 @@ function MobileCta() {
   return (
     <div className="flex flex-col gap-2 border-t border-line bg-[#fafaf8] p-4 pb-[max(16px,env(safe-area-inset-bottom))]">
       <a href={loginUrl} className="btn h-[50px] w-full border border-ink bg-white text-[16px] text-ink hover:bg-mist">
-        Accedi
+        {tr("Accedi")}
       </a>
       <a href={signupUrl} className="btn btn-dark pulse h-[50px] w-full text-[16px]">
-        Prova gratis 14 giorni
+        {tr("Prova gratis 14 giorni")}
         <Icon name="arrowRight" size={16} stroke={2} />
       </a>
-      <p className="text-center text-[12.5px] text-muted">Senza carta di credito. Disdici quando vuoi.</p>
+      <p className="text-center text-[12.5px] text-muted">{tr("Senza carta di credito. Disdici quando vuoi.")}</p>
     </div>
   );
 }

@@ -1,3 +1,4 @@
+import { tr } from "@/i18n";
 import { reviews, reviewsArePlaceholder, type Review } from "@/content/reviews";
 import { Reveal } from "./Reveal";
 
@@ -62,14 +63,14 @@ export function Reviews() {
       <div aria-hidden className="pointer-events-none absolute inset-0 [background:radial-gradient(40%_50%_at_50%_0%,rgba(159,232,112,.22),transparent_70%)]" />
       <div className="wrap relative">
         <Reveal className="mx-auto max-w-[680px] text-center">
-          <p className="eyebrow">Recensioni</p>
+          <p className="eyebrow">{tr("Recensioni")}</p>
           <h2 id="recensioni" className="h-section mt-3">
-            Lo dicono i <span className="hl">locali</span> che lo usano.
+            {tr("Lo dicono i")}{" "}<span className="hl">{tr("locali")}</span>{" "}{tr("che lo usano.")}
           </h2>
-          <p className="lead mx-auto mt-4 max-w-[520px]">Pizzerie, ristoranti e botteghe che hanno lasciato il telefono e il quaderno degli ordini.</p>
+          <p className="lead mx-auto mt-4 max-w-[520px]">{tr("Pizzerie, ristoranti e botteghe che hanno lasciato il telefono e il quaderno degli ordini.")}</p>
           {reviewsArePlaceholder && (
             <p className="mx-auto mt-5 inline-flex rounded-full border border-dashed border-[#d4d4d8] bg-white px-3 py-1 text-[12.5px] text-muted">
-              Esempi: da sostituire con recensioni vere dei clienti
+              {tr("Esempi: da sostituire con recensioni vere dei clienti")}
             </p>
           )}
         </Reveal>

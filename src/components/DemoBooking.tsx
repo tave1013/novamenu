@@ -1,16 +1,17 @@
 "use client";
 
+import { tr } from "@/i18n";
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { signupUrl, site, waLink } from "@/config/site";
 import { Icon } from "./Icon";
 import { HandNote } from "./HandNote";
 
-const types = ["Pizzeria", "Ristorante o trattoria", "Pub o birreria", "Bar o caffetteria", "Gelateria", "Pastificio", "Panetteria o pasticceria", "Gastronomia o rosticceria", "Altro"];
-const goals = ["Menu digitale e QR", "Più prenotazioni", "Ordini da asporto", "Far tornare i clienti", "Un po' di tutto"];
+const types = () => ([tr("Pizzeria"), tr("Ristorante o trattoria"), tr("Pub o birreria"), tr("Bar o caffetteria"), tr("Gelateria"), tr("Pastificio"), tr("Panetteria o pasticceria"), tr("Gastronomia o rosticceria"), tr("Altro")]);
+const goals = () => ([tr("Menu digitale e QR"), tr("Più prenotazioni"), tr("Ordini da asporto"), tr("Far tornare i clienti"), tr("Un po' di tutto")]);
 const times = ["10:00", "10:30", "11:00", "11:30", "15:00", "15:30", "16:00", "17:30"];
-const dayShort = ["Dom", "Lun", "Mar", "Mer", "Gio", "Ven", "Sab"];
-const dayLong = ["domenica", "lunedì", "martedì", "mercoledì", "giovedì", "venerdì", "sabato"];
+const dayShort = () => ([tr("Dom"), tr("Lun"), tr("Mar"), tr("Mer"), tr("Gio"), tr("Ven"), tr("Sab")]);
+const dayLong = () => (["domenica", tr("lunedì"), tr("martedì"), tr("mercoledì"), tr("giovedì"), tr("venerdì"), "sabato"]);
 const months = ["gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno", "luglio", "agosto", "settembre", "ottobre", "novembre", "dicembre"];
 
 type Data = { nome: string; attivita: string; email: string; tel: string; tipo: string; obiettivo: string; modo: "video" | "tel"; privacy: boolean; wa: boolean };
@@ -47,12 +48,12 @@ export function DemoBooking({ compact = false }: { compact?: boolean }) {
   const when = useMemo(() => {
     const d = days[day];
     if (!d) return "";
-    return `${dayLong[d.getDay()]} ${d.getDate()} ${months[d.getMonth()]}`;
+    return `${dayLong()[d.getDay()]} ${d.getDate()} ${months[d.getMonth()]}`;
   }, [days, day]);
 
   function toStep2() {
-    if (!data.nome.trim() || !data.attivita.trim() || !data.tel.trim()) return setErr("Compila nome, attività e telefono per continuare.");
-    if (!data.privacy) return setErr("Per continuare accetta la privacy policy e i termini.");
+    if (!data.nome.trim() || !data.attivita.trim() || !data.tel.trim()) return setErr(tr("Compila nome, attività e telefono per continuare."));
+    if (!data.privacy) return setErr(tr("Per continuare accetta la privacy policy e i termini."));
     setErr(null);
     setStep(2);
   }
@@ -61,7 +62,7 @@ export function DemoBooking({ compact = false }: { compact?: boolean }) {
     if (!time) return;
     const msg = [
       `Ciao, vorrei prenotare la demo di ${site.name}.`,
-      `${when.charAt(0).toUpperCase() + when.slice(1)} alle ${time}, ${data.modo === "video" ? "in videochiamata" : "al telefono"}.`,
+      `${when.charAt(0).toUpperCase() + when.slice(1)} alle ${time}, ${data.modo === "video" ? tr("in videochiamata") : tr("al telefono")}.`,
       "",
       `Nome: ${data.nome}`,
       `Attività: ${data.attivita}${data.tipo ? ` (${data.tipo})` : ""}`,
@@ -75,11 +76,11 @@ export function DemoBooking({ compact = false }: { compact?: boolean }) {
     setStep(3);
   }
 
-  const stepNames = ["I tuoi dati", "Giorno e ora", "Fatto"];
+  const stepNames = [tr("I tuoi dati"), tr("Giorno e ora"), tr("Fatto")];
 
   return (
     <div className="w-full">
-      <ol aria-label="Passaggi" className="grid grid-cols-3 gap-2">
+      <ol aria-label={tr("Passaggi")} className="grid grid-cols-3 gap-2">
         {stepNames.map((t, i) => (
           <li key={t} className="flex flex-col gap-2">
             <span className={`block h-1 rounded-full transition-colors duration-300 ${i + 1 <= step ? "bg-ink" : "bg-[#e4e4e7]"}`} />
@@ -92,17 +93,17 @@ export function DemoBooking({ compact = false }: { compact?: boolean }) {
         <div key="s1" className="anim-fade-up mt-7">
           {!compact && (
             <>
-              <h1 className="text-[clamp(2rem,1.5rem+2vw,2.75rem)] font-semibold leading-[1.14] md:leading-[1.06] tracking-[-0.035em] text-ink">Prenota la tua demo <span className="hl">gratuita</span></h1>
-              <p className="mt-3 text-[17px] leading-relaxed text-muted">20 minuti con noi, sul tuo menu vero. Alla fine ti lasciamo tutto già pronto.</p>
+              <h1 className="text-[clamp(2rem,1.5rem+2vw,2.75rem)] font-semibold leading-[1.14] md:leading-[1.06] tracking-[-0.035em] text-ink">{tr("Prenota la tua demo")}{" "}<span className="hl">{tr("gratuita")}</span></h1>
+              <p className="mt-3 text-[17px] leading-relaxed text-muted">{tr("20 minuti con noi, sul tuo menu vero. Alla fine ti lasciamo tutto già pronto.")}</p>
               <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-[14px] text-[#3f3f46]">
-                {["Senza impegno", "Gratis", "Menu pronto alla fine"].map((x) => (
+                {[tr("Senza impegno"), tr("Gratis"), tr("Menu pronto alla fine")].map((x) => (
                   <li key={x} className="flex items-center gap-1.5">
                     <Icon name="check" size={15} stroke={2.4} className="text-[#16a34a]" />
                     {x}
                   </li>
                 ))}
               </ul>
-              <HandNote text="Compila qui: 30 secondi" variant="right-down" className="mt-5 pl-1" />
+              <HandNote text={tr("Compila qui: 30 secondi")} variant="right-down" className="mt-5 pl-1" />
             </>
           )}
           <form
@@ -116,40 +117,40 @@ export function DemoBooking({ compact = false }: { compact?: boolean }) {
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="min-w-0">
                 <label htmlFor="d-nome" className={lab}>
-                  Nome e cognome
+                  {tr("Nome e cognome")}
                 </label>
-                <input id="d-nome" className={inp} placeholder="Mario Rossi" autoComplete="name" value={data.nome} onChange={(e) => set("nome", e.target.value)} />
+                <input id="d-nome" className={inp} placeholder={tr("Mario Rossi")} autoComplete="name" value={data.nome} onChange={(e) => set("nome", e.target.value)} />
               </div>
               <div className="min-w-0">
                 <label htmlFor="d-attivita" className={lab}>
-                  Nome dell&apos;attività
+                  {tr("Nome dell'attività")}
                 </label>
-                <input id="d-attivita" className={inp} placeholder="Pizzeria da Mario" autoComplete="organization" value={data.attivita} onChange={(e) => set("attivita", e.target.value)} />
+                <input id="d-attivita" className={inp} placeholder={tr("Pizzeria da Mario")} autoComplete="organization" value={data.attivita} onChange={(e) => set("attivita", e.target.value)} />
               </div>
             </div>
             {!compact && (
               <div>
                 <label htmlFor="d-email" className={lab}>
-                  Email
+                  {tr("Email")}
                 </label>
-                <input id="d-email" type="email" className={inp} placeholder="mario@pizzeriadamario.it" autoComplete="email" value={data.email} onChange={(e) => set("email", e.target.value)} />
+                <input id="d-email" type="email" className={inp} placeholder={tr("mario@pizzeriadamario.it")} autoComplete="email" value={data.email} onChange={(e) => set("email", e.target.value)} />
               </div>
             )}
             <div>
               <label htmlFor="d-tel" className={lab}>
-                Telefono (ti scriviamo su WhatsApp)
+                {tr("Telefono (ti scriviamo su WhatsApp)")}
               </label>
               <input id="d-tel" type="tel" className={inp} placeholder="333 123 4567" autoComplete="tel" value={data.tel} onChange={(e) => set("tel", e.target.value)} />
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="min-w-0">
                 <label htmlFor="d-tipo" className={lab}>
-                  Tipo di attività
+                  {tr("Tipo di attività")}
                 </label>
                 <div className="relative">
                   <select id="d-tipo" className={`${inp} appearance-none pr-10`} value={data.tipo} onChange={(e) => set("tipo", e.target.value)}>
-                    <option value="">Seleziona</option>
-                    {types.map((t) => (
+                    <option value="">{tr("Seleziona")}</option>
+                    {types().map((t) => (
                       <option key={t}>{t}</option>
                     ))}
                   </select>
@@ -158,12 +159,12 @@ export function DemoBooking({ compact = false }: { compact?: boolean }) {
               </div>
               <div className="min-w-0">
                 <label htmlFor="d-obiettivo" className={lab}>
-                  Cosa ti serve di più?
+                  {tr("Cosa ti serve di più?")}
                 </label>
                 <div className="relative">
                   <select id="d-obiettivo" className={`${inp} appearance-none pr-10`} value={data.obiettivo} onChange={(e) => set("obiettivo", e.target.value)}>
-                    <option value="">Seleziona</option>
-                    {goals.map((t) => (
+                    <option value="">{tr("Seleziona")}</option>
+                    {goals().map((t) => (
                       <option key={t}>{t}</option>
                     ))}
                   </select>
@@ -172,12 +173,12 @@ export function DemoBooking({ compact = false }: { compact?: boolean }) {
               </div>
             </div>
             <fieldset>
-              <legend className={lab}>Come preferisci fare la demo?</legend>
+              <legend className={lab}>{tr("Come preferisci fare la demo?")}</legend>
               <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
                 {(
                   [
-                    { id: "video", label: "Videochiamata", icon: "play" },
-                    { id: "tel", label: "Al telefono", icon: "phone" },
+                    { id: "video", label: tr("Videochiamata"), icon: "play" },
+                    { id: "tel", label: tr("Al telefono"), icon: "phone" },
                   ] as const
                 ).map((m) => (
                   <button
@@ -199,19 +200,19 @@ export function DemoBooking({ compact = false }: { compact?: boolean }) {
               <label className="flex cursor-pointer items-start gap-2.5 text-[14px] leading-normal text-[#3f3f46]">
                 <input type="checkbox" checked={data.privacy} onChange={(e) => set("privacy", e.target.checked)} className="mt-0.5 h-[18px] w-[18px] flex-none accent-[#0b0b0c]" />
                 <span>
-                  Accetto la{" "}
+                  {tr("Accetto la")}{" "}
                   <Link href="/privacy/" className="font-medium text-ink underline underline-offset-2">
-                    privacy policy
+                    {tr("privacy policy")}
                   </Link>{" "}
                   e i{" "}
                   <Link href="/termini/" className="font-medium text-ink underline underline-offset-2">
-                    termini del servizio
+                    {tr("termini del servizio")}
                   </Link>
                 </span>
               </label>
               <label className="flex cursor-pointer items-start gap-2.5 text-[14px] leading-normal text-[#3f3f46]">
                 <input type="checkbox" checked={data.wa} onChange={(e) => set("wa", e.target.checked)} className="mt-0.5 h-[18px] w-[18px] flex-none accent-[#0b0b0c]" />
-                Sì, scrivetemi su WhatsApp per organizzare la demo. Posso smettere quando voglio.
+                {tr("Sì, scrivetemi su WhatsApp per organizzare la demo. Posso smettere quando voglio.")}
               </label>
             </div>
             {err && (
@@ -220,13 +221,13 @@ export function DemoBooking({ compact = false }: { compact?: boolean }) {
               </p>
             )}
             <button type="submit" className={`btn btn-dark mt-1 h-[52px] w-full text-[16px] ${compact ? "" : "pulse"}`}>
-              Continua: scegli giorno e ora
+              {tr("Continua: scegli giorno e ora")}
               <Icon name="arrowRight" size={16} stroke={2} />
             </button>
             <p className="text-center text-[14px] text-muted">
-              Preferisci provare da solo?{" "}
+              {tr("Preferisci provare da solo?")}{" "}
               <a href={signupUrl} className="font-medium text-ink underline underline-offset-2">
-                Inizia la prova gratuita
+                {tr("Inizia la prova gratuita")}
               </a>
             </p>
           </form>
@@ -235,10 +236,10 @@ export function DemoBooking({ compact = false }: { compact?: boolean }) {
 
       {step === 2 && (
         <div key="s2" className="anim-fade-up mt-7">
-          <h2 className="text-[clamp(1.75rem,1.4rem+1.4vw,2.4rem)] font-semibold leading-[1.15] md:leading-[1.08] tracking-[-0.03em] text-ink">Scegli giorno e ora</h2>
-          <p className="mt-2 text-[16px] text-muted">La demo dura 20 minuti. Orari in ora italiana.</p>
-          <p className="mb-2.5 mt-6 text-[14px] font-medium text-ink">Giorno</p>
-          <div role="group" aria-label="Giorno" className="grid grid-cols-5 gap-2">
+          <h2 className="text-[clamp(1.75rem,1.4rem+1.4vw,2.4rem)] font-semibold leading-[1.15] md:leading-[1.08] tracking-[-0.03em] text-ink">{tr("Scegli giorno e ora")}</h2>
+          <p className="mt-2 text-[16px] text-muted">{tr("La demo dura 20 minuti. Orari in ora italiana.")}</p>
+          <p className="mb-2.5 mt-6 text-[14px] font-medium text-ink">{tr("Giorno")}</p>
+          <div role="group" aria-label={tr("Giorno")} className="grid grid-cols-5 gap-2">
             {days.map((d, i) => (
               <button
                 key={d.toISOString()}
@@ -252,13 +253,13 @@ export function DemoBooking({ compact = false }: { compact?: boolean }) {
                   day === i ? "border-forest bg-forest text-white" : "border-line bg-white text-ink hover:border-[#d4d4d8]"
                 }`}
               >
-                <span className="block text-[12px] opacity-75">{dayShort[d.getDay()]}</span>
+                <span className="block text-[12px] opacity-75">{dayShort()[d.getDay()]}</span>
                 <span className="mt-0.5 block text-[20px] font-semibold tabular-nums">{d.getDate()}</span>
               </button>
             ))}
           </div>
-          <p className="mb-2.5 mt-6 text-[14px] font-medium text-ink">Ora</p>
-          <div role="group" aria-label="Ora" className="grid grid-cols-4 gap-2">
+          <p className="mb-2.5 mt-6 text-[14px] font-medium text-ink">{tr("Ora")}</p>
+          <div role="group" aria-label={tr("Ora")} className="grid grid-cols-4 gap-2">
             {times.map((t, j) => {
               const off = (j + day) % 4 === 1;
               const on = time === t;
@@ -287,16 +288,16 @@ export function DemoBooking({ compact = false }: { compact?: boolean }) {
               <Icon name="calendarCheck" size={18} />
             </span>
             <span className="text-[14px] leading-snug">
-              <span className="block font-semibold text-ink">{time ? `${when.charAt(0).toUpperCase() + when.slice(1)} alle ${time}` : "Scegli un orario"}</span>
-              <span className="block text-[#71717a]">{data.modo === "video" ? "Videochiamata" : "Telefonata"}, 20 minuti</span>
+              <span className="block font-semibold text-ink">{time ? `${when.charAt(0).toUpperCase() + when.slice(1)} alle ${time}` : tr("Scegli un orario")}</span>
+              <span className="block text-[#71717a]">{data.modo === "video" ? tr("Videochiamata") : tr("Telefonata")}{tr(", 20 minuti")}</span>
             </span>
           </div>
           <div className="mt-5 grid grid-cols-[1fr_2fr] gap-2.5">
             <button type="button" onClick={() => setStep(1)} className="btn btn-light h-[52px]">
-              Indietro
+              {tr("Indietro")}
             </button>
             <button type="button" onClick={confirm} disabled={!time} className="btn btn-dark h-[52px] disabled:cursor-not-allowed disabled:opacity-40">
-              Conferma la demo
+              {tr("Conferma la demo")}
             </button>
           </div>
         </div>
@@ -307,17 +308,17 @@ export function DemoBooking({ compact = false }: { compact?: boolean }) {
           <span className="anim-pop inline-flex h-[72px] w-[72px] items-center justify-center rounded-full bg-p-green text-p-green-ink">
             <Icon name="check" size={32} stroke={2.4} />
           </span>
-          <h2 className="mt-5 text-[clamp(1.75rem,1.4rem+1.4vw,2.4rem)] font-semibold leading-[1.15] md:leading-[1.08] tracking-[-0.03em] text-ink">Ci vediamo {when} alle {time}</h2>
+          <h2 className="mt-5 text-[clamp(1.75rem,1.4rem+1.4vw,2.4rem)] font-semibold leading-[1.15] md:leading-[1.08] tracking-[-0.03em] text-ink">{tr("Ci vediamo")}{" "}{when}{" "}{tr("alle")}{" "}{time}</h2>
           <p className="mx-auto mt-3 max-w-[420px] text-[16px] leading-relaxed text-muted">
-            Si è aperto WhatsApp con la richiesta già scritta: premi Invia e ti confermiamo l&apos;appuntamento. Se hai il menu in PDF o in foto, mandacelo lì.
+            {tr("Si è aperto WhatsApp con la richiesta già scritta: premi Invia e ti confermiamo l'appuntamento. Se hai il menu in PDF o in foto, mandacelo lì.")}
           </p>
           <div className="mt-7 flex flex-wrap justify-center gap-2.5">
             <Link href="/" className="btn btn-light">
-              Torna al sito
+              {tr("Torna al sito")}
             </Link>
           </div>
           <button type="button" onClick={() => setStep(2)} className="mt-3 min-h-11 text-[13px] text-muted underline underline-offset-2">
-            Cambia giorno o ora
+            {tr("Cambia giorno o ora")}
           </button>
         </div>
       )}
@@ -325,63 +326,63 @@ export function DemoBooking({ compact = false }: { compact?: boolean }) {
   );
 }
 
-const scenarios = [
+const scenarios = () => ([
   {
-    label: "Prenota mentre cucini",
-    who: "Giulia Ferri",
+    label: tr("Prenota mentre cucini"),
+    who: tr("Giulia Ferri"),
     time: "18:42",
-    stat: "+18 tavoli",
+    stat: tr("+18 tavoli"),
     msgs: [
-      ["l", "Ciao Giulia, la tua prenotazione per sabato alle 20:30, 4 persone, è confermata."],
-      ["l", "Promemoria: ti aspettiamo domani alle 20:30. Confermi?"],
-      ["c", "Confermo, grazie!"],
+      ["l", tr("Ciao Giulia, la tua prenotazione per sabato alle 20:30, 4 persone, è confermata.")],
+      ["l", tr("Promemoria: ti aspettiamo domani alle 20:30. Confermi?")],
+      ["c", tr("Confermo, grazie!")],
     ],
   },
   {
-    label: "Ordina a negozio chiuso",
-    who: "Marco Rossi",
+    label: tr("Ordina a negozio chiuso"),
+    who: tr("Marco Rossi"),
     time: "22:15",
-    stat: "+9 ordini",
+    stat: tr("+9 ordini"),
     msgs: [
-      ["c", "Nuovo ordine da asporto\nRitiro: domani alle 12:00\n2 kg tortellini\n1 kg ravioli di zucca\nNome: Marco R."],
-      ["l", "Ricevuto Marco, domani alle 12 è tutto pronto."],
+      ["c", tr("Nuovo ordine da asporto\nRitiro: domani alle 12:00\n2 kg tortellini\n1 kg ravioli di zucca\nNome: Marco R.")],
+      ["l", tr("Ricevuto Marco, domani alle 12 è tutto pronto.")],
     ],
   },
   {
-    label: "Parla ai turisti",
-    who: "Emma Clarke",
+    label: tr("Parla ai turisti"),
+    who: tr("Emma Clarke"),
     time: "19:05",
-    stat: "4 lingue",
+    stat: tr("4 lingue"),
     msgs: [
-      ["c", "Nuovo ordine da asporto\nLingua del cliente: inglese\n2 × Margherita\n1 × Fiori di zucca fritti\nRitiro: 19:45"],
-      ["l", "Thank you Emma! Your order will be ready at 7:45 pm."],
+      ["c", tr("Nuovo ordine da asporto\nLingua del cliente: inglese\n2 × Margherita\n1 × Fiori di zucca fritti\nRitiro: 19:45")],
+      ["l", tr("Thank you Emma! Your order will be ready at 7:45 pm.")],
     ],
   },
-];
+]);
 
 /** Colonna scura con i messaggi WhatsApp che si alternano. */
 export function DemoAside() {
   const [tab, setTab] = useState(0);
   const [shown, setShown] = useState(0);
-  const sc = scenarios[tab];
+  const sc = scenarios()[tab];
 
   useEffect(() => {
     setShown(0);
     const ids: number[] = [];
     sc.msgs.forEach((_, i) => ids.push(window.setTimeout(() => setShown(i + 1), 450 + i * 900)));
-    ids.push(window.setTimeout(() => setTab((t) => (t + 1) % scenarios.length), 450 + sc.msgs.length * 900 + 2600));
+    ids.push(window.setTimeout(() => setTab((t) => (t + 1) % scenarios().length), 450 + sc.msgs.length * 900 + 2600));
     return () => ids.forEach((x) => window.clearTimeout(x));
   }, [tab, sc.msgs]);
 
   return (
-    <aside aria-label="Come funziona" className="flex h-full flex-col justify-between gap-6 rounded-[24px] bg-ink p-5 text-[#fafaf8] md:gap-10 md:p-10">
+    <aside aria-label={tr("Come funziona")} className="flex h-full flex-col justify-between gap-6 rounded-[24px] bg-ink p-5 text-[#fafaf8] md:gap-10 md:p-10">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div className="flex items-center gap-2.5">
           <span className="h-2 w-2 rounded-full bg-[#86efac] [animation:pulseDot_2s_ease-in-out_infinite]" />
-          <span className="text-[14px] text-[#d4d4d8]">Messaggi WhatsApp automatici</span>
+          <span className="text-[14px] text-[#d4d4d8]">{tr("Messaggi WhatsApp automatici")}</span>
         </div>
         <div className="text-right">
-          <p className="text-[12px] text-[#a1a1aa]">Esempio di una sera</p>
+          <p className="text-[12px] text-[#a1a1aa]">{tr("Esempio di una sera")}</p>
           <p key={sc.stat} className="anim-fade-up text-[28px] font-semibold tracking-[-0.02em]">
             {sc.stat}
           </p>
@@ -397,10 +398,10 @@ export function DemoAside() {
               </span>
               <span>
                 <span className="block text-[15px] font-semibold">{sc.who}</span>
-                <span className="block text-[12px] text-[#a1a1aa]">WhatsApp, {sc.time}</span>
+                <span className="block text-[12px] text-[#a1a1aa]">{tr("WhatsApp,")}{" "}{sc.time}</span>
               </span>
             </div>
-            <span className="rounded-full border border-[#166534] px-2.5 py-1 text-[12px] text-[#86efac]">Automatico</span>
+            <span className="rounded-full border border-[#166534] px-2.5 py-1 text-[12px] text-[#86efac]">{tr("Automatico")}</span>
           </div>
           <div className="flex flex-col gap-2.5 pt-1">
             {sc.msgs.slice(0, shown).map(([who, text], i) => (
@@ -424,8 +425,8 @@ export function DemoAside() {
         </div>
       </div>
 
-      <div className="grid grid-cols-3 gap-2" role="tablist" aria-label="Esempi">
-        {scenarios.map((s, i) => (
+      <div className="grid grid-cols-3 gap-2" role="tablist" aria-label={tr("Esempi")}>
+        {scenarios().map((s, i) => (
           <button
             key={s.label}
             type="button"

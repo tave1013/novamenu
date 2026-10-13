@@ -1,3 +1,4 @@
+import { tr } from "@/i18n";
 import Link from "next/link";
 import { Icon, type IconName } from "./Icon";
 import { Qr } from "./HeroArt";
@@ -43,7 +44,7 @@ function Tile({
   );
   const more = href && (
     <span className={`mt-4 inline-flex items-center gap-1.5 text-[14px] font-medium ${t.link}`}>
-      Scopri di più
+      {tr("Scopri di più")}
       <Icon name="arrowRight" size={14} stroke={2} className="transition-transform group-hover:translate-x-0.5" />
     </span>
   );
@@ -82,9 +83,9 @@ const card = "rounded-[14px] border border-line bg-white shadow-[0_18px_36px_-24
 /* Automazioni: la riga del flusso e i messaggi che partono da soli. */
 function FlowLine() {
   const steps: { icon: IconName; t: string; d: string }[] = [
-    { icon: "bag", t: "Ordine ritirato", d: "Giulia, 3 pizze" },
-    { icon: "clock", t: "Dopo 2 giorni", d: "alle 19:40" },
-    { icon: "chat", t: "Messaggio WhatsApp", d: "Grazie + sconto" },
+    { icon: "bag", t: tr("Ordine ritirato"), d: tr("Giulia, 3 pizze") },
+    { icon: "clock", t: tr("Dopo 2 giorni"), d: tr("alle 19:40") },
+    { icon: "chat", t: tr("Messaggio WhatsApp"), d: tr("Grazie + sconto") },
   ];
   return (
     <ol className="relative flex flex-col gap-3">
@@ -111,26 +112,26 @@ function MenuQrArt() {
     <div className="flex w-full items-center justify-center gap-3 md:justify-end">
       <div className={`${card} flex-none -rotate-3 p-2.5 sm:p-3`}>
         <Qr size={92} />
-        <p className="mt-2 text-center text-[11.5px] font-semibold text-ink">Tavolo 4</p>
+        <p className="mt-2 text-center text-[11.5px] font-semibold text-ink">{tr("Tavolo 4")}</p>
       </div>
       <div className={`${card} min-w-0 max-w-[210px] flex-1 p-3`}>
-        <p className="text-[11px] font-medium uppercase tracking-wide text-faint">Pizze rosse</p>
+        <p className="text-[11px] font-medium uppercase tracking-wide text-faint">{tr("Pizze rosse")}</p>
         {[
-          ["Margherita", "7,00"],
-          ["Diavola", "8,50"],
-          ["Capricciosa", "9,50"],
+          [tr("Margherita"), "7,00"],
+          [tr("Diavola"), "8,50"],
+          [tr("Capricciosa"), "9,50"],
         ].map(([n, p], i) => (
           <div key={n} className="flex items-center justify-between border-b border-line-soft py-1.5 text-[12.5px] last:border-0">
             <span className="text-ink">
               {n}
-              {i === 1 && <span className="ml-1.5 rounded-full bg-p-red px-1.5 py-px text-[10px] font-medium text-p-red-ink">piccante</span>}
+              {i === 1 && <span className="ml-1.5 rounded-full bg-p-red px-1.5 py-px text-[10px] font-medium text-p-red-ink">{tr("piccante")}</span>}
             </span>
             <span className="tabular-nums text-muted">€ {p}</span>
           </div>
         ))}
         <div className="mt-2 flex items-center gap-1.5 rounded-[8px] bg-lime-soft px-2 py-1 text-[11px] font-medium text-forest">
           <Icon name="chart" size={12} stroke={2} />
-          128 scansioni oggi
+          {tr("128 scansioni oggi")}
         </div>
       </div>
     </div>
@@ -156,9 +157,9 @@ function StatsArt() {
         })}
       </svg>
       <div className="min-w-0 text-[12px]">
-        <p className="text-muted">Incasso settimana</p>
+        <p className="text-muted">{tr("Incasso settimana")}</p>
         <p className="text-[22px] font-semibold tracking-[-0.03em] text-ink">€ 4.280</p>
-        <p className="font-medium text-[#16a34a]">+12% sulla scorsa</p>
+        <p className="font-medium text-[#16a34a]">{tr("+12% sulla scorsa")}</p>
       </div>
     </div>
   );
@@ -182,7 +183,7 @@ function CustomersArt() {
         <span className="-ml-2 flex h-11 items-center rounded-full border-[3px] border-forest bg-lime px-3 text-[13px] font-semibold text-forest">+1.2k</span>
       </div>
       <div className="mt-3 flex flex-wrap gap-1.5 text-[12px]">
-        {["Cliente abituale", "Compleanno a giugno", "Celiaco"].map((x) => (
+        {[tr("Cliente abituale"), tr("Compleanno a giugno"), tr("Celiaco")].map((x) => (
           <span key={x} className="rounded-full bg-white/10 px-2.5 py-1 text-[#d9e8cc]">
             {x}
           </span>
@@ -212,9 +213,9 @@ function FloorArt() {
         ))}
       </div>
       <div className="mt-3 flex gap-3 text-[11.5px] text-[#4b5a40]">
-        <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-full bg-forest" />Occupato</span>
-        <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-full bg-lime" />Prenotato</span>
-        <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-full border border-[#cfe5bd] bg-white" />Libero</span>
+        <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-full bg-forest" />{tr("Occupato")}</span>
+        <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-full bg-lime" />{tr("Prenotato")}</span>
+        <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-full border border-[#cfe5bd] bg-white" />{tr("Libero")}</span>
       </div>
     </div>
   );
@@ -222,9 +223,9 @@ function FloorArt() {
 
 function StaffArt() {
   const people = [
-    { n: "Marco", r: "Pizzaiolo", from: 40, w: 55 },
-    { n: "Sara", r: "Sala", from: 50, w: 45 },
-    { n: "Luca", r: "Consegne", from: 62, w: 30 },
+    { n: tr("Marco"), r: tr("Pizzaiolo"), from: 40, w: 55 },
+    { n: tr("Sara"), r: "Sala", from: 50, w: 45 },
+    { n: tr("Luca"), r: tr("Consegne"), from: 62, w: 30 },
   ];
   return (
     <div className="w-full space-y-2">
@@ -248,8 +249,8 @@ function ClosuresArt() {
   return (
     <div className={`${card} w-full p-3.5`}>
       <div className="mb-2 flex items-center justify-between text-[12px]">
-        <span className="font-semibold text-ink">Agosto</span>
-        <span className="rounded-full bg-p-amber px-2 py-0.5 text-[10.5px] font-medium text-p-amber-ink">Ferie 16 a 20</span>
+        <span className="font-semibold text-ink">{tr("Agosto")}</span>
+        <span className="rounded-full bg-p-amber px-2 py-0.5 text-[10.5px] font-medium text-p-amber-ink">{tr("Ferie 16 a 20")}</span>
       </div>
       <div className="grid grid-cols-7 gap-1 text-center text-[10.5px] tabular-nums">
         {Array.from({ length: 28 }, (_, i) => i + 1).map((d) => (
@@ -272,8 +273,8 @@ export function Bento() {
     <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
       <Tile delay={0}
         theme="forest"
-        title="Messaggi che partono da soli"
-        text="Ringraziamenti, promemoria e auguri di compleanno, dal tuo numero WhatsApp."
+        title={tr("Messaggi che partono da soli")}
+        text={tr("Ringraziamenti, promemoria e auguri di compleanno, dal tuo numero WhatsApp.")}
         href="/funzionalita/automazioni-whatsapp/"
         className="sm:col-span-2 lg:col-span-1 lg:row-span-2"
       >
@@ -287,8 +288,8 @@ export function Bento() {
 
       <Tile delay={90}
         theme="soft"
-        title="Menu digitale e QR"
-        text="Un QR per ogni tavolo. Cambi un prezzo e si aggiorna subito, senza ristampare."
+        title={tr("Menu digitale e QR")}
+        text={tr("Un QR per ogni tavolo. Cambi un prezzo e si aggiorna subito, senza ristampare.")}
         href="/funzionalita/menu-digitale/"
         className="sm:col-span-2"
         row
@@ -296,23 +297,23 @@ export function Bento() {
         <MenuQrArt />
       </Tile>
 
-      <Tile delay={90} theme="white" title="Statistiche" text="Cosa vendi di più, quando e a chi." href="/funzionalita/statistiche/" artFirst>
+      <Tile delay={90} theme="white" title={tr("Statistiche")} text={tr("Cosa vendi di più, quando e a chi.")} href="/funzionalita/statistiche/" artFirst>
         <StatsArt />
       </Tile>
 
-      <Tile delay={180} theme="forest" title="Clienti" text="Una rubrica che si riempie da sola, con gusti e allergie." href="/funzionalita/clienti/">
+      <Tile delay={180} theme="forest" title={tr("Clienti")} text={tr("Una rubrica che si riempie da sola, con gusti e allergie.")} href="/funzionalita/clienti/">
         <CustomersArt />
       </Tile>
 
-      <Tile delay={0} theme="soft" title="Sala e tavoli" text="La pianta del locale con i tavoli liberi e occupati." href="/funzionalita/sala-e-tavoli/" artFirst>
+      <Tile delay={0} theme="soft" title={tr("Sala e tavoli")} text={tr("La pianta del locale con i tavoli liberi e occupati.")} href="/funzionalita/sala-e-tavoli/" artFirst>
         <FloorArt />
       </Tile>
 
-      <Tile delay={90} theme="lime" title="Staff e turni" text="Chi lavora, quando e in che ruolo." href="/funzionalita/staff-e-turni/" artFirst>
+      <Tile delay={90} theme="lime" title={tr("Staff e turni")} text={tr("Chi lavora, quando e in che ruolo.")} href="/funzionalita/staff-e-turni/" artFirst>
         <StaffArt />
       </Tile>
 
-      <Tile delay={180} theme="white" title="Ferie e chiusure" text="Programmi i giorni chiusi e il sito lo dice da solo." href="/funzionalita/ferie-e-chiusure/" artFirst className="sm:col-span-2 lg:col-span-1">
+      <Tile delay={180} theme="white" title={tr("Ferie e chiusure")} text={tr("Programmi i giorni chiusi e il sito lo dice da solo.")} href="/funzionalita/ferie-e-chiusure/" artFirst className="sm:col-span-2 lg:col-span-1">
         <ClosuresArt />
       </Tile>
     </div>

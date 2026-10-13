@@ -1,3 +1,4 @@
+import { tr } from "@/i18n";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -33,7 +34,7 @@ export default async function SectorPage({ params }: { params: Promise<{ slug: s
       {/* Apertura */}
       <section className="overflow-x-clip pb-12 pt-6 md:pb-16 md:pt-8">
         <div className="wrap">
-          <Breadcrumbs items={[{ name: "Per chi", href: "/settori/" }, { name: s.name, href: `/settori/${s.slug}/` }]} />
+          <Breadcrumbs items={[{ name: tr("Per chi"), href: "/settori/" }, { name: s.name, href: `/settori/${s.slug}/` }]} />
           <div className="mt-8 grid items-center gap-12 lg:mt-10 lg:grid-cols-[1fr_1fr] lg:gap-16">
             <div>
               <div className="anim-fade-up flex items-center gap-3">
@@ -48,11 +49,11 @@ export default async function SectorPage({ params }: { params: Promise<{ slug: s
               </p>
               <div className="anim-fade-up mt-8 flex flex-col gap-3 sm:flex-row" style={{ animationDelay: "240ms" }}>
                 <a href={signupUrl} className="btn btn-dark">
-                  Prova gratis 14 giorni
+                  {tr("Prova gratis 14 giorni")}
                   <Icon name="arrowRight" size={16} stroke={2} />
                 </a>
                 <Link href="/demo/" className="btn btn-light">
-                  Prenota una demo
+                  {tr("Prenota una demo")}
                 </Link>
               </div>
             </div>
@@ -65,7 +66,7 @@ export default async function SectorPage({ params }: { params: Promise<{ slug: s
 
       {/* La foto che si apre scorrendo */}
       {s.photo && (
-        <section aria-label={s.name} className={s.photo.layout === "center" || !s.photo.layout ? "pb-6 pt-2 md:pb-10" : "border-t border-line-soft py-16 md:py-24"}>
+        <section aria-label={s.name} className={s.photo.layout === "center" || !s.photo.layout ? tr("pb-6 pt-2 md:pb-10") : "border-t border-line-soft py-16 md:py-24"}>
           {s.photo.layout === "left" || s.photo.layout === "right" ? (
             <PhotoSplit
               src={s.photo.src}
@@ -119,7 +120,7 @@ export default async function SectorPage({ params }: { params: Promise<{ slug: s
         <div className="wrap">
           <Reveal className="max-w-2xl">
             <p className="eyebrow !text-lime">{s.name}</p>
-            <h2 className="h-section mt-3 text-white">Com&apos;è una giornata tipo.</h2>
+            <h2 className="h-section mt-3 text-white">{tr("Com'è una giornata tipo.")}</h2>
           </Reveal>
           <ol className="mt-12 grid gap-px overflow-hidden rounded-[24px] bg-white/10 sm:grid-cols-2 md:grid-cols-4">
             {s.day.map((d, i) => (
@@ -136,7 +137,7 @@ export default async function SectorPage({ params }: { params: Promise<{ slug: s
       <section className="py-16 md:py-20">
         <div className="wrap">
           <Reveal className="max-w-2xl">
-            <h2 className="h-section">Gli strumenti che userai di più</h2>
+            <h2 className="h-section">{tr("Gli strumenti che userai di più")}</h2>
           </Reveal>
           <ul className="mt-10 grid gap-3 md:grid-cols-2">
             {s.uses.map((u, i) => {
@@ -166,7 +167,7 @@ export default async function SectorPage({ params }: { params: Promise<{ slug: s
 
       <section className="pb-20 md:pb-24">
         <div className="wrap">
-          <h2 className="h-block">Anche per</h2>
+          <h2 className="h-block">{tr("Anche per")}</h2>
           <div className="mt-6 flex flex-wrap gap-2">
             {others.map((o) => (
               <Link key={o.slug} href={`/settori/${o.slug}/`} className="btn btn-light gap-2.5">
@@ -175,7 +176,7 @@ export default async function SectorPage({ params }: { params: Promise<{ slug: s
               </Link>
             ))}
             <Link href="/settori/" className="btn btn-light">
-              Tutti i settori
+              {tr("Tutti i settori")}
             </Link>
           </div>
         </div>
