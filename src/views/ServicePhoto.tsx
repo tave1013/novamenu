@@ -16,9 +16,6 @@ const description = (locale: Locale) =>
 export const meta = (locale: Locale): Metadata =>
   pageMeta({ locale, page: "service", id: "foto-e-video", title: t(locale, "Servizio foto e video per ristoranti e pizzerie"), description: description(locale) });
 
-/** La sezione "Per i momenti che contano" è nascosta per ora. */
-const showEvents: boolean = false;
-
 const faq = () => ([
   { q: tr("Quante foto ricevo dopo il servizio?"), a: tr("Dipende dal pacchetto che scegli. In ogni caso ti consegniamo una raccolta di immagini varie, pensate per coprire tutti gli usi: menu, post, storie, sito e locandine. Avere contenuti diversi è quello che tiene viva la tua comunicazione nel tempo.") },
   { q: tr("In quanto tempo consegnate le foto?"), a: tr("Di solito entro due settimane dallo shooting. Nei periodi più intensi, al massimo entro un mese. Ricevi tutto in digitale, ottimizzato e pronto da pubblicare.") },
@@ -140,36 +137,6 @@ export default function FotoVideoPage() {
         text={tr("Pizze, birre, dolci, sale e persone al lavoro: ogni scatto pensato per far venire voglia di entrare.")}
       />
 
-      {/* Eventi: sezione nascosta per ora, basta mettere showEvents a true per farla tornare */}
-      {showEvents && (
-      <section className="py-16 md:py-24">
-        <div className="wrap">
-          <div className="grid items-center gap-10 overflow-hidden rounded-[28px] bg-forest p-6 md:p-12 lg:grid-cols-[1fr_1fr]">
-            <div>
-              <p className="eyebrow" style={{ color: "#9fe870" }}>{tr("Per i momenti che contano")}</p>
-              <h2 className="h-section mt-3 text-[#fafaf8]">{tr("Un evento speciale si racconta una volta sola, va fatto bene.")}</h2>
-              <p className="mt-4 text-[17px] leading-relaxed text-[#b9cfa8]">
-                {tr("Ci siamo anche nei giorni importanti del tuo locale, per lasciarti foto e video da usare per mesi.")}
-              </p>
-              <div className="mt-8 grid gap-3 sm:grid-cols-2">
-                {[
-                  { t: tr("Inaugurazione"), d: tr("Il locale, lo staff e i primi clienti") },
-                  { t: tr("Nuovo menu di stagione"), d: tr("I piatti nuovi, pronti per il lancio") },
-                  { t: tr("Foto per le app di consegna"), d: tr("Glovo, Deliveroo e Just Eat, nelle misure giuste") },
-                  { t: tr("Menu delle feste"), d: tr("Natale, Pasqua, San Valentino") },
-                ].map((e) => (
-                  <div key={e.t} className="rounded-[18px] bg-white/[.06] p-4">
-                    <p className="text-[15.5px] font-medium text-white">{e.t}</p>
-                    <p className="mt-1 text-[13.5px] text-[#b9cfa8]">{e.d}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <PhotoSlot src="/images/servizi/foto-07-evento.webp" alt={tr("Lunga tavolata apparecchiata per un evento all'aperto, con candele, fiori e sedie dorate")} label={tr("Foto 7 · Un evento nel locale")} className="aspect-[4/3] rounded-[22px]" />
-          </div>
-        </div>
-      </section>
-      )}
 
       {/* Pacchetti */}
       <section id="pacchetti" className="scroll-mt-24 py-14 md:py-20">
