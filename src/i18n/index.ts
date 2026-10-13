@@ -52,10 +52,10 @@ export function tr(key: MessageKey, params?: Record<string, string | number>): s
   return t(getLocale(), key, params);
 }
 
-/** Importo in euro scritto come si usa nella lingua: 8,50 € in italiano, €8.50 in inglese. */
-export function eur(value: number, locale: Locale = getLocale(), digits?: number): string {
+/** Importo nella valuta della lingua: 8,50 € in italiano, £8.50 in inglese. */
+export function money(value: number, locale: Locale = getLocale(), digits?: number): string {
   const d = digits ?? (Number.isInteger(value) ? 0 : 2);
-  return new Intl.NumberFormat(localeInfo[locale].intl, { style: "currency", currency: "EUR", minimumFractionDigits: d, maximumFractionDigits: d }).format(value).replace(/\u00a0/g, " ");
+  return new Intl.NumberFormat(localeInfo[locale].intl, { style: "currency", currency: localeInfo[locale].currency, minimumFractionDigits: d, maximumFractionDigits: d }).format(value).replace(/\u00a0/g, " ");
 }
 
 /** Data scritta per esteso nella lingua: 12 ottobre 2026, 12 October 2026. */
@@ -79,18 +79,18 @@ export function num(value: number, locale: Locale = getLocale()): string {
   return new Intl.NumberFormat(localeInfo[locale].intl, { minimumFractionDigits: d, maximumFractionDigits: d }).format(value);
 }
 
-/** true se nella lingua il simbolo dell'euro si scrive prima della cifra (inglese), false se dopo (italiano). */
-export function euroFirst(locale: Locale = getLocale()): boolean {
-  return eur(1, locale).startsWith("€");
+/** true se nella lingua il simbolo della valuta si scrive prima della cifra (inglese), false se dopo (italiano). */
+export function symbolFirst(locale: Locale = getLocale()): boolean {
+  return money(1, locale).startsWith(localeInfo[locale].symbol);
 }
 
 /**
  * Importo già scritto all'italiana ("27,50 €", "€ 7,00", "4.280") reso nella lingua della pagina.
- * In italiano resta com'è; nelle altre lingue passa da Intl ("€27.50", "€4,280").
+ * In italiano resta com'è; nelle altre lingue passa da Intl con il simbolo della valuta della lingua ("£27.50", "£4,280").
  */
 export function price(text: string, locale: Locale = getLocale()): string {
   if (locale === defaultLocale) return text;
-  const raw = text.replace(/[€\s]/g, "");
+  const raw = text.replace(/[€£\s]/g, "");
   const m = raw.match(/^([+-]?)(\d[\d.,]*)$/);
   if (!m) return text;
   let digits = m[2];
@@ -107,5 +107,5 @@ export function price(text: string, locale: Locale = getLocale()): string {
   const value = Number(digits);
   if (!Number.isFinite(value)) return text;
   const body = new Intl.NumberFormat(localeInfo[locale].intl, { minimumFractionDigits: decimals, maximumFractionDigits: decimals }).format(value);
-  return `${m[1]}€${body}`;
+  return `${m[1]}${localeInfo[locale].symbol}${body}`;
 }

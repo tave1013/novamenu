@@ -42,7 +42,7 @@ export const sectorGuides: Omit<Guide, "slug">[] = [
         kind: "order",
         who: "Luca Bianchi",
         lines: ["2 × Margherita", "1 × Diavola, wholemeal dough", "1 × Chips"],
-        total: "€ 27,50",
+        total: "£ 27,50",
         when: "Collection Saturday 19:45",
         extra: "Note: cut into slices, thanks",
       },
@@ -161,10 +161,10 @@ export const sectorGuides: Omit<Guide, "slug">[] = [
         title: "What lunch pre-orders are worth",
         rows: [
           { label: "Extra pre-orders per day", value: "10" },
-          { label: "Average spend at lunch", value: "€ 14" },
+          { label: "Average spend at lunch", value: "£ 14" },
           { label: "Days open per month", value: "24" },
         ],
-        result: { label: "Extra takings per month", value: "€ 3.360" },
+        result: { label: "Extra takings per month", value: "£ 3.360" },
         note: "Example calculation. The point isn't the exact number: even a few more orders a day, repeated for a month, add up to a meaningful amount.",
       },
       fasce: {
@@ -189,7 +189,7 @@ export const sectorGuides: Omit<Guide, "slug">[] = [
         kind: "order",
         who: "Bertola family",
         lines: ["800 g × Vitello tonnato", "1.5 kg × Baked lasagne", "2 × Roast chicken"],
-        total: "€ 76,60",
+        total: "£ 76,60",
         when: "Collection 24 December 11:00",
         extra: "Note: lasagne in two trays",
       },
@@ -216,7 +216,7 @@ export const sectorGuides: Omit<Guide, "slug">[] = [
 <p>Close pre-orders at a fixed time, for example 11:30, so you know exactly what to put aside before the queue arrives.</p>
 
 <h2>3. Weight or portion: offer both</h2>
-<p>The price per kilo is right for you, but for someone ordering on a phone it's hard to picture 300 grams of lasagne. Next to the price per kilo, offer a standard portion at a fixed price, for example "portion about 350 g, €6.50". Those who want a precise quantity write it in, and those in a hurry choose the portion.</p>
+<p>The price per kilo is right for you, but for someone ordering on a phone it's hard to picture 300 grams of lasagne. Next to the price per kilo, offer a standard portion at a fixed price, for example "portion about 350 g, £6.50". Those who want a precise quantity write it in, and those in a hurry choose the portion.</p>
 
 <h2>4. Offer a "complete lunch"</h2>
 <p>A pasta dish, a side and a small bottle of water at a single price work better than three separate products. The customer doesn't have to think, the average spend goes up and you know in advance how many portions of sides to prepare.</p>
@@ -297,10 +297,10 @@ export const sectorGuides: Omit<Guide, "slug">[] = [
         title: "The bread left over in a month",
         rows: [
           { label: "Unsold bread at the end of the day", value: "4 kg" },
-          { label: "Average price per kilo", value: "€ 4,20" },
+          { label: "Average price per kilo", value: "£ 4,20" },
           { label: "Days open per month", value: "26" },
         ],
-        result: { label: "Value of the unsold bread", value: "€ 437" },
+        result: { label: "Value of the unsold bread", value: "£ 437" },
         note: "Example calculation at selling price. Weigh your unsold bread for a week and redo the sum with your own figures.",
       },
       fasce: {
@@ -329,14 +329,14 @@ export const sectorGuides: Omit<Guide, "slug">[] = [
         rows: [
           { t: "Today's bread", time: "7:00 to 18:00", on: true, items: "Full price, whole catalogue" },
           { t: "End of day", time: "18:00 to 19:30", on: true, items: "Today's bread and focaccia at 30% off" },
-          { t: "Surprise bag", time: "19:00 to 19:30", on: true, items: "About 2 kg of mixed products for €5" },
+          { t: "Surprise bag", time: "19:00 to 19:30", on: true, items: "About 2 kg of mixed products for £5" },
         ],
       },
       torta: {
         kind: "order",
         who: "Paolo Marino",
         lines: ["1 × Hazelnut cake, 1.5 kg", "12 people", "1 kg × Semolina bread"],
-        total: "€ 40,20",
+        total: "£ 40,20",
         when: "Collection Saturday 10:30",
         extra: "Message: Happy birthday Grandma Rina",
       },
@@ -348,7 +348,7 @@ export const sectorGuides: Omit<Guide, "slug">[] = [
 <h2>What unsold bread costs you</h2>
 <p>For a week, weigh the bread left at the end of the day. Then multiply by the average price and by the days you're open.</p>
 {{art:conti}}
-<p>Recovering even part of it, with pre-orders and more precise production, means a few hundred euros a month that today ends up in the stale-bread bag.</p>
+<p>Recovering even part of it, with pre-orders and more precise production, means a few hundred pounds a month that today ends up in the stale-bread bag.</p>
 
 <h2>1. Get bread ordered the evening before</h2>
 <p>Many customers buy the same bread every day. If they can order it in the evening, from the sofa, you know in the morning how much is needed. Set a closing time for pre-orders, for example 20:00, and when it's time to make the dough you already have the list.</p>
@@ -379,11 +379,11 @@ export const sectorGuides: Omit<Guide, "slug">[] = [
 <ul>
 <li><strong>Don't start too early.</strong> If the discount starts at 17:00, customers who would pay full price learn to wait. Between 18:00 and 19:30 the buyers are mostly people leaving work who wouldn't otherwise have come by.</li>
 <li><strong>A simple discount.</strong> "30% off today's bread and focaccia" is understood at a glance. Avoid complicated rules like "the second one half price, on half-kilo items only".</li>
-<li><strong>The surprise bag.</strong> In the last half hour, a bag of mixed products at a fixed price, for example about 2 kg for 5 euros, empties the shelves and introduces products the customer wouldn't have tried.</li>
+<li><strong>The surprise bag.</strong> In the last half hour, a bag of mixed products at a fixed price, for example about 2 kg for £5, empties the shelves and introduces products the customer wouldn't have tried.</li>
 <li><strong>Exclude cakes and products made to order.</strong> The offer only covers what would otherwise be lost.</li>
 <li><strong>Show the shelf.</strong> At 17:45 a photo of the shelf in your WhatsApp status and Instagram stories, with the time of the offer, brings in people who live nearby.</li>
 </ul>
-<blockquote><p>🥖 From 18:00 to 19:30, today's bread and focaccia at 30% off. From 19:00 there's also the surprise bag: about 2 kg of mixed products for €5. See you there!</p></blockquote>
+<blockquote><p>🥖 From 18:00 to 19:30, today's bread and focaccia at 30% off. From 19:00 there's also the surprise bag: about 2 kg of mixed products for £5. See you there!</p></blockquote>
 <p>With a timed online menu, the "End of day" section appears by itself at 18:00 and disappears at closing time: the customer who opens it at 18:10 sees exactly what they'll find.</p>
 
 <h2>8. Turn yesterday's bread into a new product</h2>
@@ -474,7 +474,7 @@ export const sectorGuides: Omit<Guide, "slug">[] = [
         kind: "order",
         who: "Giovanna Ricci",
         lines: ["1 kg × Agnolotti del plin", "500 g × Tajarin", "1 × House ragù, 500 g"],
-        total: "€ 41,00",
+        total: "£ 41,00",
         when: "Collection Monday 22 at 10:00",
       },
     },
@@ -582,10 +582,10 @@ export const sectorGuides: Omit<Guide, "slug">[] = [
         title: "Forty cents per bill",
         rows: [
           { label: "Bills per day", value: "180" },
-          { label: "Average increase per bill", value: "€ 0,40" },
+          { label: "Average increase per bill", value: "£ 0,40" },
           { label: "Days open per month", value: "26" },
         ],
-        result: { label: "Extra per month", value: "€ 1.872" },
+        result: { label: "Extra per month", value: "£ 1.872" },
         note: "Example calculation. In a café, margins are made on small numbers multiplied by many customers.",
       },
       orari: {
@@ -617,7 +617,7 @@ export const sectorGuides: Omit<Guide, "slug">[] = [
 <p>With a digital menu the same QR code on the table shows breakfast, lunch or aperitivo according to the time, without reprinting anything.</p>
 
 <h2>2. Create fixed-price combinations</h2>
-<p>"Cappuccino and croissant €2.80" sells more than a cappuccino at 1.60 and a croissant at 1.40 written on two different lines. The combination makes choosing simpler and nudges someone who would only have had a coffee to add something.</p>
+<p>"Cappuccino and croissant £2.80" sells more than a cappuccino at 1.60 and a croissant at 1.40 written on two different lines. The combination makes choosing simpler and nudges someone who would only have had a coffee to add something.</p>
 <ul>
 <li><strong>Breakfast</strong>: coffee plus pastry, fresh juice plus toastie.</li>
 <li><strong>Lunch</strong>: dish of the day, water and coffee.</li>
@@ -654,16 +654,16 @@ export const sectorGuides: Omit<Guide, "slug">[] = [
 <li><strong>The board on show</strong>: a photo of the real board, at the top of the aperitivo section, and a version for two at a clear price.</li>
 <li><strong>The 17:30 announcement</strong>: in your WhatsApp status and stories, with a photo of the counter and the cocktail of the week.</li>
 </ul>
-<blockquote><p>🍹 From tonight the cocktail of the week is the Garibaldi with Sicilian oranges. Aperitivo from 18:00, sharing board for two at €12. Shall we keep you a table?</p></blockquote>
+<blockquote><p>🍹 From tonight the cocktail of the week is the Garibaldi with Sicilian oranges. Aperitivo from 18:00, sharing board for two at £12. Shall we keep you a table?</p></blockquote>
 
 <h2>Examples of combinations</h2>
 <table>
 <tr><th>Moment</th><th>Combination</th><th>Guide price</th></tr>
-<tr><td>Breakfast</td><td>Cappuccino and croissant</td><td>€2.80</td></tr>
-<tr><td>Breakfast</td><td>Fresh juice and toastie</td><td>€7.50</td></tr>
-<tr><td>Lunch</td><td>Dish of the day, water and coffee</td><td>€11.00</td></tr>
-<tr><td>Afternoon</td><td>Coffee and a slice of cake</td><td>€4.00</td></tr>
-<tr><td>Aperitivo</td><td>Two spritzes and a small board</td><td>€16.00</td></tr>
+<tr><td>Breakfast</td><td>Cappuccino and croissant</td><td>£2.80</td></tr>
+<tr><td>Breakfast</td><td>Fresh juice and toastie</td><td>£7.50</td></tr>
+<tr><td>Lunch</td><td>Dish of the day, water and coffee</td><td>£11.00</td></tr>
+<tr><td>Afternoon</td><td>Coffee and a slice of cake</td><td>£4.00</td></tr>
+<tr><td>Aperitivo</td><td>Two spritzes and a small board</td><td>£16.00</td></tr>
 </table>
 <p>The prices are only a guide: work them out on your own costs, but always keep the combination slightly better value than the products bought separately.</p>
 
@@ -707,10 +707,10 @@ export const sectorGuides: Omit<Guide, "slug">[] = [
         title: "Ice cream cakes in a month",
         rows: [
           { label: "Ice cream cakes per week", value: "6" },
-          { label: "Average price of a cake", value: "€ 32" },
+          { label: "Average price of a cake", value: "£ 32" },
           { label: "Weeks", value: "4" },
         ],
-        result: { label: "Takings per month", value: "€ 768" },
+        result: { label: "Takings per month", value: "£ 768" },
         note: "Example calculation. Cakes sell all year round, even when nobody's buying a cone.",
       },
       gusti: {
@@ -728,7 +728,7 @@ export const sectorGuides: Omit<Guide, "slug">[] = [
         kind: "order",
         who: "Chiara Moretti",
         lines: ["1 × Ice cream cake, 8 people", "Flavours: hazelnut and strawberry", "1 × 500 g tub"],
-        total: "€ 46,00",
+        total: "£ 46,00",
         when: "Collection Saturday 16:00",
         extra: "Message: Happy birthday Sofia!",
       },

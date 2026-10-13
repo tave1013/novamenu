@@ -1,18 +1,18 @@
 import type { Plan, comparison as comparisonIt, generalFaq as generalFaqIt } from "../plans";
 
-/* Piani, confronto e domande frequenti in inglese. Prezzi e condizioni sono gli stessi dell'italiano: cambiano solo le parole. */
+/* Piani, confronto e domande frequenti in inglese. I prezzi sono in sterline e hanno un listino proprio; le condizioni sono le stesse dell'italiano. */
 export const plans: Plan[] = [
   {
     id: "base",
     name: "Base",
-    monthly: 19,
+    monthly: 17,
     desc: "For a digital menu done properly.",
     highlights: ["QR code digital menu", "AI menu import", "Opening hours, holidays and closures", "Your logo and colours", "Email support"],
   },
   {
     id: "pro",
     name: "Pro",
-    monthly: 39,
+    monthly: 35,
     desc: "For venues doing takeaway and taking bookings.",
     popular: true,
     highlights: ["Everything in Base", "WhatsApp orders", "Bookings and floor plan", "Menu translated into 4 languages", "Voice assistant on Telegram"],
@@ -20,7 +20,7 @@ export const plans: Plan[] = [
   {
     id: "premium",
     name: "Premium",
-    monthly: 69,
+    monthly: 59,
     desc: "For bringing customers back, automatically.",
     highlights: ["Everything in Pro", "Customer profiles", "WhatsApp automations", "Messages to customer groups", "Your own domain"],
   },

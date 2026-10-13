@@ -8,9 +8,9 @@ export type Locale = (typeof locales)[number];
 /** Lingua principale: sta alla radice del dominio, senza prefisso. */
 export const defaultLocale: Locale = "it";
 
-export const localeInfo: Record<Locale, { name: string; hreflang: string; ogLocale: string; intl: string; prefix: string }> = {
-  it: { name: "Italiano", hreflang: "it", ogLocale: "it_IT", intl: "it-IT", prefix: "" },
-  en: { name: "English", hreflang: "en", ogLocale: "en_GB", intl: "en-GB", prefix: "/en" },
+export const localeInfo: Record<Locale, { name: string; hreflang: string; ogLocale: string; intl: string; prefix: string; currency: string; symbol: string }> = {
+  it: { name: "Italiano", hreflang: "it", ogLocale: "it_IT", intl: "it-IT", prefix: "", currency: "EUR", symbol: "€" },
+  en: { name: "English", hreflang: "en", ogLocale: "en_GB", intl: "en-GB", prefix: "/en", currency: "GBP", symbol: "£" },
 };
 
 export const isLocale = (x: string): x is Locale => (locales as readonly string[]).includes(x);

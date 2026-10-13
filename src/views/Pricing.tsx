@@ -1,4 +1,4 @@
-import { getLocale, t, tr } from "@/i18n";
+import { getLocale, money, symbolFirst, t, tr } from "@/i18n";
 import type { Metadata } from "next";
 import { signupUrl } from "@/config/site";
 import { Icon } from "@/components/Icon";
@@ -69,7 +69,7 @@ export default function PrezziPage() {
                   {getPlans().map((p) => (
                     <th key={p.id} scope="col" className="p-5 text-center">
                       <span className="block text-[17px] font-semibold text-ink">{p.name}</span>
-                      <span className="block text-[13px] font-normal text-muted">{p.monthly}{" "}{tr("€ al mese")}</span>
+                      <span className="block text-[13px] font-normal text-muted">{symbolFirst() ? money(p.monthly) : p.monthly}{" "}{tr("€ al mese")}</span>
                     </th>
                   ))}
                 </tr>

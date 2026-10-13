@@ -100,7 +100,7 @@ const baseGuides: Omit<Guide, "slug">[] = [
 </div>
 
 <h2>How much it costs</h2>
-<p>A good digital menu costs less than one reprint a year. With {{brand}} you start from the Base plan at 19 euros a month, with AI import, QR code and unlimited updates. You can try it free for 14 days.</p>
+<p>A good digital menu costs less than one reprint a year. With {{brand}} you start from the Base plan at £17 a month, with AI import, QR code and unlimited updates. You can try it free for 14 days.</p>
 `,
   },
   {
@@ -215,7 +215,7 @@ const baseGuides: Omit<Guide, "slug">[] = [
         kind: "order",
         who: "Marta Conti",
         lines: ["2 × Margherita", "1 × Capricciosa, no mushrooms", "1 × Coca-Cola 33 cl"],
-        total: "€ 25,50",
+        total: "£ 25,50",
         when: "Collection Friday 20:15",
         extra: "Note: buzzer Conti, coming on foot",
       },
@@ -246,7 +246,7 @@ const baseGuides: Omit<Guide, "slug">[] = [
 </ol>
 
 <h2>How much you can save</h2>
-<p>Let's take an example. If every week you receive 80 takeaway orders of 25 euros, and a platform keeps 20 per cent, you pay about 400 euros a month in commission. By moving even just half of those orders to your own direct channels, you save about 200 euros a month, far more than the cost of a subscription.</p>
+<p>Let's take an example. If every week you receive 80 takeaway orders of £25, and a platform keeps 20 per cent, you pay about £400 a month in commission. By moving even just half of those orders to your own direct channels, you save about £200 a month, far more than the cost of a subscription.</p>
 
 <h2>How to let people know about the new channel</h2>
 <ul>

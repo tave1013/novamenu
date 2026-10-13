@@ -1,6 +1,7 @@
 "use client";
 
-import { eur, euroFirst, num, tr } from "@/i18n";
+import { getLocale, money, num, symbolFirst, tr } from "@/i18n";
+import { localeInfo } from "@/i18n/config";
 import { useState } from "react";
 import { annualMonthly } from "@/content/plans";
 import { signupUrl } from "@/config/site";
@@ -53,13 +54,13 @@ export function Pricing() {
               <p className="mt-1.5 text-[15px] text-muted">{p.desc}</p>
               <div className="mt-6 flex items-baseline gap-1.5">
                 <span key={String(price)} className="anim-fade-up text-[46px] font-semibold leading-none tracking-[-0.04em] text-ink tabular-nums">
-                  {euroFirst() ? "€" : ""}
+                  {symbolFirst() ? localeInfo[getLocale()].symbol : ""}
                   {num(price)}
                 </span>
                 <span className="text-[15px] text-muted">{tr("€ al mese")}</span>
               </div>
               <p className="mt-2 text-[13px] text-muted">
-                {annual ? tr("{amount} all'anno, IVA esclusa", { amount: eur(p.monthly * 10) }) : tr("Fatturato ogni mese, IVA esclusa")}
+                {annual ? tr("{amount} all'anno, IVA esclusa", { amount: money(p.monthly * 10) }) : tr("Fatturato ogni mese, IVA esclusa")}
               </p>
               <a href={`${signupUrl}?piano=${p.id}`} className={`btn mt-6 w-full ${p.popular ? "btn-dark pulse" : "btn-light"}`}>
                 {tr("Prova gratis 14 giorni")}

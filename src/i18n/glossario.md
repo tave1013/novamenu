@@ -79,8 +79,16 @@ solo a un posto dove si beve alcol.
 
 ## Numeri, prezzi, date
 
-- I numeri non cambiano mai, cambia solo il formato: `19 €` → `€19`,
-  `27,50 €` → `€27.50`, `4.280` → `4,280`.
+- In inglese gli importi sono in sterline. La valuta di ogni lingua sta in
+  `src/i18n/config.ts` (`currency`, `symbol`).
+- I piani hanno un listino in sterline a parte, in `src/content/en/plans.ts`:
+  Base £17, Pro £35, Premium £59 al mese (in italiano 19 €, 39 €, 69 €).
+  Gli stessi prezzi sono scritti anche nel titolo e nella descrizione della
+  pagina Prezzi (`dictionaries/en.ts`) e nella guida sul menu digitale
+  (`content/en/guides.ts`): se cambiano, vanno aggiornati anche lì.
+- I prezzi di esempio (piatti, ordini, conti nelle guide) tengono lo stesso
+  numero e cambiano solo simbolo e formato: `27,50 €` → `£27.50`,
+  `4.280 €` → `£4,280`.
 - Orari a 24 ore come in italiano (`22:30`), con i due punti.
 - Date scritte per esteso con `Intl` (`13 October 2026`).
 - Gli orari delle demo sono indicati come "Italian time (CET)".
