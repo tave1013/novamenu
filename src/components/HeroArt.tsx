@@ -582,9 +582,9 @@ function Statistiche({ f }: { f: Feature }) {
 function Staff({ f }: { f: Feature }) {
   const ppl = [
     ["MF", tr("Marco"), tr("Titolare"), tr("Tutto")],
-    ["SR", tr("Sara"), "Sala", tr("Prenotazioni, sala")],
+    ["SR", tr("Sara"), tr("Sala"), tr("Prenotazioni, sala")],
     ["LC", tr("Luca"), tr("Cucina"), tr("Menu ed esauriti")],
-    ["AB", tr("Anna"), "Sala", tr("Prenotazioni")],
+    ["AB", tr("Anna"), tr("Sala"), tr("Prenotazioni")],
   ];
   return (
     <Scene feature={f}>

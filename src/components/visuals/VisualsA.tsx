@@ -165,11 +165,11 @@ const aiSteps = (): Step<AiS>[] => ([
   { dur: 2800, target: "publish", click: true, patch: { published: true, toast: tr("Menu pubblicato: 5 piatti, 3 categorie") } },
 ]);
 const aiRows = () => ([
-  { n: tr("Margherita"), c: "Pizze", a: tr("Glutine, latte"), p: price("7,00 €") },
-  { n: tr("Diavola"), c: "Pizze", a: tr("Glutine, latte"), p: price("8,50 €") },
-  { n: tr("Fiori di zucca"), c: "Fritti", a: tr("Glutine, latte, pesce"), p: price("6,50 €"), check: true },
-  { n: tr("Tiramisù"), c: "Dolci", a: tr("Uova, latte"), p: price("5,00 €") },
-  { n: tr("Birra artigianale"), c: "Bibite", a: tr("Glutine"), p: price("5,50 €") },
+  { n: tr("Margherita"), c: tr("Pizze"), a: tr("Glutine, latte"), p: price("7,00 €") },
+  { n: tr("Diavola"), c: tr("Pizze"), a: tr("Glutine, latte"), p: price("8,50 €") },
+  { n: tr("Fiori di zucca"), c: tr("Fritti"), a: tr("Glutine, latte, pesce"), p: price("6,50 €"), check: true },
+  { n: tr("Tiramisù"), c: tr("Dolci"), a: tr("Uova, latte"), p: price("5,00 €") },
+  { n: tr("Birra artigianale"), c: tr("Bibite"), a: tr("Glutine"), p: price("5,50 €") },
 ]);
 
 export function AiVisual() {
@@ -336,11 +336,11 @@ const bands = () => ([
   { from: 19.5, to: 23.5, name: tr("Cena"), c: "bg-p-violet", ink: "text-p-violet-ink" },
 ]);
 const preview = (): Record<string, string[]> => ({
-  Colazione: [tr("Cornetto alla crema"), tr("Cappuccino"), tr("Spremuta d'arancia")],
-  Pranzo: [tr("Piatto del giorno"), tr("Insalata di farro"), tr("Tagliata con rucola")],
-  Aperitivo: [tr("Spritz"), tr("Tagliere di salumi"), tr("Negroni sbagliato")],
-  Cena: [tr("Tonnarelli cacio e pepe"), tr("Filetto al pepe verde"), tr("Tiramisù")],
-  Chiuso: [tr("Riapriamo alle 7:00")],
+  [tr("Colazione")]: [tr("Cornetto alla crema"), tr("Cappuccino"), tr("Spremuta d'arancia")],
+  [tr("Pranzo")]: [tr("Piatto del giorno"), tr("Insalata di farro"), tr("Tagliata con rucola")],
+  [tr("Aperitivo")]: [tr("Spritz"), tr("Tagliere di salumi"), tr("Negroni sbagliato")],
+  [tr("Cena")]: [tr("Tonnarelli cacio e pepe"), tr("Filetto al pepe verde"), tr("Tiramisù")],
+  [tr("Chiuso")]: [tr("Riapriamo alle 7:00")],
 });
 
 export function OrariVisual() {

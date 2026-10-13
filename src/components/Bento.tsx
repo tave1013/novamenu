@@ -225,7 +225,7 @@ function FloorArt() {
 function StaffArt() {
   const people = [
     { n: tr("Marco"), r: tr("Pizzaiolo"), from: 40, w: 55 },
-    { n: tr("Sara"), r: "Sala", from: 50, w: 45 },
+    { n: tr("Sara"), r: tr("Sala"), from: 50, w: 45 },
     { n: tr("Luca"), r: tr("Consegne"), from: 62, w: 30 },
   ];
   return (

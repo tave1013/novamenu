@@ -67,7 +67,7 @@ export function SalaVisual() {
                 {(["libero", "prenotato", "seduto", "conto"] as TableState[]).map((k) => (
                   <span key={k} className="flex items-center gap-2 capitalize">
                     <span className={`h-3 w-3 rounded-[4px] border ${tableStyle[k]}`} />
-                    {k === "conto" ? tr("Al conto") : k}
+                    {{ libero: tr("libero"), prenotato: tr("prenotato"), seduto: tr("seduto"), conto: tr("Al conto") }[k]}
                   </span>
                 ))}
               </div>
@@ -337,9 +337,9 @@ export function ClientiVisual() {
           </div>
           <div className="mt-4 grid grid-cols-3 gap-2">
             {[
-              ["14", "visite"],
+              ["14", tr("visite")],
               [price("38 €"), tr("spesa media")],
-              ["Tav. 7", "preferito"],
+              [tr("Tav. 7"), tr("preferito")],
             ].map((k) => (
               <div key={k[1]} className="rounded-[12px] bg-mist p-2.5">
                 <p className="text-[16px] font-semibold tracking-[-0.02em] text-ink">{k[0]}</p>
@@ -527,9 +527,9 @@ export function StaffVisual() {
   const d = useDemo(stSteps(), { added: false, toast: null }, { restIndex: 1 });
   const people = [
     { n: tr("Marco"), r: tr("Titolare"), c: "bg-mist text-text" },
-    { n: tr("Sara"), r: "Sala", c: "bg-p-pink text-p-pink-ink" },
+    { n: tr("Sara"), r: tr("Sala"), c: "bg-p-pink text-p-pink-ink" },
     { n: tr("Luca"), r: tr("Cucina"), c: "bg-p-orange text-p-orange-ink" },
-    { n: tr("Anna"), r: "Sala", c: "bg-p-pink text-p-pink-ink" },
+    { n: tr("Anna"), r: tr("Sala"), c: "bg-p-pink text-p-pink-ink" },
   ];
   const grid = [
     [1, 1, 0, 1, 1, 1, 1],

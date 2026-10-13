@@ -282,7 +282,7 @@ export const sectorGuides: Omit<Guide, "slug">[] = [
     seo: {
       title: "Bakery pre-orders: sell more, waste less bread",
       description:
-        "How much bread a bakery has left over each month and how to cut it: pre-orders the evening before, morning collection slots, repeat orders and cakes with notice.",
+        "How much bread a bakery has left over and how to cut it: pre-orders the evening before, morning collection slots, repeat orders and cakes with notice.",
     },
     title: "Bakery: how to get bread pre-ordered in the evening and throw less away",
     description:
@@ -567,7 +567,7 @@ export const sectorGuides: Omit<Guide, "slug">[] = [
     seo: {
       title: "Café: 6 ways to raise your average spend",
       description:
-        "6 ideas to raise the average spend in your café or bar: the right menu at the right time, fixed-price combinations, a product of the day and a translated menu.",
+        "6 ideas to raise the average spend in your café: the right menu at the right time, fixed-price combinations, a product of the day and a translated menu.",
     },
     title: "Cafés and bars: 6 ways to raise your average spend from breakfast to aperitivo",
     description:

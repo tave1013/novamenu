@@ -179,9 +179,9 @@ export const sectors: Omit<Sector, "slug">[] = [
     icon: "beer",
     tone: "amber",
     seo: {
-      title: "Pub digital menu with beers on tap",
+      title: "Pub digital menu with beers on tap and events",
       description:
-        "A digital menu for pubs and beer halls: taps updated from your phone, happy hour that starts by itself, tables booked for match nights and events. Try it free.",
+        "A digital menu for pubs and beer halls: taps updated from your phone, happy hour that starts by itself, tables booked for match nights. Try it free.",
     },
     hero: {
       title: "New beers on tap, full evenings.",
@@ -264,7 +264,7 @@ export const sectors: Omit<Sector, "slug">[] = [
     seo: {
       title: "QR code digital menu for cafés and bars",
       description:
-        "A digital menu for cafés and bars: breakfast, lunch and aperitivo switch by themselves with a single QR code, translated for tourists. No reprints. Try it free.",
+        "A digital menu for cafés and bars: breakfast, lunch and aperitivo switch by themselves with a single QR code, translated for tourists. Try it free.",
     },
     hero: {
       title: "From breakfast to aperitivo, the menu changes by itself.",
@@ -344,7 +344,7 @@ export const sectors: Omit<Sector, "slug">[] = [
     seo: {
       title: "Digital menu for ice cream shops and gelaterias",
       description:
-        "A digital menu for ice cream shops: today's flavours updated in one tap, tubs and ice cream cakes ordered on WhatsApp with a collection day and time. Try it free.",
+        "A digital menu for ice cream shops: today's flavours updated, tubs and ice cream cakes ordered on WhatsApp with a collection day and time. Try it free.",
     },
     hero: {
       title: "Today's flavours, already on your customers' phones.",
@@ -421,9 +421,9 @@ export const sectors: Omit<Sector, "slug">[] = [
     icon: "wheat",
     tone: "amber",
     seo: {
-      title: "Online ordering for fresh pasta shops",
+      title: "Online ordering for fresh pasta shops, by weight",
       description:
-        "Online ordering for fresh pasta shops: pasta sold by weight with a collection day and time, a daily limit over the holidays and messages to regulars. Try it free.",
+        "Online ordering for fresh pasta shops: pasta sold by weight with a collection day and time, a daily limit over the holidays and messages to regulars.",
     },
     hero: {
       title: "At Christmas they order online. You roll the pasta.",

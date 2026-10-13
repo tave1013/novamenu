@@ -27,7 +27,7 @@ const rows = [];
 for (const file of pages.sort()) {
   const html = readFileSync(file, "utf8");
   const url = "/" + relative(root, file).replace(/index\.html$/, "");
-  if (url.startsWith("/404") || url.startsWith("/_")) continue;
+  if (url.startsWith("/404") || url.startsWith("/en/404") || url.startsWith("/_")) continue;
   const title = dec((html.match(/<title>([^<]*)<\/title>/) || [])[1] || "");
   const desc = meta(html, "name", "description");
   const h1 = (html.match(/<h1[\s>]/g) || []).length;
@@ -52,7 +52,8 @@ for (const file of pages.sort()) {
   if (og.length) notes.push(flag(`Open Graph senza ${og.join(", ")}`));
   if (tw.length) notes.push(flag(`Twitter senza ${tw.join(", ")}`));
   if (ldError) notes.push(flag(`JSON-LD: ${ldError}`));
-  if (!/<html[^>]* lang="it"/.test(html)) notes.push(flag("lang diverso da it"));
+  const expected = url.startsWith("/en/") ? "en" : "it";
+  if (!new RegExp(`<html[^>]* lang="${expected}"`).test(html)) notes.push(flag(`lang diverso da ${expected}`));
   if (html.includes("—")) notes.push(flag("contiene una lineetta lunga"));
   if (seenT.has(title)) notes.push(flag(`title uguale a ${seenT.get(title)}`)); else seenT.set(title, url);
   if (seenD.has(desc)) notes.push(flag(`description uguale a ${seenD.get(desc)}`)); else seenD.set(desc, url);

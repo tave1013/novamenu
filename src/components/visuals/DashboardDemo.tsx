@@ -164,8 +164,8 @@ function Scene({ state, compact = false }: { state: S; compact?: boolean }) {
 function Oggi({ compact }: { compact: boolean }) {
   const kpi = [
     { l: tr("Coperti stasera"), v: "48", s: "su 60" },
-    { l: tr("Ordini asporto"), v: "12", s: "+3 su sabato scorso" },
-    { l: tr("Da confermare"), v: "1", s: "prenotazione", tone: "pink" },
+    { l: tr("Ordini asporto"), v: "12", s: tr("+3 su sabato scorso") },
+    { l: tr("Da confermare"), v: "1", s: tr("prenotazione"), tone: "pink" },
   ];
   return (
     <div>
@@ -199,7 +199,7 @@ function Oggi({ compact }: { compact: boolean }) {
             <span className="w-10 font-medium tabular-nums text-ink">{r[0]}</span>
             <span className="flex-1 truncate text-ink">{r[1]}</span>
             {!compact && <span className="text-muted">{r[2]}</span>}
-            <span className={`rounded-full px-2 py-0.5 text-[11px] ${r[3] === "Da confermare" ? "bg-p-pink text-p-pink-ink" : "bg-mist text-muted"}`}>
+            <span className={`rounded-full px-2 py-0.5 text-[11px] ${r[3] === tr("Da confermare") ? "bg-p-pink text-p-pink-ink" : "bg-mist text-muted"}`}>
               {r[3]}
             </span>
           </li>
@@ -218,11 +218,11 @@ function Prenotazioni({ state, compact }: { state: S; compact: boolean }) {
           <span
             key={d}
             className={`flex h-12 min-w-[56px] flex-col items-center justify-center rounded-[12px] text-[11px] ${
-              d === "Sab 17" ? "bg-black text-white" : "border border-line-soft bg-white text-muted"
+              d === tr("Sab 17") ? "bg-black text-white" : "border border-line-soft bg-white text-muted"
             }`}
           >
             <span>{d.split(" ")[0]}</span>
-            <span className={`text-[15px] font-semibold ${d === "Sab 17" ? "text-white" : "text-ink"}`}>{d.split(" ")[1]}</span>
+            <span className={`text-[15px] font-semibold ${d === tr("Sab 17") ? "text-white" : "text-ink"}`}>{d.split(" ")[1]}</span>
           </span>
         ))}
       </div>

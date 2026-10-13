@@ -6,9 +6,9 @@ const baseGuides: Omit<Guide, "slug">[] = [
   {
     id: "come-creare-menu-digitale-qr",
     seo: {
-      title: "How to create a QR code digital menu",
+      title: "How to create a QR code menu for your restaurant",
       description:
-        "How to create a QR code digital menu for your restaurant, starting from your paper menu: what you need, how to organise it, where to put the QR code and what to avoid.",
+        "How to create a QR code digital menu starting from your paper menu: what you need, how to organise it, where to put the QR code and what to avoid.",
     },
     title: "How to create a QR code digital menu for your venue",
     description:
@@ -108,7 +108,7 @@ const baseGuides: Omit<Guide, "slug">[] = [
     seo: {
       title: "Allergens on your menu: the 14 to declare",
       description:
-        "Allergens on a restaurant menu, digital or paper: the 14 listed in EU Regulation 1169/2011, how to show them in a restaurant or pizzeria and how to keep them clear.",
+        "Allergens on a restaurant menu, digital or paper: the 14 listed in EU Regulation 1169/2011 and how to show them clearly in a restaurant or pizzeria.",
     },
     title: "Allergens on your menu: the 14 you must declare and how to show them",
     description:

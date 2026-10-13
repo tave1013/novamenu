@@ -12,9 +12,9 @@ export const features: Omit<Feature, "slug">[] = [
     plan: "Base",
     visual: "menu",
     seo: {
-      title: "QR code digital menu for restaurants",
+      title: "QR code digital menu for restaurants and cafés",
       description:
-        "A QR code digital menu for your restaurant: change a price or hide a sold-out dish from your phone, no reprinting. Allergens included. Try it free for 14 days.",
+        "A QR code digital menu for your restaurant: change a price or hide a sold-out dish from your phone, no reprinting. Allergens included. Try it free.",
     },
     hero: {
       title: "Your venue's menu, always right.",
@@ -201,7 +201,7 @@ export const features: Omit<Feature, "slug">[] = [
     seo: {
       title: "Timed menus: lunch, aperitivo and dinner",
       description:
-        "Timed menus for cafés and restaurants: lunch, aperitivo and dinner switch by themselves by time and day, with a single QR code. Nothing to remember. Try it free.",
+        "Timed menus for cafés and restaurants: lunch, aperitivo and dinner switch by themselves by time and day, with a single QR code. Try it free.",
     },
     hero: {
       title: "Lunch at midday. At six, aperitivo.",
@@ -389,9 +389,9 @@ export const features: Omit<Feature, "slug">[] = [
     plan: "Pro",
     visual: "ordini",
     seo: {
-      title: "Restaurant online ordering on WhatsApp",
+      title: "WhatsApp restaurant ordering with no commission",
       description:
-        "Restaurant online ordering on WhatsApp from your digital menu: takeaway orders arrive in writing, with collection time and total. Zero commission. Try it free.",
+        "Restaurant online ordering on WhatsApp from your digital menu: takeaway orders arrive in writing, with collection time. Zero commission. Try it free.",
     },
     hero: {
       title: "Takeaway orders on WhatsApp. Zero commission.",
@@ -580,9 +580,9 @@ export const features: Omit<Feature, "slug">[] = [
     plan: "Premium",
     visual: "staff",
     seo: {
-      title: "Restaurant staff rota and team logins",
+      title: "Restaurant staff rota and logins for your team",
       description:
-        "A restaurant staff rota for floor and kitchen that everyone sees on their phone, and a login for each team member with the right permissions. No shared passwords.",
+        "A restaurant staff rota that everyone sees on their phone, and a login for each team member with the right permissions. No shared passwords.",
     },
     hero: {
       title: "The team always knows who's working and when.",
@@ -623,7 +623,7 @@ export const features: Omit<Feature, "slug">[] = [
     seo: {
       title: "Voice assistant for restaurant management",
       description:
-        "A voice assistant for your restaurant: send a voice note on Telegram and it updates the menu, opening hours and bookings once you confirm. Try it free for 14 days.",
+        "A voice assistant for your restaurant: send a voice note on Telegram and it updates the menu, opening hours and bookings once you confirm. Try it free.",
     },
     hero: {
       title: "Say it with your voice. Your venue updates itself.",
