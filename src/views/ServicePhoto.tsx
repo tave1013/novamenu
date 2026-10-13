@@ -16,6 +16,9 @@ const description = (locale: Locale) =>
 export const meta = (locale: Locale): Metadata =>
   pageMeta({ locale, page: "service", id: "foto-e-video", title: t(locale, "Servizio foto e video per ristoranti e pizzerie"), description: description(locale) });
 
+/** La sezione "Per i momenti che contano" è nascosta per ora. */
+const showEvents: boolean = false;
+
 const faq = () => ([
   { q: tr("Quante foto ricevo dopo il servizio?"), a: tr("Dipende dal pacchetto che scegli. In ogni caso ti consegniamo una raccolta di immagini varie, pensate per coprire tutti gli usi: menu, post, storie, sito e locandine. Avere contenuti diversi è quello che tiene viva la tua comunicazione nel tempo.") },
   { q: tr("In quanto tempo consegnate le foto?"), a: tr("Di solito entro due settimane dallo shooting. Nei periodi più intensi, al massimo entro un mese. Ricevi tutto in digitale, ottimizzato e pronto da pubblicare.") },
@@ -137,7 +140,8 @@ export default function FotoVideoPage() {
         text={tr("Pizze, birre, dolci, sale e persone al lavoro: ogni scatto pensato per far venire voglia di entrare.")}
       />
 
-      {/* Eventi */}
+      {/* Eventi: sezione nascosta per ora, basta mettere showEvents a true per farla tornare */}
+      {showEvents && (
       <section className="py-16 md:py-24">
         <div className="wrap">
           <div className="grid items-center gap-10 overflow-hidden rounded-[28px] bg-forest p-6 md:p-12 lg:grid-cols-[1fr_1fr]">
@@ -165,6 +169,7 @@ export default function FotoVideoPage() {
           </div>
         </div>
       </section>
+      )}
 
       {/* Pacchetti */}
       <section id="pacchetti" className="scroll-mt-24 py-14 md:py-20">
