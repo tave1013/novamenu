@@ -42,7 +42,7 @@ export function PhotoSlot({ src, alt, label, pos = "50% 50%", className = "" }: 
 }
 
 /** Riga con un elemento visivo (foto o grafica) da un lato e il testo dall'altro. */
-export function ArtSplit({ visual, side = "left", eyebrow, title, text, points }: { visual: React.ReactNode; side?: "left" | "right"; eyebrow?: string; title: React.ReactNode; text: string; points?: string[] }) {
+export function ArtSplit({ visual, side = "left", eyebrow, title, text, points, children }: { visual: React.ReactNode; side?: "left" | "right"; eyebrow?: string; title: React.ReactNode; text: string; points?: string[]; children?: React.ReactNode }) {
   return (
     <div className="wrap grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
       <Reveal className={`order-2 min-w-0 ${side === "left" ? "lg:order-1" : "lg:order-2"}`}>{visual}</Reveal>
@@ -60,6 +60,7 @@ export function ArtSplit({ visual, side = "left", eyebrow, title, text, points }
             ))}
           </ul>
         )}
+        {children}
       </Reveal>
     </div>
   );

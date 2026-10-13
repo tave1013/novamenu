@@ -15,6 +15,7 @@ import { Pricing } from "@/components/Pricing";
 import { Reviews } from "@/components/Reviews";
 import { FeatureComposite } from "@/components/StaticArt";
 import { PhotoSplit } from "@/components/PhotoReveal";
+import { ArtSplit, PhotoSlot } from "@/components/Servizi";
 import { featureById, getGeneralFaq, getSectors } from "@/content";
 import { to, lp } from "@/i18n/link";
 
@@ -245,13 +246,30 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Servizio extra: foto e video */}
+      <section aria-label={tr("Foto e video per il tuo locale")} className="border-t border-line-soft py-20 md:py-26">
+        <ArtSplit
+          side="right"
+          visual={<PhotoSlot src="/images/servizi/home-shooting.webp" alt={tr("Fotografo che scatta una pizza appena sfornata su un set allestito nel locale")} label={tr("Foto home · Shooting nel locale")} className="aspect-[4/3] rounded-[24px]" />}
+          eyebrow={tr("Servizio extra")}
+          title={<>{tr("Ti servono foto e video")}{" "}<span className="hl">{tr("professionali")}</span>{" "}{tr("per il tuo locale?")}</>}
+          text={tr("Organizziamo shooting su misura: il nostro team viene direttamente nel tuo locale e realizza le foto dei piatti per il menu, video brevi per i social e contenuti pronti da pubblicare. È un servizio a parte, lo aggiungi solo se ti serve.")}
+          points={[tr("Pacchetti foto per i piatti del tuo menu"), tr("Video brevi per Instagram e TikTok"), tr("Contenuti pronti da pubblicare sui social")]}
+        >
+          <Link href={lp("/servizi/foto-e-video/")} className="link-arrow mt-6 min-h-11 text-[15px]">
+            {tr("Guarda i pacchetti o chiedi un preventivo")}
+            <Icon name="arrowRight" size={15} stroke={2} />
+          </Link>
+        </ArtSplit>
+      </section>
+
       {/* Al fianco dei piccoli locali */}
       <section aria-label={tr("Al fianco dei piccoli locali")} className="border-t border-line-soft pb-10 pt-16 md:py-26">
         <PhotoSplit
           src="/images/settori/pasticceria.webp"
           alt={tr("Pasticcera sorridente nel suo laboratorio, con un dolce alla frutta in mano accanto alla vetrina")}
           pos="50% 30%"
-          side="right"
+          side="left"
           eyebrow={tr("Perché esistiamo")}
           title={<>{tr("Al fianco dei")}{" "}<span className="hl">{tr("piccoli")}</span>{" "}{tr("locali.")}</>}
           text={tr("Una nova è una stella che esiste già e diventa più luminosa. È quello che vogliamo per la tua pizzeria, il tuo bar, la tua bottega: farti trovare online, lavorare con meno telefonate e far tornare i clienti.")}
