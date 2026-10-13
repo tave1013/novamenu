@@ -3,11 +3,12 @@ import Link from "next/link";
 import { Icon } from "@/components/Icon";
 import { Breadcrumbs } from "@/components/ui";
 import { services } from "@/content/services";
+import { pageMeta } from "@/config/seo";
 
-const title = "Servizi per ristoranti: foto, video e presenza online | NovaMenu";
+const title = "Servizi per ristoranti: foto e presenza online";
 const description = "Foto e video professionali per il tuo locale e gestione della presenza online su Google, TripAdvisor e social. Servizi pensati per la ristorazione.";
 
-export const metadata: Metadata = { title: { absolute: title }, description, alternates: { canonical: "/servizi/" }, openGraph: { title, description, url: "/servizi/" } };
+export const metadata: Metadata = pageMeta({ title, description, path: "/servizi/" });
 
 export default function ServiziPage() {
   return (

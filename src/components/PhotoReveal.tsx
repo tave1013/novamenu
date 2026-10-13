@@ -2,6 +2,9 @@
 
 import { useEffect, useRef } from "react";
 
+/** Ogni foto ha una versione leggera (nome-sm.webp, 800 px) per gli schermi piccoli. */
+const srcSet = (src: string) => `${src.replace(/\.webp$/, "-sm.webp")} 800w, ${src} 1800w`;
+
 /**
  * Collega lo scorrimento della pagina a un riquadro con foto: il riquadro parte un po' più stretto
  * e si apre mentre entra nello schermo, la foto dentro si avvicina appena (zoom leggero, per non perdere qualità).
@@ -65,6 +68,8 @@ export function PhotoReveal({ src, alt, caption, eyebrow, pos = "50% 50%" }: { s
         <img
           ref={img}
           src={src}
+          srcSet={srcSet(src)}
+          sizes="(min-width: 1200px) 1136px, 92vw"
           alt={alt}
           loading="lazy"
           decoding="async"
@@ -120,6 +125,8 @@ export function PhotoSplit({
           <img
             ref={img}
             src={src}
+            srcSet={srcSet(src)}
+            sizes="(min-width: 1024px) 560px, 92vw"
             alt={alt}
             loading="lazy"
             decoding="async"

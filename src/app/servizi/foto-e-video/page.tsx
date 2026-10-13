@@ -5,17 +5,13 @@ import { Breadcrumbs, Faq, Hl, JsonLd } from "@/components/ui";
 import { Reveal } from "@/components/Reveal";
 import { ArtSplit, Mosaic4, Packages, PhotoSlot, Portfolio, SectionHead, Steps } from "@/components/Servizi";
 import { site } from "@/config/site";
+import { pageMeta } from "@/config/seo";
 
-const title = "Foto e video per ristoranti e pizzerie | NovaMenu";
+const title = "Servizio foto e video per ristoranti e pizzerie";
 const description =
   "Foto professionali dei tuoi piatti e video per i social, scattati nel tuo locale. Pronti per menu digitale, app di consegna, Google e Instagram.";
 
-export const metadata: Metadata = {
-  title: { absolute: title },
-  description,
-  alternates: { canonical: "/servizi/foto-e-video/" },
-  openGraph: { title, description, url: "/servizi/foto-e-video/" },
-};
+export const metadata: Metadata = pageMeta({ title, description, path: "/servizi/foto-e-video/" });
 
 const faq = [
   { q: "Devo chiudere il locale per lo shooting?", a: "No. Di solito lavoriamo nelle ore di chiusura o a metà pomeriggio, quando la cucina è più tranquilla, e portiamo noi luci e sfondi." },

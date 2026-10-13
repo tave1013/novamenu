@@ -5,17 +5,13 @@ import { Breadcrumbs, Faq, Hl, JsonLd } from "@/components/ui";
 import { Reveal } from "@/components/Reveal";
 import { ArtSplit, Packages, SectionHead, Steps } from "@/components/Servizi";
 import { site } from "@/config/site";
+import { pageMeta } from "@/config/seo";
 
-const title = "Gestione Google Business e TripAdvisor per ristoranti | NovaMenu";
+const title = "Gestione scheda Google e TripAdvisor per locali";
 const description =
-  "Ci occupiamo della scheda Google, di TripAdvisor e dei tuoi canali online: orari giusti, foto curate, risposte alle recensioni. Più visibilità per il tuo locale.";
+  "Ci occupiamo della scheda Google, di TripAdvisor e dei tuoi canali online: orari giusti, foto curate, risposte alle recensioni. Più visibilità per il locale.";
 
-export const metadata: Metadata = {
-  title: { absolute: title },
-  description,
-  alternates: { canonical: "/servizi/presenza-online/" },
-  openGraph: { title, description, url: "/servizi/presenza-online/" },
-};
+export const metadata: Metadata = pageMeta({ title, description, path: "/servizi/presenza-online/" });
 
 const faq = [
   { q: "Devo darvi le mie password?", a: "No. Su Google ci aggiungi come gestori della tua scheda, e lo stesso facciamo sulle altre piattaforme quando lo permettono. Puoi toglierci l'accesso quando vuoi." },

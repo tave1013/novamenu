@@ -53,7 +53,7 @@ export function FeatureComposite({
           </span>
         </div>
         <ul className="px-4 py-1.5">
-          {points.slice(0, 4).map((p, i) => (
+          {points.slice(0, 4).map((p) => (
             <li key={p} className="flex items-center gap-3 border-b border-line-soft py-3 text-[13px] leading-snug text-text last:border-0">
               <span className="min-w-0 flex-1">{p}</span>
               <span data-on="true" className="toggle toggle-sm" />
@@ -79,29 +79,6 @@ export function FeatureComposite({
           <Icon name="check" size={13} stroke={2.6} className="text-[#16a34a]" />
           Dal piano {feature.plan}, senza commissioni
         </span>
-      </div>
-    </div>
-  );
-}
-
-/** Piccola illustrazione statica in cima alle schede delle funzionalità. */
-export function MiniArt({ feature }: { feature: Feature }) {
-  return (
-    <div className="relative flex h-[96px] items-center justify-center overflow-hidden rounded-[12px] sm:h-[132px]" style={{ backgroundImage: toneGlow[feature.tone], backgroundColor: "#fbfbf9" }}>
-      <div className="w-[84%] max-w-[230px] rounded-[12px] border border-line bg-white p-2 shadow-[0_16px_30px_-20px_rgba(0,0,0,.3)] sm:w-[78%] sm:p-3">
-        <div className="flex items-center gap-2.5">
-          <IconTile name={feature.icon} tone={feature.tone} size={28} radius={8} />
-          <span className="flex-1">
-            <span className="block h-2 w-[70%] rounded-full bg-[#e4e4e7]" />
-            <span className="mt-1.5 block h-2 w-[45%] rounded-full bg-[#f0f0ee]" />
-          </span>
-          <span data-on="true" className="toggle toggle-sm" />
-        </div>
-        <div className="mt-2.5 hidden gap-1.5 sm:flex">
-          <span className="h-5 w-12 rounded-full bg-mist" />
-          <span className="h-5 w-16 rounded-full bg-mist" />
-          <span className="h-5 w-8 rounded-full bg-ink" />
-        </div>
       </div>
     </div>
   );

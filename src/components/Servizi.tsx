@@ -9,10 +9,13 @@ const exists = (src?: string) => !!src && fs.existsSync(path.join(process.cwd(),
 /** Foto se il file esiste in public, altrimenti un segnaposto con il numero e la descrizione della foto da inserire. */
 export function PhotoSlot({ src, alt, label, pos = "50% 50%", className = "" }: { src?: string; alt: string; label?: string; pos?: string; className?: string }) {
   if (exists(src)) {
+    // Se c'è la versione leggera (nome-sm.webp) i telefoni scaricano quella.
+    const small = src!.replace(/\.webp$/, "-sm.webp");
+    const set = exists(small) ? { srcSet: `${small} 800w, ${src} 1800w`, sizes: "(min-width: 1024px) 560px, 92vw" } : {};
     return (
       <div className={`relative overflow-hidden bg-mist ${className}`}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={src} alt={alt} loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" style={{ objectPosition: pos }} />
+        <img src={src} {...set} alt={alt} loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" style={{ objectPosition: pos }} />
       </div>
     );
   }
