@@ -685,7 +685,7 @@ const map: Record<string, (p: { f: Feature }) => React.JSX.Element> = {
 
 /** Grafica statica accanto al titolo di ogni pagina funzionalità. */
 export function HeroArt({ feature }: { feature: Feature }) {
-  const C = map[feature.slug];
+  const C = map[feature.id];
   return C ? <C f={feature} /> : null;
 }
 

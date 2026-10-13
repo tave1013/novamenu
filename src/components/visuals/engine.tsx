@@ -64,6 +64,36 @@ export function useDemo<S extends object>(steps: Step<S>[], initial: S, opts: { 
   return { rootRef, i: index, step: steps[index], state, running, reduced };
 }
 
+let legacyZoom: boolean | null = null;
+/**
+ * Le grafiche dei telefoni usano la proprietà CSS zoom. I browser recenti restituiscono le misure
+ * di un elemento già ingrandite o ridotte; i Safari meno recenti (anche su iPad e iPhone) le restituiscono
+ * divise per lo zoom. Qui si scopre una volta sola come si comporta il browser.
+ */
+function legacyZoomRects(): boolean {
+  if (legacyZoom !== null) return legacyZoom;
+  const outer = document.createElement("div");
+  outer.style.cssText = "position:absolute;left:-9999px;top:0;visibility:hidden;zoom:2";
+  const inner = document.createElement("div");
+  inner.style.cssText = "width:100px;height:10px";
+  outer.appendChild(inner);
+  document.body.appendChild(outer);
+  legacyZoom = inner.getBoundingClientRect().width < 150;
+  outer.remove();
+  return legacyZoom;
+}
+
+/** Zoom complessivo applicato a un elemento, il suo e quello di tutti gli elementi che lo contengono. */
+function totalZoom(el: Element | null): number {
+  let z = 1;
+  for (let n = el; n; n = n.parentElement) {
+    const raw = getComputedStyle(n).getPropertyValue("zoom");
+    const v = parseFloat(raw) / (raw.trim().endsWith("%") ? 100 : 1);
+    if (v > 0) z *= v;
+  }
+  return z;
+}
+
 /** Cursore che si sposta sull'elemento con data-t uguale a target e simula il clic. */
 export function Cursor({
   rootRef,
@@ -89,6 +119,13 @@ export function Cursor({
     if (!el) return;
     const r = root.getBoundingClientRect();
     const b = el.getBoundingClientRect();
+    if (legacyZoomRects()) {
+      // Safari meno recenti: le misure sono divise per lo zoom dell'elemento, quindi si riportano prima allo schermo.
+      const zr = totalZoom(root);
+      const zb = totalZoom(el);
+      setPos({ x: ((b.left + b.width * 0.55) * zb - r.left * zr) / zr, y: ((b.top + b.height * 0.6) * zb - r.top * zr) / zr });
+      return;
+    }
     const sx = root.offsetWidth ? r.width / root.offsetWidth : 1;
     const sy = root.offsetHeight ? r.height / root.offsetHeight : 1;
     setPos({ x: (b.left - r.left + b.width * 0.55) / sx, y: (b.top - r.top + b.height * 0.6) / sy });
