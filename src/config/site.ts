@@ -7,7 +7,7 @@ export const site = {
   /** Frase breve usata nei titoli e nelle anteprime social. */
   tagline: "Menu digitale, ordini e prenotazioni per il tuo locale",
   description:
-    "Menu digitale con QR, ordini da asporto su WhatsApp, prenotazioni, sala e clienti in un'unica piattaforma. Senza commissioni, in italiano, pronta in un pomeriggio.",
+    "Menu digitale con QR, ordini da asporto su WhatsApp e prenotazioni per il tuo locale. Nessuna commissione, pronto in un pomeriggio. Prova gratis 14 giorni.",
   url: (process.env.NEXT_PUBLIC_SITE_URL || "https://novamenu.eu").replace(/\/$/, ""),
   appUrl: (process.env.NEXT_PUBLIC_APP_URL || "https://app.novamenu.eu").replace(/\/$/, ""),
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP || "393000000000",

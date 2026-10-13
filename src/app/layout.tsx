@@ -8,6 +8,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { JsonLd } from "@/components/ui";
+import { ogImage } from "@/config/seo";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -25,9 +26,9 @@ export const metadata: Metadata = {
     title: `${site.name} | ${site.tagline}`,
     description: site.description,
     url: "/",
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: site.name }],
+    images: [ogImage],
   },
-  twitter: { card: "summary_large_image", images: ["/og.png"] },
+  twitter: { card: "summary_large_image", title: `${site.name} | ${site.tagline}`, description: site.description, images: [ogImage.url] },
   icons: { icon: "/icon.svg", apple: "/apple-icon.png" },
   formatDetection: { telephone: false },
 };
@@ -57,17 +58,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             {
               "@context": "https://schema.org",
               "@type": "Organization",
+              "@id": `${site.url}/#organization`,
               name: site.name,
               url: site.url,
-              logo: `${site.url}/apple-icon.png`,
+              logo: { "@type": "ImageObject", url: `${site.url}/apple-icon.png` },
               email: site.email,
+              description: site.description,
             },
             {
               "@context": "https://schema.org",
               "@type": "WebSite",
+              "@id": `${site.url}/#website`,
               name: site.name,
               url: site.url,
               inLanguage: "it-IT",
+              publisher: { "@id": `${site.url}/#organization` },
             },
           ]}
         />

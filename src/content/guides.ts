@@ -5,6 +5,8 @@ export type Guide = {
   slug: string;
   title: string;
   description: string;
+  /** Titolo e descrizione per i motori di ricerca, più corti di quelli mostrati nella pagina. */
+  seo?: { title: string; description: string };
   date: string;
   readMinutes: number;
   related: string[];
@@ -18,6 +20,11 @@ export type Guide = {
 const baseGuides: Guide[] = [
   {
     slug: "come-creare-menu-digitale-qr",
+    seo: {
+      title: "Come creare un menu digitale con QR code",
+      description:
+        "Come creare un menu digitale con QR code partendo dal menu di carta: cosa serve, come organizzarlo, dove mettere il QR e gli errori da evitare. Guida pratica.",
+    },
     title: "Come creare un menu digitale con QR code per il tuo locale",
     description:
       "Guida pratica per passare dal menu cartaceo al menu digitale con QR code: cosa serve, come organizzarlo, dove mettere il QR e gli errori da evitare.",
@@ -113,6 +120,11 @@ const baseGuides: Guide[] = [
   },
   {
     slug: "allergeni-nel-menu",
+    seo: {
+      title: "Allergeni nel menu: i 14 da indicare e come",
+      description:
+        "Allergeni nel menu digitale e di carta: quali sono i 14 del Regolamento UE 1169/2011, come indicarli in ristorante o pizzeria e come renderli chiari.",
+    },
     title: "Allergeni nel menu: quali sono i 14 da indicare e come mostrarli",
     description:
       "I 14 allergeni previsti dal Regolamento UE 1169/2011, come indicarli nel menu del ristorante o della pizzeria e come renderli chiari anche nel menu digitale.",
@@ -202,6 +214,11 @@ const baseGuides: Guide[] = [
   },
   {
     slug: "ordini-asporto-whatsapp-senza-commissioni",
+    seo: {
+      title: "Ordini da asporto su WhatsApp: come organizzarli",
+      description:
+        "Come ricevere ordini da asporto su WhatsApp con orario di ritiro e senza commissioni alle app di consegna. Consigli per pizzerie e ristoranti.",
+    },
     title: "Ordini da asporto su WhatsApp senza commissioni: come organizzarli",
     description:
       "Come ricevere ordini da asporto su WhatsApp in modo ordinato, con orario di ritiro e senza pagare commissioni alle app di delivery. Consigli pratici per pizzerie e ristoranti.",
@@ -279,6 +296,11 @@ const baseGuides: Guide[] = [
   },
   {
     slug: "ridurre-no-show-ristorante",
+    seo: {
+      title: "Come ridurre i tavoli vuoti al ristorante",
+      description:
+        "5 metodi concreti per ridurre le prenotazioni non rispettate al ristorante: promemoria su WhatsApp, disdetta facile, lista d'attesa e conferma dei gruppi.",
+    },
     title: "Come ridurre i tavoli vuoti per le prenotazioni non rispettate",
     description:
       "Cinque metodi concreti per ridurre i no-show al ristorante: promemoria su WhatsApp, disdetta facile, lista d'attesa, conferma per i gruppi e storico dei clienti.",

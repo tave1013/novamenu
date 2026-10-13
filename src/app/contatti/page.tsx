@@ -4,12 +4,13 @@ import { site, waLink } from "@/config/site";
 import { Breadcrumbs } from "@/components/ui";
 import { LeadForm } from "@/components/LeadForm";
 import { Icon } from "@/components/Icon";
+import { pageMeta } from "@/config/seo";
 
-export const metadata: Metadata = {
-  title: "Contatti",
-  description: `Scrivi al team di ${site.name} su WhatsApp o per email. Rispondiamo in italiano, di solito in giornata.`,
-  alternates: { canonical: "/contatti/" },
-};
+export const metadata: Metadata = pageMeta({
+  title: "Contatti: scrivici su WhatsApp o per email",
+  description: `Contatta il team di ${site.name} su WhatsApp o per email: ti risponde una persona, in italiano, di solito in giornata. Oppure prenota una demo di 20 minuti.`,
+  path: "/contatti/",
+});
 
 export default function ContattiPage() {
   const ways = [

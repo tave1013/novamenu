@@ -3,6 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { featureBySlug, features } from "@/content/features";
 import { signupUrl } from "@/config/site";
+import { pageMeta } from "@/config/seo";
+import { sectors } from "@/content/sectors";
 import { Icon, IconTile, toneClass } from "@/components/Icon";
 import { benefitIcons, toneGlow } from "@/components/StaticArt";
 import { HeroArt } from "@/components/HeroArt";
@@ -34,12 +36,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const f = featureBySlug(slug);
   if (!f) return {};
-  return {
-    title: f.seo.title,
-    description: f.seo.description,
-    alternates: { canonical: `/funzionalita/${f.slug}/` },
-    openGraph: { title: f.seo.title, description: f.seo.description, url: `/funzionalita/${f.slug}/` },
-  };
+  return pageMeta({ title: f.seo.title, description: f.seo.description, path: `/funzionalita/${f.slug}/` });
 }
 
 export default async function FeaturePage({ params }: { params: Promise<{ slug: string }> }) {
@@ -49,6 +46,9 @@ export default async function FeaturePage({ params }: { params: Promise<{ slug: 
   const related = f.related.map((s) => featureBySlug(s)!).filter(Boolean);
   const idx = features.findIndex((x) => x.slug === f.slug);
   const next = features[(idx + 1) % features.length];
+  // I settori che usano di più questa funzionalità; se nessuno la cita, i primi tre.
+  const usedBy = sectors.filter((s) => s.uses.some((u) => u.feature === f.slug));
+  const forSectors = (usedBy.length ? usedBy : sectors).slice(0, 4);
 
   return (
     <>
@@ -207,6 +207,24 @@ export default async function FeaturePage({ params }: { params: Promise<{ slug: 
                 <Icon name="arrowRight" size={16} stroke={2} className="mt-1 text-faint transition-transform group-hover:translate-x-0.5 group-hover:text-ink" />
               </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Settori che la usano di più */}
+      <section className="pb-20 md:pb-24">
+        <div className="wrap">
+          <h2 className="h-block">Chi la usa di più</h2>
+          <div className="mt-6 flex flex-wrap gap-2">
+            {forSectors.map((s) => (
+              <Link key={s.slug} href={`/settori/${s.slug}/`} className="btn btn-light gap-2.5">
+                <Icon name={s.icon} size={17} />
+                {s.name}
+              </Link>
+            ))}
+            <Link href="/settori/" className="btn btn-light">
+              Tutti i settori
+            </Link>
           </div>
         </div>
       </section>

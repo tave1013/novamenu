@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { sectorBySlug, sectors } from "@/content/sectors";
 import { featureBySlug } from "@/content/features";
 import { signupUrl } from "@/config/site";
+import { pageMeta } from "@/config/seo";
 import { Icon, IconTile } from "@/components/Icon";
 import { Breadcrumbs, Check, CtaBand, Faq, Hl } from "@/components/ui";
 import { Reveal } from "@/components/Reveal";
@@ -18,12 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const s = sectorBySlug(slug);
   if (!s) return {};
-  return {
-    title: s.seo.title,
-    description: s.seo.description,
-    alternates: { canonical: `/settori/${s.slug}/` },
-    openGraph: { title: s.seo.title, description: s.seo.description, url: `/settori/${s.slug}/` },
-  };
+  return pageMeta({ title: s.seo.title, description: s.seo.description, path: `/settori/${s.slug}/` });
 }
 
 export default async function SectorPage({ params }: { params: Promise<{ slug: string }> }) {

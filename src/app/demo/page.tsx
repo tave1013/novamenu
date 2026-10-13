@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { DemoAside, DemoBooking } from "@/components/DemoBooking";
+import { pageMeta } from "@/config/seo";
 
-export const metadata: Metadata = {
-  title: "Prenota una demo gratuita di 20 minuti",
+export const metadata: Metadata = pageMeta({
+  title: "Demo gratuita del menu digitale, in 20 minuti",
   description:
-    "Una videochiamata di 20 minuti: carichiamo il menu vero del tuo locale e ti mostriamo come lavorerebbero ordini e prenotazioni. Senza impegno, il menu resta a te.",
-  alternates: { canonical: "/demo/" },
-};
+    "Demo gratuita di 20 minuti: carichiamo il menu vero del tuo locale e ti mostriamo come arriverebbero ordini e prenotazioni. Senza impegno, il menu resta a te.",
+  path: "/demo/",
+});
 
 export default function DemoPage() {
   return (

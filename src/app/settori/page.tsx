@@ -3,13 +3,14 @@ import Link from "next/link";
 import { sectors } from "@/content/sectors";
 import { Icon, IconTile } from "@/components/Icon";
 import { Breadcrumbs, CtaBand } from "@/components/ui";
+import { pageMeta } from "@/config/seo";
 
-export const metadata: Metadata = {
-  title: "Per chi è: pizzerie, ristoranti, bar, pub e botteghe del cibo",
+export const metadata: Metadata = pageMeta({
+  title: "Software per pizzerie, ristoranti, bar e botteghe",
   description:
-    "Menu digitale, ordini, prenotazioni e clienti per pizzerie, ristoranti, pub, bar, gelaterie, pastifici, panetterie e gastronomie.",
-  alternates: { canonical: "/settori/" },
-};
+    "Software per pizzerie, ristoranti, pub, bar, gelaterie, pastifici, panetterie e gastronomie: menu digitale, ordini e prenotazioni. Prova gratis 14 giorni.",
+  path: "/settori/",
+});
 
 export default function SettoriPage() {
   return (

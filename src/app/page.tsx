@@ -3,6 +3,7 @@ import { featureBySlug } from "@/content/features";
 import { sectors } from "@/content/sectors";
 import { generalFaq } from "@/content/plans";
 import { signupUrl, site } from "@/config/site";
+import { pageMeta, softwareApplicationLd } from "@/config/seo";
 import { Icon, IconTile, toneClass } from "@/components/Icon";
 import { Check, CtaBand, Faq, JsonLd } from "@/components/ui";
 import { Reveal } from "@/components/Reveal";
@@ -15,10 +16,12 @@ import { Reviews } from "@/components/Reviews";
 import { FeatureComposite } from "@/components/StaticArt";
 import { PhotoSplit } from "@/components/PhotoReveal";
 
-export const metadata = {
-  title: { absolute: `${site.name} | Menu digitale, ordini su WhatsApp e prenotazioni per il tuo locale` },
-  alternates: { canonical: "/" },
-};
+export const metadata = pageMeta({
+  title: `Menu digitale, ordini e prenotazioni per locali | ${site.name}`,
+  description: site.description,
+  path: "/",
+  absolute: true,
+});
 
 /** Le funzionalità raccontate in grande, con animazione e testo alternati. */
 const spotlight = [
@@ -34,7 +37,7 @@ const spotlight = [
     still: true,
     tag: "Ordini da asporto",
     title: "Il cliente ordina. Tu ricevi tutto scritto su WhatsApp.",
-    text: "Carrello, orario di ritiro e totale arrivano sul numero del locale, già in ordine. Senza commissioni e senza telefonate nel pieno del servizio.",
+    text: "Il cliente sceglie dal menu e l'ordine arriva sul WhatsApp del locale con piatti, orario di ritiro e totale. Senza commissioni e senza telefonate nel pieno del servizio.",
     points: ["Fasce di ritiro con limite di ordini", "Pausa ordini con un tocco", "0% di commissioni, l'incasso è tutto tuo"],
   },
   {
@@ -56,7 +59,7 @@ const spotlight = [
     slug: "traduzioni",
     tag: "Menu tradotto",
     title: "Il turista legge il menu nella sua lingua.",
-    text: "Il menu si apre da solo nella lingua del telefono: inglese, francese, tedesco o spagnolo. I nomi dei piatti tipici restano in italiano, con la spiegazione.",
+    text: "Il menu si apre da solo nella lingua del telefono: inglese, francese, tedesco o spagnolo. Il cameriere non traduce più ogni piatto e i nomi tipici restano in italiano, con la spiegazione.",
     points: ["Traduzione di tutto il menu in un tocco", "Allergeni tradotti correttamente", "Ogni frase si può ritoccare a mano"],
   },
 ] as { slug: string; still?: boolean; tag: string; title: string; text: string; points: string[] }[];
@@ -70,17 +73,7 @@ const heroCards = [
 export default function Home() {
   return (
     <>
-      <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "SoftwareApplication",
-          name: site.name,
-          applicationCategory: "BusinessApplication",
-          operatingSystem: "Web",
-          description: site.description,
-          offers: { "@type": "AggregateOffer", priceCurrency: "EUR", lowPrice: "19", highPrice: "69", offerCount: "3" },
-        }}
-      />
+      <JsonLd data={softwareApplicationLd()} />
 
       {/* Apertura */}
       <section className="overflow-hidden pb-14 pt-10 md:pb-20 md:pt-16">
@@ -94,7 +87,7 @@ export default function Home() {
               Tutto il tuo locale, gestito dal <span className="hl">telefono</span>.
             </h1>
             <p className="anim-fade-up mt-5 max-w-[560px] text-[19px] leading-[1.55] text-muted" style={{ animationDelay: "120ms" }}>
-              Carichi il menu con una foto, lo traduci in quattro lingue, programmi chiusure e ferie, accetti prenotazioni e ordini su WhatsApp. Una sola app, senza commissioni.
+              Gli ordini da asporto arrivano scritti su WhatsApp, i tavoli si prenotano online e il menu lo aggiorni dal telefono, partendo da una foto. Senza commissioni sugli ordini.
             </p>
             <div className="anim-fade-up mt-7 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap" style={{ animationDelay: "180ms" }}>
               <a href={signupUrl} className="btn btn-dark">
@@ -252,12 +245,12 @@ export default function Home() {
       <section aria-label="Al fianco dei piccoli locali" className="border-t border-line-soft pb-10 pt-16 md:py-26">
         <PhotoSplit
           src="/images/settori/pasticceria.webp"
-          alt="Pasticcera nel suo laboratorio con un dolce in mano, accanto alla vetrina"
+          alt="Pasticcera sorridente nel suo laboratorio, con un dolce alla frutta in mano accanto alla vetrina"
           pos="50% 30%"
           side="right"
           eyebrow="Perché esistiamo"
           title={<>Al fianco dei <span className="hl">piccoli</span> locali.</>}
-          text="Le grandi catene hanno app, uffici marketing e programmi fedeltà. Noi diamo gli stessi strumenti a chi ha una pizzeria, un bar o una bottega: per farsi trovare online, lavorare con meno telefonate e far tornare i clienti."
+          text="Una nova è una stella che esiste già e diventa più luminosa. È quello che vogliamo per la tua pizzeria, il tuo bar, la tua bottega: farti trovare online, lavorare con meno telefonate e far tornare i clienti."
           points={["Pensato per chi ha poco tempo e nessun tecnico", "Più visibilità su Google, Instagram e WhatsApp", "Nessuna commissione: ogni euro resta nel locale"]}
         >
           <Link href="/settori/" className="link-arrow mt-6 min-h-11 text-[15px]">

@@ -8,6 +8,11 @@ import type { Guide } from "./guides";
 export const sectorGuides: Guide[] = [
   {
     slug: "pizzeria-ore-perse-al-telefono",
+    seo: {
+      title: "Pizzeria: quante ore perdi al telefono ogni mese",
+      description:
+        "Fai i conti delle telefonate per l'asporto in pizzeria e scopri 7 modi concreti per ridurle: ordini scritti, fasce di ritiro e pausa quando il forno è pieno.",
+    },
     title: "Pizzeria: quante ore perdi al telefono ogni mese (e come recuperarle)",
     description:
       "Fai i conti delle telefonate per l'asporto e scopri 7 modi concreti per ridurle: ordini scritti, fasce di ritiro, link ovunque e pausa quando il forno è pieno.",
@@ -142,6 +147,11 @@ export const sectorGuides: Guide[] = [
   },
   {
     slug: "gastronomia-vendere-di-piu-a-pranzo",
+    seo: {
+      title: "Gastronomia: 8 idee per vendere di più a pranzo",
+      description:
+        "8 idee per la tua gastronomia o rosticceria: piatti del giorno pubblicati presto, preordini con fascia di ritiro, ordini dagli uffici e menu delle feste.",
+    },
     title: "Gastronomia e rosticceria: 8 idee concrete per vendere di più a pranzo",
     description:
       "Piatti del giorno pubblicati presto, preordini con fascia di ritiro, ordini di gruppo dagli uffici e menu delle feste in anticipo: 8 idee pratiche per la tua gastronomia.",
@@ -273,6 +283,11 @@ export const sectorGuides: Guide[] = [
   },
   {
     slug: "panetteria-pane-prenotato-meno-spreco",
+    seo: {
+      title: "Panetteria: far prenotare il pane e buttarne meno",
+      description:
+        "Quanto pane avanza ogni mese in panetteria e come ridurlo: prenotazioni la sera prima, fasce di ritiro al mattino, ordini ricorrenti e torte con preavviso.",
+    },
     title: "Panetteria: come far prenotare il pane la sera e buttarne meno",
     description:
       "Quanto pane avanza ogni mese e come ridurlo: prenotazioni la sera prima, fasce di ritiro al mattino, ordini ricorrenti e torte con preavviso. Guida pratica per panetterie e pasticcerie.",
@@ -415,6 +430,11 @@ export const sectorGuides: Guide[] = [
   },
   {
     slug: "pastificio-ordini-di-natale",
+    seo: {
+      title: "Pastificio: organizzare gli ordini di Natale",
+      description:
+        "Ordini di Natale in pastificio: quando aprirli, come mettere un limite per giorno e per fascia, quanta pasta produrre e come far scorrere il ritiro del 23.",
+    },
     title: "Pastificio: come organizzare gli ordini di Natale senza impazzire",
     description:
       "Quando aprire gli ordini, come mettere un limite per giorno e per fascia, come calcolare quanta pasta produrre e come far scorrere il ritiro del 23 e 24 dicembre. Guida per pastifici.",
@@ -548,6 +568,11 @@ export const sectorGuides: Guide[] = [
   },
   {
     slug: "bar-scontrino-medio-colazione-aperitivo",
+    seo: {
+      title: "Bar: 6 modi per alzare lo scontrino medio",
+      description:
+        "6 idee per alzare lo scontrino medio del bar: menu giusto all'ora giusta, combinazioni a prezzo unico, prodotto del giorno e menu tradotto per i turisti.",
+    },
     title: "Bar e caffetteria: 6 modi per alzare lo scontrino medio dalla colazione all'aperitivo",
     description:
       "Menu giusto all'ora giusta, combinazioni a prezzo unico, prodotto del giorno in evidenza e menu tradotto per i turisti: 6 idee concrete per far spendere qualcosa in più a ogni cliente del bar.",
@@ -668,6 +693,11 @@ export const sectorGuides: Guide[] = [
   },
   {
     slug: "gelateria-vaschette-torte-gelato",
+    seo: {
+      title: "Gelateria: vendere più vaschette e torte gelato",
+      description:
+        "Idee pratiche per gelaterie: gusti del giorno online, vaschette prenotate per la domenica, torte gelato con preavviso e una stagione fredda pianificata bene.",
+    },
     title: "Gelateria: come vendere più vaschette e torte gelato, anche quando fa freddo",
     description:
       "Gusti del giorno online, vaschette prenotate per il pranzo della domenica, torte gelato per i compleanni con preavviso e una stagione fredda pianificata. Idee pratiche per gelaterie.",

@@ -4,13 +4,14 @@ import { features, featureGroups } from "@/content/features";
 import { Icon, IconTile } from "@/components/Icon";
 import { Breadcrumbs, CtaBand } from "@/components/ui";
 import { Reveal } from "@/components/Reveal";
+import { pageMeta } from "@/config/seo";
 
-export const metadata: Metadata = {
-  title: "Funzionalità: menu digitale, ordini, prenotazioni e clienti",
+export const metadata: Metadata = pageMeta({
+  title: "Funzioni del gestionale per ristoranti e locali",
   description:
-    "Tutte le funzionalità per il tuo locale: menu digitale con QR, importazione con l'AI, traduzioni, prenotazioni, sala, ordini su WhatsApp, clienti, automazioni, statistiche e assistente vocale.",
-  alternates: { canonical: "/funzionalita/" },
-};
+    "Le funzioni del gestionale per ristoranti NovaMenu: menu digitale con QR, ordini su WhatsApp, prenotazioni, sala, clienti e assistente vocale. Prova gratis.",
+  path: "/funzionalita/",
+});
 
 const groupText: Record<string, string> = {
   Menu: "Il menu che i clienti vedono dal QR, sempre aggiornato e nella loro lingua.",

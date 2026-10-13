@@ -48,14 +48,14 @@ export const features: Feature[] = [
     plan: "Base",
     visual: "menu",
     seo: {
-      title: "Menu digitale con QR code per ristoranti e pizzerie",
+      title: "Menu digitale con QR per ristoranti e pizzerie",
       description:
-        "Crea il menu digitale del tuo locale con QR code per i tavoli: foto, allergeni, prezzi e piatti esauriti aggiornati in un secondo dal telefono. Prova gratis per 14 giorni.",
+        "Menu digitale con QR per il tuo locale: cambi un prezzo o togli un piatto finito dal telefono, senza ristampare. Con allergeni. Prova gratis 14 giorni.",
     },
     hero: {
       title: "Il menu del tuo locale, sempre giusto.",
       lead:
-        "Un menu online con il tuo logo e i tuoi colori, che il cliente apre dal QR sul tavolo. Cambi un prezzo o segni un piatto esaurito dal telefono e si aggiorna subito, senza ristampare niente.",
+        "Il menu digitale di NovaMenu è una pagina con il tuo logo e i tuoi colori, che il cliente apre dal QR sul tavolo senza scaricare niente. Cambi un prezzo o segni un piatto esaurito dal telefono e si aggiorna subito, senza ristampe.",
     },
     steps: [
       { title: "Carica il menu", text: "Da una foto del menu cartaceo, da un PDF o scrivendo i piatti a mano." },
@@ -103,10 +103,10 @@ export const features: Feature[] = [
       { title: "Pronto in un pomeriggio", text: "E se vuoi lo carichiamo noi durante la demo." },
     ],
     faq: [
-      { q: "Il cliente deve scaricare un'app?", a: "No. Il menu si apre nel browser del telefono inquadrando il QR, come una normale pagina web." },
-      { q: "Posso usare il dominio del mio locale?", a: "Sì. Con il piano Premium il menu può stare su un indirizzo tuo, per esempio menu.illocale.it." },
-      { q: "Se cambio il menu devo ristampare il QR?", a: "No. Il QR punta sempre allo stesso indirizzo: cambi i piatti, il QR resta quello." },
-      { q: "Posso avere un menu per la sala e uno per l'asporto?", a: "Sì. Puoi decidere quali piatti e quali prezzi mostrare in sala e quali per gli ordini da asporto." },
+      { q: "Il cliente deve scaricare un'app?", a: "No, il cliente non deve scaricare nessuna app: il menu si apre nel browser del telefono inquadrando il QR, come una normale pagina web." },
+      { q: "Posso usare il dominio del mio locale?", a: "Sì, con il piano Premium il menu può stare sul dominio del tuo locale, per esempio menu.illocale.it." },
+      { q: "Se cambio il menu devo ristampare il QR?", a: "No, il QR non va mai ristampato: punta sempre allo stesso indirizzo, quindi cambi i piatti e il QR resta quello." },
+      { q: "Posso avere un menu per la sala e uno per l'asporto?", a: "Sì, puoi avere piatti e prezzi diversi per la sala e per l'asporto: decidi tu cosa mostrare in ciascuno." },
     ],
     related: ["importa-menu-ai", "traduzioni", "menu-a-orari"],
   },
@@ -120,14 +120,14 @@ export const features: Feature[] = [
     plan: "Base",
     visual: "ai",
     seo: {
-      title: "Importa il menu da una foto con l'intelligenza artificiale",
+      title: "Crea il menu digitale da una foto in pochi minuti",
       description:
-        "Fotografa il menu cartaceo o carica il PDF: l'intelligenza artificiale riconosce piatti, prezzi, categorie e allergeni e crea il tuo menu digitale in pochi minuti.",
+        "Crea il menu digitale da una foto del menu di carta o da un PDF: piatti, prezzi e allergeni vanno al loro posto. Tu controlli e pubblichi. Prova gratis.",
     },
     hero: {
       title: "Fai una foto al menu. Al resto pensiamo noi.",
       lead:
-        "Carichi la foto del menu cartaceo o il PDF della tipografia. In pochi minuti hai piatti, descrizioni, prezzi, categorie e allergeni già al loro posto. Tu controlli e pubblichi.",
+        "L'importazione del menu serve a non ricopiare niente a mano: carichi la foto del menu di carta o il PDF della tipografia e in pochi minuti piatti, descrizioni, prezzi, categorie e allergeni sono al loro posto. Tu controlli e pubblichi.",
     },
     steps: [
       { title: "Carica foto o PDF", text: "Anche più pagine insieme, anche fotografate con il telefono." },
@@ -164,9 +164,9 @@ export const features: Feature[] = [
       { title: "Funziona per tutti", text: "Pizzerie, pastifici, bar: qualsiasi listino." },
     ],
     faq: [
-      { q: "E se l'AI sbaglia un prezzo?", a: "Prima di pubblicare vedi tutto in una tabella e correggi quello che serve. Le righe meno sicure sono evidenziate." },
-      { q: "Posso importare un listino in PDF?", a: "Sì. Foto, PDF e immagini, anche più file insieme." },
-      { q: "Gli allergeni sono affidabili?", a: "Sono proposti in base agli ingredienti scritti nel menu. Vanno sempre confermati da te, che conosci le ricette." },
+      { q: "E se l'AI sbaglia un prezzo?", a: "Lo correggi prima di pubblicare: vedi tutti i piatti in una tabella e le righe meno sicure sono evidenziate." },
+      { q: "Posso importare un listino in PDF?", a: "Sì, puoi importare un listino in PDF, oltre a foto e immagini, anche più file insieme." },
+      { q: "Gli allergeni sono affidabili?", a: "Gli allergeni sono una proposta da confermare: vengono suggeriti in base agli ingredienti scritti nel menu e li controlli tu, che conosci le ricette." },
     ],
     related: ["menu-digitale", "traduzioni", "assistente"],
   },
@@ -180,14 +180,14 @@ export const features: Feature[] = [
     plan: "Pro",
     visual: "lingue",
     seo: {
-      title: "Menu tradotto in inglese, francese, tedesco e spagnolo",
+      title: "Menu tradotto in inglese per ristoranti e bar",
       description:
-        "Traduci il menu del ristorante in inglese, francese, tedesco e spagnolo con un tocco. Il menu si apre nella lingua del telefono del turista. Correggi ogni testo a mano.",
+        "Menu tradotto in inglese, francese, tedesco e spagnolo con un tocco: si apre nella lingua del telefono del turista. Ritocchi ogni frase. Prova gratis.",
     },
     hero: {
       title: "Il turista legge il menu nella sua lingua.",
       lead:
-        "Traduci tutto il menu in inglese, francese, tedesco e spagnolo con un tocco. Il menu si apre da solo nella lingua del telefono del cliente, e i nomi dei piatti tipici restano in italiano se lo vuoi tu.",
+        "Il menu tradotto porta tutti i tuoi piatti in inglese, francese, tedesco e spagnolo con un tocco. Si apre da solo nella lingua del telefono del cliente, così il cameriere non deve più tradurre ogni piatto. I nomi tipici restano in italiano, se lo vuoi tu.",
     },
     steps: [
       { title: "Scegli le lingue", text: "Inglese, francese, tedesco, spagnolo: attivi quelle che ti servono." },
@@ -219,9 +219,9 @@ export const features: Feature[] = [
       { title: "Controllo totale", text: "Ogni frase si può correggere a mano." },
     ],
     faq: [
-      { q: "Quante lingue posso attivare?", a: "Inglese, francese, tedesco e spagnolo, oltre all'italiano. Attivi solo quelle che ti servono." },
-      { q: "Se aggiungo un piatto devo tradurlo io?", a: "No, viene tradotto in automatico. Se vuoi, poi lo ritocchi." },
-      { q: "Le mie correzioni vengono sovrascritte?", a: "No. Le frasi che correggi a mano restano tue anche se ritraduci il resto del menu." },
+      { q: "Quante lingue posso attivare?", a: "Puoi attivare quattro lingue oltre all'italiano: inglese, francese, tedesco e spagnolo. Accendi solo quelle che ti servono." },
+      { q: "Se aggiungo un piatto devo tradurlo io?", a: "No, ogni piatto nuovo viene tradotto in automatico appena lo aggiungi. Se vuoi, poi lo ritocchi." },
+      { q: "Le mie correzioni vengono sovrascritte?", a: "No, le tue correzioni non vengono sovrascritte: le frasi che ritocchi a mano restano anche se ritraduci il resto del menu." },
     ],
     related: ["menu-digitale", "importa-menu-ai", "prenotazioni"],
   },
@@ -235,14 +235,14 @@ export const features: Feature[] = [
     plan: "Pro",
     visual: "orari",
     seo: {
-      title: "Menu a orari: pranzo, aperitivo e cena in automatico",
+      title: "Menu a orari: pranzo, aperitivo e cena da soli",
       description:
-        "Mostra il menu giusto all'ora giusta: pranzo, aperitivo, cena e brunch cambiano da soli in base all'orario e al giorno della settimana. Ideale per bar e ristoranti.",
+        "Menu a orari per bar e ristoranti: pranzo, aperitivo e cena cambiano da soli in base a ora e giorno, con un solo QR. Niente da ricordare. Prova gratis.",
     },
     hero: {
       title: "A mezzogiorno il pranzo. Alle sei l'aperitivo.",
       lead:
-        "Imposti una volta quali menu valgono in quali ore e in quali giorni. Il QR sul tavolo mostra sempre quello giusto, senza che nessuno debba ricordarsi di cambiarlo.",
+        "Il menu a orari mostra a ogni cliente il menu giusto per quell'ora. Imposti una volta quali menu valgono in quali ore e in quali giorni: il QR sul tavolo fa il resto, senza che nessuno debba ricordarsi di cambiarlo.",
     },
     steps: [
       { title: "Crea i menu", text: "Pranzo, aperitivo, cena, brunch della domenica: quanti ne servono." },
@@ -264,8 +264,8 @@ export const features: Feature[] = [
       { title: "Zero lavoro", text: "Lo imposti una volta, poi va da solo." },
     ],
     faq: [
-      { q: "Il cliente può vedere anche gli altri menu?", a: "Sì. Il menu attivo è in primo piano, gli altri restano consultabili." },
-      { q: "Posso creare un menu solo per una data?", a: "Sì, per esempio il menu di Capodanno attivo solo il 31 dicembre dalle 20." },
+      { q: "Il cliente può vedere anche gli altri menu?", a: "Sì, il cliente può vedere anche gli altri menu: quello attivo è in primo piano, gli altri restano consultabili." },
+      { q: "Posso creare un menu solo per una data?", a: "Sì, puoi creare un menu valido solo per una data, per esempio quello di Capodanno attivo il 31 dicembre dalle 20:00." },
     ],
     related: ["menu-digitale", "ferie-e-chiusure", "statistiche"],
   },
@@ -279,14 +279,14 @@ export const features: Feature[] = [
     plan: "Pro",
     visual: "prenotazioni",
     seo: {
-      title: "Sistema di prenotazione tavoli online senza commissioni",
+      title: "Prenotazione tavoli online senza commissioni",
       description:
-        "Ricevi prenotazioni dei tavoli dal sito, da Google e dai social. Le confermi con un tocco e il cliente riceve la conferma su WhatsApp. Nessuna commissione a coperto.",
+        "Prenotazione tavoli online dal tuo link, da Google e dai social: confermi con un tocco e il cliente lo sa su WhatsApp. Zero costi a coperto. Prova gratis.",
     },
     hero: {
       title: "Le prenotazioni arrivano. Tu confermi con un tocco.",
       lead:
-        "Il cliente prenota dal tuo link in trenta secondi: giorno, orario, persone, seggiolini. Tu ricevi la richiesta, la accetti o proponi un altro orario, e lui riceve la conferma su WhatsApp.",
+        "Con le prenotazioni online il cliente prenota un tavolo dal tuo link in trenta secondi: giorno, orario, persone, seggiolini. Tu accetti la richiesta o proponi un altro orario, e lui riceve la conferma su WhatsApp. Senza costi a coperto.",
     },
     steps: [
       { title: "Imposta i turni", text: "Orari, durata del tavolo e coperti massimi per fascia." },
@@ -320,10 +320,10 @@ export const features: Feature[] = [
       { title: "I clienti restano tuoi", text: "Nomi e numeri finiscono nella tua lista clienti." },
     ],
     faq: [
-      { q: "Quanto costa ogni prenotazione?", a: "Niente. Le prenotazioni sono incluse nel piano Pro, senza costi a coperto." },
-      { q: "Posso bloccare le prenotazioni per una sera?", a: "Sì, dalla dashboard o con un messaggio all'assistente su Telegram. Puoi chiudere un giorno intero o solo un turno." },
-      { q: "Il cliente deve registrarsi?", a: "No. Lascia nome e telefono e riceve la conferma su WhatsApp." },
-      { q: "Posso gestire i seggiolini?", a: "Sì. Indichi quanti ne hai e il sistema non accetta più richieste di quelle che puoi soddisfare." },
+      { q: "Quanto costa ogni prenotazione?", a: "Ogni prenotazione costa zero: sono incluse nel piano Pro, senza costi a coperto." },
+      { q: "Posso bloccare le prenotazioni per una sera?", a: "Sì, puoi bloccare le prenotazioni per un giorno intero o per un solo turno, dalla dashboard o con un messaggio all'assistente su Telegram." },
+      { q: "Il cliente deve registrarsi?", a: "No, il cliente non deve registrarsi: lascia nome e telefono e riceve la conferma su WhatsApp." },
+      { q: "Posso gestire i seggiolini?", a: "Sì, puoi gestire i seggiolini: indichi quanti ne hai e non vengono accettate più richieste di quelle che puoi soddisfare." },
     ],
     related: ["sala-e-tavoli", "ferie-e-chiusure", "automazioni-whatsapp"],
   },
@@ -337,14 +337,14 @@ export const features: Feature[] = [
     plan: "Pro",
     visual: "sala",
     seo: {
-      title: "Piantina della sala e gestione tavoli del ristorante",
+      title: "Gestione tavoli del ristorante e piantina sala",
       description:
-        "Disegna la piantina della sala, assegna le prenotazioni ai tavoli e vedi in tempo reale chi è seduto, chi deve arrivare e quali tavoli si liberano.",
+        "Gestione tavoli del ristorante con la piantina della sala: assegni le prenotazioni e vedi chi è seduto, chi arriva e cosa si libera. Prova gratis 14 giorni.",
     },
     hero: {
       title: "Tutta la sala sotto controllo, a colpo d'occhio.",
       lead:
-        "Disegni la tua sala una volta, con i tavoli veri. Poi trascini le prenotazioni sui tavoli e vedi in ogni momento chi è seduto, chi deve arrivare e cosa si libera.",
+        "Sala e tavoli è la piantina del tuo locale, sul telefono o sul tablet. Disegni la sala una volta, con i tavoli veri, poi trascini le prenotazioni sui tavoli e vedi in ogni momento chi è seduto, chi deve arrivare e cosa si libera.",
     },
     steps: [
       { title: "Disegna la sala", text: "Tavoli tondi e quadrati, sale interne e dehors." },
@@ -366,8 +366,8 @@ export const features: Feature[] = [
       { title: "Su ogni dispositivo", text: "Tablet alla cassa, telefono in sala." },
     ],
     faq: [
-      { q: "Posso unire più tavoli?", a: "Sì. Selezioni i tavoli da unire e la prenotazione occupa tutti quelli scelti." },
-      { q: "Serve un tablet dedicato?", a: "No. Funziona su qualsiasi tablet, telefono o computer con un browser." },
+      { q: "Posso unire più tavoli?", a: "Sì, puoi unire più tavoli: selezioni quelli da unire e la prenotazione occupa tutti quelli scelti." },
+      { q: "Serve un tablet dedicato?", a: "No, non serve un tablet dedicato: funziona su qualsiasi tablet, telefono o computer con un browser." },
     ],
     related: ["prenotazioni", "staff-e-turni", "clienti"],
   },
@@ -381,14 +381,14 @@ export const features: Feature[] = [
     plan: "Base",
     visual: "chiusure",
     seo: {
-      title: "Orari, ferie e chiusure del locale sempre aggiornati",
+      title: "Orari, ferie e chiusure del locale sempre giusti",
       description:
-        "Imposta orari, ferie e giorni di chiusura una volta sola: menu, ordini e prenotazioni si fermano e ripartono da soli. Avviso automatico per i clienti.",
+        "Orari, ferie e chiusure del locale impostati una volta: ordini e prenotazioni si fermano e ripartono da soli e il cliente vede quando riapri. Prova gratis.",
     },
     hero: {
       title: "Chiudi per ferie. Il sito lo sa già.",
       lead:
-        "Imposti orari, giorni di riposo, ferie e chiusure straordinarie una volta sola. Ordini e prenotazioni si fermano e ripartono da soli, e i clienti vedono un avviso chiaro.",
+        "Ferie e chiusure è il calendario del tuo locale: imposti orari, giorni di riposo, ferie e chiusure straordinarie una volta sola. Ordini e prenotazioni si fermano e ripartono da soli, e i clienti vedono un avviso con la data di riapertura.",
     },
     steps: [
       { title: "Orari settimanali", text: "Pranzo e cena, giorno per giorno." },
@@ -410,8 +410,8 @@ export const features: Feature[] = [
       { title: "Anche dal telefono", text: "O con un vocale all'assistente." },
     ],
     faq: [
-      { q: "Posso chiudere solo la cena di un giorno?", a: "Sì. Puoi chiudere un giorno intero o un solo turno." },
-      { q: "Cosa vedono i clienti?", a: "Un avviso con il tuo messaggio e la data di riapertura. Il menu resta consultabile." },
+      { q: "Posso chiudere solo la cena di un giorno?", a: "Sì, puoi chiudere anche solo la cena: scegli se fermare un giorno intero o un solo turno." },
+      { q: "Cosa vedono i clienti?", a: "I clienti vedono un avviso con il tuo messaggio e la data di riapertura. Il menu resta consultabile." },
     ],
     related: ["prenotazioni", "ordini-whatsapp", "assistente"],
   },
@@ -425,14 +425,14 @@ export const features: Feature[] = [
     plan: "Pro",
     visual: "ordini",
     seo: {
-      title: "Ordini da asporto su WhatsApp senza commissioni",
+      title: "Ordini da asporto su WhatsApp, senza commissioni",
       description:
-        "Ricevi ordini da asporto dal menu digitale direttamente su WhatsApp, con orario di ritiro già scelto. Nessuna commissione sugli ordini, a differenza delle app di delivery.",
+        "Ordini da asporto su WhatsApp dal tuo menu digitale: arrivano scritti, con orario di ritiro e totale. Zero commissioni sugli ordini. Prova gratis 14 giorni.",
     },
     hero: {
       title: "Ordini da asporto su WhatsApp. Zero commissioni.",
       lead:
-        "Il cliente sceglie dal menu, mette nel carrello, sceglie l'orario di ritiro e ti manda l'ordine già scritto su WhatsApp. Tu lo trovi anche in dashboard, in ordine di ritiro.",
+        "Con gli ordini su WhatsApp il cliente sceglie dal tuo menu digitale, indica l'orario di ritiro e ti manda l'ordine già scritto, con il totale. Lo trovi anche in dashboard, in ordine di ritiro. Senza commissioni: paghi solo l'abbonamento.",
     },
     steps: [
       { title: "Il cliente sceglie", text: "Dal menu digitale, con varianti e aggiunte." },
@@ -460,10 +460,10 @@ export const features: Feature[] = [
       { title: "Clienti tuoi", text: "Ogni ordine crea la scheda del cliente." },
     ],
     faq: [
-      { q: "Prendete una percentuale sugli ordini?", a: "No. Paghi solo l'abbonamento mensile o annuale." },
-      { q: "Posso mettere in pausa gli ordini?", a: "Sì, per un tempo che decidi tu, dalla dashboard o con un messaggio all'assistente." },
-      { q: "Serve WhatsApp Business?", a: "Funziona con il numero WhatsApp del locale. Ti consigliamo WhatsApp Business, che è gratuito." },
-      { q: "Il cliente paga online?", a: "Per ora il pagamento avviene al ritiro, in contanti o con il POS del locale." },
+      { q: "Prendete una percentuale sugli ordini?", a: "No, non prendiamo nessuna percentuale sugli ordini: paghi solo l'abbonamento mensile o annuale." },
+      { q: "Posso mettere in pausa gli ordini?", a: "Sì, puoi mettere in pausa gli ordini per il tempo che decidi tu, dalla dashboard o con un messaggio all'assistente." },
+      { q: "Serve WhatsApp Business?", a: "Non è obbligatorio: funziona con il numero WhatsApp del locale. Ti consigliamo comunque WhatsApp Business, che è gratuito." },
+      { q: "Il cliente paga online?", a: "No, per ora il cliente paga al ritiro, in contanti o con il POS del locale." },
     ],
     related: ["menu-digitale", "clienti", "automazioni-whatsapp"],
   },
@@ -477,14 +477,14 @@ export const features: Feature[] = [
     plan: "Premium",
     visual: "clienti",
     seo: {
-      title: "Gestione clienti per ristoranti: schede, storico e note",
+      title: "Gestione clienti del ristorante: schede e storico",
       description:
-        "Ogni prenotazione e ordine crea la scheda del cliente: visite, spesa, preferenze, allergie e compleanno. Riconosci i clienti abituali e falli tornare.",
+        "Gestione clienti del ristorante: ogni ordine e prenotazione crea la scheda con visite, preferenze, allergie e compleanno. I dati restano tuoi. Prova gratis.",
     },
     hero: {
       title: "Ricordati di ogni cliente come fa il tuo cameriere migliore.",
       lead:
-        "Ogni prenotazione e ogni ordine creano la scheda del cliente, da soli. Vedi quante volte è venuto, cosa ordina, se ha allergie e quando compie gli anni.",
+        "Le schede clienti si creano da sole, a ogni prenotazione e a ogni ordine. Vedi quante volte un cliente è venuto, cosa ordina, se ha allergie e quando compie gli anni: lo riconosci prima ancora che si sieda.",
     },
     steps: [
       { title: "Si crea da sola", text: "Da ordini e prenotazioni, senza inserire nulla." },
@@ -505,8 +505,8 @@ export const features: Feature[] = [
       { title: "Base per le automazioni", text: "Promemoria, auguri e messaggi mirati." },
     ],
     faq: [
-      { q: "Devo inserire i clienti a mano?", a: "No, le schede si creano da prenotazioni e ordini. Puoi anche importare una lista esistente." },
-      { q: "I dati sono al sicuro?", a: "Sì, su server in Europa e accessibili solo a te e allo staff che autorizzi." },
+      { q: "Devo inserire i clienti a mano?", a: "No, non devi inserire i clienti a mano: le schede si creano da prenotazioni e ordini. Puoi anche importare una lista esistente." },
+      { q: "I dati sono al sicuro?", a: "Sì, i dati sono al sicuro: stanno su server in Europa e li vedete solo tu e lo staff che autorizzi." },
     ],
     related: ["automazioni-whatsapp", "prenotazioni", "statistiche"],
   },
@@ -520,14 +520,14 @@ export const features: Feature[] = [
     plan: "Premium",
     visual: "automazioni",
     seo: {
-      title: "Automazioni WhatsApp per ristoranti: promemoria e recensioni",
+      title: "Messaggi WhatsApp automatici per ristoranti",
       description:
-        "Promemoria delle prenotazioni, richiesta di recensione su Google, auguri di compleanno e messaggi a chi non torna da tempo. Partono da soli su WhatsApp, dal numero del tuo locale.",
+        "Messaggi WhatsApp automatici dal numero del tuo locale: promemoria, richiesta di recensione, auguri e un saluto a chi non torna da tempo. Prova gratis.",
     },
     hero: {
       title: "I messaggi giusti partono da soli.",
       lead:
-        "Promemoria il giorno prima, richiesta di recensione il giorno dopo, auguri di compleanno, un messaggio a chi non torna da due mesi. Li scegli una volta e partono dal numero WhatsApp del tuo locale.",
+        "Le automazioni WhatsApp sono messaggi che partono da soli dal numero del tuo locale: promemoria il giorno prima, richiesta di recensione il giorno dopo, auguri di compleanno, un saluto a chi non torna da due mesi. Li scegli una volta sola.",
     },
     steps: [
       { title: "Collega WhatsApp", text: "Il numero di sempre, in pochi minuti." },
@@ -558,9 +558,9 @@ export const features: Feature[] = [
       { title: "Dal tuo numero", text: "I clienti vedono il nome del tuo locale." },
     ],
     faq: [
-      { q: "Devo cambiare numero WhatsApp?", a: "No. Colleghi il numero che usi già e continui a rispondere dall'app WhatsApp Business." },
-      { q: "Quanto costano i messaggi?", a: "Alcuni messaggi WhatsApp hanno un costo fissato da Meta, di pochi centesimi. Lo vedi sempre prima di inviare." },
-      { q: "È in regola con la privacy?", a: "I messaggi promozionali partono solo verso chi ha dato il consenso, che viene registrato nella scheda del cliente." },
+      { q: "Devo cambiare numero WhatsApp?", a: "No, non devi cambiare numero: colleghi quello che usi già e continui a rispondere dall'app WhatsApp Business." },
+      { q: "Quanto costano i messaggi?", a: "Alcuni messaggi WhatsApp hanno un costo fissato da Meta, di pochi centesimi l'uno. Lo vedi sempre prima di inviare." },
+      { q: "È in regola con la privacy?", a: "Sì: i messaggi promozionali partono solo verso chi ha dato il consenso, che viene registrato nella scheda del cliente." },
     ],
     related: ["clienti", "prenotazioni", "statistiche"],
   },
@@ -574,13 +574,13 @@ export const features: Feature[] = [
     plan: "Pro",
     visual: "statistiche",
     seo: {
-      title: "Statistiche del ristorante: piatti più visti, ordini e coperti",
+      title: "Statistiche del ristorante: piatti e ore di punta",
       description:
-        "Scopri quali piatti guardano e ordinano di più, quali sono le ore di punta, quanti coperti fai e da dove arrivano i clienti. Numeri semplici per decidere meglio.",
+        "Statistiche del ristorante chiare: i piatti più visti e ordinati, le ore di punta, i coperti e gli ordini della settimana. Prova gratis 14 giorni.",
     },
     hero: {
       title: "Numeri semplici, per decidere meglio.",
-      lead: "Quali piatti guardano di più, quali ordinano, a che ora, da dove arrivano. Tutto in una schermata che capisci in dieci secondi.",
+      lead: "Le statistiche ti dicono quali piatti guardano di più, quali ordinano, a che ora e da dove arrivano i clienti. Tutto in una schermata che capisci in dieci secondi, senza termini tecnici.",
     },
     steps: [
       { title: "Si raccolgono da sole", text: "Ogni visita al menu, ordine e prenotazione." },
@@ -601,8 +601,8 @@ export const features: Feature[] = [
       { title: "Report mensile", text: "Un riassunto chiaro ogni mese." },
     ],
     faq: [
-      { q: "Le statistiche rispettano la privacy?", a: "Sì. Sono dati aggregati e anonimi sulle visite al menu." },
-      { q: "Posso esportarle?", a: "Sì, in Excel." },
+      { q: "Le statistiche rispettano la privacy?", a: "Sì, le statistiche rispettano la privacy: sono dati aggregati e anonimi sulle visite al menu." },
+      { q: "Posso esportarle?", a: "Sì, puoi esportare le statistiche in Excel." },
     ],
     related: ["menu-digitale", "ordini-whatsapp", "clienti"],
   },
@@ -616,13 +616,13 @@ export const features: Feature[] = [
     plan: "Premium",
     visual: "staff",
     seo: {
-      title: "Turni del personale e accessi per lo staff del ristorante",
+      title: "Turni del personale e accessi dello staff",
       description:
-        "Organizza i turni di sala e cucina, dai a ogni collaboratore il suo accesso con i permessi giusti e condividi la settimana con tutto il team.",
+        "Turni del personale di sala e cucina sempre visibili dal telefono, e un accesso per ogni collaboratore con i permessi giusti. Niente password condivise.",
     },
     hero: {
       title: "Il team sa sempre chi lavora e quando.",
-      lead: "Ogni collaboratore ha il suo accesso, con i permessi giusti. Prepari i turni della settimana e tutti li vedono dal telefono.",
+      lead: "Staff e turni dà a ogni collaboratore il suo accesso, con i permessi giusti, e mette i turni della settimana sul telefono di tutti. Tu li prepari una volta, loro smettono di chiederteli.",
     },
     steps: [
       { title: "Invita lo staff", text: "Un invito per email o WhatsApp." },
@@ -643,7 +643,7 @@ export const features: Feature[] = [
       { title: "Sicurezza", text: "Togli l'accesso a chi non lavora più con te." },
     ],
     faq: [
-      { q: "Quanti collaboratori posso aggiungere?", a: "Nel piano Premium non ci sono limiti al numero di accessi." },
+      { q: "Quanti collaboratori posso aggiungere?", a: "Nel piano Premium puoi aggiungere tutti i collaboratori che vuoi: non ci sono limiti al numero di accessi." },
     ],
     related: ["sala-e-tavoli", "prenotazioni", "assistente"],
   },
@@ -657,14 +657,14 @@ export const features: Feature[] = [
     plan: "Pro",
     visual: "assistente",
     seo: {
-      title: "Assistente vocale per ristoranti: gestisci il locale con un messaggio",
+      title: "Assistente vocale per gestire il ristorante",
       description:
-        "Manda un vocale o un messaggio su Telegram: \"stasera chiudiamo alle 22\", \"tonnarelli esauriti\", \"tavolo per 4 alle 20 a nome Rossi\". L'assistente aggiorna menu, orari e prenotazioni.",
+        "Assistente vocale per il tuo locale: mandi un vocale su Telegram e aggiorna menu, orari e prenotazioni, dopo la tua conferma. Prova gratis 14 giorni.",
     },
     hero: {
       title: "Lo dici a voce. Il locale si aggiorna.",
       lead:
-        "Mandi un vocale su Telegram mentre sei in cucina: \"segna esauriti i tonnarelli\", \"stasera chiudiamo alle 22\", \"tavolo per quattro alle 20 a nome Rossi\". L'assistente capisce, ti chiede conferma e aggiorna tutto.",
+        "L'assistente vocale ti fa gestire il locale con un messaggio su Telegram, mentre sei in cucina: \"segna esauriti i tonnarelli\", \"stasera chiudiamo alle 22\", \"tavolo per quattro alle 20 a nome Rossi\". Capisce, ti chiede conferma e aggiorna tutto.",
     },
     steps: [
       { title: "Collega Telegram", text: "Dalla dashboard, con un tocco." },
@@ -696,9 +696,9 @@ export const features: Feature[] = [
       { title: "Capisce il dialetto del locale", text: "Conosce i nomi dei tuoi piatti." },
     ],
     faq: [
-      { q: "Funziona anche su WhatsApp?", a: "Per ora su Telegram, che è gratuito. WhatsApp arriverà più avanti." },
-      { q: "E se capisce male?", a: "Prima di modificare qualcosa ti mostra il riepilogo e aspetta la tua conferma." },
-      { q: "Chi può usarlo?", a: "Solo le persone che colleghi dalla dashboard, con i permessi che scegli tu." },
+      { q: "Funziona anche su WhatsApp?", a: "Per ora l'assistente funziona su Telegram, che è gratuito. WhatsApp arriverà più avanti." },
+      { q: "E se capisce male?", a: "Se capisce male non succede niente: prima di modificare qualcosa ti mostra il riepilogo e aspetta la tua conferma." },
+      { q: "Chi può usarlo?", a: "Possono usarlo solo le persone che colleghi dalla dashboard, con i permessi che scegli tu." },
     ],
     related: ["ferie-e-chiusure", "prenotazioni", "menu-digitale"],
   },

@@ -2,16 +2,17 @@ import type { Metadata } from "next";
 import { comparison, generalFaq, plans } from "@/content/plans";
 import { signupUrl } from "@/config/site";
 import { Icon } from "@/components/Icon";
-import { Breadcrumbs, CtaBand, Faq } from "@/components/ui";
+import { Breadcrumbs, CtaBand, Faq, JsonLd } from "@/components/ui";
+import { pageMeta, softwareApplicationLd } from "@/config/seo";
 import { Pricing } from "@/components/Pricing";
 import { Reveal } from "@/components/Reveal";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Prezzi: da 19 euro al mese, senza commissioni",
   description:
-    "Tre piani chiari per il tuo locale: Base 19 €, Pro 39 € e Premium 69 € al mese. Nessuna commissione su ordini e prenotazioni, 14 giorni di prova gratuita, disdici quando vuoi.",
-  alternates: { canonical: "/prezzi/" },
-};
+    "Prezzi del menu digitale NovaMenu: Base 19 €, Pro 39 € e Premium 69 € al mese. Nessuna commissione sugli ordini. Prova gratis 14 giorni, disdici quando vuoi.",
+  path: "/prezzi/",
+});
 
 function Cell({ v }: { v: boolean | string }) {
   if (v === true)
@@ -32,6 +33,7 @@ function Cell({ v }: { v: boolean | string }) {
 export default function PrezziPage() {
   return (
     <>
+      <JsonLd data={softwareApplicationLd()} />
       <section className="pb-20 pt-8 md:pb-28 md:pt-12">
         <div className="wrap">
           <Breadcrumbs items={[{ name: "Prezzi", href: "/prezzi/" }]} />

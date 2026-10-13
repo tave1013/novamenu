@@ -5,13 +5,14 @@ import { Icon } from "@/components/Icon";
 import { Breadcrumbs, CtaBand } from "@/components/ui";
 import { sectorBySlug } from "@/content/sectors";
 import { SectorArtView } from "@/components/SectorArt";
+import { pageMeta } from "@/config/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Guide pratiche per ristoranti, pizzerie e locali",
   description:
-    "Guide pratiche su menu digitale, allergeni, ordini da asporto senza commissioni e prenotazioni. Consigli concreti per chi gestisce un locale.",
-  alternates: { canonical: "/guide/" },
-};
+    "Guide pratiche per chi gestisce un locale: menu digitale, allergeni, ordini da asporto senza commissioni e prenotazioni. Consigli concreti, senza fronzoli.",
+  path: "/guide/",
+});
 
 const fmt = (d: string) => new Date(d).toLocaleDateString("it-IT", { day: "numeric", month: "long", year: "numeric" });
 

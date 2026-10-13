@@ -7,7 +7,7 @@ import { guides } from "@/content/guides";
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date("2026-10-11");
+  const now = new Date("2026-10-13");
   const u = (path: string, priority: number, changeFrequency: "weekly" | "monthly" | "yearly" = "monthly") => ({
     url: `${site.url}${path}`,
     lastModified: now,

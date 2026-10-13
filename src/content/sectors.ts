@@ -53,14 +53,14 @@ export const sectors: Sector[] = [
     icon: "pizza",
     tone: "red",
     seo: {
-      title: "Menu digitale e ordini da asporto per pizzerie",
+      title: "Menu digitale per pizzeria e ordini da asporto",
       description:
-        "Menu con QR, ordini da asporto su WhatsApp con fasce di ritiro, prenotazioni dei tavoli e pizze esaurite segnate in un tocco. Pensato per le pizzerie, senza commissioni.",
+        "Menu digitale per pizzeria con ordini da asporto su WhatsApp: fasce di ritiro, pizze finite tolte subito, tavoli prenotati. Zero commissioni. Prova gratis.",
     },
     hero: {
       title: "Più pizze da asporto, meno telefonate.",
       hl: "meno telefonate",
-      lead: "Gli ordini da asporto arrivano scritti su WhatsApp con l'orario di ritiro, le prenotazioni si confermano con un tocco e quando finisce la bufala lo segni in un secondo.",
+      lead: "NovaMenu è il menu digitale per pizzerie che prende gli ordini da asporto al posto tuo: arrivano scritti su WhatsApp, con l'orario di ritiro. Le prenotazioni si confermano con un tocco e quando finisce la bufala la togli in un secondo.",
     },
     heroArt: {
       main: {
@@ -84,7 +84,7 @@ export const sectors: Sector[] = [
       {
         tag: "Fasce di ritiro",
         title: "Il forno non va in crisi: ogni fascia ha il suo limite.",
-        text: "Decidi quante pizze puoi sfornare ogni quarto d'ora. Quando una fascia è piena il cliente vede solo quelle libere, e tu non devi richiamare nessuno.",
+        text: "Decidi quanti ordini accettare ogni quarto d'ora. Quando una fascia è piena il cliente vede solo quelle libere, e tu non devi richiamare nessuno per spostare il ritiro.",
         points: ["Limite di ordini per fascia", "Pausa ordini con un tocco", "Orari diversi nel weekend"],
         art: {
           kind: "slots",
@@ -100,7 +100,7 @@ export const sectors: Sector[] = [
       {
         tag: "Ordine su WhatsApp",
         title: "L'ordine arriva scritto, con varianti e totale.",
-        text: "Niente telefonate nel pieno del servizio e niente nomi sbagliati sul foglietto. Il pizzaiolo legge l'ordine già in ordine di ritiro.",
+        text: "Niente ordini dettati nel pieno del servizio e niente nomi sbagliati sul foglietto. L'ordine arriva con varianti, note e totale, e il pizzaiolo lo legge già in ordine di ritiro.",
         points: ["Varianti e aggiunte con il loro prezzo", "Note del cliente in evidenza", "0% di commissioni"],
         art: {
           kind: "order",
@@ -125,8 +125,8 @@ export const sectors: Sector[] = [
       { feature: "assistente", text: "\"Bufala finita\" detto a voce, mentre stendi l'impasto." },
     ],
     faq: [
-      { q: "Posso gestire impasti diversi e aggiunte?", a: "Sì. Ogni pizza può avere varianti (impasto, formato) e aggiunte con il loro prezzo." },
-      { q: "Quanti ordini posso ricevere per fascia?", a: "Lo decidi tu. Quando una fascia è piena, il cliente vede solo quelle successive." },
+      { q: "Posso gestire impasti diversi e aggiunte?", a: "Sì, puoi gestire impasti diversi e aggiunte: ogni pizza può avere varianti (impasto, formato) e aggiunte con il loro prezzo." },
+      { q: "Quanti ordini posso ricevere per fascia?", a: "Decidi tu quanti ordini ricevere per ogni fascia di ritiro. Quando una fascia è piena, il cliente vede solo quelle successive." },
     ],
   },
   {
@@ -136,14 +136,14 @@ export const sectors: Sector[] = [
     icon: "fork",
     tone: "blue",
     seo: {
-      title: "Software per ristoranti: menu digitale, prenotazioni e sala",
+      title: "Gestionale per ristoranti: prenotazioni e sala",
       description:
-        "Menu digitale tradotto per i turisti, prenotazioni online senza commissioni, piantina della sala e clienti abituali riconosciuti. Tutto in un'unica piattaforma per il tuo ristorante.",
+        "Gestionale per ristoranti e trattorie: prenotazioni online senza commissioni, piantina della sala, menu tradotto per i turisti. Prova gratis 14 giorni.",
     },
     hero: {
       title: "La sala piena. Anche il martedì.",
       hl: "Anche il martedì",
-      lead: "Prenotazioni senza commissioni, sala sotto controllo, menu nella lingua dei turisti e un promemoria che riduce i tavoli vuoti.",
+      lead: "NovaMenu è il gestionale per ristoranti e trattorie che tiene insieme prenotazioni, sala e menu. Nessuna commissione a coperto, il menu nella lingua dei turisti e un promemoria che riduce i tavoli vuoti.",
     },
     photo: { src: "/images/settori/ristorante.webp", alt: "Cameriere che serve un piatto a una cliente in una sala elegante con luci calde", caption: "La sala piena, il servizio tranquillo.", pos: "50% 40%", layout: "center" },
     heroArt: {
@@ -212,8 +212,8 @@ export const sectors: Sector[] = [
       { feature: "automazioni-whatsapp", text: "Promemoria e richiesta di recensione, in automatico." },
     ],
     faq: [
-      { q: "Sostituisce i portali di prenotazione?", a: "Puoi usarlo al loro posto per le prenotazioni dirette, senza commissioni. Molti locali lo affiancano all'inizio e poi passano solo a questo." },
-      { q: "Posso gestire più sale?", a: "Sì, sale interne, dehors e privé, ognuna con la sua piantina." },
+      { q: "Sostituisce i portali di prenotazione?", a: "Sì, per le prenotazioni dirette puoi usarlo al posto dei portali, senza commissioni. Puoi anche affiancarlo all'inizio e decidere con calma." },
+      { q: "Posso gestire più sale?", a: "Sì, puoi gestire più sale: interne, dehors e privé, ognuna con la sua piantina." },
     ],
   },
   {
@@ -223,14 +223,14 @@ export const sectors: Sector[] = [
     icon: "beer",
     tone: "amber",
     seo: {
-      title: "Menu digitale per pub e birrerie: spine, eventi e prenotazioni",
+      title: "Menu digitale per pub e birrerie, con le spine",
       description:
-        "Birre alla spina sempre aggiornate, menu a orari, prenotazioni per partite ed eventi. Il menu digitale pensato per pub e birrerie.",
+        "Menu digitale per pub e birrerie: spine aggiornate dal telefono, happy hour che parte da solo, tavoli prenotati per partite ed eventi. Prova gratis 14 giorni.",
     },
     hero: {
       title: "Spine nuove, serate piene.",
       hl: "serate piene",
-      lead: "Aggiorni le birre alla spina in un attimo, prenoti i tavoli per la partita e avvisi i clienti delle serate a tema.",
+      lead: "NovaMenu è il menu digitale per pub e birrerie che aggiorni dal bancone: togli una spina finita in un tocco, apri le prenotazioni per la partita con i posti contati e avvisi i clienti delle serate a tema.",
     },
     photo: { src: "/images/settori/pub.webp", alt: "Barista sorridente che incassa un pagamento con il telefono al bancone di un pub", caption: "Al bancone, non al telefono.", pos: "50% 35%", layout: "left", text: "Spilli le birre, servi, chiacchieri con i clienti. Le prenotazioni per la partita, le spine nuove e le serate a tema le gestisci dal telefono, senza lasciare il bancone.", points: ["Spine aggiornate in un attimo", "Posti limitati per gli eventi", "Inviti alle serate a chi li vuole"] },
     heroArt: {
@@ -297,7 +297,7 @@ export const sectors: Sector[] = [
       { feature: "prenotazioni", text: "Tavoli per partite ed eventi, con posti limitati." },
       { feature: "automazioni-whatsapp", text: "Inviti alle serate per chi ha dato il consenso." },
     ],
-    faq: [{ q: "Posso indicare grado e stile delle birre?", a: "Sì, ogni prodotto può avere dettagli come grado alcolico, stile e formato." }],
+    faq: [{ q: "Posso indicare grado e stile delle birre?", a: "Sì, per ogni birra puoi indicare grado alcolico, stile e formato." }],
   },
   {
     slug: "bar",
@@ -308,12 +308,12 @@ export const sectors: Sector[] = [
     seo: {
       title: "Menu digitale per bar e caffetterie con QR",
       description:
-        "Colazione, pranzo veloce e aperitivo: il menu giusto all'ora giusta, tradotto per i turisti, con QR sui tavolini. Pensato per bar e caffetterie.",
+        "Menu digitale per bar e caffetterie: colazione, pranzo e aperitivo cambiano da soli con un solo QR, tradotto per i turisti. Niente ristampe. Prova gratis.",
     },
     hero: {
       title: "Dalla colazione all'aperitivo, il menu cambia da solo.",
       hl: "da solo",
-      lead: "Colazione, pranzo e aperitivo si alternano da soli. I turisti leggono nella loro lingua e i tavolini ordinano più in fretta.",
+      lead: "NovaMenu è il menu digitale per bar e caffetterie che segue la giornata: colazione, pranzo e aperitivo si alternano da soli. I turisti leggono nella loro lingua e ai tavolini si ordina più in fretta.",
     },
     photo: { src: "/images/settori/bar.webp", alt: "Barista che consegna un sacchetto di brioche dietro un bancone pieno di croissant", caption: "Dalla prima brioche all'ultimo spritz.", pos: "50% 45%", layout: "right", text: "Il menu cambia da solo con le ore del giorno, i turisti lo leggono nella loro lingua e tu servi il caffè invece di spiegare il listino.", points: ["Colazione, pranzo e aperitivo in un QR", "Menu in quattro lingue", "Prodotti del giorno sempre in cima"] },
     heroArt: {
@@ -377,7 +377,7 @@ export const sectors: Sector[] = [
       { feature: "menu-digitale", text: "Prodotti del giorno ed esauriti aggiornati al volo." },
       { feature: "statistiche", text: "Scopri quali prodotti guardano di più." },
     ],
-    faq: [{ q: "Serve per un bar piccolo?", a: "Sì. Anche solo il menu digitale a orari fa risparmiare tempo e ristampe." }],
+    faq: [{ q: "Serve per un bar piccolo?", a: "Sì, serve anche a un bar piccolo: già solo il menu digitale a orari fa risparmiare tempo e ristampe." }],
   },
   {
     slug: "gelaterie",
@@ -386,14 +386,14 @@ export const sectors: Sector[] = [
     icon: "icecream",
     tone: "pink",
     seo: {
-      title: "Menu digitale per gelaterie: gusti del giorno e vaschette da asporto",
+      title: "Menu digitale per gelaterie: gusti e vaschette",
       description:
-        "Aggiorna i gusti del giorno in un tocco, ricevi ordini di vaschette e torte gelato su WhatsApp, mostra allergeni e ingredienti. Pensato per le gelaterie.",
+        "Menu digitale per gelaterie: gusti del giorno aggiornati in un tocco, vaschette e torte gelato ordinate su WhatsApp con giorno e ora di ritiro. Prova gratis.",
     },
     hero: {
       title: "I gusti di oggi, già sul telefono dei clienti.",
       hl: "gusti di oggi",
-      lead: "Aggiorni i gusti del giorno in un tocco, ricevi gli ordini di vaschette e torte gelato su WhatsApp e mostri gli allergeni senza cartelli.",
+      lead: "NovaMenu è il menu digitale per gelaterie: aggiorni i gusti del giorno in un tocco, ricevi gli ordini di vaschette e torte gelato su WhatsApp e mostri gli allergeni senza cartelli.",
     },
     photo: { src: "/images/settori/gelateria.webp", alt: "Cameriera che porta tre coppette di gelato in una piazza italiana", caption: "I gusti di oggi, già sul telefono dei clienti.", pos: "50% 55%", layout: "center" },
     heroArt: {
@@ -456,7 +456,7 @@ export const sectors: Sector[] = [
       { feature: "ferie-e-chiusure", text: "Chiusura stagionale programmata." },
       { feature: "traduzioni", text: "Gusti spiegati ai turisti." },
     ],
-    faq: [{ q: "Posso ricevere ordini con giorni di anticipo?", a: "Sì, il cliente sceglie data e ora di ritiro, anche per i giorni successivi." }],
+    faq: [{ q: "Posso ricevere ordini con giorni di anticipo?", a: "Sì, puoi ricevere ordini con giorni di anticipo: il cliente sceglie data e ora di ritiro, anche per i giorni successivi." }],
   },
   {
     slug: "pastifici",
@@ -465,14 +465,14 @@ export const sectors: Sector[] = [
     icon: "wheat",
     tone: "amber",
     seo: {
-      title: "Ordini online per pastifici: pasta fresca a peso e ritiro su giorno e ora",
+      title: "Ordini online per pastifici: pasta fresca a peso",
       description:
-        "Pasta fresca venduta a peso, ordini con giorno e ora di ritiro, ordini delle feste senza telefonate e avvisi ai clienti abituali. Pensato per i pastifici.",
+        "Ordini online per pastifici: pasta fresca a peso con giorno e ora di ritiro, un limite per ogni giorno delle feste e avvisi ai clienti abituali. Prova gratis.",
     },
     hero: {
       title: "A Natale ordinano online. Tu tiri la sfoglia.",
       hl: "online",
-      lead: "I clienti ordinano a peso con giorno e ora di ritiro, tu vedi quanta pasta preparare e prima delle feste avvisi tutti con un messaggio.",
+      lead: "NovaMenu porta gli ordini online nel tuo pastificio: i clienti ordinano a peso con giorno e ora di ritiro, tu vedi quanta pasta preparare e prima delle feste avvisi tutti con un messaggio.",
     },
     photo: { src: "/images/settori/pastificio.webp", alt: "Due pastai che tirano una sfoglia di pasta fresca in laboratorio", caption: "Tu tiri la sfoglia, gli ordini arrivano da soli.", pos: "50% 40%", layout: "left", text: "Gli ordini arrivano scritti, con i pesi e l'orario di ritiro. Ogni mattina sai quanta pasta preparare, anche nelle settimane delle feste.", points: ["Prezzo al chilo o a confezione", "Limite di ordini per giorno", "Riepilogo di cosa preparare"] },
     heroArt: {
@@ -536,7 +536,7 @@ export const sectors: Sector[] = [
       { feature: "clienti", text: "I clienti abituali e i loro ordini ricorrenti." },
       { feature: "automazioni-whatsapp", text: "Un avviso prima delle feste." },
     ],
-    faq: [{ q: "Posso vendere a peso?", a: "Sì, puoi indicare prezzo al chilo o a confezione e il cliente sceglie la quantità." }],
+    faq: [{ q: "Posso vendere a peso?", a: "Sì, puoi vendere a peso: indichi il prezzo al chilo o a confezione e il cliente sceglie la quantità." }],
   },
   {
     slug: "panetterie",
@@ -545,14 +545,14 @@ export const sectors: Sector[] = [
     icon: "bread",
     tone: "orange",
     seo: {
-      title: "Ordini online per panetterie e pasticcerie: pane al kg e torte su ordinazione",
+      title: "Prenotazioni per panetterie: pane e torte online",
       description:
-        "Pane al chilo prenotato con fascia di ritiro, torte su ordinazione, colombe e panettoni: ricevi gli ordini su WhatsApp e mostra il catalogo con prezzi e allergeni.",
+        "Prenotazioni per panetterie e pasticcerie: il pane ordinato la sera con la fascia di ritiro, torte su ordinazione, catalogo con prezzi al chilo. Prova gratis.",
     },
     hero: {
       title: "Il pane prenotato la sera, pronto al mattino.",
       hl: "prenotato",
-      lead: "Catalogo con prezzo al chilo e allergeni, pane e torte prenotati con la fascia di ritiro, e niente più foglietti attaccati al bancone.",
+      lead: "NovaMenu porta le prenotazioni nella tua panetteria: catalogo con prezzo al chilo e allergeni, pane e torte ordinati con la fascia di ritiro, e niente più foglietti attaccati al bancone.",
     },
     photo: { src: "/images/settori/panetteria.webp", alt: "Fornaio sorridente sulla porta del suo forno con le braccia piene di pane", caption: "Il pane prenotato, pronto sul bancone.", pos: "50% 35%", layout: "right", text: "I clienti prenotano la sera, tu al mattino trovi la lista già divisa per fascia di ritiro. Meno pane che avanza, meno foglietti sul bancone.", points: ["Prenotazioni fino all'ora che decidi", "Fasce di ritiro dal primo mattino", "Torte su ordinazione con preavviso"] },
     heroArt: {
@@ -618,8 +618,8 @@ export const sectors: Sector[] = [
       { feature: "clienti", text: "Chi ordina sempre e cosa." },
     ],
     faq: [
-      { q: "Posso mostrare il prezzo al chilo?", a: "Sì, ogni prodotto può avere il prezzo al chilo, a pezzo o a confezione." },
-      { q: "Posso chiedere dettagli per una torta?", a: "Sì, il cliente può scrivere una nota con scritta, gusti e numero di persone." },
+      { q: "Posso mostrare il prezzo al chilo?", a: "Sì, puoi mostrare il prezzo al chilo: ogni prodotto può averlo al chilo, a pezzo o a confezione." },
+      { q: "Posso chiedere dettagli per una torta?", a: "Sì, per ogni torta il cliente può scrivere una nota con scritta, gusti e numero di persone." },
     ],
   },
   {
@@ -629,14 +629,14 @@ export const sectors: Sector[] = [
     icon: "bag",
     tone: "green",
     seo: {
-      title: "Ordini online per gastronomie e rosticcerie: piatti pronti a peso",
+      title: "Ordini online per gastronomie e rosticcerie",
       description:
-        "Piatti del giorno a peso o a porzione, ordini per il pranzo con fascia di ritiro, menu delle feste su prenotazione. Pensato per gastronomie e rosticcerie, senza commissioni.",
+        "Ordini online per gastronomie e rosticcerie: piatti del giorno a peso o a porzione, pranzo prenotato con la fascia di ritiro, menu delle feste. Prova gratis.",
     },
     hero: {
       title: "Ordinato alle dieci, pronto a mezzogiorno.",
       hl: "pronto",
-      lead: "I piatti del giorno online ogni mattina, ordini a peso o a porzione con l'orario di ritiro, e il pranzo pronto da incartare quando arriva il cliente.",
+      lead: "NovaMenu porta gli ordini online nella tua gastronomia: i piatti del giorno pubblicati ogni mattina, ordini a peso o a porzione con l'orario di ritiro, e il pranzo già pronto quando arriva il cliente.",
     },
     photo: { src: "/images/settori/gastronomia.webp", alt: "Nidi di tagliatelle fresche su una teglia infarinata, accanto alla sfoglia e alla macchina per la pasta", caption: "Fatto a mano, già ordinato.", pos: "50% 60%", layout: "center" },
     heroArt: {
@@ -702,8 +702,8 @@ export const sectors: Sector[] = [
       { feature: "automazioni-whatsapp", text: "Un avviso prima delle feste ai clienti che hanno dato il consenso." },
     ],
     faq: [
-      { q: "Posso cambiare i piatti ogni giorno?", a: "Sì, attivi e disattivi i piatti dal telefono in pochi secondi, anche a voce con l'assistente." },
-      { q: "Posso vendere a peso e a porzione?", a: "Sì, ogni piatto può avere il prezzo al chilo, a porzione o a pezzo." },
+      { q: "Posso cambiare i piatti ogni giorno?", a: "Sì, puoi cambiare i piatti ogni giorno: li attivi e disattivi dal telefono in pochi secondi, anche a voce con l'assistente." },
+      { q: "Posso vendere a peso e a porzione?", a: "Sì, puoi vendere sia a peso sia a porzione: ogni piatto può avere il prezzo al chilo, a porzione o a pezzo." },
     ],
   },
 ];

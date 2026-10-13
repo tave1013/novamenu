@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { guideBySlug, guides } from "@/content/guides";
 import { featureBySlug } from "@/content/features";
 import { site } from "@/config/site";
+import { ogImage, pageMeta } from "@/config/seo";
 import { Icon, IconTile } from "@/components/Icon";
 import { Breadcrumbs, CtaBand, JsonLd } from "@/components/ui";
 import { sectorBySlug } from "@/content/sectors";
@@ -17,12 +18,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const g = guideBySlug(slug);
   if (!g) return {};
-  return {
-    title: g.title,
-    description: g.description,
-    alternates: { canonical: `/guide/${g.slug}/` },
-    openGraph: { type: "article", title: g.title, description: g.description, url: `/guide/${g.slug}/`, publishedTime: g.date },
-  };
+  return pageMeta({
+    title: g.seo?.title ?? g.title,
+    description: g.seo?.description ?? g.description,
+    path: `/guide/${g.slug}/`,
+    article: { publishedTime: g.date },
+  });
 }
 
 const fmt = (d: string) => new Date(d).toLocaleDateString("it-IT", { day: "numeric", month: "long", year: "numeric" });
@@ -49,6 +50,8 @@ export default async function GuideArticle({ params }: { params: Promise<{ slug:
           datePublished: g.date,
           dateModified: g.date,
           inLanguage: "it-IT",
+          url: `${site.url}/guide/${g.slug}/`,
+          image: `${site.url}${ogImage.url}`,
           author: { "@type": "Organization", name: site.name },
           publisher: { "@type": "Organization", name: site.name, logo: { "@type": "ImageObject", url: `${site.url}/apple-icon.png` } },
           mainEntityOfPage: `${site.url}/guide/${g.slug}/`,
