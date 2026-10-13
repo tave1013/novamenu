@@ -244,7 +244,7 @@ export function Header({ nav }: { nav: HeaderNav }) {
                   <div className="grid grid-cols-[230px_1fr] gap-3">
                     <div className="flex flex-col rounded-[12px] bg-mist p-4">
                       <p className="eyebrow !text-[11px]">{tr("Servizi extra")}</p>
-                      <p className="mt-2 text-[17px] font-semibold leading-snug tracking-[-0.02em] text-ink">{tr("Oltre la piattaforma, ci pensiamo noi.")}</p>
+                      <p className="mt-2 text-[17px] font-semibold leading-snug tracking-[-0.02em] text-ink">{tr("Tu pensi al locale, al resto pensiamo noi.")}</p>
                       <p className="mt-2 text-[13.5px] leading-relaxed text-muted">
                         {tr("Foto e video per i social, scatti dei tuoi piatti o la gestione della tua presenza online. Li scegli a parte, solo se ti servono.")}
                       </p>
