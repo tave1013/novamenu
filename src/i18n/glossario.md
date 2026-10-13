@@ -75,7 +75,7 @@ solo a un posto dove si beve alcol.
   aggiunge una breve spiegazione, non si traduce il nome.
 - Nomi dei locali di esempio (Pizzeria Fiore, Gelateria Polo Nord) e delle
   persone.
-- I nomi dei piani: Base, Pro, Business.
+- I nomi dei piani: Base, Pro, Premium.
 
 ## Numeri, prezzi, date
 
