@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Icon } from "@/components/Icon";
+import { Icon, toneClass } from "@/components/Icon";
+import { PhoneFrame } from "@/components/visuals/frames";
 import { Breadcrumbs, Faq, Hl, JsonLd } from "@/components/ui";
 import { Reveal } from "@/components/Reveal";
 import { ArtSplit, Mosaic4, Packages, PhotoSlot, Portfolio, SectionHead, Steps } from "@/components/Servizi";
@@ -47,37 +48,76 @@ function AppCard() {
   );
 }
 
+/** I tre tipi di video, mostrati come schede che spuntano dal telefono. */
+const videoCards = [
+  { icon: "video" as const, tone: "green", t: "Reel di preparazione", d: "L'impasto, il forno, il piatto finito", pos: "left-0 top-36", f: "float2", delay: "300ms" },
+  { icon: "camera" as const, tone: "blue", t: "Reel del locale", d: "La sala, il bancone, l'atmosfera", pos: "right-0 top-64", f: "float3", delay: "800ms" },
+  { icon: "sparkle" as const, tone: "amber", t: "Video su misura", d: "In base alle tue esigenze", pos: "bottom-14 left-2", f: "float1", delay: "1300ms" },
+];
+
+function VideoCard({ c }: { c: (typeof videoCards)[number] }) {
+  return (
+    <div className="flex w-full items-center gap-2.5 rounded-[14px] border border-line bg-white px-3 py-2.5 shadow-[0_18px_40px_-24px_rgba(0,0,0,.3)] sm:w-[240px]">
+      <span className={`flex h-8 w-8 flex-none items-center justify-center rounded-[9px] ${toneClass[c.tone].bg} ${toneClass[c.tone].ink}`}>
+        <Icon name={c.icon} size={16} stroke={2} />
+      </span>
+      <span className="min-w-0 text-[12px] leading-[1.35]">
+        <span className="block font-semibold text-ink">{c.t}</span>
+        <span className="block text-[#71717a]">{c.d}</span>
+      </span>
+    </div>
+  );
+}
+
 function PhoneVideo() {
   return (
-    <div className="relative rounded-[28px] bg-forest p-6 md:p-10">
-      <div className="mx-auto w-[230px] rounded-[36px] bg-ink p-2.5 shadow-[0_40px_70px_-30px_rgba(0,0,0,.6)]">
-        <div className="relative overflow-hidden rounded-[28px]">
-          <video
-            src="/images/servizi/foto-06-video.mp4"
-            poster="/images/servizi/foto-06-video.webp"
-            aria-label="Video verticale di un pizzaiolo che stende l'impasto sul banco infarinato"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            className="block aspect-[9/16] w-full bg-mist object-cover"
-          />
-          <div className="absolute inset-x-3 top-3 flex items-center gap-2">
-            <span aria-hidden className="flex h-7 w-7 items-center justify-center rounded-full bg-forest text-lime ring-2 ring-white/90">
-              <Icon name="pizza" size={15} stroke={2} />
-            </span>
-            <span className="text-[12px] font-medium text-white drop-shadow">iltuolocale</span>
-          </div>
-          <div className="absolute right-3 top-1/2 flex flex-col gap-3 text-white">
-            {(["star", "chat", "send"] as const).map((i) => (
-              <span key={i} className="flex h-8 w-8 items-center justify-center rounded-full bg-black/30 backdrop-blur">
-                <Icon name={i} size={15} />
+    <div>
+      <div className="relative flex justify-center sm:min-h-[560px] sm:items-center">
+        <div aria-hidden className="pointer-events-none absolute -inset-x-4 -inset-y-4 sm:-inset-x-6 [background:radial-gradient(48%_48%_at_50%_45%,rgba(159,232,112,.42),transparent_70%),radial-gradient(35%_35%_at_82%_78%,rgba(159,232,112,.25),transparent_70%)]" />
+        <PhoneFrame dark width={270} zoom={1} className="!shadow-[0_0_0_1px_rgba(0,0,0,.08)]">
+          <div className="relative">
+            <video
+              src="/images/servizi/foto-06-video.mp4"
+              poster="/images/servizi/foto-06-video.webp"
+              aria-label="Video verticale di un pizzaiolo che stende l'impasto sul banco infarinato"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              className="block aspect-[9/16] w-full bg-mist object-cover"
+            />
+            <div className="absolute inset-x-3 top-3 flex items-center gap-2">
+              <span aria-hidden className="flex h-7 w-7 items-center justify-center rounded-full bg-forest text-lime ring-2 ring-white/90">
+                <Icon name="pizza" size={15} stroke={2} />
               </span>
-            ))}
+              <span className="text-[12px] font-medium text-white drop-shadow">iltuolocale</span>
+            </div>
+            <div className="absolute right-3 top-1/2 flex flex-col gap-3 text-white">
+              {(["star", "chat", "send"] as const).map((i) => (
+                <span key={i} className="flex h-8 w-8 items-center justify-center rounded-full bg-black/30 backdrop-blur">
+                  <Icon name={i} size={15} />
+                </span>
+              ))}
+            </div>
           </div>
-        </div>
+        </PhoneFrame>
+        {videoCards.map((c) => (
+          <div key={c.t} className={`absolute z-30 hidden sm:block ${c.pos}`} style={{ animation: `pop .7s cubic-bezier(.2,.8,.2,1) ${c.delay} both` }}>
+            <div className={c.f}>
+              <VideoCard c={c} />
+            </div>
+          </div>
+        ))}
       </div>
+      {/* Sul telefono le schede stanno sotto, una per riga */}
+      <ul className="relative mt-6 flex flex-col gap-2 sm:hidden">
+        {videoCards.map((c) => (
+          <li key={c.t}>
+            <VideoCard c={c} />
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
@@ -96,7 +136,7 @@ export default function FotoVideoPage() {
                 Servizio foto e video
               </span>
               <h1 className="display anim-fade-up mt-6" style={{ animationDelay: "80ms" }}>
-                <Hl text="Foto che fanno venire fame, prima ancora del prezzo." word="fame" />
+                <Hl text="Foto che fanno venire fame, prima ancora di mangiare." word="fame" />
               </h1>
               <p className="lead anim-fade-up mt-6 max-w-[560px]" style={{ animationDelay: "160ms" }}>
                 Fotografiamo i tuoi piatti nel tuo locale, con luci e set professionali, e ti consegniamo foto e video pronti per il menu, i social e le app di consegna.
@@ -112,7 +152,7 @@ export default function FotoVideoPage() {
               </div>
             </div>
             <div className="anim-fade-up relative" style={{ animationDelay: "200ms" }}>
-              <PhotoSlot src="/images/servizi/foto-01-set.webp" alt="Set fotografico allestito nel locale: luci, sfondo e piatto pronto per lo scatto" label="Foto 1 · Il set fotografico nel locale" className="aspect-[4/5] rounded-[28px]" />
+              <PhotoSlot src="/images/servizi/foto-01-set.webp" alt="Una fotografa scatta dall'alto i piatti disposti su un tavolo del locale, con la luce da studio accanto" label="Foto 1 · Il set fotografico nel locale" className="aspect-[4/5] rounded-[28px]" />
               <div className="absolute -left-4 top-10 hidden rounded-[18px] border border-line bg-white px-4 py-3 shadow-[0_18px_40px_-24px_rgba(0,0,0,.35)] md:block">
                 <p className="font-mono text-[11px] uppercase tracking-[0.08em] text-faint">Nel tuo locale</p>
                 <p className="mt-1 text-[14.5px] font-medium text-ink">Luci, sfondi e set li portiamo noi</p>
