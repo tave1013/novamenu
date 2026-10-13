@@ -346,7 +346,6 @@ export function Header({ nav }: { nav: HeaderNav }) {
                 {[
                   { href: lp("/prezzi/"), label: tr("Prezzi") },
                   { href: lp("/guide/"), label: tr("Guide") },
-                  { href: lp("/demo/"), label: tr("Prenota una demo") },
                 ].map((l) => (
                   <li key={l.href}>
                     <Link href={l.href} tabIndex={panel === "root" ? 0 : -1} className="flex items-center justify-between py-4 text-[22px] font-semibold tracking-[-0.03em] text-ink">
@@ -543,8 +542,15 @@ function LangMenu({ locale, pathname, open, onToggle, onClose }: { locale: Local
 /** Selettore della lingua nel menu mobile: una riga che apre l'elenco sotto di sé. */
 function MobileLang({ locale, pathname, focusable, onPick }: { locale: Locale; pathname: string; focusable: boolean; onPick: () => void }) {
   const [open, setOpen] = useState(false);
+  const box = useRef<HTMLDivElement>(null);
+  // Aperto, l'elenco delle lingue deve restare tutto visibile anche sugli schermi bassi.
+  useEffect(() => {
+    if (!open) return;
+    const id = window.setTimeout(() => box.current?.scrollIntoView({ block: "nearest", behavior: "smooth" }), 210);
+    return () => window.clearTimeout(id);
+  }, [open]);
   return (
-    <div>
+    <div ref={box}>
       <button
         type="button"
         aria-expanded={open}
