@@ -29,18 +29,33 @@ const links = () => ([
 type Drop = "funz" | "sett" | "serv" | "lang" | null;
 type Panel = "root" | "funz" | "sett" | "serv";
 
-function DropButton({ id, label, open, active, onToggle }: { id: string; label: string; open: boolean; active: boolean; onToggle: () => void }) {
+/** Etichetta "Novità" nel colore del marchio, accanto alla voce Servizi. */
+function NewBadge({ size = "sm" }: { size?: "sm" | "lg" }) {
+  return (
+    <span
+      aria-hidden
+      className={`pointer-events-none inline-flex select-none items-center whitespace-nowrap rounded-full bg-lime font-semibold tracking-[-0.005em] text-forest ${
+        size === "lg" ? "h-[22px] px-2 text-[12px]" : "h-[18px] px-1.5 text-[10.5px]"
+      }`}
+    >
+      {tr("Novità")}
+    </span>
+  );
+}
+
+function DropButton({ id, label, open, active, onToggle, badge }: { id: string; label: string; open: boolean; active: boolean; onToggle: () => void; badge?: React.ReactNode }) {
   return (
     <button
       type="button"
       aria-expanded={open}
       aria-controls={id}
       onClick={onToggle}
-      className={`inline-flex h-9 items-center gap-1 rounded-[9px] px-3 text-[15px] tracking-[-0.01em] transition-colors duration-300 hover:bg-black/[0.04] ${
+      className={`inline-flex h-9 items-center gap-1 rounded-[9px] px-2 text-[15px] xl:px-3 tracking-[-0.01em] transition-colors duration-300 hover:bg-black/[0.04] ${
         active || open ? "text-ink" : "text-text"
       } ${open ? "bg-black/[0.05]" : ""}`}
     >
       {label}
+      {badge && <span className="ml-1 inline-flex">{badge}</span>}
       <Icon name="chevronDown" size={15} stroke={2} className={`transition-transform duration-300 ${open ? "rotate-180" : ""}`} />
     </button>
   );
@@ -116,10 +131,10 @@ export function Header({ nav }: { nav: HeaderNav }) {
           mobile ? "border-line bg-[#fafaf8]" : scrolled || open ? "border-line bg-[#fafaf8]/90" : "border-transparent bg-[#fafaf8]"
         }`}
       >
-        <div ref={wrapRef} className="wrap flex h-16 items-center justify-between gap-6">
+        <div ref={wrapRef} className="wrap flex h-16 items-center justify-between gap-3 xl:gap-6">
           <Logo />
 
-          <nav aria-label={tr("Principale")} className="hidden items-center gap-1 lg:flex">
+          <nav aria-label={tr("Principale")} className="hidden items-center gap-0 lg:flex xl:gap-1">
             {/* Funzionalità */}
             <div onMouseEnter={() => enter("funz")} onMouseLeave={leave} className="relative">
               <DropButton
@@ -222,36 +237,47 @@ export function Header({ nav }: { nav: HeaderNav }) {
                 open={open === "serv"}
                 active={inSection("services", "service")}
                 onToggle={() => setOpen((v) => (v === "serv" ? null : "serv"))}
+                badge={<NewBadge />}
               />
               {open === "serv" && (
-                <div id="menu-servizi" className={`${dropBox} left-[-8px] w-[340px]`}>
-                  <p className="eyebrow mb-1 px-2.5 !text-[11px]">{tr("Per il tuo locale")}</p>
-                  <ul>
-                    {nav.services.map((s) => (
-                      <li key={s.id}>
-                        <Link
-                          href={s.href}
-                          className="flex items-center gap-3 rounded-[8px] px-2.5 py-2 text-text transition-colors hover:bg-mist hover:text-ink"
-                        >
-                          <span className="text-muted">
-                            <Icon name={s.icon} size={16} />
-                          </span>
-                          <span className="flex flex-col">
-                            <span className="text-[14.5px]">{s.name}</span>
-                            <span className="text-[12.5px] text-muted">{s.desc}</span>
-                          </span>
+                <div id="menu-servizi" className={`${dropBox} left-[-8px] w-[620px]`}>
+                  <div className="grid grid-cols-[230px_1fr] gap-3">
+                    <div className="flex flex-col rounded-[12px] bg-mist p-4">
+                      <p className="eyebrow !text-[11px]">{tr("Servizi extra")}</p>
+                      <p className="mt-2 text-[17px] font-semibold leading-snug tracking-[-0.02em] text-ink">{tr("Oltre la piattaforma, ci pensiamo noi.")}</p>
+                      <p className="mt-2 text-[13.5px] leading-relaxed text-muted">
+                        {tr("Foto e video per i social, scatti dei tuoi piatti o la gestione della tua presenza online. Li scegli a parte, solo se ti servono.")}
+                      </p>
+                      <Link href={lp("/servizi/")} className="mt-auto inline-flex items-center gap-1.5 pt-4 text-[14px] font-semibold text-ink">
+                        {tr("Tutti i servizi")}
+                        <Icon name="arrowRight" size={14} stroke={2} />
+                      </Link>
+                    </div>
+                    <div className="flex flex-col">
+                      <ul>
+                        {nav.services.map((s) => (
+                          <li key={s.id}>
+                            <Link href={s.href} className="group flex items-center gap-3 rounded-[10px] p-2 transition-colors hover:bg-mist">
+                              <span className="flex h-10 w-10 flex-none items-center justify-center rounded-[10px] bg-lime-soft text-forest">
+                                <Icon name={s.icon} size={18} />
+                              </span>
+                              <span className="flex min-w-0 flex-1 flex-col">
+                                <span className="text-[14.5px] font-medium text-ink">{s.name}</span>
+                                <span className="text-[12.5px] text-muted">{s.desc}</span>
+                              </span>
+                              <Icon name="arrowRight" size={14} stroke={2} className="flex-none text-faint transition-[color,transform] duration-200 group-hover:translate-x-0.5 group-hover:text-ink" />
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                      <div className="mt-auto flex items-center justify-between gap-3 border-t border-line-soft px-2 pt-3">
+                        <span className="text-[12.5px] text-muted">{tr("Su misura, senza impegno")}</span>
+                        <Link href={lp("/contatti/")} className="inline-flex items-center gap-1.5 whitespace-nowrap text-[13.5px] font-semibold text-ink">
+                          {tr("Chiedi un preventivo")}
+                          <Icon name="arrowRight" size={13} stroke={2} />
                         </Link>
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="mt-3 flex items-center justify-between gap-3 border-t border-line-soft px-2.5 pt-3">
-                    <Link href={lp("/servizi/")} className="inline-flex items-center gap-1.5 text-[14px] font-semibold text-ink">
-                      {tr("Tutti i servizi")}
-                      <Icon name="arrowRight" size={14} stroke={2} />
-                    </Link>
-                    <Link href={lp("/contatti/")} className="text-[13px] text-muted hover:text-ink">
-                      {tr("Chiedi un preventivo")}
-                    </Link>
+                      </div>
+                    </div>
                   </div>
                 </div>
               )}
@@ -261,7 +287,7 @@ export function Header({ nav }: { nav: HeaderNav }) {
               <Link
                 key={l.href}
                 href={l.href}
-                className={`inline-flex h-9 items-center rounded-[9px] px-3 text-[15px] tracking-[-0.01em] transition-colors duration-300 hover:bg-black/[0.04] ${
+                className={`inline-flex h-9 items-center rounded-[9px] px-2 text-[15px] xl:px-3 tracking-[-0.01em] transition-colors duration-300 hover:bg-black/[0.04] ${
                   isActive(l.href) ? "text-ink" : "text-text"
                 }`}
                 aria-current={isActive(l.href) ? "page" : undefined}
@@ -338,7 +364,15 @@ export function Header({ nav }: { nav: HeaderNav }) {
                       tabIndex={panel === "root" ? 0 : -1}
                       className="flex w-full items-center justify-between py-4 text-left text-[22px] font-semibold tracking-[-0.03em] text-ink"
                     >
-                      {label}
+                      {p === "serv" ? (
+                        <span className="flex items-center gap-2.5">
+                          {label}
+                          <NewBadge size="lg" />
+                          <span className="sr-only"> {tr("(novità)")}</span>
+                        </span>
+                      ) : (
+                        label
+                      )}
                       <Icon name="chevronRight" size={22} stroke={2} className="text-faint" />
                     </button>
                   </li>
@@ -403,8 +437,13 @@ export function Header({ nav }: { nav: HeaderNav }) {
             <nav aria-label={tr("Servizi")} className="h-full w-1/4 overflow-y-auto px-5 pb-6 pt-2" aria-hidden={panel !== "serv"}>
               <BackButton onClick={() => setPanel("root")} focusable={panel === "serv"} />
               <p className="mt-1 text-[22px] font-semibold tracking-[-0.03em] text-ink">{tr("Servizi")}</p>
-              <div className="mt-5">
-                <p className="eyebrow pb-1 !text-[11px]">{tr("Per il tuo locale")}</p>
+              <div className="mt-4 rounded-[14px] bg-mist p-4">
+                <p className="eyebrow !text-[11px]">{tr("Servizi extra")}</p>
+                <p className="mt-2 text-[14.5px] leading-relaxed text-muted">
+                  {tr("Foto e video per i social, scatti dei tuoi piatti o la gestione della tua presenza online. Li scegli a parte, solo se ti servono.")}
+                </p>
+              </div>
+              <div className="mt-4">
                 <ul>
                   {nav.services.map((s) => (
                     <li key={s.id}>
