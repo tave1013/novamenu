@@ -15,10 +15,13 @@ const description =
 export const metadata: Metadata = pageMeta({ title, description, path: "/servizi/foto-e-video/" });
 
 const faq = [
+  { q: "Quante foto ricevo dopo il servizio?", a: "Dipende dal pacchetto che scegli. In ogni caso ti consegniamo una raccolta di immagini varie, pensate per coprire tutti gli usi: menu, post, storie, sito e locandine. Avere contenuti diversi è quello che tiene viva la tua comunicazione nel tempo." },
+  { q: "In quanto tempo consegnate le foto?", a: "Di solito entro due settimane dallo shooting. Nei periodi più intensi, al massimo entro un mese. Ricevi tutto in digitale, ottimizzato e pronto da pubblicare." },
+  { q: "Realizzate anche video?", a: "Sì, video brevi in verticale per Instagram e TikTok, girati mentre lavori: l'impasto, il forno, il piatto che arriva in sala. Se hai in mente un progetto video più articolato, raccontacelo quando ci sentiamo: lo valutiamo insieme." },
+  { q: "In quali zone lavorate?", a: "Lavoriamo soprattutto tra Piemonte e Lombardia: Alessandria, Torino, Milano, Monza e le province vicine. Siamo disponibili anche per trasferte nel resto del Nord Italia: se il tuo locale è fuori da queste zone scrivici, e vediamo insieme come organizzarci." },
+  { q: "Come mi preparo per il giorno dello shooting?", a: "Te lo spieghiamo noi in anticipo, in base al servizio che abbiamo costruito insieme. In generale basta che il locale sia in ordine, che i piatti siano quelli che servi ai clienti e che ci sia qualcuno ad affiancarci durante la giornata. A luci, sfondi e accessori pensiamo noi." },
   { q: "Devo chiudere il locale per lo shooting?", a: "No. Di solito lavoriamo nelle ore di chiusura o a metà pomeriggio, quando la cucina è più tranquilla, e portiamo noi luci e sfondi." },
-  { q: "Cosa devo preparare?", a: "Solo i piatti, come li servi ai tuoi clienti. Al set, alle luci e agli accessori pensiamo noi." },
   { q: "Posso usare le foto dove voglio?", a: "Sì: menu digitale, Instagram, Facebook, Google, TripAdvisor, app di consegna e materiale stampato." },
-  { q: "Fate anche video?", a: "Sì, video brevi in verticale per Instagram e TikTok, girati mentre lavori: l'impasto, il forno, il piatto che arriva in sala." },
   { q: "Il servizio è solo per chi usa NovaMenu?", a: "No, puoi richiederlo anche se non usi la piattaforma. Se la usi, carichiamo noi le foto direttamente nel tuo menu." },
 ];
 

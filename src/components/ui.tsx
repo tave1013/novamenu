@@ -2,6 +2,7 @@ import Link from "next/link";
 import { signupUrl, site } from "@/config/site";
 import { Icon } from "./Icon";
 import { DemoBooking } from "./DemoBooking";
+import { FaqList } from "./FaqList";
 
 export function JsonLd({ data }: { data: unknown }) {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
@@ -52,19 +53,7 @@ export function Faq({ items, title = "Domande frequenti", schema = true }: { ite
         <h2 id="faq-title" className="h-section text-center">
           {title}
         </h2>
-        <div className="mt-10 border-t border-line">
-          {items.map((f, i) => (
-            <details key={i} className="group border-b border-line" open={i === 0}>
-              <summary className="flex min-h-[64px] cursor-pointer list-none items-center justify-between gap-6 py-4 text-[17px] font-medium tracking-[-0.01em] text-ink [&::-webkit-details-marker]:hidden">
-                {f.q}
-                <span className="inline-flex h-7 w-7 flex-none items-center justify-center rounded-[8px] border border-line bg-white transition-transform duration-300 group-open:rotate-45">
-                  <Icon name="plus" size={15} stroke={2} />
-                </span>
-              </summary>
-              <p className="-mt-1 max-w-[680px] pb-5 pr-10 text-[16px] leading-relaxed text-muted">{f.a}</p>
-            </details>
-          ))}
-        </div>
+        <FaqList items={items} />
         <p className="mt-8 text-center text-[15px] text-muted">
           Non trovi la risposta?{" "}
           <Link href="/contatti/" className="font-medium text-ink underline decoration-line underline-offset-4 hover:decoration-ink">
