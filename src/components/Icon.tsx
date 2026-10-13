@@ -48,6 +48,8 @@ const paths = {
   play: "M7 4l13 8-13 8z",
   lock: "M5 11h14v10H5zM8 11V7a4 4 0 0 1 8 0v4",
   euro: "M17 6.5A7 7 0 0 0 6.5 12 7 7 0 0 0 17 17.5M4 10h9M4 14h9",
+  heart: "M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.2a4.3 4.3 0 0 1 7.5 2.6C19.5 15.4 12 20 12 20z",
+  grid: "M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z",
 } as const;
 
 export type IconName = keyof typeof paths;

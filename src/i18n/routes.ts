@@ -75,6 +75,7 @@ export const slugs: Record<Collection, Record<string, Partial<Record<Locale, str
   },
   service: {
     "foto-e-video": { en: "photo-and-video" },
+    "gestione-social": { en: "social-media-management" },
     "presenza-online": { en: "online-presence" },
   },
   guide: {

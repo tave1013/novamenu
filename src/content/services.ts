@@ -5,5 +5,6 @@ export type Service = { id: string; slug: string; name: string; icon: IconName; 
 
 export const services: Service[] = withId<Service>([
   { slug: "foto-e-video", name: "Foto e video", icon: "camera", desc: "Piatti, locale e video per i social" },
+  { slug: "gestione-social", name: "Gestione social", icon: "heart", desc: "Post, reel e storie, pubblicati per te" },
   { slug: "presenza-online", name: "Presenza online", icon: "globe", desc: "Google, TripAdvisor e i tuoi canali" },
 ]);

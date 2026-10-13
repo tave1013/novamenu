@@ -12,8 +12,8 @@ export const meta = (locale: Locale): Metadata =>
   pageMeta({
     locale,
     page: "services",
-    title: t(locale, "Servizi per ristoranti: foto e presenza online"),
-    description: t(locale, "Foto e video professionali per il tuo locale e gestione della presenza online su Google, TripAdvisor e social. Servizi pensati per la ristorazione."),
+    title: t(locale, "Foto, social e presenza online per ristoranti"),
+    description: t(locale, "Foto e video professionali, gestione dei social e della presenza online su Google e TripAdvisor. Servizi extra pensati per chi fa ristorazione."),
   });
 
 export default function ServiziPage() {
@@ -22,8 +22,8 @@ export default function ServiziPage() {
       <div className="wrap">
         <Breadcrumbs items={[{ name: tr("Servizi"), href: lp("/servizi/") }]} />
         <h1 className="display mt-8 max-w-[760px]">{tr("Oltre alla piattaforma, ti aiutiamo a farti scegliere.")}</h1>
-        <p className="lead mt-5 max-w-[620px]">{tr("Foto, video e presenza online fatti da persone che conoscono la ristorazione, per un locale curato ovunque ti cerchino.")}</p>
-        <div className="mt-12 grid gap-4 md:grid-cols-2">
+        <p className="lead mt-5 max-w-[620px]">{tr("Foto, video, social e presenza online fatti da persone che conoscono la ristorazione. Sono servizi extra, li scegli a parte solo se ti servono.")}</p>
+        <div className="mt-12 grid gap-4 md:grid-cols-3">
           {getServices().map((s) => (
             <Link key={s.slug} href={to("service", s.id)} className="group rounded-[24px] border border-line bg-white p-7 transition-colors hover:border-[#d4d4cf]">
               <span className="flex h-12 w-12 items-center justify-center rounded-[14px] bg-lime-soft text-forest">

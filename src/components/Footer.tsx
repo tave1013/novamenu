@@ -40,6 +40,7 @@ export function Footer() {
           <FooterCol title={tr("Azienda")}>
             <FooterLink href={lp("/prezzi/")}>{tr("Prezzi")}</FooterLink>
             <FooterLink href={lp("/servizi/foto-e-video/")}>{tr("Foto e video")}</FooterLink>
+            <FooterLink href={lp("/servizi/gestione-social/")}>{tr("Gestione social")}</FooterLink>
             <FooterLink href={lp("/servizi/presenza-online/")}>{tr("Presenza online")}</FooterLink>
             <FooterLink href={lp("/demo/")}>{tr("Prenota una demo")}</FooterLink>
             <FooterLink href={lp("/contatti/")}>{tr("Contatti")}</FooterLink>
