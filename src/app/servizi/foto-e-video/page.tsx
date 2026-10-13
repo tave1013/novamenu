@@ -142,7 +142,7 @@ export default function FotoVideoPage() {
                 <Hl text="Foto che fanno venire fame, prima ancora di mangiare." word="fame" />
               </h1>
               <p className="lead anim-fade-up mt-6 max-w-[560px]" style={{ animationDelay: "160ms" }}>
-                Fotografiamo i tuoi piatti nel tuo locale, con luci e set professionali, e ti consegniamo foto e video pronti per il menu, i social e le app di consegna.
+                Fotografiamo i piatti del tuo locale: alle luci e agli strumenti necessari pensiamo a tutto noi, e ti consegniamo foto e video pronti per il menu, i social e le app di consegna.
               </p>
               <div className="anim-fade-up mt-8 flex flex-col gap-3 sm:flex-row" style={{ animationDelay: "240ms" }}>
                 <Link href="/contatti/" className="btn btn-dark">

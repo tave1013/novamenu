@@ -43,8 +43,8 @@ export function PhotoSlot({ src, alt, label, pos = "50% 50%", className = "" }: 
 export function ArtSplit({ visual, side = "left", eyebrow, title, text, points }: { visual: React.ReactNode; side?: "left" | "right"; eyebrow?: string; title: React.ReactNode; text: string; points?: string[] }) {
   return (
     <div className="wrap grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-      <Reveal className={`min-w-0 ${side === "left" ? "lg:order-1" : "lg:order-2"}`}>{visual}</Reveal>
-      <Reveal delay={80} className={`min-w-0 ${side === "left" ? "lg:order-2" : "lg:order-1"}`}>
+      <Reveal className={`order-2 min-w-0 ${side === "left" ? "lg:order-1" : "lg:order-2"}`}>{visual}</Reveal>
+      <Reveal delay={80} className={`order-1 min-w-0 ${side === "left" ? "lg:order-2" : "lg:order-1"}`}>
         {eyebrow && <span className="inline-flex items-center rounded-full bg-lime-soft px-2.5 py-1 text-[13px] font-medium text-forest">{eyebrow}</span>}
         <h2 className="h-section mt-4">{title}</h2>
         <p className="lead mt-4 max-w-[540px]">{text}</p>
