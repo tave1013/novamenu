@@ -257,8 +257,6 @@
 @keyframes dash { to { stroke-dashoffset: -16; } }
 
 /* Scorrimento morbido */
-/* Con il trackpad uno scorrimento un po' in diagonale non deve far tornare alla pagina precedente. */
-html, body { overscroll-behavior-x: none; }
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
 .lenis.lenis-stopped { overflow: hidden; }

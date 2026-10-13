@@ -68,7 +68,7 @@ export function Reviews() {
         <Reveal className="mx-auto max-w-[680px] text-center">
           <p className="eyebrow">{tr("Recensioni")}</p>
           <h2 id="recensioni" className="h-section mt-3">
-            {tr("Lo dicono i")}{" "}<span className="hl">{tr("locali")}</span>{" "}{tr("che lo usano.")}
+            {tr("Lo dicono le")}{" "}<span className="hl">{tr("persone")}</span>{" "}{tr("che lo usano.")}
           </h2>
           <p className="lead mx-auto mt-4 max-w-[520px]">{tr("Pizzerie, ristoranti e botteghe che hanno lasciato il telefono e il quaderno degli ordini.")}</p>
           {reviewsArePlaceholder && (
