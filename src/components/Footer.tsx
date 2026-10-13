@@ -38,6 +38,8 @@ export function Footer() {
 
           <FooterCol title="Azienda">
             <FooterLink href="/prezzi/">Prezzi</FooterLink>
+            <FooterLink href="/servizi/foto-e-video/">Foto e video</FooterLink>
+            <FooterLink href="/servizi/presenza-online/">Presenza online</FooterLink>
             <FooterLink href="/demo/">Prenota una demo</FooterLink>
             <FooterLink href="/contatti/">Contatti</FooterLink>
             <FooterLink href="/guide/">Guide</FooterLink>

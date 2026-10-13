@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { features, featureGroups } from "@/content/features";
 import { sectors } from "@/content/sectors";
+import { services } from "@/content/services";
 import { loginUrl, signupUrl } from "@/config/site";
 import { Icon } from "./Icon";
 import { Logo } from "./Logo";
@@ -15,13 +16,13 @@ const links = [
   { href: "/contatti/", label: "Contatti" },
 ];
 
-type Drop = "funz" | "sett" | null;
+type Drop = "funz" | "sett" | "serv" | null;
 
 const sectorGroups = [
   { name: "Locali", slugs: ["pizzerie", "ristoranti", "pub", "bar"] },
   { name: "Botteghe del cibo", slugs: ["gelaterie", "pastifici", "panetterie", "gastronomie"] },
 ];
-type Panel = "root" | "funz" | "sett";
+type Panel = "root" | "funz" | "sett" | "serv";
 
 function DropButton({ id, label, open, active, onToggle }: { id: string; label: string; open: boolean; active: boolean; onToggle: () => void }) {
   return (
@@ -207,6 +208,49 @@ export function Header() {
               )}
             </div>
 
+            {/* Servizi */}
+            <div onMouseEnter={() => enter("serv")} onMouseLeave={leave} className="relative">
+              <DropButton
+                id="menu-servizi"
+                label="Servizi"
+                open={open === "serv"}
+                active={!!pathname?.startsWith("/servizi")}
+                onToggle={() => setOpen((v) => (v === "serv" ? null : "serv"))}
+              />
+              {open === "serv" && (
+                <div id="menu-servizi" className={`${dropBox} left-[-8px] w-[340px]`}>
+                  <p className="eyebrow mb-1 px-2.5 !text-[11px]">Per il tuo locale</p>
+                  <ul>
+                    {services.map((s) => (
+                      <li key={s.slug}>
+                        <Link
+                          href={`/servizi/${s.slug}/`}
+                          className="flex items-center gap-3 rounded-[8px] px-2.5 py-2 text-text transition-colors hover:bg-mist hover:text-ink"
+                        >
+                          <span className="text-muted">
+                            <Icon name={s.icon} size={16} />
+                          </span>
+                          <span className="flex flex-col">
+                            <span className="text-[14.5px]">{s.name}</span>
+                            <span className="text-[12.5px] text-muted">{s.desc}</span>
+                          </span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-3 flex items-center justify-between gap-3 border-t border-line-soft px-2.5 pt-3">
+                    <Link href="/servizi/" className="inline-flex items-center gap-1.5 text-[14px] font-semibold text-ink">
+                      Tutti i servizi
+                      <Icon name="arrowRight" size={14} stroke={2} />
+                    </Link>
+                    <Link href="/contatti/" className="text-[13px] text-muted hover:text-ink">
+                      Chiedi un preventivo
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </div>
+
             {links.map((l) => (
               <Link
                 key={l.href}
@@ -258,11 +302,11 @@ export function Header() {
         >
           <div className="relative min-h-0 flex-1 overflow-hidden">
           <div
-            className="absolute inset-0 flex w-[300%] transition-transform duration-300 [transition-timing-function:var(--ease-out-soft)]"
-            style={{ transform: `translateX(-${((panel === "root" ? 0 : panel === "funz" ? 1 : 2) * 100) / 3}%)` }}
+            className="absolute inset-0 flex w-[400%] transition-transform duration-300 [transition-timing-function:var(--ease-out-soft)]"
+            style={{ transform: `translateX(-${(["root", "funz", "sett", "serv"].indexOf(panel) * 100) / 4}%)` }}
           >
             {/* Principale */}
-            <nav aria-label="Menu" className="h-full w-1/3 overflow-y-auto px-5 pb-6 pt-2" aria-hidden={panel !== "root"}>
+            <nav aria-label="Menu" className="h-full w-1/4 overflow-y-auto px-5 pb-6 pt-2" aria-hidden={panel !== "root"}>
               <ul className="divide-y divide-line-soft">
                 <li>
                   <Link href="/" tabIndex={panel === "root" ? 0 : -1} className="flex items-center justify-between py-4 text-[22px] font-semibold tracking-[-0.03em] text-ink">
@@ -273,6 +317,7 @@ export function Header() {
                   [
                     ["funz", "Funzionalità"],
                     ["sett", "Settori"],
+                    ["serv", "Servizi"],
                   ] as const
                 ).map(([p, label]) => (
                   <li key={p}>
@@ -302,7 +347,7 @@ export function Header() {
             </nav>
 
             {/* Funzionalità */}
-            <nav aria-label="Funzionalità" className="h-full w-1/3 overflow-y-auto px-5 pb-6 pt-2" aria-hidden={panel !== "funz"}>
+            <nav aria-label="Funzionalità" className="h-full w-1/4 overflow-y-auto px-5 pb-6 pt-2" aria-hidden={panel !== "funz"}>
               <BackButton onClick={() => setPanel("root")} focusable={panel === "funz"} />
               <p className="mt-1 text-[22px] font-semibold tracking-[-0.03em] text-ink">Funzionalità</p>
               {featureGroups.map((g) => (
@@ -323,7 +368,7 @@ export function Header() {
             </nav>
 
             {/* Settori */}
-            <nav aria-label="Settori" className="h-full w-1/3 overflow-y-auto px-5 pb-6 pt-2" aria-hidden={panel !== "sett"}>
+            <nav aria-label="Settori" className="h-full w-1/4 overflow-y-auto px-5 pb-6 pt-2" aria-hidden={panel !== "sett"}>
               <BackButton onClick={() => setPanel("root")} focusable={panel === "sett"} />
               <p className="mt-1 text-[22px] font-semibold tracking-[-0.03em] text-ink">Settori</p>
               {sectorGroups.map((g) => (
@@ -341,6 +386,23 @@ export function Header() {
                 </div>
               ))}
               <AllLink href="/settori/" label="Vedi tutti i settori" focusable={panel === "sett"} />
+            </nav>
+
+            {/* Servizi */}
+            <nav aria-label="Servizi" className="h-full w-1/4 overflow-y-auto px-5 pb-6 pt-2" aria-hidden={panel !== "serv"}>
+              <BackButton onClick={() => setPanel("root")} focusable={panel === "serv"} />
+              <p className="mt-1 text-[22px] font-semibold tracking-[-0.03em] text-ink">Servizi</p>
+              <div className="mt-5">
+                <p className="eyebrow pb-1 !text-[11px]">Per il tuo locale</p>
+                <ul>
+                  {services.map((s) => (
+                    <li key={s.slug}>
+                      <MobileRow href={`/servizi/${s.slug}/`} focusable={panel === "serv"} icon={<Icon name={s.icon} size={19} />} title={s.name} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <AllLink href="/servizi/" label="Vedi tutti i servizi" focusable={panel === "serv"} />
             </nav>
           </div>
           </div>
