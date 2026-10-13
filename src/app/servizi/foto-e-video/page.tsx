@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Icon } from "@/components/Icon";
 import { Breadcrumbs, Faq, Hl, JsonLd } from "@/components/ui";
 import { Reveal } from "@/components/Reveal";
-import { ArtSplit, Mosaic4, Packages, PhotoSlot, SectionHead, Steps } from "@/components/Servizi";
+import { ArtSplit, Mosaic4, Packages, PhotoSlot, Portfolio, SectionHead, Steps } from "@/components/Servizi";
 import { site } from "@/config/site";
 
 const title = "Foto e video per ristoranti e pizzerie | NovaMenu";
@@ -29,14 +29,14 @@ function AppCard() {
   return (
     <div className="relative rounded-[28px] bg-mist p-6 md:p-10">
       <div className="mx-auto max-w-[360px] overflow-hidden rounded-[22px] border border-line bg-white shadow-[0_30px_60px_-36px_rgba(0,0,0,.4)]">
-        <PhotoSlot src="/images/servizi/foto-05-asporto.webp" alt="Una pizza da asporto nel suo cartone, fotografata dall'alto" label="Foto 5 · Piatto da asporto" className="aspect-[4/3]" />
+        <PhotoSlot src="/images/servizi/foto-05-asporto.webp" alt="Una pizza con pomodoro, stracciatella di burrata e basilico fotografata dall'alto su un tavolo di legno" label="Foto 5 · Piatto da asporto" className="aspect-[4/3]" />
         <div className="p-4">
           <div className="flex items-start justify-between gap-3">
             <div>
               <p className="text-[16px] font-semibold tracking-[-0.015em] text-ink">Pizza Margherita</p>
-              <p className="mt-0.5 text-[13px] text-muted">Pomodoro, fiordilatte, basilico</p>
+              <p className="mt-0.5 text-[13px] text-muted">Pomodoro, stracciatella di burrata, olio extravergine, basilico</p>
             </div>
-            <span className="text-[15px] font-semibold text-ink">8,00 €</span>
+            <span className="flex-none whitespace-nowrap text-[15px] font-semibold text-ink">8,00 €</span>
           </div>
           <div className="mt-4 flex items-center justify-between">
             <span className="rounded-full bg-lime-soft px-2.5 py-1 text-[12px] font-medium text-forest">Consegna 25 min</span>
@@ -160,6 +160,12 @@ export default function FotoVideoPage() {
         />
       </section>
 
+      <Portfolio
+        eyebrow="Alcuni dei nostri lavori"
+        title={<Hl text="Piatti, drink e locali, raccontati con la luce giusta." word="luce giusta" />}
+        text="Pizze, birre, dolci, sale e persone al lavoro: ogni scatto pensato per far venire voglia di entrare."
+      />
+
       {/* Eventi */}
       <section className="py-16 md:py-24">
         <div className="wrap">
@@ -174,7 +180,7 @@ export default function FotoVideoPage() {
                 {[
                   { t: "Inaugurazione", d: "Il locale, lo staff e i primi clienti" },
                   { t: "Nuovo menu di stagione", d: "I piatti nuovi, pronti per il lancio" },
-                  { t: "Serate ed eventi", d: "Degustazioni, musica, partite" },
+                  { t: "Catering ed eventi", d: "Buffet, cerimonie, feste private" },
                   { t: "Menu delle feste", d: "Natale, Pasqua, San Valentino" },
                 ].map((e) => (
                   <div key={e.t} className="rounded-[18px] bg-white/[.06] p-4">
@@ -184,7 +190,7 @@ export default function FotoVideoPage() {
                 ))}
               </div>
             </div>
-            <PhotoSlot src="/images/servizi/foto-07-evento.webp" alt="Sala piena durante l'inaugurazione di un locale" label="Foto 7 · Un evento nel locale" className="aspect-[4/3] rounded-[22px]" />
+            <PhotoSlot src="/images/servizi/foto-07-evento.webp" alt="Lunga tavolata apparecchiata per un evento all'aperto, con candele, fiori e sedie dorate" label="Foto 7 · Un evento nel locale" className="aspect-[4/3] rounded-[22px]" />
           </div>
         </div>
       </section>

@@ -167,3 +167,56 @@ export function SectionHead({ eyebrow, title, text, center = false }: { eyebrow?
     </div>
   );
 }
+
+const tones = ["#efe7da", "#e6dccb", "#ece3d3", "#e2d7c4", "#f1eadf", "#e8dfcf"];
+
+function WorkCard({ src, n }: { src: string; n: number }) {
+  const size = "w-[220px] sm:w-[280px] aspect-[4/5]";
+  if (exists(src)) {
+    return (
+      <div className={`relative flex-none overflow-hidden rounded-[22px] bg-mist ${size}`}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={src} alt="" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
+      </div>
+    );
+  }
+  return (
+    <div className={`relative flex-none overflow-hidden rounded-[22px] ${size}`} style={{ background: tones[n % tones.length] }}>
+      <span className="absolute left-4 top-4 rounded-full bg-white/80 px-2.5 py-1 font-mono text-[11px] text-muted">lavoro-{String(n).padStart(2, "0")}</span>
+    </div>
+  );
+}
+
+function WorkRow({ items, reverse }: { items: number[]; reverse?: boolean }) {
+  const loop = [...items, ...items];
+  return (
+    <div className="flex overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_6%,#000_94%,transparent)]">
+      <div className={`flex w-max items-center gap-4 pr-4 ${reverse ? "[animation:marquee_60s_linear_infinite_reverse]" : "[animation:marquee_60s_linear_infinite]"}`}>
+        {loop.map((n, i) => (
+          <div key={i} aria-hidden={i >= items.length} className="flex">
+            <WorkCard n={n} src={`/images/servizi/lavori/lavoro-${String(n).padStart(2, "0")}.webp`} />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/** Galleria dei lavori: solo foto, su due file che scorrono in direzioni opposte. */
+export function Portfolio({ eyebrow, title, text }: { eyebrow: string; title: React.ReactNode; text: string }) {
+  return (
+    <section aria-label="Alcuni dei nostri lavori" className="overflow-hidden py-16 md:py-24">
+      <div className="wrap">
+        <Reveal className="mx-auto max-w-[680px] text-center">
+          <p className="eyebrow">{eyebrow}</p>
+          <h2 className="h-section mt-3">{title}</h2>
+          <p className="lead mx-auto mt-4 max-w-[540px]">{text}</p>
+        </Reveal>
+      </div>
+      <div className="mt-12 flex flex-col gap-4">
+        <WorkRow items={[1, 2, 3, 4, 5, 6]} />
+        <WorkRow items={[7, 8, 9, 10, 11, 12]} reverse />
+      </div>
+    </section>
+  );
+}
