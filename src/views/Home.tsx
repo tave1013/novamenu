@@ -263,15 +263,15 @@ export default function Home() {
         </ArtSplit>
       </section>
 
-      {/* Al fianco dei piccoli locali */}
-      <section aria-label={tr("Al fianco dei piccoli locali")} className="border-t border-line-soft pb-10 pt-16 md:py-26">
+      {/* Al fianco delle piccole e medie imprese */}
+      <section aria-label={tr("Al fianco delle piccole e medie imprese")} className="border-t border-line-soft pb-10 pt-16 md:py-26">
         <PhotoSplit
           src="/images/settori/pasticceria.webp"
           alt={tr("Pasticcera sorridente nel suo laboratorio, con un dolce alla frutta in mano accanto alla vetrina")}
           pos="50% 30%"
           side="left"
-          eyebrow={tr("Perché esistiamo")}
-          title={<>{tr("Al fianco dei")}{" "}<span className="hl">{tr("piccoli")}</span>{" "}{tr("locali.")}</>}
+          eyebrow={tr("Il nostro obiettivo")}
+          title={<>{tr("Al fianco delle")}{" "}<span className="hl">{tr("piccole e medie")}</span>{" "}{tr("imprese.")}</>}
           text={tr("Una nova è una stella che esiste già e diventa più luminosa. È quello che vogliamo per la tua pizzeria, il tuo bar, la tua bottega: farti trovare online, lavorare con meno telefonate e far tornare i clienti.")}
           points={[tr("Pensato per chi ha poco tempo e nessun tecnico"), tr("Più visibilità su Google, Instagram e WhatsApp"), tr("Nessuna commissione: ogni euro resta nel locale")]}
         >

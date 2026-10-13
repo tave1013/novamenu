@@ -95,7 +95,7 @@ for (const width of [1440, 390]) {
       await go(path);
       if (name === "home") {
         await shotOf(`home-${width}-servizio-foto-${lang}`, lang === "it" ? 'section[aria-label="Foto e video per il tuo locale"]' : 'section[aria-label="Photos and video for your venue"]');
-        await shotOf(`home-${width}-perche-esistiamo-${lang}`, lang === "it" ? 'section[aria-label="Al fianco dei piccoli locali"]' : "section:has(.hl):has(img[src*='pasticceria'])");
+        await shotOf(`home-${width}-perche-esistiamo-${lang}`, lang === "it" ? 'section[aria-label="Al fianco delle piccole e medie imprese"]' : "section:has(.hl):has(img[src*='pasticceria'])");
       } else {
         await shot(`${name}-${width}-intera-${lang}`, { fullPage: true });
       }
