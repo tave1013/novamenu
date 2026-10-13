@@ -6,6 +6,7 @@ import Link from "next/link";
 import { signupUrl, site, waLink } from "@/config/site";
 import { Icon } from "./Icon";
 import { HandNote } from "./HandNote";
+import { lp } from "@/i18n/link";
 
 const types = () => ([tr("Pizzeria"), tr("Ristorante o trattoria"), tr("Pub o birreria"), tr("Bar o caffetteria"), tr("Gelateria"), tr("Pastificio"), tr("Panetteria o pasticceria"), tr("Gastronomia o rosticceria"), tr("Altro")]);
 const goals = () => ([tr("Menu digitale e QR"), tr("Più prenotazioni"), tr("Ordini da asporto"), tr("Far tornare i clienti"), tr("Un po' di tutto")]);
@@ -201,11 +202,11 @@ export function DemoBooking({ compact = false }: { compact?: boolean }) {
                 <input type="checkbox" checked={data.privacy} onChange={(e) => set("privacy", e.target.checked)} className="mt-0.5 h-[18px] w-[18px] flex-none accent-[#0b0b0c]" />
                 <span>
                   {tr("Accetto la")}{" "}
-                  <Link href="/privacy/" className="font-medium text-ink underline underline-offset-2">
+                  <Link href={lp("/privacy/")} className="font-medium text-ink underline underline-offset-2">
                     {tr("privacy policy")}
                   </Link>{" "}
                   e i{" "}
-                  <Link href="/termini/" className="font-medium text-ink underline underline-offset-2">
+                  <Link href={lp("/termini/")} className="font-medium text-ink underline underline-offset-2">
                     {tr("termini del servizio")}
                   </Link>
                 </span>
@@ -313,7 +314,7 @@ export function DemoBooking({ compact = false }: { compact?: boolean }) {
             {tr("Si è aperto WhatsApp con la richiesta già scritta: premi Invia e ti confermiamo l'appuntamento. Se hai il menu in PDF o in foto, mandacelo lì.")}
           </p>
           <div className="mt-7 flex flex-wrap justify-center gap-2.5">
-            <Link href="/" className="btn btn-light">
+            <Link href={lp("/")} className="btn btn-light">
               {tr("Torna al sito")}
             </Link>
           </div>

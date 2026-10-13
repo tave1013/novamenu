@@ -1,7 +1,10 @@
 import type { SectorArt } from "./sectors";
 import { sectorGuides } from "./guides-settori";
+import { withId } from "./util";
 
 export type Guide = {
+  /** Identificativo interno, uguale in tutte le lingue (è lo slug italiano). */
+  id: string;
   slug: string;
   title: string;
   description: string;
@@ -17,7 +20,7 @@ export type Guide = {
   arts?: Record<string, SectorArt>;
 };
 
-const baseGuides: Guide[] = [
+const baseGuides: Guide[] = withId<Guide>([
   {
     slug: "come-creare-menu-digitale-qr",
     seo: {
@@ -367,7 +370,7 @@ const baseGuides: Guide[] = [
 </div>
 `,
   },
-];
+]);
 
 /** Dalla più recente alla più vecchia. */
 export const guides: Guide[] = [...sectorGuides, ...baseGuides].sort((a, b) => b.date.localeCompare(a.date));

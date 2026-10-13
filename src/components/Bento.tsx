@@ -4,6 +4,7 @@ import { Icon, type IconName } from "./Icon";
 import { Qr } from "./HeroArt";
 import { WaLoop } from "./WaLoop";
 import { Reveal } from "./Reveal";
+import { lp } from "@/i18n/link";
 
 type Theme = "forest" | "lime" | "soft" | "white";
 
@@ -275,7 +276,7 @@ export function Bento() {
         theme="forest"
         title={tr("Messaggi che partono da soli")}
         text={tr("Ringraziamenti, promemoria e auguri di compleanno, dal tuo numero WhatsApp.")}
-        href="/funzionalita/automazioni-whatsapp/"
+        href={lp("/funzionalita/automazioni-whatsapp/")}
         className="sm:col-span-2 lg:col-span-1 lg:row-span-2"
       >
         <div className="grid w-full gap-5 sm:grid-cols-2 lg:grid-cols-1">
@@ -290,30 +291,30 @@ export function Bento() {
         theme="soft"
         title={tr("Menu digitale e QR")}
         text={tr("Un QR per ogni tavolo. Cambi un prezzo e si aggiorna subito, senza ristampare.")}
-        href="/funzionalita/menu-digitale/"
+        href={lp("/funzionalita/menu-digitale/")}
         className="sm:col-span-2"
         row
       >
         <MenuQrArt />
       </Tile>
 
-      <Tile delay={90} theme="white" title={tr("Statistiche")} text={tr("Cosa vendi di più, quando e a chi.")} href="/funzionalita/statistiche/" artFirst>
+      <Tile delay={90} theme="white" title={tr("Statistiche")} text={tr("Cosa vendi di più, quando e a chi.")} href={lp("/funzionalita/statistiche/")} artFirst>
         <StatsArt />
       </Tile>
 
-      <Tile delay={180} theme="forest" title={tr("Clienti")} text={tr("Una rubrica che si riempie da sola, con gusti e allergie.")} href="/funzionalita/clienti/">
+      <Tile delay={180} theme="forest" title={tr("Clienti")} text={tr("Una rubrica che si riempie da sola, con gusti e allergie.")} href={lp("/funzionalita/clienti/")}>
         <CustomersArt />
       </Tile>
 
-      <Tile delay={0} theme="soft" title={tr("Sala e tavoli")} text={tr("La pianta del locale con i tavoli liberi e occupati.")} href="/funzionalita/sala-e-tavoli/" artFirst>
+      <Tile delay={0} theme="soft" title={tr("Sala e tavoli")} text={tr("La pianta del locale con i tavoli liberi e occupati.")} href={lp("/funzionalita/sala-e-tavoli/")} artFirst>
         <FloorArt />
       </Tile>
 
-      <Tile delay={90} theme="lime" title={tr("Staff e turni")} text={tr("Chi lavora, quando e in che ruolo.")} href="/funzionalita/staff-e-turni/" artFirst>
+      <Tile delay={90} theme="lime" title={tr("Staff e turni")} text={tr("Chi lavora, quando e in che ruolo.")} href={lp("/funzionalita/staff-e-turni/")} artFirst>
         <StaffArt />
       </Tile>
 
-      <Tile delay={180} theme="white" title={tr("Ferie e chiusure")} text={tr("Programmi i giorni chiusi e il sito lo dice da solo.")} href="/funzionalita/ferie-e-chiusure/" artFirst className="sm:col-span-2 lg:col-span-1">
+      <Tile delay={180} theme="white" title={tr("Ferie e chiusure")} text={tr("Programmi i giorni chiusi e il sito lo dice da solo.")} href={lp("/funzionalita/ferie-e-chiusure/")} artFirst className="sm:col-span-2 lg:col-span-1">
         <ClosuresArt />
       </Tile>
     </div>

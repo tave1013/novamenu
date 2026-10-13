@@ -4,6 +4,7 @@ import { tr } from "@/i18n";
 import { useState } from "react";
 import { site, waLink } from "@/config/site";
 import { Icon } from "./Icon";
+import { lp } from "@/i18n/link";
 
 const types = () => ([tr("Pizzeria"), tr("Ristorante o trattoria"), tr("Pub o birreria"), tr("Bar o caffetteria"), tr("Gelateria"), tr("Pastificio"), tr("Panetteria o pasticceria"), tr("Gastronomia o rosticceria"), tr("Altro")]);
 
@@ -142,7 +143,7 @@ export function LeadForm({ kind, compact = false }: { kind: "demo" | "contatto";
         </span>
         <span>
           {tr("Ho letto l'")}
-          <a href="/privacy/" className="text-ink underline underline-offset-2">
+          <a href={lp("/privacy/")} className="text-ink underline underline-offset-2">
             {tr("informativa privacy")}
           </a>{" "}
           {tr("e voglio essere ricontattato.")}

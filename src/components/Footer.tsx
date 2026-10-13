@@ -1,9 +1,9 @@
 import { tr } from "@/i18n";
 import Link from "next/link";
-import { features } from "@/content/features";
-import { sectors } from "@/content/sectors";
 import { loginUrl, site } from "@/config/site";
 import { LogoMark } from "./Logo";
+import { getFeatures, getSectors } from "@/content";
+import { to, lp } from "@/i18n/link";
 
 export function Footer() {
   const year = 2026;
@@ -12,7 +12,7 @@ export function Footer() {
       <div className="wrap pb-10 pt-16 md:pt-20">
         <div className="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-4 lg:grid-cols-[1.4fr_1fr_1fr_0.8fr_0.8fr]">
           <div className="col-span-2 md:col-span-4 lg:col-span-1">
-            <Link href="/" className="inline-flex items-center gap-2.5">
+            <Link href={lp("/")} className="inline-flex items-center gap-2.5">
               <LogoMark invert />
               <span className="text-[17px] font-semibold tracking-[-0.03em] text-white">{site.name}</span>
             </Link>
@@ -22,28 +22,28 @@ export function Footer() {
           </div>
 
           <FooterCol title={tr("Funzionalità")}>
-            {features.map((f) => (
-              <FooterLink key={f.slug} href={`/funzionalita/${f.slug}/`}>
+            {getFeatures().map((f) => (
+              <FooterLink key={f.slug} href={to("feature", f.id)}>
                 {f.name}
               </FooterLink>
             ))}
           </FooterCol>
 
           <FooterCol title={tr("Settori")}>
-            {sectors.map((s) => (
-              <FooterLink key={s.slug} href={`/settori/${s.slug}/`}>
+            {getSectors().map((s) => (
+              <FooterLink key={s.slug} href={to("sector", s.id)}>
                 {s.name}
               </FooterLink>
             ))}
           </FooterCol>
 
           <FooterCol title={tr("Azienda")}>
-            <FooterLink href="/prezzi/">{tr("Prezzi")}</FooterLink>
-            <FooterLink href="/servizi/foto-e-video/">{tr("Foto e video")}</FooterLink>
-            <FooterLink href="/servizi/presenza-online/">{tr("Presenza online")}</FooterLink>
-            <FooterLink href="/demo/">{tr("Prenota una demo")}</FooterLink>
-            <FooterLink href="/contatti/">{tr("Contatti")}</FooterLink>
-            <FooterLink href="/guide/">{tr("Guide")}</FooterLink>
+            <FooterLink href={lp("/prezzi/")}>{tr("Prezzi")}</FooterLink>
+            <FooterLink href={lp("/servizi/foto-e-video/")}>{tr("Foto e video")}</FooterLink>
+            <FooterLink href={lp("/servizi/presenza-online/")}>{tr("Presenza online")}</FooterLink>
+            <FooterLink href={lp("/demo/")}>{tr("Prenota una demo")}</FooterLink>
+            <FooterLink href={lp("/contatti/")}>{tr("Contatti")}</FooterLink>
+            <FooterLink href={lp("/guide/")}>{tr("Guide")}</FooterLink>
             <li>
               <a href={loginUrl} className="inline-flex min-h-8 items-center text-[14px] transition-colors hover:text-white">
                 {tr("Accedi")}
@@ -52,9 +52,9 @@ export function Footer() {
           </FooterCol>
 
           <FooterCol title={tr("Legale")}>
-            <FooterLink href="/privacy/">{tr("Privacy")}</FooterLink>
-            <FooterLink href="/cookie/">{tr("Cookie")}</FooterLink>
-            <FooterLink href="/termini/">{tr("Termini del servizio")}</FooterLink>
+            <FooterLink href={lp("/privacy/")}>{tr("Privacy")}</FooterLink>
+            <FooterLink href={lp("/cookie/")}>{tr("Cookie")}</FooterLink>
+            <FooterLink href={lp("/termini/")}>{tr("Termini del servizio")}</FooterLink>
           </FooterCol>
         </div>
 

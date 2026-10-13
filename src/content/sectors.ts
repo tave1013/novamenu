@@ -1,5 +1,6 @@
 import type { IconName } from "@/components/Icon";
 import type { Tone } from "./features";
+import { withId } from "./util";
 
 /* Dati delle grafiche statiche dei settori: ogni settore mostra i suoi prodotti, i suoi orari, i suoi ordini. */
 export type ArtItem = { name: string; desc?: string; price: string; unit?: string; tag?: string; out?: boolean; c?: string };
@@ -20,6 +21,8 @@ export type KpisArt = { kind: "kpis"; title: string; items: { value: string; lab
 export type SectorArt = CatalogArt | SlotsArt | OrderArt | DaypartsArt | BookingArt | LangsArt | CalcArt | KpisArt;
 
 export type Sector = {
+  /** Identificativo interno, uguale in tutte le lingue (è lo slug italiano). */
+  id: string;
   slug: string;
   name: string;
   short: string;
@@ -45,7 +48,7 @@ export type Sector = {
   faq: { q: string; a: string }[];
 };
 
-export const sectors: Sector[] = [
+export const sectors: Sector[] = withId<Sector>([
   {
     slug: "pizzerie",
     name: "Pizzerie",
@@ -706,6 +709,6 @@ export const sectors: Sector[] = [
       { q: "Posso vendere a peso e a porzione?", a: "Sì, puoi vendere sia a peso sia a porzione: ogni piatto può avere il prezzo al chilo, a porzione o a pezzo." },
     ],
   },
-];
+]);
 
 export const sectorBySlug = (slug: string) => sectors.find((s) => s.slug === slug);

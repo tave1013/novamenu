@@ -1,11 +1,12 @@
 import type { Guide } from "./guides";
+import { withId } from "./util";
 
 /*
  * Guide pratiche per tipo di locale.
  * Nel testo, {{art:nome}} inserisce una grafica statica definita in `arts`.
  * I numeri dei riquadri "Fai i conti" sono esempi: servono a far fare i conti al lettore, non sono statistiche.
  */
-export const sectorGuides: Guide[] = [
+export const sectorGuides: Guide[] = withId<Guide>([
   {
     slug: "pizzeria-ore-perse-al-telefono",
     seo: {
@@ -805,4 +806,4 @@ export const sectorGuides: Guide[] = [
 <p>Con {{brand}} aggiorni i gusti del giorno dal telefono, ricevi gli ordini di vaschette e torte su WhatsApp con giorno e ora di ritiro e programmi la chiusura stagionale. Trovi tutto nella pagina per le <a href="/settori/gelaterie/">gelaterie</a>.</p>
 `,
   },
-];
+]);

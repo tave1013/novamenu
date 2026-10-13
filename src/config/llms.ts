@@ -1,12 +1,18 @@
 import { site } from "./site";
-import { features, featureGroups } from "@/content/features";
-import { sectors } from "@/content/sectors";
-import { guides } from "@/content/guides";
-import { annualMonthly, fmtEuro, generalFaq, plans } from "@/content/plans";
+import { featureGroups } from "@/content/features";
+import { annualMonthly, fmtEuro } from "@/content/plans";
+import { getFeatures, getGeneralFaq, getGuides, getPlans, getSectors } from "@/content";
+
+// I file llms.txt sono in italiano, la lingua principale del sito.
+const features = getFeatures("it");
+const sectors = getSectors("it");
+const guides = getGuides("it");
+const plans = getPlans("it");
+const generalFaq = getGeneralFaq("it");
 
 const u = (path: string) => `${site.url}${path}`;
 
-const intro = [
+const intro = () => [
   `# ${site.name}`,
   "",
   `> ${site.name} è una piattaforma italiana per piccoli locali della ristorazione: menu digitale con QR, ordini da asporto su WhatsApp e prenotazioni dei tavoli online. Il locale paga solo l'abbonamento, senza commissioni su ordini e prenotazioni. Si prova gratis per 14 giorni, senza carta di credito.`,
@@ -16,7 +22,7 @@ const intro = [
   `Per chi gestisce un locale e ha poco tempo: ${sectors.map((s) => s.name.toLowerCase()).join(", ")}.`,
 ];
 
-const prices = [
+const prices = () => [
   "## Prezzi",
   "",
   ...plans.map(
@@ -32,13 +38,13 @@ const prices = [
 /** Indice breve del sito per i motori basati su intelligenza artificiale (llms.txt). */
 export function llmsTxt() {
   return [
-    ...intro,
+    ...intro(),
     "",
     "## Funzioni principali",
     "",
     ...features.map((f) => `- [${f.name}](${u(`/funzionalita/${f.slug}/`)}): ${f.seo.description.split(". ")[0]}. Dal piano ${f.plan}.`),
     "",
-    ...prices,
+    ...prices(),
     "",
     "## Settori",
     "",
@@ -60,7 +66,7 @@ export function llmsTxt() {
 
 /** Testi principali del sito in Markdown (llms-full.txt). */
 export function llmsFullTxt() {
-  const out: string[] = [...intro, "", ...prices, "", "# Funzionalità", ""];
+  const out: string[] = [...intro(), "", ...prices(), "", "# Funzionalità", ""];
   for (const g of featureGroups) {
     for (const f of features.filter((x) => x.group === g)) {
       out.push(`## ${f.name}`, "", `Pagina: ${u(`/funzionalita/${f.slug}/`)}. Gruppo: ${g}. Disponibile dal piano ${f.plan}.`, "", f.hero.lead, "");

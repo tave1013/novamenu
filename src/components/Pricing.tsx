@@ -2,10 +2,11 @@
 
 import { tr } from "@/i18n";
 import { useState } from "react";
-import { annualMonthly, fmtEuro, plans } from "@/content/plans";
+import { annualMonthly, fmtEuro } from "@/content/plans";
 import { signupUrl } from "@/config/site";
 import { Check } from "./ui";
 import { HandNote } from "./HandNote";
+import { getPlans } from "@/content/plansByLocale";
 
 export function Pricing() {
   const [annual, setAnnual] = useState(false);
@@ -36,7 +37,7 @@ export function Pricing() {
 
       <div className="relative mt-10 grid gap-4 lg:mt-24 lg:grid-cols-3">
         <HandNote text={tr("Ti consigliamo questo")} className="absolute -top-[52px] left-[calc(33.333%-226px)] hidden lg:flex" />
-        {plans.map((p) => {
+        {getPlans().map((p) => {
           const price = annual ? annualMonthly(p.monthly) : p.monthly;
           return (
             <div

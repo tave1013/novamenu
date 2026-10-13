@@ -1,6 +1,7 @@
 import { tr } from "@/i18n";
-import { reviews, reviewsArePlaceholder, type Review } from "@/content/reviews";
+import { reviewsArePlaceholder, type Review } from "@/content/reviews";
 import { Reveal } from "./Reveal";
+import { getReviews } from "@/content";
 
 function Stars({ n }: { n: number }) {
   return (
@@ -55,9 +56,9 @@ function Row({ items, reverse }: { items: Review[]; reverse?: boolean }) {
 
 /** Recensioni su due file che scorrono in direzioni opposte. */
 export function Reviews() {
-  const half = Math.ceil(reviews.length / 2);
-  const top = reviews.slice(0, half);
-  const bottom = reviews.slice(half);
+  const half = Math.ceil(getReviews().length / 2);
+  const top = getReviews().slice(0, half);
+  const bottom = getReviews().slice(half);
   return (
     <section aria-labelledby="recensioni" className="relative overflow-hidden py-20 md:py-24">
       <div aria-hidden className="pointer-events-none absolute inset-0 [background:radial-gradient(40%_50%_at_50%_0%,rgba(159,232,112,.22),transparent_70%)]" />

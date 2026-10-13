@@ -1,4 +1,5 @@
 import type { IconName } from "@/components/Icon";
+import { withId } from "./util";
 
 export type Tone = "green" | "blue" | "pink" | "amber" | "violet" | "orange" | "red" | "grey";
 
@@ -18,6 +19,8 @@ export type VisualKey =
   | "assistente";
 
 export type Feature = {
+  /** Identificativo interno, uguale in tutte le lingue (è lo slug italiano). */
+  id: string;
   slug: string;
   name: string;
   short: string;
@@ -37,7 +40,7 @@ export type Feature = {
 
 export const featureGroups = ["Menu", "Prenotazioni e sala", "Vendite e clienti", "Gestione"] as const;
 
-export const features: Feature[] = [
+export const features: Feature[] = withId<Feature>([
   {
     slug: "menu-digitale",
     name: "Menu digitale e QR",
@@ -702,6 +705,6 @@ export const features: Feature[] = [
     ],
     related: ["ferie-e-chiusure", "prenotazioni", "menu-digitale"],
   },
-];
+]);
 
 export const featureBySlug = (slug: string) => features.find((f) => f.slug === slug);

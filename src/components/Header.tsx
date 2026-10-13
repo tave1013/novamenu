@@ -1,28 +1,32 @@
 "use client";
 
-import { tr } from "@/i18n";
+import { getLocale, tr } from "@/i18n";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { features, featureGroups } from "@/content/features";
-import { sectors } from "@/content/sectors";
-import { services } from "@/content/services";
 import { loginUrl, signupUrl } from "@/config/site";
-import { Icon } from "./Icon";
+import { localeInfo, locales, type Locale } from "@/i18n/config";
+import { matchPath, switchLocale, type PageKey } from "@/i18n/routes";
+import { Flag } from "./Flag";
+import { Icon, type IconName } from "./Icon";
 import { Logo } from "./Logo";
+import { lp } from "@/i18n/link";
+
+type NavItem = { id: string; name: string; icon: IconName; href: string };
+/** Voci dei menu, preparate dal layout nella lingua della pagina. */
+export type HeaderNav = {
+  featureGroups: { name: string; items: NavItem[] }[];
+  sectorGroups: { name: string; items: NavItem[] }[];
+  services: (NavItem & { desc: string })[];
+};
 
 const links = () => ([
-  { href: "/prezzi/", label: tr("Prezzi") },
-  { href: "/guide/", label: tr("Guide") },
-  { href: "/contatti/", label: tr("Contatti") },
+  { href: lp("/prezzi/"), label: tr("Prezzi") },
+  { href: lp("/guide/"), label: tr("Guide") },
+  { href: lp("/contatti/"), label: tr("Contatti") },
 ]);
 
-type Drop = "funz" | "sett" | "serv" | null;
-
-const sectorGroups = () => ([
-  { name: tr("Locali"), slugs: ["pizzerie", "ristoranti", "pub", "bar"] },
-  { name: tr("Botteghe del cibo"), slugs: ["gelaterie", "pastifici", "panetterie", "gastronomie"] },
-]);
+type Drop = "funz" | "sett" | "serv" | "lang" | null;
 type Panel = "root" | "funz" | "sett" | "serv";
 
 function DropButton({ id, label, open, active, onToggle }: { id: string; label: string; open: boolean; active: boolean; onToggle: () => void }) {
@@ -45,8 +49,11 @@ function DropButton({ id, label, open, active, onToggle }: { id: string; label: 
 const dropBox =
   "absolute top-[calc(100%+12px)] origin-top rounded-[16px] border border-line bg-white p-3.5 shadow-[0_24px_48px_-20px_rgba(0,0,0,.22)] [animation:menuIn_.18s_var(--ease-out-soft)_both]";
 
-export function Header() {
+export function Header({ nav }: { nav: HeaderNav }) {
   const pathname = usePathname();
+  const locale = getLocale();
+  const page = matchPath(pathname ?? "")?.key;
+  const inSection = (...keys: PageKey[]) => !!page && keys.includes(page);
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState<Drop>(null);
   const [mobile, setMobile] = useState(false);
@@ -119,22 +126,21 @@ export function Header() {
                 id="menu-funzionalita"
                 label={tr("Funzionalità")}
                 open={open === "funz"}
-                active={!!pathname?.startsWith("/funzionalita")}
+                active={inSection("features", "feature")}
                 onToggle={() => setOpen((v) => (v === "funz" ? null : "funz"))}
               />
               {open === "funz" && (
                 <div id="menu-funzionalita" className={`${dropBox} left-[-8px] w-[560px]`}>
                   <div className="grid grid-cols-2 gap-x-4 gap-y-3">
-                    {featureGroups.map((g) => (
-                      <div key={g}>
-                        <p className="eyebrow mb-1 px-2.5 !text-[11px]">{g}</p>
+                    {nav.featureGroups.map((g) => (
+                      <div key={g.name}>
+                        <p className="eyebrow mb-1 px-2.5 !text-[11px]">{g.name}</p>
                         <ul>
-                          {features
-                            .filter((f) => f.group === g)
+                          {g.items
                             .map((f) => (
-                              <li key={f.slug}>
+                              <li key={f.id}>
                                 <Link
-                                  href={`/funzionalita/${f.slug}/`}
+                                  href={f.href}
                                   className="flex h-9 items-center gap-2.5 rounded-[8px] px-2.5 text-[14.5px] text-text transition-colors duration-300 hover:bg-mist hover:text-ink"
                                 >
                                   <span className="text-muted">
@@ -149,11 +155,11 @@ export function Header() {
                     ))}
                   </div>
                   <div className="mt-3 flex items-center justify-between gap-3 border-t border-line-soft px-2.5 pt-3">
-                    <Link href="/funzionalita/" className="inline-flex items-center gap-1.5 text-[14px] font-semibold text-ink">
+                    <Link href={lp("/funzionalita/")} className="inline-flex items-center gap-1.5 text-[14px] font-semibold text-ink">
                       {tr("Tutte le funzionalità")}
                       <Icon name="arrowRight" size={14} stroke={2} />
                     </Link>
-                    <Link href="/demo/" className="text-[13px] text-muted hover:text-ink">
+                    <Link href={lp("/demo/")} className="text-[13px] text-muted hover:text-ink">
                       {tr("Prenota una demo")}
                     </Link>
                   </div>
@@ -167,22 +173,21 @@ export function Header() {
                 id="menu-settori"
                 label={tr("Settori")}
                 open={open === "sett"}
-                active={!!pathname?.startsWith("/settori")}
+                active={inSection("sectors", "sector")}
                 onToggle={() => setOpen((v) => (v === "sett" ? null : "sett"))}
               />
               {open === "sett" && (
                 <div id="menu-settori" className={`${dropBox} left-[-8px] w-[520px]`}>
                   <div className="grid grid-cols-2 gap-x-4 gap-y-3">
-                    {sectorGroups().map((g) => (
+                    {nav.sectorGroups.map((g) => (
                       <div key={g.name}>
                         <p className="eyebrow mb-1 px-2.5 !text-[11px]">{g.name}</p>
                         <ul>
-                          {sectors
-                            .filter((s) => g.slugs.includes(s.slug))
+                          {g.items
                             .map((s) => (
-                              <li key={s.slug}>
+                              <li key={s.id}>
                                 <Link
-                                  href={`/settori/${s.slug}/`}
+                                  href={s.href}
                                   className="flex h-9 items-center gap-2.5 rounded-[8px] px-2.5 text-[14.5px] text-text transition-colors hover:bg-mist hover:text-ink"
                                 >
                                   <span className="text-muted">
@@ -197,11 +202,11 @@ export function Header() {
                     ))}
                   </div>
                   <div className="mt-3 flex items-center justify-between gap-3 border-t border-line-soft px-2.5 pt-3">
-                    <Link href="/settori/" className="inline-flex items-center gap-1.5 text-[14px] font-semibold text-ink">
+                    <Link href={lp("/settori/")} className="inline-flex items-center gap-1.5 text-[14px] font-semibold text-ink">
                       {tr("Tutti i settori")}
                       <Icon name="arrowRight" size={14} stroke={2} />
                     </Link>
-                    <Link href="/demo/" className="text-[13px] text-muted hover:text-ink">
+                    <Link href={lp("/demo/")} className="text-[13px] text-muted hover:text-ink">
                       {tr("Prenota una demo")}
                     </Link>
                   </div>
@@ -215,17 +220,17 @@ export function Header() {
                 id="menu-servizi"
                 label={tr("Servizi")}
                 open={open === "serv"}
-                active={!!pathname?.startsWith("/servizi")}
+                active={inSection("services", "service")}
                 onToggle={() => setOpen((v) => (v === "serv" ? null : "serv"))}
               />
               {open === "serv" && (
                 <div id="menu-servizi" className={`${dropBox} left-[-8px] w-[340px]`}>
                   <p className="eyebrow mb-1 px-2.5 !text-[11px]">{tr("Per il tuo locale")}</p>
                   <ul>
-                    {services.map((s) => (
-                      <li key={s.slug}>
+                    {nav.services.map((s) => (
+                      <li key={s.id}>
                         <Link
-                          href={`/servizi/${s.slug}/`}
+                          href={s.href}
                           className="flex items-center gap-3 rounded-[8px] px-2.5 py-2 text-text transition-colors hover:bg-mist hover:text-ink"
                         >
                           <span className="text-muted">
@@ -240,11 +245,11 @@ export function Header() {
                     ))}
                   </ul>
                   <div className="mt-3 flex items-center justify-between gap-3 border-t border-line-soft px-2.5 pt-3">
-                    <Link href="/servizi/" className="inline-flex items-center gap-1.5 text-[14px] font-semibold text-ink">
+                    <Link href={lp("/servizi/")} className="inline-flex items-center gap-1.5 text-[14px] font-semibold text-ink">
                       {tr("Tutti i servizi")}
                       <Icon name="arrowRight" size={14} stroke={2} />
                     </Link>
-                    <Link href="/contatti/" className="text-[13px] text-muted hover:text-ink">
+                    <Link href={lp("/contatti/")} className="text-[13px] text-muted hover:text-ink">
                       {tr("Chiedi un preventivo")}
                     </Link>
                   </div>
@@ -267,10 +272,15 @@ export function Header() {
           </nav>
 
           <div className="hidden items-center gap-2 lg:flex">
+            <LangMenu locale={locale} pathname={pathname ?? "/"} open={open === "lang"} onToggle={() => {
+                if (closeTimer.current) window.clearTimeout(closeTimer.current);
+                setOpen((v) => (v === "lang" ? null : "lang"));
+              }}
+              onClose={() => setOpen(null)} />
             <a href={loginUrl} className="btn btn-sm text-text hover:bg-black/[0.04]">
               {tr("Accedi")}
             </a>
-            <Link href="/demo/" className="btn btn-sm btn-dark pulse">
+            <Link href={lp("/demo/")} className="btn btn-sm btn-dark pulse">
               {tr("Prenota una demo")}
             </Link>
           </div>
@@ -310,7 +320,7 @@ export function Header() {
             <nav aria-label={tr("Menu")} className="h-full w-1/4 overflow-y-auto px-5 pb-6 pt-2" aria-hidden={panel !== "root"}>
               <ul className="divide-y divide-line-soft">
                 <li>
-                  <Link href="/" tabIndex={panel === "root" ? 0 : -1} className="flex items-center justify-between py-4 text-[22px] font-semibold tracking-[-0.03em] text-ink">
+                  <Link href={lp("/")} tabIndex={panel === "root" ? 0 : -1} className="flex items-center justify-between py-4 text-[22px] font-semibold tracking-[-0.03em] text-ink">
                     {tr("Home")}
                   </Link>
                 </li>
@@ -334,9 +344,9 @@ export function Header() {
                   </li>
                 ))}
                 {[
-                  { href: "/prezzi/", label: tr("Prezzi") },
-                  { href: "/guide/", label: tr("Guide") },
-                  { href: "/demo/", label: tr("Prenota una demo") },
+                  { href: lp("/prezzi/"), label: tr("Prezzi") },
+                  { href: lp("/guide/"), label: tr("Guide") },
+                  { href: lp("/demo/"), label: tr("Prenota una demo") },
                 ].map((l) => (
                   <li key={l.href}>
                     <Link href={l.href} tabIndex={panel === "root" ? 0 : -1} className="flex items-center justify-between py-4 text-[22px] font-semibold tracking-[-0.03em] text-ink">
@@ -344,6 +354,9 @@ export function Header() {
                     </Link>
                   </li>
                 ))}
+                <li>
+                  <MobileLang locale={locale} pathname={pathname ?? "/"} focusable={panel === "root"} onPick={() => setMobile(false)} />
+                </li>
               </ul>
             </nav>
 
@@ -351,42 +364,40 @@ export function Header() {
             <nav aria-label={tr("Funzionalità")} className="h-full w-1/4 overflow-y-auto px-5 pb-6 pt-2" aria-hidden={panel !== "funz"}>
               <BackButton onClick={() => setPanel("root")} focusable={panel === "funz"} />
               <p className="mt-1 text-[22px] font-semibold tracking-[-0.03em] text-ink">{tr("Funzionalità")}</p>
-              {featureGroups.map((g) => (
-                <div key={g} className="mt-5">
-                  <p className="eyebrow pb-1 !text-[11px]">{g}</p>
+              {nav.featureGroups.map((g) => (
+                <div key={g.name} className="mt-5">
+                  <p className="eyebrow pb-1 !text-[11px]">{g.name}</p>
                   <ul>
-                    {features
-                      .filter((f) => f.group === g)
+                    {g.items
                       .map((f) => (
-                        <li key={f.slug}>
-                          <MobileRow href={`/funzionalita/${f.slug}/`} focusable={panel === "funz"} icon={<Icon name={f.icon} size={19} />} title={f.name} />
+                        <li key={f.id}>
+                          <MobileRow href={f.href} focusable={panel === "funz"} icon={<Icon name={f.icon} size={19} />} title={f.name} />
                         </li>
                       ))}
                   </ul>
                 </div>
               ))}
-              <AllLink href="/funzionalita/" label={tr("Vedi tutte le funzionalità")} focusable={panel === "funz"} />
+              <AllLink href={lp("/funzionalita/")} label={tr("Vedi tutte le funzionalità")} focusable={panel === "funz"} />
             </nav>
 
             {/* Settori */}
             <nav aria-label={tr("Settori")} className="h-full w-1/4 overflow-y-auto px-5 pb-6 pt-2" aria-hidden={panel !== "sett"}>
               <BackButton onClick={() => setPanel("root")} focusable={panel === "sett"} />
               <p className="mt-1 text-[22px] font-semibold tracking-[-0.03em] text-ink">{tr("Settori")}</p>
-              {sectorGroups().map((g) => (
+              {nav.sectorGroups.map((g) => (
                 <div key={g.name} className="mt-5">
                   <p className="eyebrow pb-1 !text-[11px]">{g.name}</p>
                   <ul>
-                    {sectors
-                      .filter((s) => g.slugs.includes(s.slug))
+                    {g.items
                       .map((s) => (
-                        <li key={s.slug}>
-                          <MobileRow href={`/settori/${s.slug}/`} focusable={panel === "sett"} icon={<Icon name={s.icon} size={19} />} title={s.name} />
+                        <li key={s.id}>
+                          <MobileRow href={s.href} focusable={panel === "sett"} icon={<Icon name={s.icon} size={19} />} title={s.name} />
                         </li>
                       ))}
                   </ul>
                 </div>
               ))}
-              <AllLink href="/settori/" label={tr("Vedi tutti i settori")} focusable={panel === "sett"} />
+              <AllLink href={lp("/settori/")} label={tr("Vedi tutti i settori")} focusable={panel === "sett"} />
             </nav>
 
             {/* Servizi */}
@@ -396,14 +407,14 @@ export function Header() {
               <div className="mt-5">
                 <p className="eyebrow pb-1 !text-[11px]">{tr("Per il tuo locale")}</p>
                 <ul>
-                  {services.map((s) => (
-                    <li key={s.slug}>
-                      <MobileRow href={`/servizi/${s.slug}/`} focusable={panel === "serv"} icon={<Icon name={s.icon} size={19} />} title={s.name} />
+                  {nav.services.map((s) => (
+                    <li key={s.id}>
+                      <MobileRow href={s.href} focusable={panel === "serv"} icon={<Icon name={s.icon} size={19} />} title={s.name} />
                     </li>
                   ))}
                 </ul>
               </div>
-              <AllLink href="/servizi/" label={tr("Vedi tutti i servizi")} focusable={panel === "serv"} />
+              <AllLink href={lp("/servizi/")} label={tr("Vedi tutti i servizi")} focusable={panel === "serv"} />
             </nav>
           </div>
           </div>
@@ -453,6 +464,127 @@ function MobileCta() {
         <Icon name="arrowRight" size={16} stroke={2} />
       </a>
       <p className="text-center text-[12.5px] text-muted">{tr("Senza carta di credito. Disdici quando vuoi.")}</p>
+    </div>
+  );
+}
+
+/** Voce del selettore: un vero link alla stessa pagina nell'altra lingua. */
+function langHref(pathname: string, target: Locale) {
+  return switchLocale(pathname, target);
+}
+
+/** Selettore della lingua su desktop: bandiera e freccia, si apre al clic. */
+function LangMenu({ locale, pathname, open, onToggle, onClose }: { locale: Locale; pathname: string; open: boolean; onToggle: () => void; onClose: () => void }) {
+  const listRef = useRef<HTMLUListElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
+  // All'apertura il fuoco va sulla lingua attiva, così le frecce funzionano subito.
+  useEffect(() => {
+    if (open) listRef.current?.querySelector<HTMLAnchorElement>('a[aria-current="true"]')?.focus();
+  }, [open]);
+
+  const onKeyDown = (e: React.KeyboardEvent) => {
+    const items = Array.from(listRef.current?.querySelectorAll<HTMLAnchorElement>("a") ?? []);
+    const i = items.indexOf(document.activeElement as HTMLAnchorElement);
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+      e.preventDefault();
+      const next = e.key === "ArrowDown" ? (i + 1) % items.length : (i - 1 + items.length) % items.length;
+      items[next]?.focus();
+    } else if (e.key === "Home" || e.key === "End") {
+      e.preventDefault();
+      items[e.key === "Home" ? 0 : items.length - 1]?.focus();
+    } else if (e.key === "Escape") {
+      e.stopPropagation();
+      onClose();
+      buttonRef.current?.focus();
+    }
+  };
+
+  return (
+    <div className="relative" onKeyDown={open ? onKeyDown : undefined}>
+      <button
+        ref={buttonRef}
+        type="button"
+        aria-label={tr("Lingua: {name}", { name: localeInfo[locale].name })}
+        aria-expanded={open}
+        aria-controls="menu-lingua"
+        onClick={onToggle}
+        className={`inline-flex h-9 items-center gap-1.5 rounded-[9px] px-2.5 text-text transition-colors duration-300 hover:bg-black/[0.04] ${open ? "bg-black/[0.05] text-ink" : ""}`}
+      >
+        <Flag code={locale} />
+        <Icon name="chevronDown" size={15} stroke={2} className={`transition-transform duration-300 ${open ? "rotate-180" : ""}`} />
+      </button>
+      {open && (
+        <div id="menu-lingua" className={`${dropBox} right-0 w-[200px] !p-1.5`}>
+          <ul ref={listRef}>
+            {locales.map((l) => (
+              <li key={l}>
+                <a
+                  href={langHref(pathname, l)}
+                  hrefLang={localeInfo[l].hreflang}
+                  lang={localeInfo[l].hreflang}
+                  aria-current={l === locale ? "true" : undefined}
+                  onClick={onClose}
+                  className={`flex h-10 items-center gap-2.5 rounded-[10px] px-2.5 text-[14.5px] transition-colors hover:bg-mist hover:text-ink ${l === locale ? "bg-mist text-ink" : "text-text"}`}
+                >
+                  <Flag code={l} />
+                  <span className="flex-1">{localeInfo[l].name}</span>
+                  {l === locale && <Icon name="check" size={16} stroke={2.4} className="text-[#16a34a]" />}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/** Selettore della lingua nel menu mobile: una riga che apre l'elenco sotto di sé. */
+function MobileLang({ locale, pathname, focusable, onPick }: { locale: Locale; pathname: string; focusable: boolean; onPick: () => void }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div>
+      <button
+        type="button"
+        aria-expanded={open}
+        aria-controls="menu-lingua-mobile"
+        aria-label={tr("Lingua: {name}", { name: localeInfo[locale].name })}
+        onClick={() => setOpen((v) => !v)}
+        tabIndex={focusable ? 0 : -1}
+        className="flex w-full items-center justify-between py-4 text-left text-[22px] font-semibold tracking-[-0.03em] text-ink"
+      >
+        <span className="flex items-center gap-3">
+          <Flag code={locale} width={22} height={15} />
+          {localeInfo[locale].name}
+        </span>
+        <Icon name="chevronDown" size={22} stroke={2} className={`text-faint transition-transform duration-200 [transition-timing-function:var(--ease-out-soft)] ${open ? "rotate-180" : ""}`} />
+      </button>
+      <div
+        id="menu-lingua-mobile"
+        aria-hidden={!open}
+        className={`grid transition-[grid-template-rows,opacity] duration-200 [transition-timing-function:var(--ease-out-soft)] motion-reduce:transition-none ${open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
+      >
+        <ul className="overflow-hidden">
+          {locales.map((l) => (
+            <li key={l}>
+              <a
+                href={langHref(pathname, l)}
+                hrefLang={localeInfo[l].hreflang}
+                lang={localeInfo[l].hreflang}
+                aria-current={l === locale ? "true" : undefined}
+                onClick={onPick}
+                tabIndex={focusable && open ? 0 : -1}
+                className={`-mx-2 mb-1 flex min-h-11 items-center gap-3 rounded-[10px] px-2 text-[17px] active:bg-mist ${l === locale ? "bg-mist text-ink" : "text-text"}`}
+              >
+                <Flag code={l} width={22} height={15} />
+                <span className="flex-1">{localeInfo[l].name}</span>
+                {l === locale && <Icon name="check" size={18} stroke={2.4} className="text-[#16a34a]" />}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

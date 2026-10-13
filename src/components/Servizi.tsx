@@ -4,6 +4,7 @@ import path from "node:path";
 import Link from "next/link";
 import { Icon, type IconName } from "./Icon";
 import { Reveal } from "./Reveal";
+import { lp } from "@/i18n/link";
 
 const exists = (src?: string) => !!src && fs.existsSync(path.join(process.cwd(), "public", src));
 
@@ -131,7 +132,7 @@ export function Packages({ items, note }: { items: Pack[]; note?: string }) {
                   </li>
                 ))}
               </ul>
-              <Link href="/contatti/" className={`btn mt-8 w-full ${p.popular ? "btn-dark" : "btn-light"}`}>
+              <Link href={lp("/contatti/")} className={`btn mt-8 w-full ${p.popular ? "btn-dark" : "btn-light"}`}>
                 {tr("Chiedi un preventivo")}
               </Link>
             </div>

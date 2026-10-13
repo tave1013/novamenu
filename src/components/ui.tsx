@@ -4,13 +4,14 @@ import { signupUrl, site } from "@/config/site";
 import { Icon } from "./Icon";
 import { DemoBooking } from "./DemoBooking";
 import { FaqList } from "./FaqList";
+import { lp } from "@/i18n/link";
 
 export function JsonLd({ data }: { data: unknown }) {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }
 
 export function Breadcrumbs({ items }: { items: { name: string; href: string }[] }) {
-  const all = [{ name: "Home", href: "/" }, ...items];
+  const all = [{ name: "Home", href: lp("/") }, ...items];
   return (
     <>
       <nav aria-label={tr("Percorso")} className="text-[13.5px] text-muted">
@@ -57,7 +58,7 @@ export function Faq({ items, title = tr("Domande frequenti"), schema = true }: {
         <FaqList items={items} />
         <p className="mt-8 text-center text-[15px] text-muted">
           {tr("Non trovi la risposta?")}{" "}
-          <Link href="/contatti/" className="font-medium text-ink underline decoration-line underline-offset-4 hover:decoration-ink">
+          <Link href={lp("/contatti/")} className="font-medium text-ink underline decoration-line underline-offset-4 hover:decoration-ink">
             {tr("Scrivici")}
           </Link>
           {tr(", rispondiamo in giornata.")}
