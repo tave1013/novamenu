@@ -1,3 +1,4 @@
+import { tr } from "@/i18n";
 import Link from "next/link";
 import { site } from "@/config/site";
 import { lp } from "@/i18n/link";
@@ -26,7 +27,7 @@ export function LogoMark({ size = 28, invert = false }: { size?: number; invert?
 
 export function Logo({ invert = false }: { invert?: boolean }) {
   return (
-    <Link href={lp("/")} className="inline-flex items-center gap-2.5" aria-label={`${site.name}, torna alla home`}>
+    <Link href={lp("/")} className="inline-flex items-center gap-2.5" aria-label={tr("{brand}, torna alla home", { brand: site.name })}>
       <LogoMark invert={invert} />
       <span className={`text-[17px] font-semibold tracking-[-0.03em] ${invert ? "text-white" : "text-ink"}`}>{site.name}</span>
     </Link>

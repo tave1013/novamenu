@@ -1,6 +1,6 @@
 "use client";
 
-import { tr } from "@/i18n";
+import { price, tr } from "@/i18n";
 import { Icon } from "../Icon";
 import { Cursor, Toast, Toggle, useDemo, type Step } from "./engine";
 import { AppWindow, PhoneFrame, Stage } from "./frames";
@@ -80,7 +80,7 @@ export function SalaVisual() {
                   data-t={`table-${t.id}`}
                   className={`absolute flex flex-col items-center justify-center border text-center text-[11px] transition-colors duration-500 ${tableStyle[t.st]} ${
                     t.round ? "rounded-full" : "rounded-[12px]"
-                  } ${s.picked && t.st === "libero" ? tr("ring-2 ring-black/15 ring-offset-2") : ""}`}
+                  } ${s.picked && t.st === "libero" ? "ring-2 ring-black/15 ring-offset-2" : ""}`}
                   style={{ left: `${t.x}%`, top: `${t.y}%`, width: `${t.w}%`, height: `${t.h}%` }}
                 >
                   <span className="font-semibold">{t.id}</span>
@@ -161,7 +161,7 @@ export function ChiusureVisual() {
               <div className="rounded-[14px] bg-mist p-3">
                 <p className="text-[11.5px] text-muted">{tr("Periodo")}</p>
                 <p className="mt-0.5 text-[14px] font-semibold text-ink">
-                  {s.start > 0 ? `Dal ${s.start} ${s.end > 0 ? `al ${s.end}` : ""} agosto` : tr("Scegli le date")}
+                  {s.start > 0 ? (s.end > 0 ? tr("Dal {from} al {to} agosto", { from: s.start, to: s.end }) : tr("Dal {from} agosto", { from: s.start })) : tr("Scegli le date")}
                 </p>
               </div>
               <div className="rounded-[14px] bg-mist p-3">
@@ -217,13 +217,13 @@ export function OrdiniVisual() {
                     <li key={r[1]} className="flex items-center gap-3 border-b border-line-soft py-2.5 text-[13px]">
                       <span className="flex h-6 w-6 items-center justify-center rounded-[7px] bg-mist text-[11.5px] font-medium">{r[0]}</span>
                       <span className="flex-1 text-ink">{r[1]}</span>
-                      <span className="tabular-nums text-muted">{r[2]} €</span>
+                      <span className="tabular-nums text-muted">{price(`${r[2]} €`)}</span>
                     </li>
                   ))}
                 </ul>
                 <div className="flex justify-between py-3 text-[14px] font-semibold text-ink">
                   <span>{tr("Totale")}</span>
-                  <span className="tabular-nums">29,00 €</span>
+                  <span className="tabular-nums">{price("29,00 €")}</span>
                 </div>
                 <p className="mt-1 text-[12px] font-medium text-ink">{tr("Ritiro oggi alle")}</p>
                 <div className="mt-2 grid grid-cols-4 gap-1.5">
@@ -314,10 +314,10 @@ export function ClientiVisual() {
     { restIndex: 4 }
   );
   const visits = [
-    [tr("12 ott"), tr("Cena, 4 persone"), "128 €"],
-    [tr("21 set"), tr("Asporto"), "32 €"],
-    [tr("30 ago"), tr("Cena, 2 persone"), "64 €"],
-    [tr("2 ago"), tr("Compleanno, 8 persone"), "296 €"],
+    [tr("12 ott"), tr("Cena, 4 persone"), price("128 €")],
+    [tr("21 set"), tr("Asporto"), price("32 €")],
+    [tr("30 ago"), tr("Cena, 2 persone"), price("64 €")],
+    [tr("2 ago"), tr("Compleanno, 8 persone"), price("296 €")],
   ];
   return (
     <Stage className="p-4 md:p-6">
@@ -338,7 +338,7 @@ export function ClientiVisual() {
           <div className="mt-4 grid grid-cols-3 gap-2">
             {[
               ["14", "visite"],
-              ["38 €", tr("spesa media")],
+              [price("38 €"), tr("spesa media")],
               ["Tav. 7", "preferito"],
             ].map((k) => (
               <div key={k[1]} className="rounded-[12px] bg-mist p-2.5">

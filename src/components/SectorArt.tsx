@@ -1,4 +1,4 @@
-import { tr } from "@/i18n";
+import { tr, price as eurText } from "@/i18n";
 import type { BookingArt, CalcArt, KpisArt, CatalogArt, DaypartsArt, LangsArt, OrderArt, Sector, SectorArt as Art, SlotsArt } from "@/content/sectors";
 import { Icon } from "./Icon";
 import { toneGlow } from "./StaticArt";
@@ -9,7 +9,7 @@ function Price({ price, unit }: { price: string; unit?: string }) {
   if (!price) return null;
   return (
     <span className="whitespace-nowrap text-[13px] font-semibold tabular-nums text-ink">
-      € {price}
+      {eurText(`€ ${price}`)}
       {unit && <span className="font-normal text-muted"> / {unit}</span>}
     </span>
   );

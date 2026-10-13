@@ -5,7 +5,7 @@ import { getReviews } from "@/content";
 
 function Stars({ n }: { n: number }) {
   return (
-    <span className="flex gap-0.5 text-forest" aria-label={`${n} stelle su 5`}>
+    <span className="flex gap-0.5 text-forest" aria-label={tr("{n} stelle su 5", { n })}>
       {Array.from({ length: 5 }).map((_, i) => (
         <svg key={i} width="15" height="15" viewBox="0 0 20 20" fill={i < n ? "currentColor" : "#e4e4e7"} aria-hidden>
           <path d="M10 1.8l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.42 5.06 17l.94-5.5-4-3.9 5.53-.8z" />

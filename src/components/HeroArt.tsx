@@ -1,4 +1,4 @@
-import { tr } from "@/i18n";
+import { price, tr } from "@/i18n";
 import type { Feature } from "@/content/features";
 import { Icon, type IconName } from "./Icon";
 import { toneGlow } from "./StaticArt";
@@ -415,9 +415,9 @@ function Chiusure({ f }: { f: Feature }) {
 
 function Ordini({ f }: { f: Feature }) {
   const cols = [
-    [tr("Nuovi"), [["19:45", tr("Andrea M."), tr("3 pizze, 1 fritto"), "27,50 €"]], "bg-p-green text-p-green-ink"],
-    [tr("In preparazione"), [["19:30", tr("Lucia B."), tr("2 pizze"), "18,50 €"], ["19:30", tr("Greco"), tr("4 pizze, 2 birre"), "39,00 €"]], "bg-p-amber text-p-amber-ink"],
-    [tr("Pronti"), [["19:15", tr("Paolo R."), tr("1 Diavola"), "8,50 €"]], "bg-mist text-text"],
+    [tr("Nuovi"), [["19:45", tr("Andrea M."), tr("3 pizze, 1 fritto"), price("27,50 €")]], "bg-p-green text-p-green-ink"],
+    [tr("In preparazione"), [["19:30", tr("Lucia B."), tr("2 pizze"), price("18,50 €")], ["19:30", tr("Greco"), tr("4 pizze, 2 birre"), price("39,00 €")]], "bg-p-amber text-p-amber-ink"],
+    [tr("Pronti"), [["19:15", tr("Paolo R."), tr("1 Diavola"), price("8,50 €")]], "bg-mist text-text"],
   ] as const;
   return (
     <Scene feature={f}>

@@ -1,4 +1,4 @@
-import { getLocale, t, tr } from "@/i18n";
+import { getLocale, price, t, tr } from "@/i18n";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Icon, toneClass } from "@/components/Icon";
@@ -39,7 +39,7 @@ function AppCard() {
               <p className="text-[16px] font-semibold tracking-[-0.015em] text-ink">{tr("Pizza Margherita")}</p>
               <p className="mt-0.5 text-[13px] text-muted">{tr("Pomodoro, stracciatella di burrata, olio extravergine, basilico")}</p>
             </div>
-            <span className="flex-none whitespace-nowrap text-[15px] font-semibold text-ink">8,00 €</span>
+            <span className="flex-none whitespace-nowrap text-[15px] font-semibold text-ink">{price("8,00 €")}</span>
           </div>
           <div className="mt-4 flex items-center justify-between">
             <span className="rounded-full bg-lime-soft px-2.5 py-1 text-[12px] font-medium text-forest">{tr("Consegna 25 min")}</span>

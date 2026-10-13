@@ -1,8 +1,8 @@
 "use client";
 
-import { tr } from "@/i18n";
+import { eur, euroFirst, num, tr } from "@/i18n";
 import { useState } from "react";
-import { annualMonthly, fmtEuro } from "@/content/plans";
+import { annualMonthly } from "@/content/plans";
 import { signupUrl } from "@/config/site";
 import { Check } from "./ui";
 import { HandNote } from "./HandNote";
@@ -25,7 +25,7 @@ export function Pricing() {
               aria-checked={annual === o.v}
               onClick={() => setAnnual(o.v)}
               className={`flex h-10 items-center gap-2 rounded-[9px] px-4 text-[14.5px] font-medium transition-all duration-300 ${
-                annual === o.v ? "bg-forest text-white" : tr("text-muted hover:text-ink")
+                annual === o.v ? "bg-forest text-white" : "text-muted hover:text-ink"
               }`}
             >
               {o.l}
@@ -53,12 +53,13 @@ export function Pricing() {
               <p className="mt-1.5 text-[15px] text-muted">{p.desc}</p>
               <div className="mt-6 flex items-baseline gap-1.5">
                 <span key={String(price)} className="anim-fade-up text-[46px] font-semibold leading-none tracking-[-0.04em] text-ink tabular-nums">
-                  {fmtEuro(price)}
+                  {euroFirst() ? "€" : ""}
+                  {num(price)}
                 </span>
                 <span className="text-[15px] text-muted">{tr("€ al mese")}</span>
               </div>
               <p className="mt-2 text-[13px] text-muted">
-                {annual ? `${p.monthly * 10} € all'anno, IVA esclusa` : tr("Fatturato ogni mese, IVA esclusa")}
+                {annual ? tr("{amount} all'anno, IVA esclusa", { amount: eur(p.monthly * 10) }) : tr("Fatturato ogni mese, IVA esclusa")}
               </p>
               <a href={`${signupUrl}?piano=${p.id}`} className={`btn mt-6 w-full ${p.popular ? "btn-dark pulse" : "btn-light"}`}>
                 {tr("Prova gratis 14 giorni")}

@@ -1,6 +1,6 @@
 "use client";
 
-import { tr } from "@/i18n";
+import { messageTag, tr, weekdayDate } from "@/i18n";
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { signupUrl, site, waLink } from "@/config/site";
@@ -12,8 +12,6 @@ const types = () => ([tr("Pizzeria"), tr("Ristorante o trattoria"), tr("Pub o bi
 const goals = () => ([tr("Menu digitale e QR"), tr("Più prenotazioni"), tr("Ordini da asporto"), tr("Far tornare i clienti"), tr("Un po' di tutto")]);
 const times = ["10:00", "10:30", "11:00", "11:30", "15:00", "15:30", "16:00", "17:30"];
 const dayShort = () => ([tr("Dom"), tr("Lun"), tr("Mar"), tr("Mer"), tr("Gio"), tr("Ven"), tr("Sab")]);
-const dayLong = () => (["domenica", tr("lunedì"), tr("martedì"), tr("mercoledì"), tr("giovedì"), tr("venerdì"), "sabato"]);
-const months = ["gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno", "luglio", "agosto", "settembre", "ottobre", "novembre", "dicembre"];
 
 type Data = { nome: string; attivita: string; email: string; tel: string; tipo: string; obiettivo: string; modo: "video" | "tel"; privacy: boolean; wa: boolean };
 const empty: Data = { nome: "", attivita: "", email: "", tel: "", tipo: "", obiettivo: "", modo: "video", privacy: false, wa: true };
@@ -49,7 +47,7 @@ export function DemoBooking({ compact = false }: { compact?: boolean }) {
   const when = useMemo(() => {
     const d = days[day];
     if (!d) return "";
-    return `${dayLong()[d.getDay()]} ${d.getDate()} ${months[d.getMonth()]}`;
+    return weekdayDate(d);
   }, [days, day]);
 
   function toStep2() {
@@ -62,14 +60,14 @@ export function DemoBooking({ compact = false }: { compact?: boolean }) {
   function confirm() {
     if (!time) return;
     const msg = [
-      `Ciao, vorrei prenotare la demo di ${site.name}.`,
-      `${when.charAt(0).toUpperCase() + when.slice(1)} alle ${time}, ${data.modo === "video" ? tr("in videochiamata") : tr("al telefono")}.`,
+      messageTag() + tr("Ciao, vorrei prenotare la demo di {brand}.", { brand: site.name }),
+      tr("{when} alle {time}, {mode}.", { when: when.charAt(0).toUpperCase() + when.slice(1), time, mode: data.modo === "video" ? tr("in videochiamata") : tr("al telefono") }),
       "",
-      `Nome: ${data.nome}`,
-      `Attività: ${data.attivita}${data.tipo ? ` (${data.tipo})` : ""}`,
-      data.email ? `Email: ${data.email}` : "",
-      `Telefono: ${data.tel}`,
-      data.obiettivo ? `Mi serve soprattutto: ${data.obiettivo}` : "",
+      tr("Nome: {value}", { value: data.nome }),
+      tr("Attività: {value}", { value: `${data.attivita}${data.tipo ? ` (${data.tipo})` : ""}` }),
+      data.email ? tr("Email: {value}", { value: data.email }) : "",
+      tr("Telefono: {value}", { value: data.tel }),
+      data.obiettivo ? tr("Mi serve soprattutto: {value}", { value: data.obiettivo }) : "",
     ]
       .filter((x) => x !== "")
       .join("\n");
@@ -289,7 +287,7 @@ export function DemoBooking({ compact = false }: { compact?: boolean }) {
               <Icon name="calendarCheck" size={18} />
             </span>
             <span className="text-[14px] leading-snug">
-              <span className="block font-semibold text-ink">{time ? `${when.charAt(0).toUpperCase() + when.slice(1)} alle ${time}` : tr("Scegli un orario")}</span>
+              <span className="block font-semibold text-ink">{time ? tr("{when} alle {time}", { when: when.charAt(0).toUpperCase() + when.slice(1), time }) : tr("Scegli un orario")}</span>
               <span className="block text-[#71717a]">{data.modo === "video" ? tr("Videochiamata") : tr("Telefonata")}{tr(", 20 minuti")}</span>
             </span>
           </div>
@@ -309,7 +307,7 @@ export function DemoBooking({ compact = false }: { compact?: boolean }) {
           <span className="anim-pop inline-flex h-[72px] w-[72px] items-center justify-center rounded-full bg-p-green text-p-green-ink">
             <Icon name="check" size={32} stroke={2.4} />
           </span>
-          <h2 className="mt-5 text-[clamp(1.75rem,1.4rem+1.4vw,2.4rem)] font-semibold leading-[1.15] md:leading-[1.08] tracking-[-0.03em] text-ink">{tr("Ci vediamo")}{" "}{when}{" "}{tr("alle")}{" "}{time}</h2>
+          <h2 className="mt-5 text-[clamp(1.75rem,1.4rem+1.4vw,2.4rem)] font-semibold leading-[1.15] md:leading-[1.08] tracking-[-0.03em] text-ink">{tr("Ci vediamo {when} alle {time}", { when, time: time ?? "" })}</h2>
           <p className="mx-auto mt-3 max-w-[420px] text-[16px] leading-relaxed text-muted">
             {tr("Si è aperto WhatsApp con la richiesta già scritta: premi Invia e ti confermiamo l'appuntamento. Se hai il menu in PDF o in foto, mandacelo lì.")}
           </p>

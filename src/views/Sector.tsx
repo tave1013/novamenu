@@ -63,7 +63,7 @@ export default function SectorPage({ slug }: { slug: string }) {
 
       {/* La foto che si apre scorrendo */}
       {s.photo && (
-        <section aria-label={s.name} className={s.photo.layout === "center" || !s.photo.layout ? tr("pb-6 pt-2 md:pb-10") : "border-t border-line-soft py-16 md:py-24"}>
+        <section aria-label={s.name} className={s.photo.layout === "center" || !s.photo.layout ? "pb-6 pt-2 md:pb-10" : "border-t border-line-soft py-16 md:py-24"}>
           {s.photo.layout === "left" || s.photo.layout === "right" ? (
             <PhotoSplit
               src={s.photo.src}

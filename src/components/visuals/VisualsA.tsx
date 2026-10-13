@@ -1,6 +1,6 @@
 "use client";
 
-import { tr } from "@/i18n";
+import { price, tr } from "@/i18n";
 import { useEffect, useState } from "react";
 import { Icon } from "../Icon";
 import { Cursor, Toast, Toggle, useDemo, type Step } from "./engine";
@@ -78,7 +78,7 @@ export function MenuVisual({ bare = false }: { bare?: boolean }) {
                     <span className="block text-[13px] font-medium text-ink">{it.n}</span>
                     <span className="block text-[11px] leading-snug text-muted">{it.d}</span>
                     <span className="mt-1 block text-[10.5px] text-faint">{it.a}</span>
-                    <span className="mt-1 block text-[12.5px] font-medium tabular-nums text-ink">{it.p} €</span>
+                    <span className="mt-1 block text-[12.5px] font-medium tabular-nums text-ink">{price(`${it.p} €`)}</span>
                   </span>
                   <span className="relative h-[68px] w-[68px] flex-none rounded-[12px]" style={{ background: it.c }}>
                     <span
@@ -102,7 +102,7 @@ export function MenuVisual({ bare = false }: { bare?: boolean }) {
                   </span>
                   {tr("Vedi carrello")}
                 </span>
-                <span className="tabular-nums">{s.total.toFixed(2).replace(".", ",")} €</span>
+                <span className="tabular-nums">{price(`${s.total.toFixed(2).replace(".", ",")} €`)}</span>
               </div>
             )}
             {s.open && (
@@ -165,11 +165,11 @@ const aiSteps = (): Step<AiS>[] => ([
   { dur: 2800, target: "publish", click: true, patch: { published: true, toast: tr("Menu pubblicato: 5 piatti, 3 categorie") } },
 ]);
 const aiRows = () => ([
-  { n: tr("Margherita"), c: "Pizze", a: tr("Glutine, latte"), p: "7,00 €" },
-  { n: tr("Diavola"), c: "Pizze", a: tr("Glutine, latte"), p: "8,50 €" },
-  { n: tr("Fiori di zucca"), c: "Fritti", a: tr("Glutine, latte, pesce"), p: "6,50 €", check: true },
-  { n: tr("Tiramisù"), c: "Dolci", a: tr("Uova, latte"), p: "5,00 €" },
-  { n: tr("Birra artigianale"), c: "Bibite", a: tr("Glutine"), p: "5,50 €" },
+  { n: tr("Margherita"), c: "Pizze", a: tr("Glutine, latte"), p: price("7,00 €") },
+  { n: tr("Diavola"), c: "Pizze", a: tr("Glutine, latte"), p: price("8,50 €") },
+  { n: tr("Fiori di zucca"), c: "Fritti", a: tr("Glutine, latte, pesce"), p: price("6,50 €"), check: true },
+  { n: tr("Tiramisù"), c: "Dolci", a: tr("Uova, latte"), p: price("5,00 €") },
+  { n: tr("Birra artigianale"), c: "Bibite", a: tr("Glutine"), p: price("5,50 €") },
 ]);
 
 export function AiVisual() {
@@ -314,7 +314,7 @@ export function LingueVisual() {
               ))}
             </div>
             <div className="mt-5 flex items-center justify-between">
-              <span className="text-[17px] font-semibold tabular-nums text-ink">6,50 €</span>
+              <span className="text-[17px] font-semibold tabular-nums text-ink">{price("6,50 €")}</span>
               <span className="flex h-10 items-center rounded-full bg-black px-5 text-[13px] font-medium text-white">{t.cta}</span>
             </div>
           </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { tr } from "@/i18n";
+import { messageTag, tr } from "@/i18n";
 import { useState } from "react";
 import { site, waLink } from "@/config/site";
 import { Icon } from "./Icon";
@@ -34,14 +34,21 @@ export function LeadForm({ kind, compact = false }: { kind: "demo" | "contatto";
     const lines =
       kind === "demo"
         ? [
-            `Ciao, vorrei prenotare una demo di ${site.name}.`,
-            `Nome: ${name}`,
-            `Locale: ${venue}`,
-            `Tipo: ${fd.get("tipo")}`,
-            `Telefono: ${phone}`,
-            fd.get("quando") ? `Preferenza: ${fd.get("quando")}` : "",
+            messageTag() + tr("Ciao, vorrei prenotare una demo di {brand}.", { brand: site.name }),
+            tr("Nome: {value}", { value: name }),
+            tr("Locale: {value}", { value: venue }),
+            tr("Tipo: {value}", { value: String(fd.get("tipo")) }),
+            tr("Telefono: {value}", { value: phone }),
+            fd.get("quando") ? tr("Preferenza: {value}", { value: String(fd.get("quando")) }) : "",
           ]
-        : [`Ciao, vi scrivo dal sito di ${site.name}.`, `Nome: ${name}`, venue ? `Attività: ${venue}` : "", `Telefono: ${phone}`, "", String(fd.get("messaggio") || "")];
+        : [
+            messageTag() + tr("Ciao, vi scrivo dal sito di {brand}.", { brand: site.name }),
+            tr("Nome: {value}", { value: name }),
+            venue ? tr("Attività: {value}", { value: venue }) : "",
+            tr("Telefono: {value}", { value: phone }),
+            "",
+            String(fd.get("messaggio") || ""),
+          ];
     window.open(waLink(lines.filter(Boolean).join("\n")), "_blank", "noopener");
     setSent(true);
   }

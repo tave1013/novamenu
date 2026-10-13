@@ -1,4 +1,4 @@
-import { tr } from "@/i18n";
+import { price, tr } from "@/i18n";
 import Link from "next/link";
 import { Icon, type IconName } from "./Icon";
 import { Qr } from "./HeroArt";
@@ -127,7 +127,7 @@ function MenuQrArt() {
               {n}
               {i === 1 && <span className="ml-1.5 rounded-full bg-p-red px-1.5 py-px text-[10px] font-medium text-p-red-ink">{tr("piccante")}</span>}
             </span>
-            <span className="tabular-nums text-muted">€ {p}</span>
+            <span className="tabular-nums text-muted">{price(`€ ${p}`)}</span>
           </div>
         ))}
         <div className="mt-2 flex items-center gap-1.5 rounded-[8px] bg-lime-soft px-2 py-1 text-[11px] font-medium text-forest">
@@ -159,7 +159,7 @@ function StatsArt() {
       </svg>
       <div className="min-w-0 text-[12px]">
         <p className="text-muted">{tr("Incasso settimana")}</p>
-        <p className="text-[22px] font-semibold tracking-[-0.03em] text-ink">€ 4.280</p>
+        <p className="text-[22px] font-semibold tracking-[-0.03em] text-ink">{price("€ 4.280")}</p>
         <p className="font-medium text-[#16a34a]">{tr("+12% sulla scorsa")}</p>
       </div>
     </div>

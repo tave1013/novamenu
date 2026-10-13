@@ -176,7 +176,7 @@ export function SectionHead({ eyebrow, title, text, center = false }: { eyebrow?
 const tones = ["#efe7da", "#e6dccb", "#ece3d3", "#e2d7c4", "#f1eadf", "#e8dfcf"];
 
 function WorkCard({ src, n }: { src: string; n: number }) {
-  const size = tr("w-[220px] sm:w-[280px] aspect-[4/5]");
+  const size = "w-[220px] sm:w-[280px] aspect-[4/5]";
   if (exists(src)) {
     return (
       <div className={`relative flex-none overflow-hidden rounded-[22px] bg-mist ${size}`}>

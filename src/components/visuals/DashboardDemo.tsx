@@ -1,6 +1,6 @@
 "use client";
 
-import { tr } from "@/i18n";
+import { price, tr } from "@/i18n";
 import { Icon, type IconName } from "../Icon";
 import { Cursor, Toast, Toggle, useDemo, type Step } from "./engine";
 import { AppWindow, PhoneFrame } from "./frames";
@@ -274,11 +274,11 @@ function ResRow({ time, name, people, status, compact }: { time: string; name: s
 }
 
 const dishes = () => ([
-  { n: tr("Margherita"), d: tr("Pomodoro, fiordilatte, basilico"), p: "7,00 €", t: "#fde68a" },
-  { n: tr("Diavola"), d: tr("Salame piccante, fiordilatte"), p: "8,50 €", t: "#fecaca" },
-  { n: tr("Bufala e crudo"), d: tr("Bufala campana, crudo 18 mesi"), p: "11,00 €", t: "#e9d5ff", key: true },
-  { n: tr("Ortolana"), d: tr("Verdure grigliate di stagione"), p: "9,00 €", t: "#bbf7d0" },
-  { n: tr("Capricciosa"), d: tr("Prosciutto, funghi, carciofi, olive"), p: "9,50 €", t: "#fed7aa" },
+  { n: tr("Margherita"), d: tr("Pomodoro, fiordilatte, basilico"), p: price("7,00 €"), t: "#fde68a" },
+  { n: tr("Diavola"), d: tr("Salame piccante, fiordilatte"), p: price("8,50 €"), t: "#fecaca" },
+  { n: tr("Bufala e crudo"), d: tr("Bufala campana, crudo 18 mesi"), p: price("11,00 €"), t: "#e9d5ff", key: true },
+  { n: tr("Ortolana"), d: tr("Verdure grigliate di stagione"), p: price("9,00 €"), t: "#bbf7d0" },
+  { n: tr("Capricciosa"), d: tr("Prosciutto, funghi, carciofi, olive"), p: price("9,50 €"), t: "#fed7aa" },
 ]);
 
 function MenuList({ state, compact }: { state: S; compact: boolean }) {
@@ -331,14 +331,14 @@ function Ordini({ state, compact }: { state: S; compact: boolean }) {
             time="19:45"
             name="Andrea M."
             items={tr("2 Margherita, 1 Diavola, 1 fiori di zucca")}
-            total="27,50 €"
+            total={price("27,50 €")}
             fresh
             compact={compact}
           />
         )}
-        <OrderRow time="19:30" name="Lucia B." items={tr("1 Capricciosa, 1 Ortolana")} total="18,50 €" compact={compact} />
-        <OrderRow time="20:00" name="Famiglia Greco" items={tr("4 Margherita, 2 birre")} total="39,00 €" compact={compact} />
-        {!compact && <OrderRow time="20:15" name="Paolo R." items={tr("1 Diavola")} total="8,50 €" compact={compact} />}
+        <OrderRow time="19:30" name="Lucia B." items={tr("1 Capricciosa, 1 Ortolana")} total={price("18,50 €")} compact={compact} />
+        <OrderRow time="20:00" name="Famiglia Greco" items={tr("4 Margherita, 2 birre")} total={price("39,00 €")} compact={compact} />
+        {!compact && <OrderRow time="20:15" name="Paolo R." items={tr("1 Diavola")} total={price("8,50 €")} compact={compact} />}
       </ul>
     </div>
   );
@@ -438,7 +438,7 @@ function CustomerView({ state }: { state: S }) {
           return (
             <li key={d.n} className="flex items-center gap-3 border-t border-line-soft py-2.5">
               <span className="min-w-0 flex-1">
-                <span className={`flex items-center gap-1.5 text-[12.5px] font-medium ${off ? tr("text-faint line-through") : "text-ink"}`}>{d.n}</span>
+                <span className={`flex items-center gap-1.5 text-[12.5px] font-medium ${off ? "text-faint line-through" : "text-ink"}`}>{d.n}</span>
                 <span className="block text-[10.5px] leading-snug text-muted">{off ? tr("Esaurito per stasera") : d.d}</span>
               </span>
               <span className="relative h-12 w-12 flex-none rounded-[10px]" style={{ background: d.t, opacity: off ? 0.35 : 1 }}>
@@ -457,7 +457,7 @@ function CustomerView({ state }: { state: S }) {
           <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-white/20 px-1 text-[10.5px]">2</span>
           {tr("Vedi carrello")}
         </span>
-        <span className="tabular-nums">15,50 €</span>
+        <span className="tabular-nums">{price("15,50 €")}</span>
       </div>
     </div>
   );
