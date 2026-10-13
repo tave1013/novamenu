@@ -217,8 +217,9 @@ export function Portfolio({ eyebrow, title, text }: { eyebrow: string; title: Re
         </Reveal>
       </div>
       <div className="mt-12 flex flex-col gap-4">
-        <WorkRow items={[1, 2, 3, 4, 5, 6]} />
-        <WorkRow items={[7, 8, 9, 10, 11, 12]} reverse />
+        {/* L'ordine alterna le pizze agli altri soggetti, così foto simili non finiscono vicine. */}
+        <WorkRow items={[1, 2, 12, 3, 13, 5, 7]} />
+        <WorkRow items={[8, 11, 4, 9, 6, 10]} reverse />
       </div>
     </section>
   );

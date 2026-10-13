@@ -52,9 +52,21 @@ function PhoneVideo() {
     <div className="relative rounded-[28px] bg-forest p-6 md:p-10">
       <div className="mx-auto w-[230px] rounded-[36px] bg-ink p-2.5 shadow-[0_40px_70px_-30px_rgba(0,0,0,.6)]">
         <div className="relative overflow-hidden rounded-[28px]">
-          <PhotoSlot src="/images/servizi/foto-06-video.webp" alt="Un pizzaiolo che stende l'impasto, inquadratura verticale" label="Foto 6 · Fotogramma video verticale" className="aspect-[9/16]" />
+          <video
+            src="/images/servizi/foto-06-video.mp4"
+            poster="/images/servizi/foto-06-video.webp"
+            aria-label="Video verticale di un pizzaiolo che stende l'impasto sul banco infarinato"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            className="block aspect-[9/16] w-full bg-mist object-cover"
+          />
           <div className="absolute inset-x-3 top-3 flex items-center gap-2">
-            <span className="h-7 w-7 rounded-full bg-white/90" />
+            <span aria-hidden className="flex h-7 w-7 items-center justify-center rounded-full bg-forest text-lime ring-2 ring-white/90">
+              <Icon name="pizza" size={15} stroke={2} />
+            </span>
             <span className="text-[12px] font-medium text-white drop-shadow">iltuolocale</span>
           </div>
           <div className="absolute right-3 top-1/2 flex flex-col gap-3 text-white">
