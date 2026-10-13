@@ -120,10 +120,18 @@ export function Cursor({
     const r = root.getBoundingClientRect();
     const b = el.getBoundingClientRect();
     if (legacyZoomRects()) {
-      // Safari meno recenti: le misure sono divise per lo zoom dell'elemento, quindi si riportano prima allo schermo.
+      // Safari meno recenti: le misure prese dentro un elemento con zoom non sono in pixel dello schermo
+      // e cambiano con lo scorrimento della pagina. Si misura quindi rispetto a un punto di riferimento
+      // messo nell'angolo della scena con lo stesso zoom dell'elemento: la differenza tra i due è affidabile.
       const zr = totalZoom(root);
       const zb = totalZoom(el);
-      setPos({ x: ((b.left + b.width * 0.55) * zb - r.left * zr) / zr, y: ((b.top + b.height * 0.6) * zb - r.top * zr) / zr });
+      const probe = document.createElement("span");
+      probe.style.cssText = `position:absolute;left:0;top:0;width:1px;height:1px;visibility:hidden;pointer-events:none;zoom:${zb / zr}`;
+      root.appendChild(probe);
+      const p = probe.getBoundingClientRect();
+      probe.remove();
+      const k = zb / zr;
+      setPos({ x: (b.left + b.width * 0.55 - p.left) * k, y: (b.top + b.height * 0.6 - p.top) * k });
       return;
     }
     const sx = root.offsetWidth ? r.width / root.offsetWidth : 1;
