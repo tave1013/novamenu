@@ -250,7 +250,7 @@ export default function Home() {
       <section aria-label={tr("Foto e video per il tuo locale")} className="border-t border-line-soft py-20 md:py-26">
         <ArtSplit
           side="right"
-          visual={<PhotoSlot src="/images/servizi/home-shooting.webp" alt={tr("Fotografo che scatta una pizza appena sfornata su un set allestito nel locale")} label={tr("Foto home · Shooting nel locale")} className="aspect-[4/3] rounded-[24px]" />}
+          visual={<PhotoSlot src="/images/servizi/home-shooting.webp" alt={tr("Filetto in crosta di erbe con asparagi e crema di piselli, impiattato su un piatto bianco")} label={tr("Foto home · Shooting nel locale")} className="aspect-[4/3] rounded-[24px]" />}
           eyebrow={tr("Servizio extra")}
           title={<>{tr("Ti servono foto e video")}{" "}<span className="hl">{tr("professionali")}</span>{" "}{tr("per il tuo locale?")}</>}
           text={tr("Organizziamo shooting su misura: il nostro team viene direttamente nel tuo locale e realizza le foto dei piatti per il menu, video brevi per i social e contenuti pronti da pubblicare. È un servizio a parte, lo aggiungi solo se ti serve.")}
