@@ -3,6 +3,7 @@ import { defaultLocale, type Locale } from "@/i18n/config";
 import { slugOf } from "@/i18n/routes";
 import { features as featuresIt, type Feature } from "./features";
 import { features as featuresEn } from "./en/features";
+import { sectors as sectorsEn } from "./en/sectors";
 import { services as servicesEn } from "./en/services";
 import { reviews as reviewsEn } from "./en/reviews";
 import { sectors as sectorsIt, type Sector } from "./sectors";
@@ -10,6 +11,7 @@ import { guides as guidesIt, type Guide } from "./guides";
 import { services as servicesIt, type Service } from "./services";
 import { reviews as reviewsIt } from "./reviews";
 import { cookieHtml as cookieIt, privacyHtml as privacyIt, termsHtml as termsIt } from "./legal";
+import { cookieHtml as cookieEn, privacyHtml as privacyEn, termsHtml as termsEn } from "./en/legal";
 
 /*
  * Contenuti del sito nella lingua richiesta. Ogni lingua ha gli stessi dati con la stessa forma:
@@ -42,11 +44,11 @@ const content: Record<Locale, {
   // PROVVISORIO: finché i contenuti inglesi non sono scritti, si usano quelli italiani con gli slug inglesi.
   en: {
     features: withSlug("feature", "en", featuresEn),
-    sectors: withSlug("sector", "en", sectorsIt),
+    sectors: withSlug("sector", "en", sectorsEn),
     guides: withSlug("guide", "en", guidesIt),
     services: withSlug("service", "en", servicesEn),
     reviews: reviewsEn,
-    legal: { privacy: privacyIt, cookies: cookieIt, terms: termsIt },
+    legal: { privacy: privacyEn, cookies: cookieEn, terms: termsEn },
   },
 };
 

@@ -114,7 +114,7 @@ function Order({ a }: { a: OrderArt }) {
           </ul>
           {a.extra && <p className="mt-1.5 italic text-[#3b4a54]">{a.extra}</p>}
           <p className="mt-1.5">
-            <span className="font-semibold">{tr("Totale")}{" "}{a.total}</span>
+            <span className="font-semibold">{tr("Totale")}{" "}{eurText(a.total)}</span>
           </p>
           <p className="font-semibold">🕒 {a.when}</p>
           <p className="mt-1 text-right text-[10px] text-[#667781]">18:42 ✓✓</p>
