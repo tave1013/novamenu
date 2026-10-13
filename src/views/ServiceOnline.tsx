@@ -194,7 +194,7 @@ export default function PresenzaOnlinePage() {
                 {tr("Servizio presenza online")}
               </span>
               <h1 className="display anim-fade-up mt-6" style={{ animationDelay: "80ms" }}>
-                <Hl text={tr("Quando ti cercano online, trovano il locale che sei davvero.")} word="davvero" />
+                <Hl text={tr("Quando ti cercano online, trovano il locale che sei davvero.")} word={tr("davvero")} />
               </h1>
               <p className="lead anim-fade-up mt-6 max-w-[560px]" style={{ animationDelay: "160ms" }}>
                 {tr("Ci occupiamo della tua scheda Google, di TripAdvisor e dei canali dove i clienti ti scelgono: orari giusti, foto curate e una risposta a ogni recensione.")}
@@ -219,7 +219,7 @@ export default function PresenzaOnlinePage() {
       {/* Canali */}
       <section className="py-14 md:py-20">
         <div className="wrap">
-          <SectionHead eyebrow={tr("Di cosa ci occupiamo")} title={<Hl text={tr("Tutti i posti dove ti cercano, in ordine e coerenti.")} word="coerenti" />} text={tr("Ogni canale con gli stessi orari, le stesse foto e lo stesso tono. Chi ti trova si fida di più, e sceglie te.")} />
+          <SectionHead eyebrow={tr("Di cosa ci occupiamo")} title={<Hl text={tr("Tutti i posti dove ti cercano, in ordine e coerenti.")} word={tr("coerenti")} />} text={tr("Ogni canale con gli stessi orari, le stesse foto e lo stesso tono. Chi ti trova si fida di più, e sceglie te.")} />
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {channels().map((c, i) => (
               <Reveal key={c.t} delay={i * 60}>

@@ -142,7 +142,7 @@ export default function FotoVideoPage() {
                 {tr("Servizio foto e video")}
               </span>
               <h1 className="display anim-fade-up mt-6" style={{ animationDelay: "80ms" }}>
-                <Hl text={tr("Foto che fanno venire fame, prima ancora di mangiare.")} word="fame" />
+                <Hl text={tr("Foto che fanno venire fame, prima ancora di mangiare.")} word={tr("fame")} />
               </h1>
               <p className="lead anim-fade-up mt-6 max-w-[560px]" style={{ animationDelay: "160ms" }}>
                 {tr("Fotografiamo i piatti del tuo locale: alle luci e agli strumenti necessari pensiamo a tutto noi, e ti consegniamo foto e video pronti per il menu, i social e le app di consegna.")}
@@ -171,7 +171,7 @@ export default function FotoVideoPage() {
       {/* Quattro usi, una foto */}
       <section className="py-14 md:py-20">
         <div className="wrap">
-          <SectionHead eyebrow={tr("Un servizio, quattro usi")} title={<Hl text={tr("Le stesse foto lavorano per te ovunque.")} word="ovunque" />} text={tr("Uno shooting fatto bene diventa il menu, la vetrina sulle app di consegna, i post della settimana e la scheda Google.")} />
+          <SectionHead eyebrow={tr("Un servizio, quattro usi")} title={<Hl text={tr("Le stesse foto lavorano per te ovunque.")} word={tr("ovunque")} />} text={tr("Uno shooting fatto bene diventa il menu, la vetrina sulle app di consegna, i post della settimana e la scheda Google.")} />
           <div className="mt-10">
             <Mosaic4 src="/images/servizi/foto-02-tavola.webp" placeholder={tr("Foto 2 · Una tavola vista dall'alto, formato panoramico 3:1")} alt={tr("Una tavola con quattro piatti vista dall'alto, divisa in quattro schede")} labels={[tr("Menu digitale"), tr("App di consegna"), tr("Instagram e Facebook"), tr("Google e TripAdvisor")]} />
           </div>

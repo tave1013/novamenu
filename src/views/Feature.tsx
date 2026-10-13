@@ -12,9 +12,9 @@ import { Breadcrumbs, Check, CtaBand, Faq, Hl, PlanTag } from "@/components/ui";
 /** La parola evidenziata nel titolo di ogni funzionalità. */
 const heroHl = (): Record<string, string> => ({
   "menu-digitale": tr("sempre giusto"),
-  "importa-menu-ai": "foto",
+  "importa-menu-ai": tr("foto"),
   traduzioni: tr("sua lingua"),
-  "menu-a-orari": "aperitivo",
+  "menu-a-orari": tr("aperitivo"),
   prenotazioni: tr("un tocco"),
   "sala-e-tavoli": tr("colpo d'occhio"),
   "ferie-e-chiusure": tr("lo sa già"),

@@ -203,7 +203,7 @@ export function DemoBooking({ compact = false }: { compact?: boolean }) {
                   <Link href={lp("/privacy/")} className="font-medium text-ink underline underline-offset-2">
                     {tr("privacy policy")}
                   </Link>{" "}
-                  e i{" "}
+                  {tr("e i")}{" "}
                   <Link href={lp("/termini/")} className="font-medium text-ink underline underline-offset-2">
                     {tr("termini del servizio")}
                   </Link>
