@@ -1,8 +1,7 @@
 import { getLocale, price, t, tr } from "@/i18n";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Icon, toneClass } from "@/components/Icon";
-import { PhoneFrame } from "@/components/visuals/frames";
+import { Icon } from "@/components/Icon";
 import { Breadcrumbs, Faq, Hl, JsonLd } from "@/components/ui";
 import { Reveal } from "@/components/Reveal";
 import { ArtSplit, Mosaic4, Packages, PhotoSlot, Portfolio, SectionHead, Steps } from "@/components/Servizi";
@@ -50,80 +49,6 @@ function AppCard() {
         </div>
       </div>
       <p className="mt-4 text-center text-[12px] text-faint">{tr("Esempio di scheda su un'app di consegna")}</p>
-    </div>
-  );
-}
-
-/** I tre tipi di video, mostrati come schede che spuntano dal telefono. */
-const videoCards = () => ([
-  { icon: "video" as const, tone: "green", t: tr("Reel di preparazione"), d: tr("L'impasto, il forno, il piatto finito"), pos: "left-0 top-36", f: "float2", delay: "300ms" },
-  { icon: "camera" as const, tone: "blue", t: tr("Reel del locale"), d: tr("La sala, il bancone, l'atmosfera"), pos: "right-0 top-64", f: "float3", delay: "800ms" },
-  { icon: "sparkle" as const, tone: "amber", t: tr("Video su misura"), d: tr("In base alle tue esigenze"), pos: "bottom-14 left-2", f: "float1", delay: "1300ms" },
-]);
-
-function VideoCard({ c }: { c: (ReturnType<typeof videoCards>)[number] }) {
-  return (
-    <div className="flex w-full items-center gap-2.5 rounded-[14px] border border-line bg-white px-3 py-2.5 shadow-[0_18px_40px_-24px_rgba(0,0,0,.3)] sm:w-[240px]">
-      <span className={`flex h-8 w-8 flex-none items-center justify-center rounded-[9px] ${toneClass[c.tone].bg} ${toneClass[c.tone].ink}`}>
-        <Icon name={c.icon} size={16} stroke={2} />
-      </span>
-      <span className="min-w-0 text-[12px] leading-[1.35]">
-        <span className="block font-semibold text-ink">{c.t}</span>
-        <span className="block text-[#71717a]">{c.d}</span>
-      </span>
-    </div>
-  );
-}
-
-function PhoneVideo() {
-  return (
-    <div>
-      <div className="relative flex justify-center sm:min-h-[560px] sm:items-center">
-        <div aria-hidden className="pointer-events-none absolute -inset-x-4 -inset-y-4 sm:-inset-x-6 [background:radial-gradient(48%_48%_at_50%_45%,rgba(159,232,112,.42),transparent_70%),radial-gradient(35%_35%_at_82%_78%,rgba(159,232,112,.25),transparent_70%)]" />
-        <PhoneFrame dark width={270} zoom={1} className="!shadow-[0_0_0_1px_rgba(0,0,0,.08)]">
-          <div className="relative">
-            <video
-              src="/images/servizi/foto-06-video.mp4"
-              poster="/images/servizi/foto-06-video.webp"
-              aria-label={tr("Video verticale di un pizzaiolo che stende l'impasto sul banco infarinato")}
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              className="block aspect-[9/16] w-full bg-mist object-cover"
-            />
-            <div className="absolute inset-x-3 top-3 flex items-center gap-2">
-              <span aria-hidden className="flex h-7 w-7 items-center justify-center rounded-full bg-forest text-lime ring-2 ring-white/90">
-                <Icon name="pizza" size={15} stroke={2} />
-              </span>
-              <span className="text-[12px] font-medium text-white drop-shadow">{tr("iltuolocale")}</span>
-            </div>
-            <div className="absolute right-3 top-1/2 flex flex-col gap-3 text-white">
-              {(["star", "chat", "send"] as const).map((i) => (
-                <span key={i} className="flex h-8 w-8 items-center justify-center rounded-full bg-black/30 backdrop-blur">
-                  <Icon name={i} size={15} />
-                </span>
-              ))}
-            </div>
-          </div>
-        </PhoneFrame>
-        {videoCards().map((c) => (
-          <div key={c.t} className={`absolute z-30 hidden sm:block ${c.pos}`} style={{ animation: `pop .7s cubic-bezier(.2,.8,.2,1) ${c.delay} both` }}>
-            <div className={c.f}>
-              <VideoCard c={c} />
-            </div>
-          </div>
-        ))}
-      </div>
-      {/* Sul telefono le schede stanno sotto, una per riga */}
-      <ul className="relative mt-6 flex flex-col gap-2 sm:hidden">
-        {videoCards().map((c) => (
-          <li key={c.t}>
-            <VideoCard c={c} />
-          </li>
-        ))}
-      </ul>
     </div>
   );
 }
@@ -204,14 +129,6 @@ export default function FotoVideoPage() {
           text={tr("Su Glovo, Deliveroo e Just Eat il cliente scorre veloce e sceglie con gli occhi. Una foto chiara e invitante fa fermare il dito sul tuo piatto.")}
           points={[tr("Inquadrature studiate per le schede delle app"), tr("Una foto per ogni piatto, tutte uguali per stile"), tr("Pronte da caricare, nelle misure giuste")]}
         />
-        <ArtSplit
-          side="left"
-          visual={<PhoneVideo />}
-          eyebrow={tr("Video per i social")}
-          title={tr("Video brevi per i social, girati mentre lavori.")}
-          text={tr("L'impasto che si allarga, il forno acceso, il piatto che arriva al tavolo. Sono i momenti che fanno venire voglia di entrare, e li riprendiamo senza fermare il servizio.")}
-          points={[tr("Video verticali per Reel e TikTok"), tr("Montati, con testi e musica a scelta"), tr("Una scorta di contenuti per settimane")]}
-        />
       </section>
 
       <Portfolio
@@ -234,7 +151,7 @@ export default function FotoVideoPage() {
                 {[
                   { t: tr("Inaugurazione"), d: tr("Il locale, lo staff e i primi clienti") },
                   { t: tr("Nuovo menu di stagione"), d: tr("I piatti nuovi, pronti per il lancio") },
-                  { t: tr("Catering ed eventi"), d: tr("Buffet, cerimonie, feste private") },
+                  { t: tr("Foto per le app di consegna"), d: tr("Glovo, Deliveroo e Just Eat, nelle misure giuste") },
                   { t: tr("Menu delle feste"), d: tr("Natale, Pasqua, San Valentino") },
                 ].map((e) => (
                   <div key={e.t} className="rounded-[18px] bg-white/[.06] p-4">
