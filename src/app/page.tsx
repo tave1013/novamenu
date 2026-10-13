@@ -174,7 +174,7 @@ export default function Home() {
 
       {/* Funzionalità in evidenza */}
       <section id="funzionalita" className="pt-24 md:pt-32">
-        <div className="wrap">
+        <div className="wrap max-md:text-center">
           <p className="eyebrow">Cosa puoi fare</p>
           <h2 className="h-section mt-3 max-w-[820px]">Le cose che oggi fai a mano. Da domani le fai in un tocco.</h2>
         </div>
