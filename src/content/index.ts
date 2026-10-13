@@ -2,6 +2,9 @@ import { getLocale } from "@/i18n";
 import { defaultLocale, type Locale } from "@/i18n/config";
 import { slugOf } from "@/i18n/routes";
 import { features as featuresIt, type Feature } from "./features";
+import { features as featuresEn } from "./en/features";
+import { services as servicesEn } from "./en/services";
+import { reviews as reviewsEn } from "./en/reviews";
 import { sectors as sectorsIt, type Sector } from "./sectors";
 import { guides as guidesIt, type Guide } from "./guides";
 import { services as servicesIt, type Service } from "./services";
@@ -38,11 +41,11 @@ const content: Record<Locale, {
   },
   // PROVVISORIO: finché i contenuti inglesi non sono scritti, si usano quelli italiani con gli slug inglesi.
   en: {
-    features: withSlug("feature", "en", featuresIt),
+    features: withSlug("feature", "en", featuresEn),
     sectors: withSlug("sector", "en", sectorsIt),
     guides: withSlug("guide", "en", guidesIt),
-    services: withSlug("service", "en", servicesIt),
-    reviews: reviewsIt,
+    services: withSlug("service", "en", servicesEn),
+    reviews: reviewsEn,
     legal: { privacy: privacyIt, cookies: cookieIt, terms: termsIt },
   },
 };

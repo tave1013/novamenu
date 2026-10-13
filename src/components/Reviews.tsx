@@ -56,6 +56,8 @@ function Row({ items, reverse }: { items: Review[]; reverse?: boolean }) {
 
 /** Recensioni su due file che scorrono in direzioni opposte. */
 export function Reviews() {
+  // Senza recensioni in questa lingua la sezione non compare.
+  if (getReviews().length === 0) return null;
   const half = Math.ceil(getReviews().length / 2);
   const top = getReviews().slice(0, half);
   const bottom = getReviews().slice(half);

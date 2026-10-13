@@ -1,6 +1,7 @@
 import { getLocale } from "@/i18n";
 import { defaultLocale, type Locale } from "@/i18n/config";
 import { comparison as comparisonIt, generalFaq as generalFaqIt, plans as plansIt } from "./plans";
+import { comparison as comparisonEn, generalFaq as generalFaqEn, plans as plansEn } from "./en/plans";
 
 /*
  * Piani, tabella di confronto e domande frequenti nella lingua richiesta.
@@ -11,8 +12,7 @@ type PlansContent = { plans: typeof plansIt; comparison: typeof comparisonIt; ge
 
 const byLocale: Record<Locale, PlansContent> = {
   it: { plans: plansIt, comparison: comparisonIt, generalFaq: generalFaqIt },
-  // PROVVISORIO: in attesa dei testi inglesi.
-  en: { plans: plansIt, comparison: comparisonIt, generalFaq: generalFaqIt },
+  en: { plans: plansEn, comparison: comparisonEn, generalFaq: generalFaqEn },
 };
 
 const pick = (locale?: Locale) => byLocale[locale ?? getLocale()] ?? byLocale[defaultLocale];
