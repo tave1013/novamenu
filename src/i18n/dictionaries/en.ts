@@ -390,7 +390,7 @@ export const en: Record<MessageKey, string> = {
   "Foto ritoccate e video montati, pronti per menu, social e app.": "Retouched photos and edited videos, ready for your menu, social media and apps.",
   "Foto ritoccate in alta risoluzione": "Retouched photos in high resolution",
   "Foto social 1 · Il titolare con il profilo del locale sul telefono (16:9)": "Social photo 1 · The owner with the venue's profile on their phone (16:9)",
-  "Foto social 2 · Contenuti girati nel locale (4:3)": "Social photo 2 · Content filmed in the venue (4:3)",
+  "Foto social 2 · Contenuti girati nel locale (9:16)": "Social photo 2 · Content filmed in the venue (9:16)",
   "foto_menu.jpg": "foto_menu.jpg",
   "Foto, PDF o più pagine insieme": "A photo, a PDF or several pages at once",
   "Foto, social e presenza online per ristoranti": "Photos, social media and online presence",

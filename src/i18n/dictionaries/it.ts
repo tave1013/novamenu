@@ -389,7 +389,7 @@ export const it = [
   "Foto ritoccate e video montati, pronti per menu, social e app.",
   "Foto ritoccate in alta risoluzione",
   "Foto social 1 · Il titolare con il profilo del locale sul telefono (16:9)",
-  "Foto social 2 · Contenuti girati nel locale (4:3)",
+  "Foto social 2 · Contenuti girati nel locale (9:16)",
   "foto_menu.jpg",
   "Foto, PDF o più pagine insieme",
   "Foto, social e presenza online per ristoranti",
