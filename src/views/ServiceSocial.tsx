@@ -299,7 +299,7 @@ export default function GestioneSocialPage() {
         <div className="wrap">
           <div className="flex flex-col items-start gap-6 rounded-[28px] bg-ink p-8 md:flex-row md:items-center md:justify-between md:p-12">
             <div>
-              <h2 className="h-section text-[#fafaf8]">{tr("Vuoi un parere sul tuo profilo Instagram?")}</h2>
+              <h2 className="h-section text-[#fafaf8]">{tr("Vuoi un parere sui tuoi profili social?")}</h2>
               <p className="mt-3 text-[17px] text-[#a1a1aa]">{tr("Ti diciamo cosa funziona e cosa migliorare, senza impegno.")}</p>
             </div>
             <Link href={lp("/contatti/")} className="btn btn-dark flex-none">

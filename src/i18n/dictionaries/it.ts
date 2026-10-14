@@ -1158,7 +1158,7 @@ export const it = [
   "vivo",
   "Vocale o messaggio scritto",
   "Vuoi sapere come appari oggi online?",
-  "Vuoi un parere sul tuo profilo Instagram?",
+  "Vuoi un parere sui tuoi profili social?",
   "WhatsApp,",
   "Zero commissioni",
   "Zero commissioni sugli ordini",

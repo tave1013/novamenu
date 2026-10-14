@@ -1159,7 +1159,7 @@ export const en: Record<MessageKey, string> = {
   "vivo": "active",
   "Vocale o messaggio scritto": "Voice note or written message",
   "Vuoi sapere come appari oggi online?": "Want to know how you look online today?",
-  "Vuoi un parere sul tuo profilo Instagram?": "Want our opinion on your Instagram profile?",
+  "Vuoi un parere sui tuoi profili social?": "Want our opinion on your social media profiles?",
   "WhatsApp,": "WhatsApp,",
   "Zero commissioni": "Zero commission",
   "Zero commissioni sugli ordini": "Zero commission on orders",
