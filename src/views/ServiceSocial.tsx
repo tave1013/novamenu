@@ -223,7 +223,7 @@ export default function GestioneSocialPage() {
         />
         <ArtSplit
           side="right"
-          visual={<PhotoSlot src="/images/servizi/social-02-contenuti.webp" alt={tr("Primo piano di una pizza con salame piccante, pomodorini, basilico e origano")} label={tr("Foto social 2 · Contenuti girati nel locale (4:5)")} className="mx-auto aspect-[4/5] w-full max-w-[320px] rounded-[24px] lg:h-[calc(100%-42px)] lg:w-auto lg:max-w-none" />}
+          visual={<PhotoSlot src="/images/servizi/social-02-contenuti.webp" alt={tr("Ragazza sorridente a tavola che prende una fetta di pizza, con un calice di vino rosso accanto")} label={tr("Foto social 2 · Contenuti girati nel locale (4:5)")} className="mx-auto aspect-[4/5] w-full max-w-[320px] rounded-[24px] lg:h-[calc(100%-42px)] lg:w-auto lg:max-w-none" />}
           visualClassName="lg:flex lg:flex-col lg:justify-end lg:self-stretch"
           eyebrow={tr("Contenuti")}
           title={tr("Il tuo locale merita foto vere, non immagini fatte con l'AI.")}
