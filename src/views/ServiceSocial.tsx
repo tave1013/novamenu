@@ -223,7 +223,7 @@ export default function GestioneSocialPage() {
         />
         <ArtSplit
           side="right"
-          visual={<PhotoSlot src="/images/servizi/social-02-contenuti.webp" alt={tr("Una pizza ripresa con uno smartphone su un piccolo cavalletto, in cucina")} label={tr("Foto social 2 · Contenuti girati nel locale (4:3)")} className="aspect-[4/3] rounded-[24px]" />}
+          visual={<PhotoSlot src="/images/servizi/social-02-contenuti.webp" alt={tr("Primo piano di una pizza con salame piccante, pomodorini, basilico e origano")} label={tr("Foto social 2 · Contenuti girati nel locale (4:3)")} className="aspect-[4/3] rounded-[24px]" />}
           eyebrow={tr("Contenuti")}
           title={tr("Il tuo locale merita foto vere, non immagini fatte con l'AI.")}
           text={tr("Pubblicare foto generate con l'intelligenza artificiale per promuovere il tuo locale non funziona: i clienti se ne accorgono e si fidano di meno. Hai un buon prodotto e ci dedichi ore ogni giorno, almeno valorizzalo come si deve. Raccontiamo i tuoi piatti, il tuo forno e le persone che ci lavorano, con un tono riconoscibile che fa venire voglia di passare.")}
