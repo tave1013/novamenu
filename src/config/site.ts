@@ -11,7 +11,7 @@ export const site = {
   url: (process.env.NEXT_PUBLIC_SITE_URL || "https://www.novamenu.eu").replace(/\/$/, ""),
   appUrl: (process.env.NEXT_PUBLIC_APP_URL || "https://app.novamenu.eu").replace(/\/$/, ""),
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP || "393000000000",
-  email: "ciao@novamenu.eu",
+  email: "info@novamenu.eu",
   /** Dati legali: da completare prima della pubblicazione. */
   company: {
     legalName: "[Ragione sociale]",
