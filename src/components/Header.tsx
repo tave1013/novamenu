@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import { loginUrl, signupUrl } from "@/config/site";
 import { localeInfo, locales, type Locale } from "@/i18n/config";
 import { matchPath, switchLocale, type PageKey } from "@/i18n/routes";
+import { salvaLingua } from "@/i18n/lingua-iniziale";
 import { Flag } from "./Flag";
 import { Icon, type IconName } from "./Icon";
 import { Logo } from "./Logo";
@@ -127,7 +128,6 @@ export function Header({ nav }: { nav: HeaderNav }) {
   return (
     <>
       <header
-        data-no-print
         className={`sticky top-0 z-50 border-b backdrop-blur-xl backdrop-saturate-150 transition-colors duration-500 ${
           mobile ? "border-line bg-[#fafaf8]" : scrolled || open ? "border-line bg-[#fafaf8]/90" : "border-transparent bg-[#fafaf8]"
         }`}
@@ -563,7 +563,10 @@ function LangMenu({ locale, pathname, open, onToggle, onClose }: { locale: Local
                   hrefLang={localeInfo[l].hreflang}
                   lang={localeInfo[l].hreflang}
                   aria-current={l === locale ? "true" : undefined}
-                  onClick={onClose}
+                  onClick={() => {
+                    salvaLingua(l);
+                    onClose();
+                  }}
                   className={`flex h-10 items-center gap-2.5 rounded-[10px] px-2.5 text-[14.5px] transition-colors hover:bg-mist hover:text-ink ${l === locale ? "bg-mist text-ink" : "text-text"}`}
                 >
                   <Flag code={l} />
@@ -619,7 +622,10 @@ function MobileLang({ locale, pathname, focusable, onPick }: { locale: Locale; p
                 hrefLang={localeInfo[l].hreflang}
                 lang={localeInfo[l].hreflang}
                 aria-current={l === locale ? "true" : undefined}
-                onClick={onPick}
+                onClick={() => {
+                  salvaLingua(l);
+                  onPick();
+                }}
                 tabIndex={focusable && open ? 0 : -1}
                 className={`-mx-2 mb-1 flex min-h-11 items-center gap-3 rounded-[10px] px-2 text-[17px] active:bg-mist ${l === locale ? "bg-mist text-ink" : "text-text"}`}
               >

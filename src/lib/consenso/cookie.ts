@@ -25,6 +25,13 @@ export const COOKIE: VoceCookie[] = [
     durata: { it: "6 mesi", en: "6 months" },
   },
   {
+    nome: "NEXT_LOCALE",
+    fornitore: { it: "NovaMenu (prima parte)", en: "NovaMenu (first party)" },
+    categoria: "necessari",
+    scopo: { it: "Ricorda la lingua scelta", en: "Remembers the language you chose" },
+    durata: { it: "12 mesi", en: "12 months" },
+  },
+  {
     nome: { it: "sb-pprjwaqzbrtigxfvdkcd-auth-token (memoria locale del browser)", en: "sb-pprjwaqzbrtigxfvdkcd-auth-token (browser local storage)" },
     fornitore: { it: "NovaMenu, tramite Supabase", en: "NovaMenu, via Supabase" },
     categoria: "necessari",

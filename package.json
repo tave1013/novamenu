@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "npx serve out"
+    "start": "next start",
+    "verifica": "next build && node scripts/esporta-html.mjs && node scripts/i18n-check.mjs out"
   },
   "author": "",
   "license": "ISC",

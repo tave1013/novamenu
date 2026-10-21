@@ -301,19 +301,13 @@ html.lenis, html.lenis body { height: auto; }
   .hand-path, .hand-head { stroke-dashoffset: 0; }
 }
 
-/* Stampa e salvataggio in PDF delle pagine legali: solo il documento, niente menu né banner. */
+/* Pagine legali pubbliche: non si stampano. Al posto del documento compare solo il messaggio. */
+.stampa-non-disponibile { display: none; }
 @media print {
-  body > footer, footer.bg-ink, [data-no-print], [data-cookie-banner], a[href="#contenuto"] { display: none !important; }
-  body { background: #fff !important; color: #000; }
+  body:has(.legal-page) > *:not(main),
+  body:has(.legal-page) main > *:not(.legal-page),
+  .legal-page > *:not(.stampa-non-disponibile) { display: none !important; }
+  body:has(.legal-page) { background: #fff !important; }
   .legal-page { padding: 0 !important; }
-  .legal-page .wrap { max-width: none; padding: 0; }
-  .legal-page article { max-width: none !important; }
-  .legal-grid { display: block !important; }
-  .prose-legal { font-size: 11pt; border: 0 !important; }
-  .prose-legal p, .prose-legal li, .prose-legal td, .prose-legal th { color: #000; }
-  .prose-legal h2, .prose-legal h3 { break-after: avoid; }
-  .prose-legal tr { break-inside: avoid; }
-  .table-scroll { overflow: visible; border-radius: 0; }
-  .prose-legal table { min-width: 0; font-size: 9pt; }
-  .prose-legal a { color: #000; }
+  .legal-page .stampa-non-disponibile { display: block !important; margin: 2cm 1.5cm; font-size: 14pt; line-height: 1.5; color: #000; }
 }

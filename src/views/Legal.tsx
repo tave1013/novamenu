@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/ui";
-import { StampaButton } from "@/components/legal/StampaButton";
+import { BloccoStampa } from "@/components/legal/BloccoStampa";
 import { pageMeta } from "@/config/seo";
 import { getLocale, t, tr } from "@/i18n";
-import { localeInfo, locales, type Locale } from "@/i18n/config";
+import type { Locale } from "@/i18n/config";
 import { localizeLinks, to } from "@/i18n/link";
-import { href, idOf, slugOf, type PageKey } from "@/i18n/routes";
+import { idOf, slugOf } from "@/i18n/routes";
 import { AZIENDA } from "@/lib/legal/azienda";
 import { DOCUMENTI, leggiDocumento, versioniArchiviate, type IdDocumento } from "@/lib/legal/documenti";
 
@@ -38,29 +38,7 @@ export function metaArchivio(locale: Locale): Metadata {
   });
 }
 
-/** Selettore Italiano / English della pagina. */
-function Lingue({ page, id }: { page: PageKey; id?: string }) {
-  const corrente = getLocale();
-  return (
-    <nav aria-label={tr("Lingua del documento")} data-no-print className="inline-flex rounded-xl bg-mist p-1 text-[14px]">
-      {locales.map((l) => (
-        <a
-          key={l}
-          href={href(page, l, id)}
-          hrefLang={localeInfo[l].hreflang}
-          lang={localeInfo[l].hreflang}
-          aria-current={l === corrente ? "true" : undefined}
-          className={`inline-flex min-h-9 items-center rounded-lg px-3 font-medium transition-colors ${l === corrente ? "bg-card text-ink shadow-[0_1px_2px_rgba(0,0,0,.08)]" : "text-muted hover:text-ink"}`}
-        >
-          {localeInfo[l].name}
-        </a>
-      ))}
-    </nav>
-  );
-}
-
-function Intestazione({ titolo, versione, dataInVigore, page, id }: { titolo: string; versione?: string; dataInVigore?: string; page: PageKey; id?: string }) {
-  const locale = getLocale();
+function Intestazione({ titolo, versione, dataInVigore }: { titolo: string; versione?: string; dataInVigore?: string }) {
   return (
     <header>
       <h1 className="text-[clamp(2rem,1.5rem+2vw,3rem)] font-semibold leading-[1.1] tracking-[-0.035em]">{titolo}</h1>
@@ -68,22 +46,32 @@ function Intestazione({ titolo, versione, dataInVigore, page, id }: { titolo: st
         <p className="mt-4 text-[15px] font-medium text-text">{tr("Versione {v}, in vigore dal {data}", { v: versione, data: dataInVigore ?? "" })}</p>
       )}
       <p className="mt-1 text-[15px] text-muted">{tr("Ultimo aggiornamento: {data}", { data: AZIENDA.ultimoAggiornamento })}</p>
-      <div className="mt-6 flex flex-wrap items-center gap-3" data-no-print>
-        <Lingue page={page} id={id} />
-        {page === "legalDoc" && <StampaButton label={tr("Stampa o salva in PDF")} />}
-      </div>
-      {locale === "en" && (
-        <p className="mt-6 rounded-2xl border border-line bg-mist px-5 py-4 text-[15px] leading-relaxed text-text">{NOTA_EN}</p>
-      )}
     </header>
   );
+}
+
+/**
+ * Fine di ogni pagina legale: nella versione inglese la nota sulla versione che prevale,
+ * il blocco di Ctrl+P / Cmd+P e il messaggio che compare al posto della pagina se la si stampa.
+ */
+function Chiusura() {
+  return (
+    <>
+      {getLocale() === "en" && <p className="mt-10 text-[15px] leading-relaxed text-muted">{NOTA_EN}</p>}
+      <BloccoStampa />
+    </>
+  );
+}
+
+function MessaggioStampa() {
+  return <p className="stampa-non-disponibile">{tr("La stampa di questa pagina non è disponibile. Puoi consultare i documenti su {indirizzo}.", { indirizzo: getLocale() === "en" ? "novamenu.eu/en/legal" : "novamenu.eu/legale" })}</p>;
 }
 
 /** Link a tutti gli altri documenti legali, in fondo a ogni pagina. */
 function AltriDocumenti({ corrente }: { corrente?: IdDocumento }) {
   const locale = getLocale();
   return (
-    <nav aria-labelledby="altri-documenti" data-no-print className="mt-16 border-t border-line pt-8">
+    <nav aria-labelledby="altri-documenti" className="mt-16 border-t border-line pt-8">
       <h2 id="altri-documenti" className="text-[17px] font-semibold tracking-[-0.01em]">
         {tr("Altri documenti legali")}
       </h2>
@@ -124,13 +112,13 @@ function Indice({ sezioni, mobile }: { sezioni: { id: string; titolo: string }[]
   );
   if (mobile)
     return (
-      <details className="mt-8 rounded-2xl border border-line bg-card px-4 py-3 lg:hidden" data-no-print>
+      <details className="mt-8 rounded-2xl border border-line bg-card px-4 py-3 lg:hidden">
         <summary className="flex min-h-10 cursor-pointer items-center text-[15px] font-semibold text-ink">{tr("Indice")}</summary>
         <nav aria-label={tr("Indice")}>{voci}</nav>
       </details>
     );
   return (
-    <aside className="hidden lg:block" data-no-print>
+    <aside className="hidden lg:block">
       <nav aria-label={tr("Indice")} className="sticky top-28 max-h-[calc(100vh-8rem)] overflow-y-auto pr-2">
         <p className="eyebrow">{tr("Indice")}</p>
         {voci}
@@ -146,17 +134,17 @@ export function LegalDocView({ slug }: { slug: string }) {
   const conIndice = doc.sezioni.length > 2;
   return (
     <section className="legal-page pb-20 pt-8 md:pb-28 md:pt-12">
+      <MessaggioStampa />
       <div className="wrap">
-        <div data-no-print>
-          <Breadcrumbs items={[{ name: tr("Legale"), href: to("legal") }, { name: doc.meta.etichetta, href: to("legalDoc", id) }]} />
-        </div>
-        <div className={`legal-grid mt-10 ${conIndice ? "lg:grid lg:grid-cols-[230px_minmax(0,720px)] lg:justify-center lg:gap-14" : ""}`}>
+        <Breadcrumbs items={[{ name: tr("Legale"), href: to("legal") }, { name: doc.meta.etichetta, href: to("legalDoc", id) }]} />
+        <div className={`mt-10 ${conIndice ? "lg:grid lg:grid-cols-[230px_minmax(0,720px)] lg:justify-center lg:gap-14" : ""}`}>
           {conIndice && <Indice sezioni={doc.sezioni} />}
           <article className={conIndice ? "min-w-0" : "mx-auto max-w-[720px]"}>
-            <Intestazione titolo={doc.meta.titolo} versione={doc.meta.versione} dataInVigore={doc.meta.dataInVigore} page="legalDoc" id={id} />
+            <Intestazione titolo={doc.meta.titolo} versione={doc.meta.versione} dataInVigore={doc.meta.dataInVigore} />
             {conIndice && <Indice sezioni={doc.sezioni} mobile />}
             <div className="prose-legal mt-8 border-t border-line pt-2" dangerouslySetInnerHTML={{ __html: localizeLinks(doc.html) }} />
             <AltriDocumenti corrente={id} />
+            <Chiusura />
           </article>
         </div>
       </div>
@@ -168,13 +156,13 @@ export function LegalIndexView() {
   const doc = leggiDocumento("indice", getLocale());
   return (
     <section className="legal-page pb-20 pt-8 md:pb-28 md:pt-12">
+      <MessaggioStampa />
       <div className="wrap">
-        <div data-no-print>
-          <Breadcrumbs items={[{ name: tr("Legale"), href: to("legal") }]} />
-        </div>
+        <Breadcrumbs items={[{ name: tr("Legale"), href: to("legal") }]} />
         <article className="mx-auto mt-10 max-w-[720px]">
-          <Intestazione titolo={doc.meta.titolo} versione={doc.meta.versione} dataInVigore={doc.meta.dataInVigore} page="legal" />
+          <Intestazione titolo={doc.meta.titolo} versione={doc.meta.versione} dataInVigore={doc.meta.dataInVigore} />
           <div className="prose-legal mt-8 border-t border-line pt-2" dangerouslySetInnerHTML={{ __html: localizeLinks(doc.html) }} />
+          <Chiusura />
         </article>
       </div>
     </section>
@@ -186,12 +174,11 @@ export function LegalArchiveView() {
   const versioni = versioniArchiviate(locale);
   return (
     <section className="legal-page pb-20 pt-8 md:pb-28 md:pt-12">
+      <MessaggioStampa />
       <div className="wrap">
-        <div data-no-print>
-          <Breadcrumbs items={[{ name: tr("Legale"), href: to("legal") }, { name: tr("Archivio"), href: to("legalArchive") }]} />
-        </div>
+        <Breadcrumbs items={[{ name: tr("Legale"), href: to("legal") }, { name: tr("Archivio"), href: to("legalArchive") }]} />
         <article className="mx-auto mt-10 max-w-[720px]">
-          <Intestazione titolo={tr("Archivio dei documenti legali")} page="legalArchive" />
+          <Intestazione titolo={tr("Archivio dei documenti legali")} />
           <div className="prose-legal mt-8 border-t border-line pt-2">
             <p>{tr("Qui restano consultabili le versioni precedenti dei documenti legali, con il periodo in cui sono state in vigore.")}</p>
             {versioni.length === 0 ? (
@@ -207,6 +194,7 @@ export function LegalArchiveView() {
             )}
           </div>
           <AltriDocumenti />
+          <Chiusura />
         </article>
       </div>
     </section>
