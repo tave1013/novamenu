@@ -4,7 +4,8 @@ import { getLocale, tr } from "@/i18n";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { loginUrl, signupUrl } from "@/config/site";
+import { signupUrl } from "@/config/site";
+import { LinkAccesso } from "./Accesso";
 import { localeInfo, locales, type Locale } from "@/i18n/config";
 import { matchPath, switchLocale, type PageKey } from "@/i18n/routes";
 import { salvaLingua } from "@/i18n/lingua-iniziale";
@@ -304,9 +305,7 @@ export function Header({ nav }: { nav: HeaderNav }) {
                 setOpen((v) => (v === "lang" ? null : "lang"));
               }}
               onClose={() => setOpen(null)} />
-            <a href={loginUrl} className="btn btn-sm text-text hover:bg-black/[0.04]">
-              {tr("Accedi")}
-            </a>
+            <LinkAccesso className="btn btn-sm text-text hover:bg-black/[0.04]" />
             <Link href={lp("/demo/")} className="btn btn-sm btn-dark pulse">
               {tr("Prenota una demo")}
             </Link>
@@ -491,13 +490,11 @@ function AllLink({ href, label, focusable }: { href: string; label: string; focu
   );
 }
 
-/** Accedi e prova gratuita, fissi in fondo al menu. */
+/** Accedi (o Dashboard, se hai già fatto l'accesso) e prova gratuita, fissi in fondo al menu. */
 function MobileCta() {
   return (
     <div className="flex flex-col gap-2 border-t border-line bg-[#fafaf8] p-4 pb-[max(16px,env(safe-area-inset-bottom))]">
-      <a href={loginUrl} className="btn h-[50px] w-full border border-ink bg-white text-[16px] text-ink hover:bg-mist">
-        {tr("Accedi")}
-      </a>
+      <LinkAccesso className="btn h-[50px] w-full border border-ink bg-white text-[16px] text-ink hover:bg-mist" />
       <a href={signupUrl} className="btn btn-dark pulse h-[50px] w-full text-[16px]">
         {tr("Prova gratis 14 giorni")}
         <Icon name="arrowRight" size={16} stroke={2} />

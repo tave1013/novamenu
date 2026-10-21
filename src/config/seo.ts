@@ -81,7 +81,7 @@ export function softwareApplicationLd(locale: Locale, listino: Listino) {
     inLanguage: localeInfo[locale].intl,
     description: siteDescription(locale),
     publisher: { "@type": "Organization", name: site.name, url: site.url },
-    // Un'offerta per piano e per valuta: euro per tutti, sterline per il Regno Unito. Prezzi IVA esclusa.
+    // Un'offerta per piano e per valuta: euro nell'Unione europea, sterline nel Regno Unito e negli altri paesi. Prezzi IVA esclusa.
     offers: getPlans(locale).flatMap((p) =>
       (Object.keys(VALUTE) as Valuta[]).map((v) => ({
         "@type": "Offer",
@@ -89,7 +89,6 @@ export function softwareApplicationLd(locale: Locale, listino: Listino) {
         description: p.desc,
         price: String(prezzoMensile(listino, p.id, v)),
         priceCurrency: VALUTE[v].codice,
-        ...(v === "gbp" ? { eligibleRegion: { "@type": "Country", name: "GB" } } : {}),
         url: pricing,
         priceSpecification: {
           "@type": "UnitPriceSpecification",

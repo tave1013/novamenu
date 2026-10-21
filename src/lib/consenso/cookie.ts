@@ -28,7 +28,7 @@ export const COOKIE: VoceCookie[] = [
     nome: "nm_preferenze",
     fornitore: { it: "NovaMenu (prima parte)", en: "NovaMenu (first party)" },
     categoria: "necessari",
-    scopo: { it: "Ricorda la lingua e la valuta che hai scelto", en: "Remembers the language and currency you chose" },
+    scopo: { it: "Ricorda la lingua che hai scelto", en: "Remembers the language you chose" },
     durata: { it: "12 mesi", en: "12 months" },
   },
   {
@@ -37,6 +37,16 @@ export const COOKIE: VoceCookie[] = [
     categoria: "necessari",
     scopo: { it: "Mantiene l'accesso alla piattaforma", en: "Keeps you signed in to the platform" },
     durata: { it: "Fino all'uscita o alla scadenza della sessione", en: "Until you sign out or the session expires" },
+  },
+  {
+    nome: "nm_accesso",
+    fornitore: { it: "NovaMenu (prima parte)", en: "NovaMenu (first party)" },
+    categoria: "necessari",
+    scopo: {
+      it: "Indica al sito che hai già fatto l'accesso alla piattaforma, per mostrarti il link alla dashboard. Non contiene dati personali",
+      en: "Tells the website you are already signed in to the platform, so it can show you the link to the dashboard. It contains no personal data",
+    },
+    durata: { it: "Fino all'uscita dalla piattaforma, al massimo 30 giorni", en: "Until you sign out of the platform, up to 30 days" },
   },
   {
     nome: { it: "attivita-attiva (memoria locale del browser)", en: "attivita-attiva (browser local storage)" },

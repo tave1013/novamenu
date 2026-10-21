@@ -1,23 +1,19 @@
 import type { Locale } from "./config";
-import type { Valuta } from "@/config/prezzi";
 
 /**
- * Cookie tecnico delle preferenze, 12 mesi: lingua e valuta scelte dai selettori del sito.
- * Formato: "lingua=it&valuta=gbp". Si scrive solo quando l'utente sceglie.
+ * Cookie tecnico delle preferenze, 12 mesi: la lingua scelta dal selettore del sito.
+ * Formato: "lingua=it". Si scrive solo quando l'utente sceglie.
+ * La valuta non si sceglie: dipende dal paese (vedi src/components/Valuta.tsx).
  */
 export const COOKIE_PREFERENZE = "nm_preferenze";
 export const DURATA_COOKIE_PREFERENZE = 365 * 24 * 60 * 60;
 
-export type Preferenze = { lingua?: Locale; valuta?: Valuta };
+export type Preferenze = { lingua?: Locale };
 
 export function leggiPreferenze(valore: string | null | undefined): Preferenze {
   const p = new URLSearchParams(valore ?? "");
   const lingua = p.get("lingua");
-  const valuta = p.get("valuta");
-  return {
-    lingua: lingua === "it" || lingua === "en" ? lingua : undefined,
-    valuta: valuta === "eur" || valuta === "gbp" ? valuta : undefined,
-  };
+  return { lingua: lingua === "it" || lingua === "en" ? lingua : undefined };
 }
 
 /** Preferenze salvate nel browser. */

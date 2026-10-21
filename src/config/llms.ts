@@ -30,7 +30,7 @@ const prices = (l: Listino) => [
   "",
   ...plans.map(
     (p) =>
-      `- Piano ${p.name}: ${e(prezzoMensile(l, p.id, "eur"))} al mese + IVA, oppure ${e(prezzoAnnuale(l, p.id, "eur"))} all'anno + IVA (2 mesi gratis, pari a ${e(mensileConAnnuale(l, p.id, "eur"))} al mese). Nel Regno Unito: ${g(prezzoMensile(l, p.id, "gbp"))} al mese + IVA, oppure ${g(prezzoAnnuale(l, p.id, "gbp"))} all'anno + IVA. ${p.desc} Include: ${p.highlights.join(", ")}.`
+      `- Piano ${p.name}: ${e(prezzoMensile(l, p.id, "eur"))} al mese + IVA, oppure ${e(prezzoAnnuale(l, p.id, "eur"))} all'anno + IVA (2 mesi gratis, pari a ${e(mensileConAnnuale(l, p.id, "eur"))} al mese). Nel Regno Unito e fuori dall'Unione europea: ${g(prezzoMensile(l, p.id, "gbp"))} al mese + IVA, oppure ${g(prezzoAnnuale(l, p.id, "gbp"))} all'anno + IVA. ${p.desc} Include: ${p.highlights.join(", ")}.`
   ),
   "- I prezzi in sterline sono un listino a parte, non una conversione dagli euro.",
   "- Commissioni su ordini e prenotazioni: 0% in tutti i piani.",

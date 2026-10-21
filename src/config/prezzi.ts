@@ -17,13 +17,30 @@ export const VALUTE: Record<Valuta, { codice: string; simbolo: string }> = {
   gbp: { codice: "GBP", simbolo: "£" },
 };
 
-/** Paesi in cui si mostrano le sterline (paese dell'IP, come per la lingua). */
-export const PAESI_STERLINA = new Set(["GB"]);
+/**
+ * Paesi in cui si mostrano gli euro: Unione europea e paesi che usano l'euro.
+ * In tutti gli altri (Regno Unito e resto del mondo) si mostrano le sterline.
+ */
+export const PAESI_EURO = new Set([
+  // Unione europea
+  "AT", "BE", "BG", "CY", "CZ", "DE", "DK", "EE", "ES", "FI", "FR", "GR", "HR", "HU", "IE", "IT", "LT", "LU", "LV", "MT", "NL", "PL", "PT", "RO", "SE", "SI", "SK",
+  // fuori dall'UE ma con l'euro
+  "SM", "VA", "MC", "AD", "ME", "XK",
+]);
+
+/**
+ * Valuta dal paese dell'IP, come fanno i siti con prezzi in più valute: euro nell'UE, sterline altrove.
+ * Se il paese non si conosce, decide la lingua della pagina: italiano in euro, inglese in sterline.
+ */
+export function valutaPerPaese(paese: string | null | undefined, lingua: "it" | "en"): Valuta {
+  if (!paese) return lingua === "en" ? "gbp" : "eur";
+  return PAESI_EURO.has(paese.toUpperCase()) ? "eur" : "gbp";
+}
 
 export const prezzoMensile = (l: Listino, piano: IdPiano, valuta: Valuta) => l[piano][valuta].mensile;
 export const prezzoAnnuale = (l: Listino, piano: IdPiano, valuta: Valuta) => l[piano][valuta].annuale;
-/** Quanto costa al mese pagando l'annuale, arrotondato al centesimo. */
-export const mensileConAnnuale = (l: Listino, piano: IdPiano, valuta: Valuta) => Math.round((prezzoAnnuale(l, piano, valuta) / 12) * 100) / 100;
+/** Quanto costa al mese pagando l'annuale, arrotondato all'unità (590 € l'anno: 49 € al mese). */
+export const mensileConAnnuale = (l: Listino, piano: IdPiano, valuta: Valuta) => Math.round(prezzoAnnuale(l, piano, valuta) / 12);
 
 /** Importo scritto nella lingua della pagina: "19 €" in italiano, "€19" o "£18" in inglese. */
 export function formatoPrezzo(importo: number, valuta: Valuta, intl: string): string {

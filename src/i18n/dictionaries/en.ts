@@ -1165,12 +1165,9 @@ export const en: Record<MessageKey, string> = {
   "Scarica PDF": "Download PDF",
   "{amount} all'anno + IVA, in un solo pagamento": "{amount} a year excl. VAT, paid in one go",
   "al mese + IVA": "per month, excl. VAT",
-  "Euro": "Euros",
   "Fatturato ogni mese": "Billed monthly",
   "Prezzi del menu digitale NovaMenu: Base {base}, Pro {pro} e Premium {premium} al mese + IVA. Nessuna commissione sugli ordini. Prova gratis 14 giorni.": "NovaMenu pricing: Base {base}, Pro {pro} and Premium {premium} per month excl. VAT (UK: {baseGbp}, {proGbp}, {premiumGbp}). No commission. 14-day free trial.",
   "Prezzi: da {base} al mese + IVA, senza commissioni": "Pricing: from {base} per month excl. VAT, no commission",
-  "Sterline": "Pounds sterling",
-  "Valuta dei prezzi": "Price currency",
   "{n} prodotti": "{n} products",
   "Acqua frizzante": "Sparkling water",
   "Acqua naturale": "Still water",
@@ -1295,4 +1292,5 @@ export const en: Record<MessageKey, string> = {
   "Stampa o PDF in un foglio solo": "Print or PDF on a single sheet",
   "Scopri la Lista ordini": "Discover the Order list",
   "Inclusa nei piani Pro e Premium": "Included in the Pro and Premium plans",
+  "Dashboard": "Dashboard",
 };

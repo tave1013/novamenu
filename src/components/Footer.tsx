@@ -2,7 +2,8 @@ import { getLocale, tr } from "@/i18n";
 import { AZIENDA, rigaSocieta } from "@/lib/legal/azienda";
 import { PreferenzeCookieLink } from "./consenso/CookieBanner";
 import Link from "next/link";
-import { loginUrl, site } from "@/config/site";
+import { site } from "@/config/site";
+import { LinkAccesso } from "./Accesso";
 import { LogoMark } from "./Logo";
 import { getFeatures, getSectors } from "@/content";
 import { to, lp } from "@/i18n/link";
@@ -48,9 +49,7 @@ export function Footer() {
             <FooterLink href={lp("/contatti/")}>{tr("Contatti")}</FooterLink>
             <FooterLink href={lp("/guide/")}>{tr("Guide")}</FooterLink>
             <li>
-              <a href={loginUrl} className="inline-flex min-h-8 items-center text-[14px] transition-colors hover:text-white">
-                {tr("Accedi")}
-              </a>
+              <LinkAccesso className="inline-flex min-h-8 items-center text-[14px] transition-colors hover:text-white" />
             </li>
           </FooterCol>
 

@@ -20,6 +20,8 @@ export const site = {
 
 export const signupUrl = `${site.appUrl}/registrati`;
 export const loginUrl = `${site.appUrl}/accedi`;
+/** Dove porta il link "Dashboard" quando hai già fatto l'accesso. */
+export const dashboardUrl = site.appUrl;
 
 export function waLink(text: string) {
   return `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(text)}`;
