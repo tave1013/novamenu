@@ -1168,4 +1168,5 @@ export const en: Record<MessageKey, string> = {
   "Versione {v}, in vigore dal {data}": "Version {v}, in force from {data}",
   "Versioni precedenti dei documenti legali di NovaMenu: informative privacy, cookie policy, termini di servizio e accordo sul trattamento dei dati.": "Previous versions of NovaMenu's legal documents: privacy notices, cookie policy, Terms of Service and Data Processing Agreement.",
   "La stampa di questa pagina non è disponibile. Puoi consultare i documenti su {indirizzo}.": "Printing this page is not available. You can view the documents at {indirizzo}.",
+  "Scarica PDF": "Download PDF",
 };

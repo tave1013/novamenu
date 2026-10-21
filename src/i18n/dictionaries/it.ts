@@ -930,6 +930,7 @@ export const it = [
   "Salame piccante, fiordilatte",
   "Salva le ferie",
   "Sara",
+  "Scarica PDF",
   "Scarica PDF per la stampa",
   "Scattiamo e giriamo",
   "Scegli giorno e ora",

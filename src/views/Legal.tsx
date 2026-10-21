@@ -8,6 +8,7 @@ import type { Locale } from "@/i18n/config";
 import { localizeLinks, to } from "@/i18n/link";
 import { idOf, slugOf } from "@/i18n/routes";
 import { AZIENDA } from "@/lib/legal/azienda";
+import { DOCUMENTI_PDF, urlPdf, type DocumentoPdf } from "@/lib/legal/pdf";
 import { DOCUMENTI, leggiDocumento, versioniArchiviate, type IdDocumento } from "@/lib/legal/documenti";
 
 /* Sezione Legale: indice (/legale/), un documento per pagina (/legale/<documento>/) e archivio. */
@@ -38,12 +39,20 @@ export function metaArchivio(locale: Locale): Metadata {
   });
 }
 
-function Intestazione({ titolo, versione, dataInVigore }: { titolo: string; versione?: string; dataInVigore?: string }) {
+function Intestazione({ titolo, versione, dataInVigore, pdf }: { titolo: string; versione?: string; dataInVigore?: string; pdf?: string }) {
   return (
     <header>
       <h1 className="text-[clamp(2rem,1.5rem+2vw,3rem)] font-semibold leading-[1.1] tracking-[-0.035em]">{titolo}</h1>
       {versione && (
         <p className="mt-4 text-[15px] font-medium text-text">{tr("Versione {v}, in vigore dal {data}", { v: versione, data: dataInVigore ?? "" })}</p>
+      )}
+      {pdf && (
+        <a href={pdf} download className="mt-1.5 inline-flex min-h-8 items-center gap-1.5 text-[14px] font-medium text-ink underline underline-offset-4 decoration-line hover:decoration-ink">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M12 4v11M7 10l5 5 5-5M5 20h14" />
+          </svg>
+          {tr("Scarica PDF")}
+        </a>
       )}
       <p className="mt-1 text-[15px] text-muted">{tr("Ultimo aggiornamento: {data}", { data: AZIENDA.ultimoAggiornamento })}</p>
     </header>
@@ -140,7 +149,12 @@ export function LegalDocView({ slug }: { slug: string }) {
         <div className={`mt-10 ${conIndice ? "lg:grid lg:grid-cols-[230px_minmax(0,720px)] lg:justify-center lg:gap-14" : ""}`}>
           {conIndice && <Indice sezioni={doc.sezioni} />}
           <article className={conIndice ? "min-w-0" : "mx-auto max-w-[720px]"}>
-            <Intestazione titolo={doc.meta.titolo} versione={doc.meta.versione} dataInVigore={doc.meta.dataInVigore} />
+            <Intestazione
+              titolo={doc.meta.titolo}
+              versione={doc.meta.versione}
+              dataInVigore={doc.meta.dataInVigore}
+              pdf={(DOCUMENTI_PDF as string[]).includes(id) ? urlPdf(id as DocumentoPdf, locale, doc.meta.versione) : undefined}
+            />
             {conIndice && <Indice sezioni={doc.sezioni} mobile />}
             <div className="prose-legal mt-8 border-t border-line pt-2" dangerouslySetInnerHTML={{ __html: localizeLinks(doc.html) }} />
             <AltriDocumenti corrente={id} />
@@ -188,6 +202,16 @@ export function LegalArchiveView() {
                 {versioni.map((v) => (
                   <li key={v.file}>
                     {v.meta.titolo}, {tr("versione")} {v.versione}
+                    {(DOCUMENTI_PDF as string[]).includes(v.documento) && (
+                      <>
+                        {" "}
+                        (
+                        <a href={urlPdf(v.documento as DocumentoPdf, locale, v.versione)} download>
+                          {tr("Scarica PDF")}
+                        </a>
+                        )
+                      </>
+                    )}
                   </li>
                 ))}
               </ul>

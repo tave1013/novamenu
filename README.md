@@ -24,6 +24,8 @@ Poi apri http://localhost:3000
 | Documenti legali (italiano e inglese) | `src/content/legale/it/` e `src/content/legale/en/` |
 | Elenco dei cookie (cookie policy e banner) | `src/lib/consenso/cookie.ts` |
 | Testi del banner dei cookie | `src/lib/consenso/testi.ts` |
+| PDF scaricabili di Termini e DPA (generati a ogni build) | `src/lib/legal/pdf.tsx` |
+| Versioni precedenti dei documenti legali | `src/content/legale/archivio/<lingua>/<documento>-<versione>.md` |
 | Animazioni delle pagine | `src/components/visuals/` |
 | Immagine per le anteprime social | `public/og.png` |
 

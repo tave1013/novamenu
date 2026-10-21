@@ -82,35 +82,40 @@ export function rendiMarkdown(md: string): { html: string; sezioni: { id: string
   return { html, sezioni };
 }
 
-export function leggiDocumento(id: IdDocumento | "indice", lingua: Lingua): Documento {
-  const raw = fs.readFileSync(path.join(cartella, lingua, `${id}.md`), "utf8");
-  const { dati, corpo } = frontmatter(raw);
-  const meta: MetaDocumento = {
-    titolo: riempi(dati.titolo ?? "", lingua),
-    etichetta: riempi(dati.etichetta ?? dati.titolo ?? "", lingua),
-    descrizione: riempi(dati.descrizione ?? "", lingua),
-    versione: dati.versione ?? "",
-    dataInVigore: riempi(dati.dataInVigore ?? "", lingua),
+/** Testo Markdown di un documento con i segnaposto già riempiti, e i suoi metadati. Serve anche ai PDF. */
+export function leggiSorgente(percorso: string, lingua: Lingua): { meta: MetaDocumento; markdown: string } {
+  const { dati, corpo } = frontmatter(fs.readFileSync(percorso, "utf8"));
+  return {
+    meta: {
+      titolo: riempi(dati.titolo ?? "", lingua),
+      etichetta: riempi(dati.etichetta ?? dati.titolo ?? "", lingua),
+      descrizione: riempi(dati.descrizione ?? "", lingua),
+      versione: dati.versione ?? "",
+      dataInVigore: riempi(dati.dataInVigore ?? "", lingua),
+    },
+    markdown: riempi(corpo, lingua),
   };
-  const { html, sezioni } = rendiMarkdown(riempi(corpo, lingua));
+}
+
+export const percorsoDocumento = (id: IdDocumento | "indice", lingua: Lingua) => path.join(cartella, lingua, `${id}.md`);
+
+export function leggiDocumento(id: IdDocumento | "indice", lingua: Lingua): Documento {
+  const { meta, markdown } = leggiSorgente(percorsoDocumento(id, lingua), lingua);
+  const { html, sezioni } = rendiMarkdown(markdown);
   return { id, meta, html, sezioni };
 }
 
 /** Versioni precedenti archiviate: src/content/legale/archivio/<lingua>/<documento>-<versione>.md */
-export function versioniArchiviate(lingua: Lingua): { file: string; documento: string; versione: string; meta: MetaDocumento }[] {
+export function versioniArchiviate(lingua: Lingua): { file: string; percorso: string; documento: string; versione: string; meta: MetaDocumento }[] {
   const dir = path.join(cartella, "archivio", lingua);
   if (!fs.existsSync(dir)) return [];
   return fs
     .readdirSync(dir)
     .filter((f) => f.endsWith(".md"))
     .map((f) => {
-      const { dati } = frontmatter(fs.readFileSync(path.join(dir, f), "utf8"));
+      const percorso = path.join(dir, f);
+      const { meta } = leggiSorgente(percorso, lingua);
       const m = f.replace(/\.md$/, "").match(/^(.*)-(\d+(?:\.\d+)*)$/);
-      return {
-        file: f,
-        documento: m?.[1] ?? f,
-        versione: m?.[2] ?? dati.versione ?? "",
-        meta: { titolo: dati.titolo ?? f, etichetta: dati.etichetta ?? dati.titolo ?? f, descrizione: dati.descrizione ?? "", versione: dati.versione ?? "", dataInVigore: dati.dataInVigore ?? "" },
-      };
+      return { file: f, percorso, documento: m?.[1] ?? f, versione: m?.[2] ?? meta.versione, meta };
     });
 }
