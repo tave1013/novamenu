@@ -1,0 +1,29 @@
+{
+  "lettoIl": "2026-10-21T11:44:56.285Z",
+  "righe": [
+    {
+      "id": "base",
+      "name": "Base",
+      "priceYearly": 190,
+      "priceMonthly": 19,
+      "priceYearlyGbp": 150,
+      "priceMonthlyGbp": 15
+    },
+    {
+      "id": "pro",
+      "name": "Pro",
+      "priceYearly": 590,
+      "priceMonthly": 59,
+      "priceYearlyGbp": 490,
+      "priceMonthlyGbp": 49
+    },
+    {
+      "id": "premium",
+      "name": "Premium",
+      "priceYearly": 890,
+      "priceMonthly": 89,
+      "priceYearlyGbp": 750,
+      "priceMonthlyGbp": 75
+    }
+  ]
+}

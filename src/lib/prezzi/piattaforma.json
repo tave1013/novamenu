@@ -1,0 +1,6 @@
+{
+  "_nota": "Indirizzo e chiave PUBBLICA (ruolo anon) della piattaforma, la stessa che usa la pagina di registrazione di app.novamenu.eu. Si possono sostituire con le variabili PIATTAFORMA_SUPABASE_URL e PIATTAFORMA_SUPABASE_ANON_KEY.",
+  "url": "https://pprjwaqzbrtigxfvdkcd.supabase.co",
+  "chiaveAnon": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBwcmp3YXF6YnJ0aWd4ZnZka2NkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE3MjY0NjUsImV4cCI6MjEwNzMwMjQ2NX0.iIXYZxLRLxZYeYM0ZgzQlw-6c2drIU4jFdUcFBKA9Fs",
+  "funzionePrezzi": "public_plans"
+}

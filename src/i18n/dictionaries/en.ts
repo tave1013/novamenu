@@ -37,7 +37,6 @@ export const en: Record<MessageKey, string> = {
   "12 contenuti pronti": "12 pieces of content ready",
   "12 ott": "12 Oct",
   "128 scansioni oggi": "128 scans today",
-  "14 giorni con tutte le funzioni del piano Pro. Non chiediamo la carta di credito.": "14 days with every feature of the Pro plan. We don't ask for a credit card.",
   "2 ago": "2 Aug",
   "2 giorni fa": "2 days ago",
   "2 Margherita, 1 Diavola, 1 fiori di zucca": "2 Margherita, 1 Diavola, 1 courgette flowers",
@@ -1172,7 +1171,6 @@ export const en: Record<MessageKey, string> = {
   "Prezzi: da {base} al mese + IVA, senza commissioni": "Pricing: from {base} per month excl. VAT, no commission",
   "Sterline": "Pounds sterling",
   "Valuta dei prezzi": "Price currency",
-  "{n} di {tot}": "{n} of {tot}",
   "{n} prodotti": "{n} products",
   "Acqua frizzante": "Sparkling water",
   "Acqua naturale": "Still water",
@@ -1289,4 +1287,5 @@ export const en: Record<MessageKey, string> = {
   "Vede solo: Pizzeria": "Only sees: Pizzeria",
   "Venerdì 10 ottobre": "Friday 10 October",
   "Verdure di stagione": "Seasonal vegetables",
+  "14 giorni gratis con il piano che scegli, o il Pro se non ne scegli uno. Senza carta.": "14 days free with the plan you choose, or Pro if you don't choose one. No card needed.",
 };

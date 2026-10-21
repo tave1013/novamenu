@@ -1,6 +1,7 @@
 import { site } from "./site";
 import { featureGroups } from "@/content/features";
-import { formatoPrezzo, mensileConAnnuale, prezzoAnnuale, prezzoMensile } from "./prezzi";
+import { formatoPrezzo, mensileConAnnuale, prezzoAnnuale, prezzoMensile, type Listino } from "./prezzi";
+import { getListino } from "@/lib/prezzi/listino";
 import { getFeatures, getGeneralFaq, getGuides, getPlans, getSectors } from "@/content";
 
 // I file llms.txt sono in italiano, la lingua principale del sito.
@@ -24,22 +25,23 @@ const intro = () => [
   `Per chi gestisce un locale e ha poco tempo: ${sectors.map((s) => s.name.toLowerCase()).join(", ")}.`,
 ];
 
-const prices = () => [
+const prices = (l: Listino) => [
   "## Prezzi",
   "",
   ...plans.map(
     (p) =>
-      `- Piano ${p.name}: ${e(prezzoMensile(p.id, "eur"))} al mese + IVA, oppure ${e(prezzoAnnuale(p.id, "eur"))} all'anno + IVA (2 mesi gratis, pari a ${e(mensileConAnnuale(p.id, "eur"))} al mese). Nel Regno Unito: ${g(prezzoMensile(p.id, "gbp"))} al mese + IVA, oppure ${g(prezzoAnnuale(p.id, "gbp"))} all'anno + IVA. ${p.desc} Include: ${p.highlights.join(", ")}.`
+      `- Piano ${p.name}: ${e(prezzoMensile(l, p.id, "eur"))} al mese + IVA, oppure ${e(prezzoAnnuale(l, p.id, "eur"))} all'anno + IVA (2 mesi gratis, pari a ${e(mensileConAnnuale(l, p.id, "eur"))} al mese). Nel Regno Unito: ${g(prezzoMensile(l, p.id, "gbp"))} al mese + IVA, oppure ${g(prezzoAnnuale(l, p.id, "gbp"))} all'anno + IVA. ${p.desc} Include: ${p.highlights.join(", ")}.`
   ),
   "- I prezzi in sterline sono un listino a parte, non una conversione dagli euro.",
   "- Commissioni su ordini e prenotazioni: 0% in tutti i piani.",
-  "- Prova gratuita: 14 giorni con le funzioni del piano Pro, senza carta di credito.",
+  "- Prova gratuita: 14 giorni gratis con il piano che scegli, o il Pro se non ne scegli uno. Senza carta.",
   "- Con il piano mensile si disdice quando si vuole.",
   `- Dettagli: ${u("/prezzi/")}`,
 ];
 
 /** Indice breve del sito per i motori basati su intelligenza artificiale (llms.txt). */
-export function llmsTxt() {
+export async function llmsTxt() {
+  const listino = await getListino();
   return [
     ...intro(),
     "",
@@ -47,7 +49,7 @@ export function llmsTxt() {
     "",
     ...features.map((f) => `- [${f.name}](${u(`/funzionalita/${f.slug}/`)}): ${f.seo.description.split(". ")[0]}. Dal piano ${f.plan}.`),
     "",
-    ...prices(),
+    ...prices(listino),
     "",
     "## Settori",
     "",
@@ -68,8 +70,9 @@ export function llmsTxt() {
 }
 
 /** Testi principali del sito in Markdown (llms-full.txt). */
-export function llmsFullTxt() {
-  const out: string[] = [...intro(), "", ...prices(), "", "# Funzionalità", ""];
+export async function llmsFullTxt() {
+  const listino = await getListino();
+  const out: string[] = [...intro(), "", ...prices(listino), "", "# Funzionalità", ""];
   for (const g of featureGroups) {
     for (const f of features.filter((x) => x.group === g)) {
       out.push(`## ${f.name}`, "", `Pagina: ${u(`/funzionalita/${f.slug}/`)}. Gruppo: ${g}. Disponibile dal piano ${f.plan}.`, "", f.hero.lead, "");

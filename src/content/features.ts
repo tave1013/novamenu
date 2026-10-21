@@ -577,7 +577,7 @@ export const features: Feature[] = withId<Feature>([
     group: "Gestione",
     icon: "chart",
     tone: "violet",
-    plan: "Pro",
+    plan: "Base",
     visual: "statistiche",
     seo: {
       title: "Statistiche del ristorante: piatti e ore di punta",
@@ -607,6 +607,7 @@ export const features: Feature[] = withId<Feature>([
       { title: "Report mensile", text: "Un riassunto chiaro ogni mese." },
     ],
     faq: [
+      { q: "Sono incluse nel mio piano?", a: "Statistiche di base in tutti i piani, complete dal Pro." },
       { q: "Le statistiche rispettano la privacy?", a: "Sì, le statistiche rispettano la privacy: sono dati aggregati e anonimi sulle visite al menu." },
       { q: "Posso esportarle?", a: "Sì, puoi esportare le statistiche in Excel." },
     ],
@@ -639,7 +640,7 @@ export const features: Feature[] = withId<Feature>([
       {
         title: "Ognuno vede solo quello che gli serve",
         text: "Il cameriere conferma le prenotazioni, il cuoco segna i piatti esauriti, solo tu vedi incassi e impostazioni.",
-        points: ["Ruoli pronti: titolare, sala, cucina", "Permessi su misura", "Registro di chi ha cambiato cosa"],
+        points: ["Ruoli pronti: titolare, sala, cucina", "Permessi su misura", "Registro di chi ha cambiato cosa", "Accessi: 1 nel Base, 3 nel Pro, illimitati nel Premium"],
       },
     ],
     benefits: [
@@ -649,7 +650,7 @@ export const features: Feature[] = withId<Feature>([
       { title: "Sicurezza", text: "Togli l'accesso a chi non lavora più con te." },
     ],
     faq: [
-      { q: "Quanti collaboratori posso aggiungere?", a: "Nel piano Premium puoi aggiungere tutti i collaboratori che vuoi: non ci sono limiti al numero di accessi." },
+      { q: "Quanti collaboratori posso aggiungere?", a: "Il numero di accessi dipende dal piano: 1 nel Base, 3 nel Pro, illimitati nel Premium. I turni del personale sono inclusi nel Premium." },
     ],
     related: ["sala-e-tavoli", "prenotazioni", "assistente"],
   },
@@ -737,7 +738,7 @@ export const features: Feature[] = withId<Feature>([
       { title: "Un foglio solo", text: "L'ordine stampato è chiaro anche per il fornitore." },
     ],
     faq: [
-      { q: "Serve un account per ogni dipendente?", a: "Sì, gratuito, con i permessi che scegli tu." },
+      { q: "Serve un account per ogni dipendente?", a: "Ogni dipendente entra con il suo account. Il numero di accessi dipende dal piano: 3 nel Pro, illimitati nel Premium." },
       { q: "Funziona senza internet?", a: "Sì, la lista si invia da sola quando torna la rete." },
       { q: "Posso usare i miei reparti?", a: "Sì, li crei e li chiami come vuoi tu." },
       { q: "Posso stampare senza computer?", a: "Sì, da iPhone e iPad con AirPrint, oppure con il PDF." },

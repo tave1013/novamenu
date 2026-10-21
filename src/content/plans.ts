@@ -14,7 +14,7 @@ export const plans: Plan[] = [
     id: "base",
     name: "Base",
     desc: "Per avere il menu digitale fatto bene.",
-    highlights: ["Menu digitale con QR", "Importazione con l'AI", "Orari, ferie e chiusure", "Logo e colori del locale", "Assistenza in italiano"],
+    highlights: ["Menu digitale con QR", "Importazione con l'AI", "Orari, ferie e chiusure", "Logo e colori del locale", "Assistenza via email, in italiano"],
   },
   {
     id: "pro",
@@ -68,12 +68,12 @@ export const comparison: { group: string; rows: { label: string; base: Cell; pro
   {
     group: "Gestione",
     rows: [
-      { label: "Statistiche", base: "Base", pro: "Complete", premium: "Complete" },
+      { label: "Statistiche", base: "Di base", pro: "Complete", premium: "Complete" },
       { label: "Assistente vocale su Telegram", base: false, pro: true, premium: true },
       { label: "Lista ordini per i fornitori", base: false, pro: true, premium: true },
       { label: "Accessi per lo staff", base: "1", pro: "3", premium: "Illimitati" },
       { label: "Turni del personale", base: false, pro: false, premium: true },
-      { label: "Assistenza in italiano", base: "Email", pro: "Email e WhatsApp", premium: "Prioritaria" },
+      { label: "Assistenza in italiano", base: "Via email, in italiano", pro: "Email e WhatsApp", premium: "Prioritaria" },
     ],
   },
 ];
@@ -83,7 +83,7 @@ export const generalFaq = [
   { q: "Quanto tempo serve per partire?", a: "Con l'importazione da foto il menu è pronto in pochi minuti. Per logo, colori e orari basta un pomeriggio, e se vuoi lo facciamo insieme durante la demo." },
   { q: "Prendete una percentuale su ordini o prenotazioni?", a: "No. Paghi solo l'abbonamento. Alcuni messaggi WhatsApp hanno un costo stabilito da Meta, di pochi centesimi, che vedi sempre in dashboard." },
   { q: "C'è un vincolo di durata?", a: "No. Con il piano mensile disdici quando vuoi, dalla dashboard. L'abbonamento resta attivo fino alla fine del periodo già pagato." },
-  { q: "Come funziona la prova gratuita?", a: "Hai 14 giorni con tutte le funzioni del piano Pro. Non serve la carta di credito per iniziare." },
+  { q: "Come funziona la prova gratuita?", a: "14 giorni gratis con il piano che scegli, o il Pro se non ne scegli uno. Senza carta." },
   { q: "Funziona anche per un pastificio, un bar o una gastronomia?", a: "Sì. Va bene per qualsiasi attività della ristorazione: chi ha tavoli, chi vende da asporto, a peso o su prenotazione." },
   { q: "Dove sono i miei dati?", a: "Su server in Europa. I dati dei tuoi clienti sono tuoi: puoi esportarli quando vuoi." },
 ];

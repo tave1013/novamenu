@@ -9,7 +9,7 @@ import { AppWindow, PhoneFrame } from "./visuals/frames";
 function Scene({ feature, children }: { feature: Feature; children: React.ReactNode }) {
   return (
     <div
-      className="relative overflow-hidden rounded-[24px] border border-line px-4 py-8 sm:px-8 sm:py-16"
+      className="relative overflow-hidden rounded-[24px] border border-line px-3 py-6 sm:px-8 sm:py-16"
       style={{ backgroundImage: toneGlow[feature.tone], backgroundColor: "#fbfbf9" }}
     >
       <div
@@ -185,7 +185,7 @@ function ImportaAi({ f }: { f: Feature }) {
             <ul className="mt-3 grid grid-cols-2 gap-1.5">
               {cats.map(([c, n]) => (
                 <li key={c} className="flex items-center justify-between rounded-[9px] border border-line-soft bg-[#fbfbf9] px-2.5 py-2 text-[12px]">
-                  <span className="truncate text-ink">{c}</span>
+                  <span className="min-w-0 break-words leading-snug text-ink">{c}</span>
                   <span className="tabular-nums text-muted">{n}</span>
                 </li>
               ))}
@@ -307,7 +307,7 @@ function Prenotazioni({ f }: { f: Feature }) {
             {rows.map(([t, n, p, s, k]) => (
               <li key={t} className="flex items-center gap-3 border-b border-line-soft px-3 py-2.5 text-[12.5px] last:border-0">
                 <span className="w-10 font-medium tabular-nums text-ink">{t}</span>
-                <span className="min-w-0 flex-1 truncate text-ink">{n}</span>
+                <span className="min-w-0 flex-1 break-words leading-snug text-ink">{n}</span>
                 <span className="hidden text-muted sm:block">{p}</span>
                 <span className={`rounded-full px-2 py-0.5 text-[11px] ${tag[k]}`}>{s}</span>
               </li>
@@ -483,7 +483,7 @@ function Clienti({ f }: { f: Feature }) {
               <li key={n} className="grid grid-cols-[1.6fr_0.6fr_0.8fr_1fr] items-center gap-2 border-b border-line-soft px-2 py-2.5 text-[12px] last:border-0 max-sm:grid-cols-[1.6fr_0.6fr_1fr]">
                 <span className="flex min-w-0 items-center gap-2">
                   <span className="flex h-6 w-6 flex-none items-center justify-center rounded-full bg-mist text-[9.5px] font-semibold text-ink">{a}</span>
-                  <span className="truncate text-ink">{n}</span>
+                  <span className="min-w-0 break-words leading-snug text-ink">{n}</span>
                 </span>
                 <span className="tabular-nums text-ink">{v}</span>
                 <span className="text-muted max-sm:hidden">{u}</span>
@@ -555,7 +555,7 @@ function Statistiche({ f }: { f: Feature }) {
               [tr("Coperti"), "1.240", "+12%"],
             ].map(([l, v, d]) => (
               <div key={l} className="rounded-[12px] border border-line-soft bg-[#fbfbf9] p-2.5">
-                <p className="truncate text-[10.5px] text-muted">{l}</p>
+                <p className="min-w-0 break-words leading-snug text-[10.5px] text-muted">{l}</p>
                 <p className="mt-0.5 text-[17px] font-semibold tabular-nums tracking-[-0.02em] text-ink">{v}</p>
                 <p className="text-[10.5px] font-medium text-p-green-ink">{d}</p>
               </div>
@@ -603,7 +603,7 @@ function Staff({ f }: { f: Feature }) {
                 <span className="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-mist text-[11px] font-semibold text-ink">{a}</span>
                 <span className="min-w-0 flex-1">
                   <span className="block text-[12.5px] font-medium text-ink">{n}</span>
-                  <span className="block truncate text-[11px] text-muted">{tr("Può gestire:")}{" "}{p}</span>
+                  <span className="block min-w-0 break-words leading-snug text-[11px] text-muted">{tr("Può gestire:")}{" "}{p}</span>
                 </span>
                 <span className="rounded-full border border-line px-2 py-0.5 text-[10.5px] text-muted">{r}</span>
               </li>

@@ -95,14 +95,12 @@ export default function FeaturePage({ slug }: { slug: string }) {
           <h2 className="eyebrow">{tr("Come funziona")}</h2>
           <ol className="mt-5 grid gap-6 md:grid-cols-3 md:gap-8">
             {f.steps.map((s, i) => (
-              <li key={s.title} className="flex gap-3.5">
-                <span className="inline-flex h-8 w-8 flex-none items-center justify-center rounded-full bg-ink text-[13px] font-semibold tabular-nums text-[#fafaf8]">
+              <li key={s.title} className="grid grid-cols-[32px_1fr] items-start gap-x-3">
+                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-ink text-[13px] font-semibold tabular-nums text-[#fafaf8]">
                   {i + 1}
                 </span>
-                <span>
-                  <span className="block text-[17px] font-semibold tracking-[-0.015em] text-ink">{s.title}</span>
-                  <span className="mt-1 block text-[15px] leading-relaxed text-muted">{s.text}</span>
-                </span>
+                <span className="pt-0.5 text-[19px] font-semibold leading-snug tracking-[-0.015em] text-ink">{s.title}</span>
+                <span className="col-start-2 mt-1 text-[15px] leading-relaxed text-muted">{s.text}</span>
               </li>
             ))}
           </ol>
@@ -112,11 +110,11 @@ export default function FeaturePage({ slug }: { slug: string }) {
       {/* Dettagli: testo e grafica statica affiancati */}
       <section className="py-14 md:py-20">
         <div className="wrap">
-          <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+          <div className="grid items-center gap-7 md:gap-10 lg:grid-cols-2 lg:gap-14">
             <div>
               <p className="eyebrow">{tr("Nel dettaglio")}</p>
-              <h2 className="h-block mt-3">{f.sections[0].title}</h2>
-              <p className="mt-3 text-[17px] leading-relaxed text-muted">{f.sections[0].text}</p>
+              <h2 className="h-block mt-3 max-md:text-[1.75rem] max-md:leading-[1.15]">{f.sections[0].title}</h2>
+              <p className="mt-3 text-[16px] leading-relaxed text-muted md:text-[17px]">{f.sections[0].text}</p>
               <ul className="mt-5 flex flex-col gap-2.5 text-[15px] text-text">
                 {f.sections[0].points.map((p) => (
                   <li key={p} className="flex gap-2.5">
@@ -164,7 +162,7 @@ export default function FeaturePage({ slug }: { slug: string }) {
       {/* Vantaggi: box con icone */}
       <section className="py-14 md:py-20" style={{ backgroundImage: toneGlow[f.tone], backgroundColor: "#f6f6f3" }}>
         <div className="wrap">
-          <h2 className="h-block text-center">{tr("Cosa cambia per il tuo locale")}</h2>
+          <h2 className="h-block text-center max-md:text-[1.75rem] max-md:leading-[1.15]">{tr("Cosa cambia per il tuo locale")}</h2>
           <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {f.benefits.map((b, i) => (
               <div key={b.title} className="rounded-[16px] border border-line bg-white p-5 text-center shadow-[0_16px_36px_-28px_rgba(0,0,0,.35)]">

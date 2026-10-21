@@ -299,7 +299,7 @@ function MenuList({ state, compact }: { state: S; compact: boolean }) {
               <span className="h-9 w-9 flex-none rounded-[9px]" style={{ background: d.t, opacity: off ? 0.4 : 1 }} />
               <span className="min-w-0 flex-1">
                 <span className={`flex items-center gap-2 text-[12.5px] font-medium ${off ? "text-muted" : "text-ink"}`}>
-                  <span className="truncate">{d.n}</span>
+                  <span className="min-w-0 break-words leading-snug">{d.n}</span>
                   {off && <span className="anim-pop rounded-full bg-p-red px-1.5 py-px text-[10.5px] font-medium text-p-red-ink">{tr("Esaurito")}</span>}
                 </span>
                 {!compact && <span className="block text-[11.5px] text-muted">{d.d}</span>}

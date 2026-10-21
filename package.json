@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "verifica": "next build && node scripts/esporta-html.mjs && node scripts/i18n-check.mjs out"
+    "verifica": "npm run build && node scripts/esporta-html.mjs && node scripts/i18n-check.mjs out",
+    "prebuild": "node scripts/aggiorna-prezzi.mjs",
+    "prezzi": "node scripts/aggiorna-prezzi.mjs"
   },
   "author": "",
   "license": "ISC",

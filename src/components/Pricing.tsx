@@ -2,14 +2,15 @@
 
 import { tr } from "@/i18n";
 import { useState } from "react";
-import { mensileConAnnuale, prezzoAnnuale, prezzoMensile } from "@/config/prezzi";
+import { mensileConAnnuale, prezzoAnnuale, prezzoMensile, type Listino } from "@/config/prezzi";
 import { signupUrl } from "@/config/site";
 import { SelettoreValuta, useValuta } from "./Valuta";
 import { Check } from "./ui";
 import { HandNote } from "./HandNote";
 import { getPlans } from "@/content/plansByLocale";
 
-export function Pricing() {
+/** Card dei piani. I prezzi arrivano dal listino della piattaforma, letto dal componente server che la usa. */
+export function Pricing({ listino }: { listino: Listino }) {
   const [annual, setAnnual] = useState(false);
   const { valuta, pronta, formato } = useValuta();
   return (
@@ -41,7 +42,7 @@ export function Pricing() {
       <div className="relative mt-10 grid gap-4 lg:mt-24 lg:grid-cols-3">
         <HandNote text={tr("Ti consigliamo questo")} className="absolute -top-[52px] left-[calc(33.333%-226px)] hidden lg:flex" />
         {getPlans().map((p) => {
-          const price = annual ? mensileConAnnuale(p.id, valuta) : prezzoMensile(p.id, valuta);
+          const price = annual ? mensileConAnnuale(listino, p.id, valuta) : prezzoMensile(listino, p.id, valuta);
           return (
             <div
               key={p.id}
@@ -61,7 +62,7 @@ export function Pricing() {
                 <span className="text-[15px] text-muted">{tr("al mese + IVA")}</span>
               </div>
               <p className={`mt-2 text-[13px] text-muted transition-opacity duration-300 ${pronta ? "opacity-100" : "opacity-0"}`}>
-                {annual ? tr("{amount} all'anno + IVA, in un solo pagamento", { amount: formato(prezzoAnnuale(p.id, valuta)) }) : tr("Fatturato ogni mese")}
+                {annual ? tr("{amount} all'anno + IVA, in un solo pagamento", { amount: formato(prezzoAnnuale(listino, p.id, valuta)) }) : tr("Fatturato ogni mese")}
               </p>
               <a href={`${signupUrl}?piano=${p.id}&valuta=${valuta}${annual ? "&periodo=annuale" : ""}`} className={`btn mt-6 w-full ${p.popular ? "btn-dark pulse" : "btn-light"}`}>
                 {tr("Prova gratis 14 giorni")}

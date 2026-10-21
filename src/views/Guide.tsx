@@ -1,3 +1,5 @@
+import { riempiPrezzi } from "@/config/prezzi";
+import { getListino } from "@/lib/prezzi/listino";
 import { getLocale, longDate, tr } from "@/i18n";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -28,14 +30,14 @@ export function meta(locale: Locale, slug: string): Metadata {
 
 const fmt = (d: string) => longDate(d);
 
-export default function GuideArticle({ slug }: { slug: string }) {
+export default async function GuideArticle({ slug }: { slug: string }) {
   const g = guideBySlug(slug);
   if (!g) notFound();
   const related = g.related.map((r) => featureById(r)!).filter(Boolean);
   const more = getGuides().filter((x) => x.slug !== g.slug).slice(0, 3);
   const locale = getLocale();
   const url = `${site.url}${to("guide", g.id)}`;
-  const html = localizeLinks(g.html.replaceAll("{{brand}}", site.name));
+  const html = localizeLinks(riempiPrezzi(g.html.replaceAll("{{brand}}", site.name), await getListino(), localeInfo[locale].intl));
   const sector = g.sector ? sectorById(g.sector) : undefined;
   // Il testo viene diviso nei punti {{art:nome}}, dove compare una grafica.
   const parts = html.split(/\{\{art:([a-z0-9-]+)\}\}/);

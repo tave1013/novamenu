@@ -107,13 +107,13 @@ const BRAND = "#b4532a";
 /* ---------- pezzi comuni ---------- */
 
 function Stepper({ q, u, piccolo = false }: { q: string; u: string; piccolo?: boolean }) {
-  const b = piccolo ? "h-6 w-6" : "h-7 w-7";
+  const b = piccolo ? "h-6 w-6" : "h-6 w-6 sm:h-7 sm:w-7";
   return (
-    <span className="flex flex-none items-center gap-1.5">
+    <span className="flex flex-none items-center gap-1 sm:gap-1.5">
       <span className={`flex ${b} items-center justify-center rounded-full border border-line text-muted`}>
         <Icon name="minus" size={12} stroke={2.2} />
       </span>
-      <span className="min-w-[46px] text-center leading-tight">
+      <span className="min-w-[38px] text-center leading-tight sm:min-w-[46px]">
         <span className="block text-[13px] font-semibold tabular-nums text-ink">{q}</span>
         <span className="block text-[9.5px] text-muted">{u}</span>
       </span>
@@ -126,9 +126,9 @@ function Stepper({ q, u, piccolo = false }: { q: string; u: string; piccolo?: bo
 
 function Riga({ v, ultima = false }: { v: Voce; ultima?: boolean }) {
   return (
-    <div className={`flex items-center gap-2 py-2 ${ultima ? "" : "border-b border-line-soft"}`}>
+    <div className={`flex items-center gap-2 py-1.5 sm:py-2 ${ultima ? "" : "border-b border-line-soft"}`}>
       <span className="min-w-0 flex-1">
-        <span className="block truncate text-[12.5px] font-medium text-ink">{v.n}</span>
+        <span className="block text-[12.5px] font-medium leading-snug text-ink">{v.n}</span>
         {v.scorta && <span className="mt-0.5 inline-block rounded-full bg-p-amber px-1.5 py-px text-[9.5px] font-medium text-p-amber-ink">{tr("Sotto scorta")}</span>}
       </span>
       <Stepper q={v.q} u={v.u} />
@@ -170,7 +170,7 @@ export function NotificaLista({ titolo, testo, className = "" }: { titolo?: stri
 function Scena({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
     <div
-      className={`relative overflow-hidden rounded-[24px] border border-line px-4 py-8 sm:px-8 sm:py-12 ${className}`}
+      className={`relative overflow-hidden rounded-[24px] border border-line px-3 py-5 sm:px-8 sm:py-12 ${className}`}
       style={{ backgroundImage: "radial-gradient(60% 60% at 80% 10%, rgba(254,243,199,.9), transparent 70%)", backgroundColor: "#fbfbf9" }}
     >
       <div
@@ -194,7 +194,7 @@ export function TelefonoLista({ zoom = 0.82 }: { zoom?: number }) {
   const pizzeria = dati()[0];
   return (
     <PhoneFrame width={280} zoom={zoom}>
-      <div className="px-4 pb-4">
+      <div className="px-3 pb-4 sm:px-4">
         <div className="flex items-center justify-between pt-1">
           <span>
             <span className="block text-[17px] font-semibold tracking-[-0.02em] text-ink">{tr("Lista ordini")}</span>
@@ -263,6 +263,8 @@ export function FoglioA4({ formato = "verticale", vuoto = false, className = "" 
   const orizz = formato === "orizzontale";
   const colonne = orizz ? 3 : 2;
   const fs = orizz ? 1.25 : 1.75;
+  // Sotto una certa larghezza il testo non scende oltre una misura leggibile.
+  const fsCss = (k = 1) => `max(${(fs * k).toFixed(2)}cqw, ${orizz ? 5.5 : 6.5}px)`;
   return (
     <div className={`@container ${className}`}>
       <div
@@ -273,7 +275,7 @@ export function FoglioA4({ formato = "verticale", vuoto = false, className = "" 
       >
         <Testata formato={formato} />
         {formato === "tabella" ? (
-          <table className="mt-[2cqw] w-full border-collapse" style={{ fontSize: `${fs}cqw` }}>
+          <table className="mt-[2cqw] w-full border-collapse" style={{ fontSize: fsCss() }}>
             <thead>
               <tr className="text-left text-white" style={{ background: BRAND }}>
                 <th className="px-[1cqw] py-[0.6cqw] font-semibold">{tr("Prodotto")}</th>
@@ -296,10 +298,10 @@ export function FoglioA4({ formato = "verticale", vuoto = false, className = "" 
             </tbody>
           </table>
         ) : (
-          <div className="mt-[2cqw] gap-[3cqw]" style={{ columnCount: colonne, columnGap: orizz ? "2.4cqw" : "3.4cqw", columnFill: "auto", flex: "1 1 auto", height: 0, overflow: "hidden", fontSize: `${fs}cqw` }}>
+          <div className="mt-[2cqw] gap-[3cqw]" style={{ columnCount: colonne, columnGap: orizz ? "2.4cqw" : "3.4cqw", columnFill: "auto", flex: "1 1 auto", height: 0, overflow: "hidden", fontSize: fsCss() }}>
             {reparti.map((r) => (
               <div key={r.r} className="mb-[1.6cqw]">
-                <p className="break-after-avoid rounded-[0.4cqw] px-[0.9cqw] py-[0.35cqw] font-semibold uppercase tracking-[0.06em] text-white" style={{ background: BRAND, fontSize: `${fs * 0.92}cqw` }}>
+                <p className="break-after-avoid rounded-[0.4cqw] px-[0.9cqw] py-[0.35cqw] font-semibold uppercase tracking-[0.06em] text-white" style={{ background: BRAND, fontSize: fsCss(0.92) }}>
                   {r.r}
                 </p>
                 {r.cat.map((c) => (
@@ -310,7 +312,7 @@ export function FoglioA4({ formato = "verticale", vuoto = false, className = "" 
                     {c.voci.map((v) => (
                       <p key={v.n} className="flex break-inside-avoid items-baseline gap-[0.8cqw] border-b border-dotted border-[#d6d3d1] py-[0.35cqw]">
                         <span className="inline-block h-[1.2em] w-[1.2em] flex-none translate-y-[0.15em] rounded-[0.15em] border border-[#a8a29e]" />
-                        <span className="min-w-0 flex-1 truncate text-ink">{v.n}</span>
+                        <span className="min-w-0 flex-1 leading-tight text-ink">{v.n}</span>
                         <span className="flex-none font-semibold tabular-nums text-ink">{vuoto ? "______" : `${v.q} ${v.u}`}</span>
                       </p>
                     ))}
@@ -345,7 +347,7 @@ export function ListaOrdiniHero() {
 /* ---------- come funziona: tre piccole illustrazioni ---------- */
 
 function Mini({ children }: { children: React.ReactNode }) {
-  return <div className="flex h-[118px] items-center justify-center rounded-[16px] border border-line bg-[#fbfbf9] px-4">{children}</div>;
+  return <div className="flex min-h-[118px] items-center justify-center rounded-[16px] border border-line bg-[#fbfbf9] px-3 py-4 md:h-[118px] md:px-4 md:py-0">{children}</div>;
 }
 
 export function PassoSegna() {
@@ -376,9 +378,9 @@ export function PassoControlla() {
 export function PassoStampa() {
   return (
     <Mini>
-      <div className="flex items-center gap-4">
-        <FoglioA4 className="w-[64px]" />
-        <span className="flex flex-col gap-1.5">
+      <div className="flex w-full flex-col items-center gap-3 md:w-auto md:flex-row md:gap-4">
+        <FoglioA4 className="w-full md:w-[64px]" />
+        <span className="flex flex-wrap justify-center gap-1.5 md:flex-col">
           <Chip icon="printer" testo={tr("Stampa A4")} />
           <Chip icon="send" testo={tr("PDF al fornitore")} />
         </span>
@@ -458,7 +460,7 @@ function Campo({ label, valore }: { label: string; valore: string }) {
   return (
     <label className="block">
       <span className="text-[10.5px] text-muted">{label}</span>
-      <span className="mt-0.5 block truncate rounded-[8px] border border-line bg-white px-2 py-1.5 text-[12px] text-ink">{valore}</span>
+      <span className="mt-0.5 block rounded-[8px] border border-line bg-white px-2 py-1.5 text-[12px] leading-snug text-ink">{valore}</span>
     </label>
   );
 }
@@ -471,7 +473,7 @@ export function VisMagazzino() {
     <Scena>
       <div className="flex justify-center">
         <PhoneFrame width={280}>
-          <div className="px-4 pb-4">
+          <div className="px-3 pb-4 sm:px-4">
             <div className="flex items-center gap-2 rounded-[10px] bg-p-amber px-2.5 py-2 text-[11px] font-medium text-p-amber-ink">
               <Icon name="wifiOff" size={14} stroke={2} />
               {tr("Sei offline. La lista si invia quando torna la rete.")}
@@ -485,7 +487,7 @@ export function VisMagazzino() {
               <div className="relative -mx-4 overflow-hidden border-b border-line-soft">
                 <div className="flex items-center gap-2 bg-white px-4 py-2.5">
                   <Icon name="arrowLeft" size={12} stroke={2} className="text-faint" />
-                  <span className="min-w-0 flex-1 truncate text-[12.5px] font-medium text-ink">{tr("Origano")}</span>
+                  <span className="min-w-0 flex-1 text-[12.5px] font-medium text-ink">{tr("Origano")}</span>
                 </div>
                 <div className="absolute inset-y-0 right-0 flex w-[120px]">
                   <span className="flex flex-1 items-center justify-center bg-[#e4e4e7] text-[11px] font-medium text-ink">{tr("Azzera")}</span>
@@ -534,13 +536,13 @@ export function VisTeam() {
               { n: tr("Pomodoro pelato"), prima: `1 ${tr("cartone")}`, dopo: `2 ${tr("cartoni")}` },
             ].map((x) => (
               <div key={x.n} className="flex items-center gap-2 border-b border-line-soft py-2">
-                <span className="min-w-0 flex-1 truncate font-medium text-ink">{x.n}</span>
+                <span className="min-w-0 flex-1 font-medium leading-snug text-ink">{x.n}</span>
                 <span className="text-muted line-through">{x.prima}</span>
                 <span className="font-semibold text-[#dc2626]">{x.dopo}</span>
               </div>
             ))}
             <div className="flex items-center gap-2 py-2">
-              <span className="min-w-0 flex-1 truncate font-medium text-ink">{tr("Basilico")}</span>
+              <span className="min-w-0 flex-1 font-medium leading-snug text-ink">{tr("Basilico")}</span>
               <span className="rounded-full bg-[#fee2e2] px-1.5 py-px text-[10px] font-semibold text-[#b91c1c]">{tr("Nuovo")}</span>
               <span className="font-semibold text-[#dc2626]">3 {tr("mazzi")}</span>
             </div>
@@ -638,10 +640,10 @@ export function VisAvvisi() {
               [tr("Venerdì 10 ottobre"), tr("Marco e Sara, confermata da Giulia"), "31"],
               [tr("Martedì 7 ottobre"), tr("Marco, confermata da Giulia"), "28"],
             ].map(([d, chi, n]) => (
-              <div key={d} className="flex items-center gap-2 border-t border-line-soft py-2">
-                <span className="min-w-0 flex-1">
+              <div key={d} className="flex flex-wrap items-center gap-x-2 gap-y-1.5 border-t border-line-soft py-2">
+                <span className="min-w-[160px] flex-1">
                   <span className="block font-medium text-ink">{d}</span>
-                  <span className="block truncate text-muted">{chi}</span>
+                  <span className="block leading-snug text-muted">{chi}</span>
                 </span>
                 <span className="text-muted tabular-nums">{tr("{n} prodotti", { n })}</span>
                 <span className="inline-flex items-center gap-1 rounded-full border border-line px-2 py-0.5 text-[11px] font-medium text-ink">

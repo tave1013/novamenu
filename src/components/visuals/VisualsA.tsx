@@ -241,9 +241,9 @@ export function AiVisual() {
                       r.check ? "bg-p-amber/60" : ""
                     }`}
                   >
-                    <span className="truncate font-medium text-ink">{r.n}</span>
-                    <span className="truncate text-muted">{r.c}</span>
-                    <span className="truncate text-muted max-sm:hidden">{r.a}</span>
+                    <span className="min-w-0 break-words font-medium leading-snug text-ink">{r.n}</span>
+                    <span className="min-w-0 break-words leading-snug text-muted">{r.c}</span>
+                    <span className="min-w-0 break-words leading-snug text-muted max-sm:hidden">{r.a}</span>
                     <span className="text-right tabular-nums text-ink">{r.p}</span>
                   </li>
                 ))}
@@ -370,12 +370,13 @@ export function OrariVisual() {
               {bands().map((b, i) => (
                 <div
                   key={b.name}
-                  className={`absolute flex h-9 items-center rounded-[10px] px-2.5 text-[12px] font-medium ${b.c} ${b.ink} transition-opacity duration-300 ${
+                  className={`absolute flex h-7 items-center rounded-[9px] px-2 text-[12px] font-medium ${b.c} ${b.ink} transition-opacity duration-300 ${
                     active === b.name ? "opacity-100 ring-2 ring-black/80" : "opacity-70"
                   }`}
-                  style={{ left: `${((b.from - 6) / 18) * 100}%`, width: `${((b.to - b.from) / 18) * 100}%`, top: i === 3 ? 84 : i === 2 ? 42 : 0 }}
+                  style={{ left: `${((b.from - 6) / 18) * 100}%`, width: `${((b.to - b.from) / 18) * 100}%`, minWidth: "max-content", top: i * 31 }}
                 >
-                  <span className="truncate">{b.name}</span>
+                  {/* Una riga per fascia: se il nome è più lungo della fascia, la barra si allarga senza coprire le altre. */}
+                  <span className="whitespace-nowrap">{b.name}</span>
                 </div>
               ))}
               <div className="absolute bottom-0 top-[-8px] w-[2px] rounded-full bg-black" style={{ left: `${pct}%` }}>

@@ -1,5 +1,6 @@
 import { getLocale, t, tr } from "@/i18n";
-import { formatoPrezzo, prezzoMensile } from "@/config/prezzi";
+import { formatoPrezzo, prezzoMensile, type Listino } from "@/config/prezzi";
+import { getListino } from "@/lib/prezzi/listino";
 import { LinkIscrizione, PrezzoMensile } from "@/components/Valuta";
 import type { Metadata } from "next";
 import { signupUrl } from "@/config/site";
@@ -13,25 +14,27 @@ import { lp } from "@/i18n/link";
 import { localeInfo, type Locale } from "@/i18n/config";
 
 /** Prezzi in euro (e in sterline per la versione inglese) per titolo e descrizione della pagina. */
-const prezziMeta = (locale: Locale) => {
+const prezziMeta = (locale: Locale, l: Listino) => {
   const f = (n: number, v: "eur" | "gbp") => formatoPrezzo(n, v, localeInfo[locale].intl);
   return {
-    base: f(prezzoMensile("base", "eur"), "eur"),
-    pro: f(prezzoMensile("pro", "eur"), "eur"),
-    premium: f(prezzoMensile("premium", "eur"), "eur"),
-    baseGbp: f(prezzoMensile("base", "gbp"), "gbp"),
-    proGbp: f(prezzoMensile("pro", "gbp"), "gbp"),
-    premiumGbp: f(prezzoMensile("premium", "gbp"), "gbp"),
+    base: f(prezzoMensile(l, "base", "eur"), "eur"),
+    pro: f(prezzoMensile(l, "pro", "eur"), "eur"),
+    premium: f(prezzoMensile(l, "premium", "eur"), "eur"),
+    baseGbp: f(prezzoMensile(l, "base", "gbp"), "gbp"),
+    proGbp: f(prezzoMensile(l, "pro", "gbp"), "gbp"),
+    premiumGbp: f(prezzoMensile(l, "premium", "gbp"), "gbp"),
   };
 };
 
-export const meta = (locale: Locale): Metadata =>
-  pageMeta({
+export async function meta(locale: Locale): Promise<Metadata> {
+  const p = prezziMeta(locale, await getListino());
+  return pageMeta({
     locale,
     page: "pricing",
-    title: t(locale, "Prezzi: da {base} al mese + IVA, senza commissioni", prezziMeta(locale)),
-    description: t(locale, "Prezzi del menu digitale NovaMenu: Base {base}, Pro {pro} e Premium {premium} al mese + IVA. Nessuna commissione sugli ordini. Prova gratis 14 giorni.", prezziMeta(locale)),
+    title: t(locale, "Prezzi: da {base} al mese + IVA, senza commissioni", p),
+    description: t(locale, "Prezzi del menu digitale NovaMenu: Base {base}, Pro {pro} e Premium {premium} al mese + IVA. Nessuna commissione sugli ordini. Prova gratis 14 giorni.", p),
   });
+}
 
 function Cell({ v }: { v: boolean | string }) {
   if (v === true)
@@ -49,10 +52,11 @@ function Cell({ v }: { v: boolean | string }) {
   return <span className="text-[14px] text-text">{v}</span>;
 }
 
-export default function PrezziPage() {
+export default async function PrezziPage() {
+  const listino = await getListino();
   return (
     <>
-      <JsonLd data={softwareApplicationLd(getLocale())} />
+      <JsonLd data={softwareApplicationLd(getLocale(), listino)} />
       <section className="pb-20 pt-8 md:pb-28 md:pt-12">
         <div className="wrap">
           <Breadcrumbs items={[{ name: tr("Prezzi"), href: lp("/prezzi/") }]} />
@@ -63,7 +67,7 @@ export default function PrezziPage() {
             </p>
           </div>
           <div className="anim-fade-up mt-12" style={{ animationDelay: "140ms" }}>
-            <Pricing />
+            <Pricing listino={listino} />
           </div>
         </div>
       </section>
@@ -85,7 +89,7 @@ export default function PrezziPage() {
                     <th key={p.id} scope="col" className="p-5 text-center">
                       <span className="block text-[17px] font-semibold text-ink">{p.name}</span>
                       <span className="block text-[13px] font-normal text-muted">
-                        <PrezzoMensile eur={prezzoMensile(p.id, "eur")} gbp={prezzoMensile(p.id, "gbp")} />
+                        <PrezzoMensile eur={prezzoMensile(listino, p.id, "eur")} gbp={prezzoMensile(listino, p.id, "gbp")} />
                       </span>
                     </th>
                   ))}
@@ -132,7 +136,7 @@ export default function PrezziPage() {
           </div>
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {[
-              { t: tr("Prova gratuita"), d: tr("14 giorni con tutte le funzioni del piano Pro. Non chiediamo la carta di credito.") },
+              { t: tr("Prova gratuita"), d: tr("14 giorni gratis con il piano che scegli, o il Pro se non ne scegli uno. Senza carta.") },
               { t: tr("Nessun vincolo"), d: tr("Con il piano mensile disdici quando vuoi, in tre passaggi dalla dashboard.") },
               { t: tr("Messaggi WhatsApp"), d: tr("Alcuni messaggi hanno un costo fissato da Meta, di pochi centesimi. Lo vedi prima di ogni invio.") },
             ].map((x) => (

@@ -1,9 +1,12 @@
 import { setLocale } from "@/i18n";
 import View, { meta } from "@/views/Pricing";
 
-export const metadata = meta("en");
+export const generateMetadata = () => meta("en");
 
-export default function Page() {
+// I prezzi arrivano dalla piattaforma: la pagina si rigenera ogni ora.
+export const revalidate = 3600;
+
+export default async function Page() {
   setLocale("en");
   return <View />;
 }

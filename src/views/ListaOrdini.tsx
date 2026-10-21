@@ -79,21 +79,19 @@ export function ListaOrdiniView({ f }: { f: Feature }) {
       </section>
 
       {/* Come funziona: tre passi con la loro illustrazione */}
-      <section className="border-y border-line bg-white py-12 md:py-16">
+      <section className="border-y border-line bg-white py-10 md:py-16">
         <div className="wrap">
           <h2 className="eyebrow">{tr("Come funziona")}</h2>
-          <ol className="mt-6 grid gap-6 md:grid-cols-3 md:gap-6">
+          <ol className="mt-6 grid gap-9 md:grid-cols-3 md:gap-6">
             {f.steps.map((s, i) => {
               const Illustrazione = passi[i];
               return (
                 <Reveal as="li" key={s.title} delay={i * 90}>
                   {Illustrazione && <Illustrazione />}
-                  <div className="mt-4 flex gap-3.5">
-                    <span className="inline-flex h-8 w-8 flex-none items-center justify-center rounded-full bg-ink text-[13px] font-semibold tabular-nums text-[#fafaf8]">{i + 1}</span>
-                    <span>
-                      <span className="block text-[17px] font-semibold tracking-[-0.015em] text-ink">{s.title}</span>
-                      <span className="mt-1 block text-[15px] leading-relaxed text-muted">{s.text}</span>
-                    </span>
+                  <div className="mt-4 grid grid-cols-[32px_1fr] items-start gap-x-3">
+                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-ink text-[13px] font-semibold tabular-nums text-[#fafaf8]">{i + 1}</span>
+                    <span className="pt-0.5 text-[19px] font-semibold leading-snug tracking-[-0.015em] text-ink">{s.title}</span>
+                    <span className="col-start-2 mt-1 text-[15px] leading-relaxed text-muted">{s.text}</span>
                   </div>
                 </Reveal>
               );
@@ -103,17 +101,16 @@ export function ListaOrdiniView({ f }: { f: Feature }) {
       </section>
 
       {/* Le funzioni, in cinque blocchi alternati */}
-      <section className="py-6 md:py-10">
+      <section className="md:py-10">
         {f.sections.map((s, i) => {
           const Visual = blocchi[i];
           const testoPrima = i % 2 === 0;
           return (
-            <div key={s.title} className={`py-12 md:py-16 ${i > 0 ? "border-t border-line-soft" : ""}`}>
-              <div className="wrap grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+            <div key={s.title} className={`py-10 md:py-16 ${i > 0 ? "border-t border-line-soft" : ""}`}>
+              <div className="wrap grid items-center gap-7 md:gap-10 lg:grid-cols-2 lg:gap-14">
                 <Reveal className={`min-w-0 ${testoPrima ? "lg:order-1" : "lg:order-2"}`}>
-                  <p className="eyebrow">{tr("{n} di {tot}", { n: i + 1, tot: f.sections.length })}</p>
-                  <h2 className="h-block mt-3">{s.title}</h2>
-                  <p className="mt-3 text-[17px] leading-relaxed text-muted">{s.text}</p>
+                  <h2 className="h-block max-md:text-[1.75rem] max-md:leading-[1.15]">{s.title}</h2>
+                  <p className="mt-3 text-[16px] leading-relaxed text-muted md:text-[17px]">{s.text}</p>
                   <ul className="mt-5 flex flex-col gap-2.5 text-[15px] text-text">
                     {s.points.map((p) => (
                       <li key={p} className="flex gap-2.5">
@@ -134,14 +131,14 @@ export function ListaOrdiniView({ f }: { f: Feature }) {
 
       {/* Il foglio stampato, nei tre formati */}
       {f.fogli && (
-        <section className="py-16 md:py-24" style={{ backgroundImage: toneGlow[f.tone], backgroundColor: "#f6f6f3" }}>
+        <section className="py-14 md:py-24" style={{ backgroundImage: toneGlow[f.tone], backgroundColor: "#f6f6f3" }}>
           <div className="wrap">
             <Reveal className="mx-auto max-w-[720px] text-center">
               <p className="eyebrow">{tr("Stampa")}</p>
               <h2 className="h-section mt-3">{f.fogli.title}</h2>
               <p className="lead mx-auto mt-4 max-w-[600px]">{f.fogli.text}</p>
             </Reveal>
-            <div className="mt-12 grid items-end gap-8 md:grid-cols-[1fr_1.4fr_1fr] md:gap-6">
+            <div className="mx-auto mt-10 grid max-w-[560px] items-end gap-12 md:mt-12 lg:max-w-none lg:grid-cols-[1fr_1.4fr_1fr] lg:gap-6">
               {f.fogli.formati.map((x, i) => (
                 <Reveal key={x.name} delay={i * 90} className="min-w-0">
                   <FoglioA4 formato={formati[i]} />

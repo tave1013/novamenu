@@ -535,7 +535,7 @@ export const features: Omit<Feature, "slug">[] = [
     group: "Gestione",
     icon: "chart",
     tone: "violet",
-    plan: "Pro",
+    plan: "Base",
     visual: "statistiche",
     seo: {
       title: "Restaurant analytics: dishes and peak hours",
@@ -565,6 +565,7 @@ export const features: Omit<Feature, "slug">[] = [
       { title: "Monthly report", text: "A clear summary every month." },
     ],
     faq: [
+      { q: "Are they included in my plan?", a: "Basic analytics on every plan, full analytics from Pro." },
       { q: "Do the analytics respect privacy?", a: "Yes, the analytics respect privacy: they are aggregated, anonymous data on menu views." },
       { q: "Can I export them?", a: "Yes, you can export the analytics to Excel." },
     ],
@@ -597,7 +598,7 @@ export const features: Omit<Feature, "slug">[] = [
       {
         title: "Everyone sees only what they need",
         text: "The waiter confirms bookings, the chef marks dishes as sold out, and only you see takings and settings.",
-        points: ["Ready-made roles: owner, floor, kitchen", "Custom permissions", "A log of who changed what"],
+        points: ["Ready-made roles: owner, floor, kitchen", "Custom permissions", "A log of who changed what", "Logins: 1 on Base, 3 on Pro, unlimited on Premium"],
       },
     ],
     benefits: [
@@ -607,7 +608,7 @@ export const features: Omit<Feature, "slug">[] = [
       { title: "Security", text: "Remove access for anyone who no longer works with you." },
     ],
     faq: [
-      { q: "How many team members can I add?", a: "On the Premium plan you can add as many team members as you like: there is no limit on the number of logins." },
+      { q: "How many team members can I add?", a: "The number of logins depends on the plan: 1 on Base, 3 on Pro, unlimited on Premium. Staff rotas are included in Premium." },
     ],
     related: ["sala-e-tavoli", "prenotazioni", "assistente"],
   },
@@ -695,7 +696,7 @@ export const features: Omit<Feature, "slug">[] = [
       { title: "One single sheet", text: "The printed order is clear for your supplier too." },
     ],
     faq: [
-      { q: "Do I need an account for each member of staff?", a: "Yes, free of charge, with the permissions you choose." },
+      { q: "Do I need an account for each member of staff?", a: "Each member of staff signs in with their own account. The number of logins depends on the plan: 3 on Pro, unlimited on Premium." },
       { q: "Does it work without internet?", a: "Yes, the list sends itself when the connection comes back." },
       { q: "Can I use my own sections?", a: "Yes, you create them and name them however you like." },
       { q: "Can I print without a computer?", a: "Yes, from iPhone and iPad with AirPrint, or with the PDF." },

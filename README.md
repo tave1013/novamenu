@@ -19,7 +19,8 @@ Poi apri http://localhost:3000
 | Dati della società (ragione sociale, numero, sede...) | `src/lib/legal/azienda.ts` |
 | Testi delle funzionalità | `src/content/features.ts` |
 | Testi dei settori | `src/content/sectors.ts` |
-| Prezzi, confronto piani, domande frequenti | `src/content/plans.ts` |
+| Piani, confronto, domande frequenti | `src/content/plans.ts` |
+| Prezzi dei piani | dalla piattaforma (console), letti da `src/lib/prezzi/listino.ts` e aggiornati ogni ora |
 | Guide (articoli) | `src/content/guides.ts` |
 | Documenti legali (italiano e inglese) | `src/content/legale/it/` e `src/content/legale/en/` |
 | Elenco dei cookie (cookie policy e banner) | `src/lib/consenso/cookie.ts` |
@@ -45,7 +46,7 @@ Copia `.env.example` e imposta su Vercel (Settings, Environment Variables):
 npm run verifica
 ```
 
-Fa il build, ricrea la cartella `out/` con una pagina HTML per indirizzo e controlla link, lingue, canonical e hreflang. Dopo, `node scripts/seo-check.mjs out` controlla titoli e descrizioni e `node scripts/scansione-cookie.mjs <indirizzi>` elenca i cookie reali di una pagina.
+Fa il build (prima legge i prezzi dalla piattaforma), ricrea la cartella `out/` con una pagina HTML per indirizzo e controlla link, lingue, canonical e hreflang. Dopo, `node scripts/seo-check.mjs out` controlla titoli e descrizioni e `node scripts/scansione-cookie.mjs <indirizzi>` elenca i cookie reali di una pagina.
 
 ## Prima di andare online
 

@@ -63,7 +63,7 @@ export const comparison: typeof comparisonIt = [
       { label: "Supplier order list", base: false, pro: true, premium: true },
       { label: "Staff logins", base: "1", pro: "3", premium: "Unlimited" },
       { label: "Staff rotas", base: false, pro: false, premium: true },
-      { label: "Support", base: "Email", pro: "Email and WhatsApp", premium: "Priority" },
+      { label: "Support", base: "By email", pro: "Email and WhatsApp", premium: "Priority" },
     ],
   },
 ];
@@ -73,7 +73,7 @@ export const generalFaq: typeof generalFaqIt = [
   { q: "How long does it take to get started?", a: "With the photo import your menu is ready in a few minutes. Logo, colours and opening hours take an afternoon, and if you like we do it together during the demo." },
   { q: "Do you take a percentage of orders or bookings?", a: "No. You only pay the subscription. Some WhatsApp messages have a cost set by Meta, of a few cents, which you always see in the dashboard." },
   { q: "Is there a minimum term?", a: "No. On the monthly plan you can cancel whenever you like, from the dashboard. The subscription stays active until the end of the period you have already paid for." },
-  { q: "How does the free trial work?", a: "You get 14 days with every feature of the Pro plan. You don't need a credit card to start." },
+  { q: "How does the free trial work?", a: "14 days free with the plan you choose, or Pro if you don't choose one. No card needed." },
   { q: "Does it also work for a fresh pasta shop, a café or a deli?", a: "Yes. It works for any food and drink business: those with tables, and those selling takeaway, by weight or to order." },
   { q: "Where is my data kept?", a: "On servers in Europe. Your customers' data is yours: you can export it whenever you like." },
 ];

@@ -3,7 +3,10 @@ import View, { meta } from "@/views/Home";
 
 export const metadata = meta("it");
 
-export default function Page() {
+// I prezzi arrivano dalla piattaforma: la pagina si rigenera ogni ora.
+export const revalidate = 3600;
+
+export default async function Page() {
   setLocale("it");
   return <View />;
 }

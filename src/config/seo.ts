@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { site } from "./site";
-import { VALUTE, prezzoMensile, type Valuta } from "./prezzi";
+import { VALUTE, prezzoMensile, type Listino, type Valuta } from "./prezzi";
 import { getPlans } from "@/content";
 import { t } from "@/i18n";
 import { defaultLocale, localeInfo, locales, type Locale } from "@/i18n/config";
@@ -69,7 +69,7 @@ export function pageMeta({
 }
 
 /** Dati strutturati della piattaforma, con i prezzi presi da plans.ts. */
-export function softwareApplicationLd(locale: Locale) {
+export function softwareApplicationLd(locale: Locale, listino: Listino) {
   const pricing = `${site.url}${href("pricing", locale)}`;
   return {
     "@context": "https://schema.org",
@@ -87,13 +87,13 @@ export function softwareApplicationLd(locale: Locale) {
         "@type": "Offer",
         name: t(locale, "Piano {name}", { name: p.name }),
         description: p.desc,
-        price: String(prezzoMensile(p.id, v)),
+        price: String(prezzoMensile(listino, p.id, v)),
         priceCurrency: VALUTE[v].codice,
         ...(v === "gbp" ? { eligibleRegion: { "@type": "Country", name: "GB" } } : {}),
         url: pricing,
         priceSpecification: {
           "@type": "UnitPriceSpecification",
-          price: String(prezzoMensile(p.id, v)),
+          price: String(prezzoMensile(listino, p.id, v)),
           priceCurrency: VALUTE[v].codice,
           valueAddedTaxIncluded: false,
           billingDuration: "P1M",

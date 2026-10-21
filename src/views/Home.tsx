@@ -2,6 +2,7 @@ import { getLocale, t, tr } from "@/i18n";
 import Link from "next/link";
 import { signupUrl, site } from "@/config/site";
 import { pageMeta, siteDescription, softwareApplicationLd } from "@/config/seo";
+import { getListino } from "@/lib/prezzi/listino";
 import type { Metadata } from "next";
 import type { Locale } from "@/i18n/config";
 import { Icon, IconTile, toneClass } from "@/components/Icon";
@@ -75,10 +76,11 @@ const heroCards = () => ([
   { icon: "globe" as const, tone: "amber", t: tr("Menu tradotto in 4 lingue"), d: tr("Inglese, francese, tedesco, spagnolo"), pos: "left-2 bottom-16", f: "float1", delay: "1600ms" },
 ]);
 
-export default function Home() {
+export default async function Home() {
+  const listino = await getListino();
   return (
     <>
-      <JsonLd data={softwareApplicationLd(getLocale())} />
+      <JsonLd data={softwareApplicationLd(getLocale(), listino)} />
 
       {/* Apertura */}
       <section className="overflow-hidden pb-14 pt-10 md:pb-20 md:pt-16">
@@ -320,7 +322,7 @@ export default function Home() {
             <h2 className="h-section mt-3">{tr("Prezzi")}{" "}<span className="hl">{tr("chiari")}</span>{tr(". Disdici quando vuoi.")}</h2>
           </Reveal>
           <div className="mt-8">
-            <Pricing />
+            <Pricing listino={listino} />
           </div>
           <p className="mt-6 text-center">
             <Link href={lp("/prezzi/")} className="link-arrow min-h-11 text-[15px]">
