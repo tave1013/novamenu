@@ -1,6 +1,7 @@
 import { getLocale, tr } from "@/i18n";
 import { Icon, type IconName } from "../Icon";
 import { AppWindow, PhoneFrame } from "./frames";
+import { BRAND, dati, type Voce } from "./lista-ordini-dati";
 
 /*
  * Illustrazioni della pagina Lista ordini, disegnate in HTML e CSS.
@@ -8,101 +9,6 @@ import { AppWindow, PhoneFrame } from "./frames";
  * con un'immagine, senza toccare la pagina (src/views/ListaOrdini.tsx).
  * Dati di esempio di una pizzeria, nessun dato reale.
  */
-
-/* ---------- dati di esempio ---------- */
-
-type Voce = { n: string; q: string; u: string; f?: string; scorta?: boolean };
-type Categoria = { c: string; voci: Voce[] };
-type Reparto = { r: string; cat: Categoria[] };
-
-const dati = (): Reparto[] => [
-  {
-    r: tr("Pizzeria"),
-    cat: [
-      {
-        c: tr("Alimentari"),
-        voci: [
-          { n: tr("Farina tipo 00"), q: "3", u: tr("sacchi"), f: tr("Molino") },
-          { n: tr("Farina integrale"), q: "1", u: tr("sacco"), f: tr("Molino") },
-          { n: tr("Pomodoro pelato"), q: "2", u: tr("cartoni"), f: tr("Ingrosso") },
-          { n: tr("Lievito di birra"), q: "4", u: tr("pezzi"), f: tr("Ingrosso"), scorta: true },
-          { n: tr("Sale grosso"), q: "1", u: tr("sacco"), f: tr("Ingrosso") },
-          { n: tr("Origano"), q: "2", u: tr("pezzi"), f: tr("Ingrosso") },
-        ],
-      },
-      {
-        c: tr("Freschi"),
-        voci: [
-          { n: tr("Mozzarella fior di latte"), q: "12", u: "kg", f: tr("Caseificio") },
-          { n: tr("Mozzarella di bufala"), q: "4", u: "kg", f: tr("Caseificio") },
-          { n: tr("Basilico"), q: "3", u: tr("mazzi"), f: tr("Ortofrutta") },
-          { n: tr("Salame piccante"), q: "2", u: "kg", f: tr("Salumificio") },
-        ],
-      },
-      {
-        c: tr("Surgelati"),
-        voci: [
-          { n: tr("Patatine"), q: "3", u: tr("cartoni"), f: tr("Ingrosso") },
-          { n: tr("Crocchette"), q: "2", u: tr("cartoni"), f: tr("Ingrosso") },
-        ],
-      },
-    ],
-  },
-  {
-    r: tr("Cucina"),
-    cat: [
-      {
-        c: tr("Alimentari"),
-        voci: [
-          { n: tr("Olio extravergine"), q: "6", u: tr("litri"), f: tr("Frantoio") },
-          { n: tr("Pasta di semola"), q: "5", u: "kg", f: tr("Ingrosso") },
-          { n: tr("Riso carnaroli"), q: "2", u: "kg", f: tr("Ingrosso") },
-          { n: tr("Parmigiano"), q: "2", u: "kg", f: tr("Caseificio") },
-        ],
-      },
-      {
-        c: tr("Freschi"),
-        voci: [
-          { n: tr("Uova"), q: "60", u: tr("pezzi"), f: tr("Ortofrutta") },
-          { n: tr("Panna da cucina"), q: "4", u: tr("litri"), f: tr("Caseificio") },
-          { n: tr("Verdure di stagione"), q: "5", u: "kg", f: tr("Ortofrutta") },
-        ],
-      },
-    ],
-  },
-  {
-    r: tr("Bar"),
-    cat: [
-      {
-        c: tr("Bevande"),
-        voci: [
-          { n: tr("Acqua naturale"), q: "4", u: tr("casse"), f: tr("Ingrosso bevande") },
-          { n: tr("Acqua frizzante"), q: "3", u: tr("casse"), f: tr("Ingrosso bevande") },
-          { n: tr("Birra in bottiglia"), q: "3", u: tr("casse"), f: tr("Ingrosso bevande") },
-          { n: tr("Caffè in grani"), q: "4", u: "kg", f: tr("Torrefazione") },
-          { n: tr("Limoni"), q: "2", u: "kg", f: tr("Ortofrutta") },
-        ],
-      },
-    ],
-  },
-  {
-    r: tr("Pulizie"),
-    cat: [
-      {
-        c: tr("Detersivi"),
-        voci: [
-          { n: tr("Detersivo piatti"), q: "2", u: tr("taniche"), f: tr("Ingrosso") },
-          { n: tr("Sgrassatore"), q: "3", u: tr("bottiglie"), f: tr("Ingrosso") },
-          { n: tr("Rotoli di carta"), q: "2", u: tr("cartoni"), f: tr("Ingrosso") },
-          { n: tr("Sacchi per rifiuti"), q: "1", u: tr("cartone"), f: tr("Ingrosso") },
-        ],
-      },
-    ],
-  },
-];
-
-/** Colore del brand della pizzeria di esempio, usato sul foglio stampato. */
-const BRAND = "#b4532a";
 
 /* ---------- pezzi comuni ---------- */
 
@@ -348,7 +254,7 @@ export function ListaOrdiniHero() {
 
 /**
  * Telefono con la lista, notifica e foglio A4 in un'unica immagine, come nell'apertura della pagina.
- * Da tablet in su il foglio sta dietro il telefono; su telefono va sotto, a tutta larghezza, per restare leggibile.
+ * Si usa da tablet in su; su telefono la home mostra ListaOrdiniHeroTelefono.
  */
 export function ListaOrdiniHome() {
   return (
@@ -360,7 +266,6 @@ export function ListaOrdiniHome() {
         </div>
         <NotificaLista className="absolute -top-2 left-1/2 z-20 -translate-x-1/2 sm:left-auto sm:right-2 sm:top-auto sm:bottom-6 sm:translate-x-0" />
       </div>
-      <FoglioA4 className="relative z-20 mx-auto -mt-1 w-full max-w-[420px] rotate-[-1.5deg] sm:hidden" />
     </Scena>
   );
 }

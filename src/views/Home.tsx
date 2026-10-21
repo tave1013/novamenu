@@ -16,6 +16,7 @@ import { Pricing } from "@/components/Pricing";
 import { Reviews } from "@/components/Reviews";
 import { FeatureComposite } from "@/components/StaticArt";
 import { ListaOrdiniHome } from "@/components/visuals/ListaOrdini";
+import { ListaOrdiniHeroTelefono } from "@/components/visuals/ListaOrdiniTelefono";
 import { PhotoSplit } from "@/components/PhotoReveal";
 import { ArtSplit, PhotoSlot } from "@/components/Servizi";
 import { featureById, getGeneralFaq, getSectors } from "@/content";
@@ -228,7 +229,7 @@ export default async function Home() {
 
         {/* Lista ordini: dopo le altre sezioni grandi, con il testo dall'altra parte rispetto a quella prima */}
         <section id="f-lista-ordini" className="border-t border-line-soft py-12 md:py-16">
-          <div className="wrap grid items-center gap-8 md:gap-10 lg:grid-cols-2 lg:gap-14">
+          <div className="wrap grid items-center gap-7 md:gap-10 lg:grid-cols-2 lg:gap-14">
             <Reveal className="min-w-0 lg:order-1">
               <span className={`inline-flex items-center gap-2 rounded-full px-2.5 py-1 text-[13px] font-medium ${toneClass.amber.bg} ${toneClass.amber.ink}`}>
                 <Icon name="clipboard" size={14} stroke={2} />
@@ -264,7 +265,13 @@ export default async function Home() {
               <p className="mt-3 text-[13.5px] text-muted">{tr("Inclusa nei piani Pro e Premium")}</p>
             </Reveal>
             <Reveal delay={150} className="min-w-0 lg:order-2">
-              <ListaOrdiniHome />
+              {/* Telefono: solo il telefono con la lista, grande e leggibile; da tablet in su la composizione completa */}
+              <div className="md:hidden">
+                <ListaOrdiniHeroTelefono />
+              </div>
+              <div className="hidden md:block">
+                <ListaOrdiniHome />
+              </div>
             </Reveal>
           </div>
         </section>

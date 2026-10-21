@@ -1,4 +1,4 @@
-import { tr } from "@/i18n";
+import { getLocale, tr } from "@/i18n";
 import Link from "next/link";
 import { signupUrl } from "@/config/site";
 import { Icon, IconTile } from "@/components/Icon";
@@ -20,26 +20,55 @@ import {
   VisTeam,
   type Formato,
 } from "@/components/visuals/ListaOrdini";
+import {
+  ListaOrdiniHeroTelefono,
+  PassoControllaTelefono,
+  PassoSegnaTelefono,
+  PassoStampaTelefono,
+  VisAvvisiTelefono,
+  VisMagazzinoTelefono,
+  VisOrganizzaTelefono,
+  VisStampaTelefono,
+  VisTeamTelefono,
+} from "@/components/visuals/ListaOrdiniTelefono";
+import { StampaTelefono } from "@/components/visuals/StampaTelefono";
 
 /*
  * Pagina della funzione Lista ordini. Ha più sezioni delle altre pagine delle funzionalità
  * (cinque blocchi con immagine e i tre formati del foglio), ma usa gli stessi componenti e lo stesso stile.
  * I testi stanno in src/content/features.ts e src/content/en/features.ts; le immagini in
  * src/components/visuals/ListaOrdini.tsx, una per componente, da sostituire con gli screenshot veri.
+ * Sotto i 768 px ogni illustrazione ha una versione pensata per il telefono
+ * (src/components/visuals/ListaOrdiniTelefono.tsx): da tablet in su si vedono quelle del computer.
+ * Su telefono gli spazi sono uguali in tutta la pagina: 40 px sopra e sotto ogni sezione,
+ * 28 px tra il testo e la grafica.
  */
 const passi = [PassoSegna, PassoControlla, PassoStampa];
+const passiTelefono = [PassoSegnaTelefono, PassoControllaTelefono, PassoStampaTelefono];
+const giorni = () => (getLocale() === "en" ? ["M", "T", "W", "T", "F", "S", "S"] : ["L", "M", "M", "G", "V", "S", "D"]);
 const blocchi = [VisOrganizza, VisMagazzino, VisTeam, VisStampa, VisAvvisi];
+const blocchiTelefono = [VisOrganizzaTelefono, VisMagazzinoTelefono, VisTeamTelefono, VisStampaTelefono, () => <VisAvvisiTelefono giorni={giorni()} />];
+
+/** Versione per telefono sotto i 768 px, quella del computer da tablet in su. */
+function Doppia({ telefono, computer }: { telefono: React.ReactNode; computer: React.ReactNode }) {
+  return (
+    <>
+      <div className="md:hidden">{telefono}</div>
+      <div className="hidden md:block">{computer}</div>
+    </>
+  );
+}
 const formati: Formato[] = ["verticale", "orizzontale", "tabella"];
 
 export function ListaOrdiniView({ f }: { f: Feature }) {
   return (
     <>
       {/* Apertura */}
-      <section className="relative pb-12 pt-6 md:pb-16 md:pt-8">
+      <section className="relative pb-10 pt-6 md:pb-16 md:pt-8">
         <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-[520px] opacity-70 [mask-image:linear-gradient(180deg,#000,transparent)]" style={{ backgroundImage: toneGlow[f.tone] }} />
         <div className="wrap relative">
           <Breadcrumbs items={[{ name: tr("Funzionalità"), href: lp("/funzionalita/") }, { name: f.name, href: to("feature", f.id) }]} />
-          <div className="mt-8 grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12">
+          <div className="mt-8 grid items-center gap-7 md:gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12">
             <div>
               <div className="anim-fade-up flex flex-wrap items-center gap-2.5">
                 <IconTile name={f.icon} tone={f.tone} size={36} radius={10} />
@@ -72,7 +101,7 @@ export function ListaOrdiniView({ f }: { f: Feature }) {
               </p>
             </div>
             <div className="anim-fade-up min-w-0" style={{ animationDelay: "200ms" }}>
-              <ListaOrdiniHero />
+              <Doppia telefono={<ListaOrdiniHeroTelefono />} computer={<ListaOrdiniHero />} />
             </div>
           </div>
         </div>
@@ -82,12 +111,13 @@ export function ListaOrdiniView({ f }: { f: Feature }) {
       <section className="border-y border-line bg-white py-10 md:py-16">
         <div className="wrap">
           <h2 className="eyebrow">{tr("Come funziona")}</h2>
-          <ol className="mt-6 grid gap-9 md:grid-cols-3 md:gap-6">
+          <ol className="mt-7 grid gap-10 md:mt-6 md:grid-cols-3 md:gap-6">
             {f.steps.map((s, i) => {
               const Illustrazione = passi[i];
+              const IllustrazioneTelefono = passiTelefono[i];
               return (
                 <Reveal as="li" key={s.title} delay={i * 90}>
-                  {Illustrazione && <Illustrazione />}
+                  {Illustrazione && IllustrazioneTelefono && <Doppia telefono={<IllustrazioneTelefono />} computer={<Illustrazione />} />}
                   <div className="mt-4 grid grid-cols-[32px_1fr] items-start gap-x-3">
                     <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-ink text-[13px] font-semibold tabular-nums text-[#fafaf8]">{i + 1}</span>
                     <span className="pt-0.5 text-[19px] font-semibold leading-snug tracking-[-0.015em] text-ink">{s.title}</span>
@@ -104,6 +134,7 @@ export function ListaOrdiniView({ f }: { f: Feature }) {
       <section className="md:py-10">
         {f.sections.map((s, i) => {
           const Visual = blocchi[i];
+          const VisualTelefono = blocchiTelefono[i];
           const testoPrima = i % 2 === 0;
           return (
             <div key={s.title} className={`py-10 md:py-16 ${i > 0 ? "border-t border-line-soft" : ""}`}>
@@ -121,7 +152,7 @@ export function ListaOrdiniView({ f }: { f: Feature }) {
                   </ul>
                 </Reveal>
                 <Reveal delay={150} className={`min-w-0 ${testoPrima ? "lg:order-2" : "lg:order-1"}`}>
-                  {Visual && <Visual />}
+                  {Visual && VisualTelefono && <Doppia telefono={<VisualTelefono />} computer={<Visual />} />}
                 </Reveal>
               </div>
             </div>
@@ -131,14 +162,18 @@ export function ListaOrdiniView({ f }: { f: Feature }) {
 
       {/* Il foglio stampato, nei tre formati */}
       {f.fogli && (
-        <section className="py-14 md:py-24" style={{ backgroundImage: toneGlow[f.tone], backgroundColor: "#f6f6f3" }}>
+        <section className="py-10 md:py-24" style={{ backgroundImage: toneGlow[f.tone], backgroundColor: "#f6f6f3" }}>
           <div className="wrap">
-            <Reveal className="mx-auto max-w-[720px] text-center">
+            <Reveal className="mx-auto max-w-[720px] md:text-center">
               <p className="eyebrow">{tr("Stampa")}</p>
-              <h2 className="h-section mt-3">{f.fogli.title}</h2>
-              <p className="lead mx-auto mt-4 max-w-[600px]">{f.fogli.text}</p>
+              <h2 className="h-section mt-3 max-md:text-[1.75rem] max-md:leading-[1.15]">{f.fogli.title}</h2>
+              <p className="lead mx-auto mt-4 max-w-[600px] max-md:mt-3 max-md:text-[16px]">{f.fogli.text}</p>
             </Reveal>
-            <div className="mx-auto mt-10 grid max-w-[560px] items-end gap-12 md:mt-12 lg:max-w-none lg:grid-cols-[1fr_1.4fr_1fr] lg:gap-6">
+            {/* Telefono: un foglio alla volta, scelto con le schede */}
+            <div className="mt-7 md:hidden">
+              <StampaTelefono formati={f.fogli.formati} />
+            </div>
+            <div className="mx-auto mt-12 hidden max-w-[560px] items-end gap-12 md:grid lg:max-w-none lg:grid-cols-[1fr_1.4fr_1fr] lg:gap-6">
               {f.fogli.formati.map((x, i) => (
                 <Reveal key={x.name} delay={i * 90} className="min-w-0">
                   <FoglioA4 formato={formati[i]} />

@@ -1296,4 +1296,8 @@ export const en: Record<MessageKey, string> = {
   "Euro": "Euros",
   "Sterline": "Pounds sterling",
   "Valuta dei prezzi": "Price currency",
+  "Verticale": "Portrait",
+  "Orizzontale": "Landscape",
+  "Tabella": "Table",
+  "Formato del foglio": "Sheet format",
 };
