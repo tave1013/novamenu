@@ -1,9 +1,9 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { COOKIE_LINGUA, linguaIniziale } from "@/i18n/lingua-iniziale";
+import { COOKIE_PREFERENZE, leggiPreferenze, linguaIniziale } from "@/i18n/lingua-iniziale";
 
 /*
  * Lingua alla prima visita della home.
- * - Se l'utente ha scelto una lingua dal selettore (cookie NEXT_LOCALE), vale sempre la sua scelta.
+ * - Se l'utente ha scelto una lingua dal selettore (cookie nm_preferenze), vale sempre la sua scelta.
  * - Altrimenti decide il paese dell'IP (header di Vercel x-vercel-ip-country):
  *   Italia, San Marino e Città del Vaticano restano in italiano, gli altri paesi vanno all'inglese.
  *   Senza paese si resta in italiano.
@@ -12,7 +12,7 @@ import { COOKIE_LINGUA, linguaIniziale } from "@/i18n/lingua-iniziale";
  */
 export function middleware(req: NextRequest) {
   const lingua = linguaIniziale({
-    cookie: req.cookies.get(COOKIE_LINGUA)?.value,
+    scelta: leggiPreferenze(req.cookies.get(COOKIE_PREFERENZE)?.value).lingua,
     paese: req.headers.get("x-vercel-ip-country"),
     userAgent: req.headers.get("user-agent"),
   });

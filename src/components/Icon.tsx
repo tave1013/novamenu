@@ -50,6 +50,12 @@ const paths = {
   euro: "M17 6.5A7 7 0 0 0 6.5 12 7 7 0 0 0 17 17.5M4 10h9M4 14h9",
   heart: "M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.2a4.3 4.3 0 0 1 7.5 2.6C19.5 15.4 12 20 12 20z",
   grid: "M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z",
+  clipboard: "M9 4h6v3H9zM9 5.5H6v15.5h12V5.5h-3M9 11h6M9 15h6M9 19h3",
+  printer: "M7 9V4h10v5M7 17H4v-7h16v7h-3M7 14h10v7H7z",
+  bell: "M6 16V11a6 6 0 0 1 12 0v5l2 2H4zM10 21h4",
+  wifiOff: "M3 3l18 18M8.5 16.5a5 5 0 0 1 7 0M5 13a10 10 0 0 1 5-2.7M14 10.3A10 10 0 0 1 19 13M2 9.5a15 15 0 0 1 4.5-2.9M11 5.1A15 15 0 0 1 22 9.5M12 20h.01",
+  layers: "M12 3l9 5-9 5-9-5zM3 13l9 5 9-5M3 17.5l9 5 9-5",
+  repeat: "M4 12a8 8 0 0 1 14-5.3M20 4v4h-4M20 12a8 8 0 0 1-14 5.3M4 20v-4h4",
 } as const;
 
 export type IconName = keyof typeof paths;

@@ -1,18 +1,16 @@
 import type { Plan, comparison as comparisonIt, generalFaq as generalFaqIt } from "../plans";
 
-/* Piani, confronto e domande frequenti in inglese. I prezzi sono in sterline e hanno un listino proprio; le condizioni sono le stesse dell'italiano. */
+/* Piani, confronto e domande frequenti in inglese. I prezzi stanno in src/config/prezzi.ts; le condizioni sono le stesse dell'italiano. */
 export const plans: Plan[] = [
   {
     id: "base",
     name: "Base",
-    monthly: 17,
     desc: "For a digital menu done properly.",
     highlights: ["QR code digital menu", "AI menu import", "Opening hours, holidays and closures", "Your logo and colours", "Email support"],
   },
   {
     id: "pro",
     name: "Pro",
-    monthly: 35,
     desc: "For venues doing takeaway and taking bookings.",
     popular: true,
     highlights: ["Everything in Base", "WhatsApp orders", "Bookings and floor plan", "Menu translated into 4 languages", "Voice assistant on Telegram"],
@@ -20,7 +18,6 @@ export const plans: Plan[] = [
   {
     id: "premium",
     name: "Premium",
-    monthly: 59,
     desc: "For bringing customers back, automatically.",
     highlights: ["Everything in Pro", "Customer profiles", "WhatsApp automations", "Messages to customer groups", "Your own domain"],
   },
@@ -63,6 +60,7 @@ export const comparison: typeof comparisonIt = [
     rows: [
       { label: "Analytics", base: "Basic", pro: "Full", premium: "Full" },
       { label: "Voice assistant on Telegram", base: false, pro: true, premium: true },
+      { label: "Supplier order list", base: false, pro: true, premium: true },
       { label: "Staff logins", base: "1", pro: "3", premium: "Unlimited" },
       { label: "Staff rotas", base: false, pro: false, premium: true },
       { label: "Support", base: "Email", pro: "Email and WhatsApp", premium: "Priority" },

@@ -1,4 +1,6 @@
-import { getLocale, money, symbolFirst, t, tr } from "@/i18n";
+import { getLocale, t, tr } from "@/i18n";
+import { formatoPrezzo, prezzoMensile } from "@/config/prezzi";
+import { LinkIscrizione, PrezzoMensile } from "@/components/Valuta";
 import type { Metadata } from "next";
 import { signupUrl } from "@/config/site";
 import { Icon } from "@/components/Icon";
@@ -8,14 +10,27 @@ import { Pricing } from "@/components/Pricing";
 import { Reveal } from "@/components/Reveal";
 import { getComparison, getGeneralFaq, getPlans } from "@/content";
 import { lp } from "@/i18n/link";
-import type { Locale } from "@/i18n/config";
+import { localeInfo, type Locale } from "@/i18n/config";
+
+/** Prezzi in euro (e in sterline per la versione inglese) per titolo e descrizione della pagina. */
+const prezziMeta = (locale: Locale) => {
+  const f = (n: number, v: "eur" | "gbp") => formatoPrezzo(n, v, localeInfo[locale].intl);
+  return {
+    base: f(prezzoMensile("base", "eur"), "eur"),
+    pro: f(prezzoMensile("pro", "eur"), "eur"),
+    premium: f(prezzoMensile("premium", "eur"), "eur"),
+    baseGbp: f(prezzoMensile("base", "gbp"), "gbp"),
+    proGbp: f(prezzoMensile("pro", "gbp"), "gbp"),
+    premiumGbp: f(prezzoMensile("premium", "gbp"), "gbp"),
+  };
+};
 
 export const meta = (locale: Locale): Metadata =>
   pageMeta({
     locale,
     page: "pricing",
-    title: t(locale, "Prezzi: da 19 euro al mese, senza commissioni"),
-    description: t(locale, "Prezzi del menu digitale NovaMenu: Base 19 €, Pro 39 € e Premium 69 € al mese. Nessuna commissione sugli ordini. Prova gratis 14 giorni, disdici quando vuoi."),
+    title: t(locale, "Prezzi: da {base} al mese + IVA, senza commissioni", prezziMeta(locale)),
+    description: t(locale, "Prezzi del menu digitale NovaMenu: Base {base}, Pro {pro} e Premium {premium} al mese + IVA. Nessuna commissione sugli ordini. Prova gratis 14 giorni.", prezziMeta(locale)),
   });
 
 function Cell({ v }: { v: boolean | string }) {
@@ -69,7 +84,9 @@ export default function PrezziPage() {
                   {getPlans().map((p) => (
                     <th key={p.id} scope="col" className="p-5 text-center">
                       <span className="block text-[17px] font-semibold text-ink">{p.name}</span>
-                      <span className="block text-[13px] font-normal text-muted">{symbolFirst() ? money(p.monthly) : p.monthly}{" "}{tr("€ al mese")}</span>
+                      <span className="block text-[13px] font-normal text-muted">
+                        <PrezzoMensile eur={prezzoMensile(p.id, "eur")} gbp={prezzoMensile(p.id, "gbp")} />
+                      </span>
                     </th>
                   ))}
                 </tr>
@@ -104,9 +121,9 @@ export default function PrezziPage() {
                   <td className="p-5" />
                   {getPlans().map((p) => (
                     <td key={p.id} className="p-5 text-center">
-                      <a href={`${signupUrl}?piano=${p.id}`} className={`btn btn-sm ${p.popular ? "btn-dark" : "btn-light"}`}>
+                      <LinkIscrizione base={signupUrl} piano={p.id} className={`btn btn-sm ${p.popular ? "btn-dark" : "btn-light"}`}>
                         {tr("Prova")}{" "}{p.name}
-                      </a>
+                      </LinkIscrizione>
                     </td>
                   ))}
                 </tr>

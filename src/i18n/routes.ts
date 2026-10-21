@@ -61,6 +61,7 @@ export const slugs: Record<Collection, Record<string, Partial<Record<Locale, str
     "automazioni-whatsapp": { en: "whatsapp-automations" },
     statistiche: { en: "analytics" },
     "staff-e-turni": { en: "staff-and-rotas" },
+    "lista-ordini": { en: "order-list" },
     assistente: { en: "voice-assistant" },
   },
   sector: {

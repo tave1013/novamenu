@@ -26,6 +26,7 @@ const heroHl = (): Record<string, string> => ({
   assistente: tr("a voce"),
 });
 import { FeatureVisual } from "@/components/visuals/FeatureVisual";
+import { ListaOrdiniView } from "./ListaOrdini";
 import { featureById, featureBySlug, getFeatures, getSectors } from "@/content";
 import { to, lp } from "@/i18n/link";
 import type { Locale } from "@/i18n/config";
@@ -35,12 +36,14 @@ export const staticParams = (locale: Locale) => getFeatures(locale).map((f) => (
 export function meta(locale: Locale, slug: string): Metadata {
   const f = featureBySlug(slug, locale);
   if (!f) return {};
-  return pageMeta({ locale, page: "feature", id: f.id, title: f.seo.title, description: f.seo.description });
+  const image = f.id === "lista-ordini" ? { url: `/og/lista-ordini-${locale}.png`, alt: f.hero.title } : undefined;
+  return pageMeta({ locale, page: "feature", id: f.id, title: f.seo.title, description: f.seo.description, image });
 }
 
 export default function FeaturePage({ slug }: { slug: string }) {
   const f = featureBySlug(slug);
   if (!f) notFound();
+  if (f.id === "lista-ordini") return <ListaOrdiniView f={f} />;
   const related = f.related.map((s) => featureById(s)!).filter(Boolean);
   const idx = getFeatures().findIndex((x) => x.slug === f.slug);
   const next = getFeatures()[(idx + 1) % getFeatures().length];

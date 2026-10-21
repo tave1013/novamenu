@@ -1,5 +1,6 @@
 import type { Guide } from "../guides";
 import { sectorGuides } from "./guides-settori";
+import { formatoPrezzo, prezzoMensile } from "@/config/prezzi";
 
 /* Contenuti in inglese: stessa forma del file italiano, generati a partire da quello. */
 const baseGuides: Omit<Guide, "slug">[] = [
@@ -100,7 +101,7 @@ const baseGuides: Omit<Guide, "slug">[] = [
 </div>
 
 <h2>How much it costs</h2>
-<p>A good digital menu costs less than one reprint a year. With {{brand}} you start from the Base plan at £17 a month, with AI import, QR code and unlimited updates. You can try it free for 14 days.</p>
+<p>A good digital menu costs less than one reprint a year. With {{brand}} you start from the Base plan at ${formatoPrezzo(prezzoMensile("base", "eur"), "eur", "en-GB")} a month excl. VAT (${formatoPrezzo(prezzoMensile("base", "gbp"), "gbp", "en-GB")} in the UK), with AI import, QR code and unlimited updates. You can try it free for 14 days.</p>
 `,
   },
   {

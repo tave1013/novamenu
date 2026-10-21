@@ -1,19 +1,20 @@
 "use client";
 
-import { getLocale, money, num, symbolFirst, tr } from "@/i18n";
-import { localeInfo } from "@/i18n/config";
+import { tr } from "@/i18n";
 import { useState } from "react";
-import { annualMonthly } from "@/content/plans";
+import { mensileConAnnuale, prezzoAnnuale, prezzoMensile } from "@/config/prezzi";
 import { signupUrl } from "@/config/site";
+import { SelettoreValuta, useValuta } from "./Valuta";
 import { Check } from "./ui";
 import { HandNote } from "./HandNote";
 import { getPlans } from "@/content/plansByLocale";
 
 export function Pricing() {
   const [annual, setAnnual] = useState(false);
+  const { valuta, pronta, formato } = useValuta();
   return (
     <div>
-      <div className="flex justify-center">
+      <div className="flex flex-wrap items-center justify-center gap-2.5">
         <div role="radiogroup" aria-label={tr("Periodo di fatturazione")} className="inline-flex rounded-[12px] border border-line bg-white p-1">
           {[
             { v: false, l: tr("Mensile") },
@@ -34,12 +35,13 @@ export function Pricing() {
             </button>
           ))}
         </div>
+        <SelettoreValuta />
       </div>
 
       <div className="relative mt-10 grid gap-4 lg:mt-24 lg:grid-cols-3">
         <HandNote text={tr("Ti consigliamo questo")} className="absolute -top-[52px] left-[calc(33.333%-226px)] hidden lg:flex" />
         {getPlans().map((p) => {
-          const price = annual ? annualMonthly(p.monthly) : p.monthly;
+          const price = annual ? mensileConAnnuale(p.id, valuta) : prezzoMensile(p.id, valuta);
           return (
             <div
               key={p.id}
@@ -52,17 +54,16 @@ export function Pricing() {
                 {p.popular && <span className="rounded-full bg-lime px-2.5 py-1 text-[12px] font-medium text-forest">{tr("Il più scelto")}</span>}
               </div>
               <p className="mt-1.5 text-[15px] text-muted">{p.desc}</p>
-              <div className="mt-6 flex items-baseline gap-1.5">
-                <span key={String(price)} className="anim-fade-up text-[46px] font-semibold leading-none tracking-[-0.04em] text-ink tabular-nums">
-                  {symbolFirst() ? localeInfo[getLocale()].symbol : ""}
-                  {num(price)}
+              <div className={`mt-6 flex flex-wrap items-baseline gap-x-1.5 gap-y-1 transition-opacity duration-300 ${pronta ? "opacity-100" : "opacity-0"}`}>
+                <span key={`${valuta}-${price}`} className="anim-fade-up text-[46px] font-semibold leading-none tracking-[-0.04em] text-ink tabular-nums">
+                  {formato(price)}
                 </span>
-                <span className="text-[15px] text-muted">{tr("€ al mese")}</span>
+                <span className="text-[15px] text-muted">{tr("al mese + IVA")}</span>
               </div>
-              <p className="mt-2 text-[13px] text-muted">
-                {annual ? tr("{amount} all'anno, IVA esclusa", { amount: money(p.monthly * 10) }) : tr("Fatturato ogni mese, IVA esclusa")}
+              <p className={`mt-2 text-[13px] text-muted transition-opacity duration-300 ${pronta ? "opacity-100" : "opacity-0"}`}>
+                {annual ? tr("{amount} all'anno + IVA, in un solo pagamento", { amount: formato(prezzoAnnuale(p.id, valuta)) }) : tr("Fatturato ogni mese")}
               </p>
-              <a href={`${signupUrl}?piano=${p.id}`} className={`btn mt-6 w-full ${p.popular ? "btn-dark pulse" : "btn-light"}`}>
+              <a href={`${signupUrl}?piano=${p.id}&valuta=${valuta}${annual ? "&periodo=annuale" : ""}`} className={`btn mt-6 w-full ${p.popular ? "btn-dark pulse" : "btn-light"}`}>
                 {tr("Prova gratis 14 giorni")}
               </a>
               <ul className="mt-7 flex flex-col gap-3 border-t border-line-soft pt-6 text-[15px] text-text">

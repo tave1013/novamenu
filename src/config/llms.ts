@@ -1,6 +1,6 @@
 import { site } from "./site";
 import { featureGroups } from "@/content/features";
-import { annualMonthly, fmtEuro } from "@/content/plans";
+import { formatoPrezzo, mensileConAnnuale, prezzoAnnuale, prezzoMensile } from "./prezzi";
 import { getFeatures, getGeneralFaq, getGuides, getPlans, getSectors } from "@/content";
 
 // I file llms.txt sono in italiano, la lingua principale del sito.
@@ -11,6 +11,8 @@ const plans = getPlans("it");
 const generalFaq = getGeneralFaq("it");
 
 const u = (path: string) => `${site.url}${path}`;
+const e = (n: number) => formatoPrezzo(n, "eur", "it-IT");
+const g = (n: number) => formatoPrezzo(n, "gbp", "it-IT");
 
 const intro = () => [
   `# ${site.name}`,
@@ -27,8 +29,9 @@ const prices = () => [
   "",
   ...plans.map(
     (p) =>
-      `- Piano ${p.name}: ${p.monthly} € al mese, oppure ${p.monthly * 10} € all'anno (2 mesi gratis, pari a ${fmtEuro(annualMonthly(p.monthly))} € al mese). Prezzi IVA esclusa. ${p.desc} Include: ${p.highlights.join(", ")}.`
+      `- Piano ${p.name}: ${e(prezzoMensile(p.id, "eur"))} al mese + IVA, oppure ${e(prezzoAnnuale(p.id, "eur"))} all'anno + IVA (2 mesi gratis, pari a ${e(mensileConAnnuale(p.id, "eur"))} al mese). Nel Regno Unito: ${g(prezzoMensile(p.id, "gbp"))} al mese + IVA, oppure ${g(prezzoAnnuale(p.id, "gbp"))} all'anno + IVA. ${p.desc} Include: ${p.highlights.join(", ")}.`
   ),
+  "- I prezzi in sterline sono un listino a parte, non una conversione dagli euro.",
   "- Commissioni su ordini e prenotazioni: 0% in tutti i piani.",
   "- Prova gratuita: 14 giorni con le funzioni del piano Pro, senza carta di credito.",
   "- Con il piano mensile si disdice quando si vuole.",

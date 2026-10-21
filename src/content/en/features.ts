@@ -612,6 +612,107 @@ export const features: Omit<Feature, "slug">[] = [
     related: ["sala-e-tavoli", "prenotazioni", "assistente"],
   },
   {
+    id: "lista-ordini",
+    name: "Order list",
+    short: "What to order from suppliers",
+    group: "Gestione",
+    icon: "clipboard",
+    tone: "amber",
+    plan: "Pro",
+    visual: "listaOrdini",
+    seo: {
+      title: "Supplier order list for restaurants and pizzerias",
+      description:
+        "A supplier order list for your venue: staff mark what's running low on their phone, you check it and print the order on one A4 sheet. 14-day free trial.",
+    },
+    hero: {
+      title: "Your venue's shopping list, always in order",
+      lead: "Your staff mark what's running low, you check it and print the order on a single sheet.",
+    },
+    steps: [
+      { title: "Staff mark it", text: "On their phone, with + and −, what's missing in their section." },
+      { title: "You check it", text: "You get a notification, correct it if needed and confirm." },
+      { title: "The order is printed", text: "A tidy A4 sheet, or a PDF to send to your supplier." },
+    ],
+    sections: [
+      {
+        title: "Organise everything your way",
+        text: "Sections at the top, for example Pizzeria, Kitchen, Bar and Cleaning, and categories inside each section: Groceries, Fresh, Frozen. You create them, rename them and reorder them as you like. It works for pizzerias, restaurants, cafés, ice cream shops and pastry shops.",
+        points: [
+          "Start from a ready-made template (pizzeria, restaurant, bar), from scratch, or by pasting a list of products",
+          "Each product in a few seconds: name, unit, section and category",
+          "Kg, litres, pieces, cartons, sacks, tins, bottles, crates and your own units",
+          "Minimum stock and supplier, if you need them",
+          "The first letter is capitalised automatically, so the list always looks tidy",
+        ],
+      },
+      {
+        title: "Fast in the storeroom, even offline",
+        text: "You can use it with one hand, in front of the shelf. + and − buttons, or type the quantity on the keypad, with decimals for kg and litres.",
+        points: [
+          "Swipe to delete or reset, press and hold to edit, drag to reorder",
+          "Quick search and \"Below minimum only\" and \"With quantity only\" filters",
+          "It works offline too: the list sends itself when the connection comes back",
+        ],
+      },
+      {
+        title: "Your team marks it, you decide",
+        text: "Each member of staff signs in with their own account and only sees the sections you assign to them. When they're done they tap \"Send to owner\": no WhatsApp, no lost sheets.",
+        points: [
+          "You choose what they can do: only mark quantities, or also add products and create categories",
+          "Permissions are enforced by the system, not just hidden",
+          "You get a notification: \"Marco has filled in the list\"",
+          "After sending, staff can make corrections for a time you choose, for example one hour, then the list locks",
+          "Changes are easy to spot: old value crossed out, new value in red, added products labelled \"New\"",
+          "You can always edit, reopen and reprint. Before printing you confirm the order, and the sheet shows who confirmed it and when",
+        ],
+      },
+      {
+        title: "A perfect A4 sheet",
+        text: "The layout is automatic: columns fill to the bottom and sections and categories stay in order. 77 products fit on one sheet.",
+        points: [
+          "Three formats: portrait with two columns, landscape with three columns, or a single table",
+          "In your venue's colours, with clean borders, normal or large text",
+          "You can also print a blank sheet to fill in by hand",
+          "Print directly, including AirPrint from iPhone and iPad, or as a PDF to send by email or WhatsApp",
+        ],
+      },
+      {
+        title: "Reminders and history",
+        text: "When it's time to order, you send a reminder to your staff with one tap, or schedule it, for example every Tuesday and Friday at 10. If the list doesn't arrive, a follow-up reminder goes out.",
+        points: [
+          "Staff open the list straight from the notification",
+          "Every past list, with who filled it in, who confirmed it and every change",
+          "Search for a product: when you last ordered flour and how much",
+          "\"Repeat\" to order the same again, reprint and export to Excel",
+        ],
+      },
+    ],
+    benefits: [
+      { title: "No sheet on the kitchen wall", text: "The list is on everyone's phone, always up to date." },
+      { title: "No scattered messages", text: "Each section sends its part to the owner." },
+      { title: "Better orders", text: "Minimum stock and history tell you how much you need." },
+      { title: "One single sheet", text: "The printed order is clear for your supplier too." },
+    ],
+    faq: [
+      { q: "Do I need an account for each member of staff?", a: "Yes, free of charge, with the permissions you choose." },
+      { q: "Does it work without internet?", a: "Yes, the list sends itself when the connection comes back." },
+      { q: "Can I use my own sections?", a: "Yes, you create them and name them however you like." },
+      { q: "Can I print without a computer?", a: "Yes, from iPhone and iPad with AirPrint, or with the PDF." },
+      { q: "Is it included in my plan?", a: "It's included in the Pro and Premium plans. You can try it free for 14 days, no card needed." },
+    ],
+    related: ["staff-e-turni", "assistente", "statistiche"],
+    fogli: {
+      title: "The sheet your supplier receives",
+      text: "Choose the format you prefer. Sections and categories stay in order, and at the bottom it shows who confirmed the order and when.",
+      formati: [
+        { name: "Portrait, two columns", text: "The everyday format: lots of products on one sheet." },
+        { name: "Landscape, three columns", text: "For long lists, when you have many sections." },
+        { name: "Single table", text: "One row per product, with supplier and quantity." },
+      ],
+    },
+  },
+  {
     id: "assistente",
     name: "Voice assistant",
     short: "Manage everything with a voice note",

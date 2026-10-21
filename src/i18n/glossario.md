@@ -79,13 +79,15 @@ solo a un posto dove si beve alcol.
 
 ## Numeri, prezzi, date
 
-- In inglese gli importi sono in sterline. La valuta di ogni lingua sta in
-  `src/i18n/config.ts` (`currency`, `symbol`).
-- I piani hanno un listino in sterline a parte, in `src/content/en/plans.ts`:
-  Base £17, Pro £35, Premium £59 al mese (in italiano 19 €, 39 €, 69 €).
-  Gli stessi prezzi sono scritti anche nel titolo e nella descrizione della
-  pagina Prezzi (`dictionaries/en.ts`) e nella guida sul menu digitale
-  (`content/en/guides.ts`): se cambiano, vanno aggiornati anche lì.
+- I prezzi dei piani stanno solo in `src/config/prezzi.ts`, in euro e in sterline.
+  Le sterline sono un listino a parte (Base £18, Pro £55, Premium £79 al mese;
+  in euro 19 €, 59 €, 89 €), mai una conversione. La valuta non dipende dalla
+  lingua: Regno Unito in sterline, tutti gli altri paesi in euro, e il selettore
+  € / £ vicino ai prezzi salva la scelta nel cookie `nm_preferenze`.
+  Accanto al prezzo: "al mese + IVA", in inglese "per month, excl. VAT".
+- Negli esempi (prezzi dei piatti nelle illustrazioni e nelle guide) l'inglese usa
+  le sterline: la valuta di esempio di ogni lingua sta in `src/i18n/config.ts`
+  (`currency`, `symbol`).
 - I prezzi di esempio (piatti, ordini, conti nelle guide) tengono lo stesso
   numero e cambiano solo simbolo e formato: `27,50 €` → `£27.50`,
   `4.280 €` → `£4,280`.

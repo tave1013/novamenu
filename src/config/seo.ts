@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { site } from "./site";
+import { VALUTE, prezzoMensile, type Valuta } from "./prezzi";
 import { getPlans } from "@/content";
 import { t } from "@/i18n";
 import { defaultLocale, localeInfo, locales, type Locale } from "@/i18n/config";
@@ -34,6 +35,7 @@ export function pageMeta({
   description,
   absolute = false,
   article,
+  image: immagine,
 }: {
   locale: Locale;
   page: PageKey;
@@ -42,10 +44,12 @@ export function pageMeta({
   description: string;
   absolute?: boolean;
   article?: { publishedTime: string };
+  /** Immagine di anteprima propria della pagina (1200x630); altrimenti quella del sito. */
+  image?: { url: string; alt: string };
 }): Metadata {
   const full = absolute ? title : `${title} | ${site.name}`;
   const path = href(page, locale, id);
-  const image = ogImage(locale);
+  const image = immagine ? { ...immagine, width: 1200, height: 630 } : ogImage(locale);
   const base = {
     locale: localeInfo[locale].ogLocale,
     alternateLocale: locales.filter((l) => l !== locale).map((l) => localeInfo[l].ogLocale),
@@ -77,19 +81,24 @@ export function softwareApplicationLd(locale: Locale) {
     inLanguage: localeInfo[locale].intl,
     description: siteDescription(locale),
     publisher: { "@type": "Organization", name: site.name, url: site.url },
-    offers: getPlans(locale).map((p) => ({
-      "@type": "Offer",
-      name: t(locale, "Piano {name}", { name: p.name }),
-      description: p.desc,
-      price: String(p.monthly),
-      priceCurrency: localeInfo[locale].currency,
-      url: pricing,
-      priceSpecification: {
-        "@type": "UnitPriceSpecification",
-        price: String(p.monthly),
-        priceCurrency: localeInfo[locale].currency,
-        billingDuration: "P1M",
-      },
-    })),
+    // Un'offerta per piano e per valuta: euro per tutti, sterline per il Regno Unito. Prezzi IVA esclusa.
+    offers: getPlans(locale).flatMap((p) =>
+      (Object.keys(VALUTE) as Valuta[]).map((v) => ({
+        "@type": "Offer",
+        name: t(locale, "Piano {name}", { name: p.name }),
+        description: p.desc,
+        price: String(prezzoMensile(p.id, v)),
+        priceCurrency: VALUTE[v].codice,
+        ...(v === "gbp" ? { eligibleRegion: { "@type": "Country", name: "GB" } } : {}),
+        url: pricing,
+        priceSpecification: {
+          "@type": "UnitPriceSpecification",
+          price: String(prezzoMensile(p.id, v)),
+          priceCurrency: VALUTE[v].codice,
+          valueAddedTaxIncluded: false,
+          billingDuration: "P1M",
+        },
+      })),
+    ),
   };
 }

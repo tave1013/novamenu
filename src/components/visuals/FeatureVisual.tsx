@@ -12,6 +12,7 @@ import {
   StaffVisual,
   StatisticheVisual,
 } from "./VisualsB";
+import { TelefonoLista } from "./ListaOrdini";
 
 const map: Record<VisualKey, (p: { bare?: boolean }) => React.JSX.Element> = {
   menu: MenuVisual,
@@ -27,6 +28,7 @@ const map: Record<VisualKey, (p: { bare?: boolean }) => React.JSX.Element> = {
   statistiche: StatisticheVisual,
   staff: StaffVisual,
   assistente: AssistenteVisual,
+  listaOrdini: () => <div className="flex justify-center"><TelefonoLista /></div>,
 };
 
 export function FeatureVisual({ k }: { k: VisualKey }) {

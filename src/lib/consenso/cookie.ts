@@ -25,10 +25,10 @@ export const COOKIE: VoceCookie[] = [
     durata: { it: "6 mesi", en: "6 months" },
   },
   {
-    nome: "NEXT_LOCALE",
+    nome: "nm_preferenze",
     fornitore: { it: "NovaMenu (prima parte)", en: "NovaMenu (first party)" },
     categoria: "necessari",
-    scopo: { it: "Ricorda la lingua scelta", en: "Remembers the language you chose" },
+    scopo: { it: "Ricorda la lingua e la valuta che hai scelto", en: "Remembers the language and currency you chose" },
     durata: { it: "12 mesi", en: "12 months" },
   },
   {

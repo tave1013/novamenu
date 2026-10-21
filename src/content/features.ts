@@ -16,7 +16,8 @@ export type VisualKey =
   | "automazioni"
   | "statistiche"
   | "staff"
-  | "assistente";
+  | "assistente"
+  | "listaOrdini";
 
 export type Feature = {
   /** Identificativo interno, uguale in tutte le lingue (è lo slug italiano). */
@@ -36,6 +37,8 @@ export type Feature = {
   benefits: { title: string; text: string }[];
   faq: { q: string; a: string }[];
   related: string[];
+  /** Solo per le pagine con una sezione in più sui fogli stampati (Lista ordini). */
+  fogli?: { title: string; text: string; formati: { name: string; text: string }[] };
 };
 
 export const featureGroups = ["Menu", "Prenotazioni e sala", "Vendite e clienti", "Gestione"] as const;
@@ -649,6 +652,107 @@ export const features: Feature[] = withId<Feature>([
       { q: "Quanti collaboratori posso aggiungere?", a: "Nel piano Premium puoi aggiungere tutti i collaboratori che vuoi: non ci sono limiti al numero di accessi." },
     ],
     related: ["sala-e-tavoli", "prenotazioni", "assistente"],
+  },
+  {
+    slug: "lista-ordini",
+    name: "Lista ordini",
+    short: "Cosa ordinare ai fornitori",
+    group: "Gestione",
+    icon: "clipboard",
+    tone: "amber",
+    plan: "Pro",
+    visual: "listaOrdini",
+    seo: {
+      title: "Lista ordini ai fornitori per il tuo locale",
+      description:
+        "Lista ordini per i fornitori: i dipendenti segnano cosa manca dal telefono, tu controlli e stampi l'ordine su un foglio A4. Prova gratis 14 giorni.",
+    },
+    hero: {
+      title: "La lista della spesa del tuo locale, sempre in ordine",
+      lead: "I tuoi dipendenti segnano cosa manca, tu controlli e stampi l'ordine in un foglio solo.",
+    },
+    steps: [
+      { title: "Il dipendente segna", text: "Dal telefono, con + e −, cosa manca nel suo reparto." },
+      { title: "Il titolare controlla", text: "Riceve la notifica, corregge se serve e conferma." },
+      { title: "Si stampa l'ordine", text: "Un foglio A4 ordinato, oppure un PDF da mandare al fornitore." },
+    ],
+    sections: [
+      {
+        title: "Organizza tutto a modo tuo",
+        text: "Reparti in alto, per esempio Pizzeria, Cucina, Bar e Pulizie, e dentro ogni reparto le categorie: Alimentari, Freschi, Surgelati. Li crei, li rinomini e li riordini come vuoi. Va bene per pizzerie, ristoranti, bar, gelaterie e pasticcerie.",
+        points: [
+          "Parti da un modello pronto (pizzeria, ristorante, bar), da zero, oppure incollando un elenco di prodotti",
+          "Ogni prodotto in pochi secondi: nome, unità di misura, reparto e categoria",
+          "Kg, litri, pezzi, cartoni, sacchi, latte, bottiglie, casse e unità tue",
+          "Scorta minima e fornitore, se ti servono",
+          "La prima lettera diventa maiuscola da sola, così la lista è sempre ordinata",
+        ],
+      },
+      {
+        title: "Veloce in magazzino, anche senza rete",
+        text: "Si usa con una mano, davanti allo scaffale. Tasti + e −, oppure scrivi la quantità con il tastierino, anche con i decimali per kg e litri.",
+        points: [
+          "Scorri per eliminare o azzerare, tieni premuto per modificare, trascina per riordinare",
+          "Ricerca veloce e filtri \"Solo sotto scorta\" e \"Solo con quantità\"",
+          "Funziona anche senza rete: la lista si invia da sola quando torna la connessione",
+        ],
+      },
+      {
+        title: "Il team segna, tu decidi",
+        text: "Ogni dipendente entra con il suo account e vede solo i reparti che gli assegni. Quando ha finito preme \"Invia al titolare\": niente WhatsApp, niente fogli persi.",
+        points: [
+          "Scegli tu cosa può fare: solo segnare le quantità, oppure anche aggiungere prodotti e creare categorie",
+          "I permessi sono controllati dal sistema, non solo nascosti",
+          "Ti arriva una notifica: \"Marco ha compilato la lista\"",
+          "Dopo l'invio il dipendente può correggere per il tempo che scegli tu, per esempio un'ora, poi la lista si blocca",
+          "Le modifiche si vedono subito: valore vecchio barrato, nuovo in rosso, prodotti aggiunti con l'etichetta \"Nuovo\"",
+          "Tu puoi sempre modificare, riaprire e ristampare. Prima di stampare confermi l'ordine, e sul foglio compare chi l'ha confermato e quando",
+        ],
+      },
+      {
+        title: "Un foglio A4 perfetto",
+        text: "L'impaginazione è automatica: le colonne si riempiono fino in fondo e reparti e categorie restano in ordine. Con 77 prodotti basta un foglio.",
+        points: [
+          "Tre formati: verticale a due colonne, orizzontale a tre colonne, oppure una tabella sola",
+          "Con i colori del tuo locale, bordi puliti, testo normale o grande",
+          "Puoi stampare anche il foglio vuoto da compilare a penna",
+          "Stampa diretta, anche con AirPrint da iPhone e iPad, oppure PDF da mandare per email o WhatsApp",
+        ],
+      },
+      {
+        title: "Avvisi e storico",
+        text: "Quando è ora di fare l'ordine, mandi un avviso ai dipendenti con un tocco, oppure lo programmi, per esempio ogni martedì e venerdì alle 10. Se la lista non arriva, parte un promemoria.",
+        points: [
+          "Il dipendente apre la lista direttamente dalla notifica",
+          "Tutte le liste passate, con chi le ha compilate, chi le ha confermate e tutte le modifiche",
+          "Cerca un prodotto: quando hai ordinato la farina l'ultima volta e quanta",
+          "\"Rifai uguale\" per ripetere un ordine, ristampa ed esportazione in Excel",
+        ],
+      },
+    ],
+    benefits: [
+      { title: "Niente foglio in cucina", text: "La lista è sul telefono di tutti, sempre aggiornata." },
+      { title: "Niente messaggi sparsi", text: "Ogni reparto invia la sua parte al titolare." },
+      { title: "Ordini più giusti", text: "Scorta minima e storico ti dicono quanto serve." },
+      { title: "Un foglio solo", text: "L'ordine stampato è chiaro anche per il fornitore." },
+    ],
+    faq: [
+      { q: "Serve un account per ogni dipendente?", a: "Sì, gratuito, con i permessi che scegli tu." },
+      { q: "Funziona senza internet?", a: "Sì, la lista si invia da sola quando torna la rete." },
+      { q: "Posso usare i miei reparti?", a: "Sì, li crei e li chiami come vuoi tu." },
+      { q: "Posso stampare senza computer?", a: "Sì, da iPhone e iPad con AirPrint, oppure con il PDF." },
+      { q: "È inclusa nel mio piano?", a: "È inclusa nei piani Pro e Premium. Puoi provarla gratis per 14 giorni, senza carta." },
+    ],
+    related: ["staff-e-turni", "assistente", "statistiche"],
+    fogli: {
+      title: "Il foglio che arriva al fornitore",
+      text: "Scegli il formato che preferisci. Reparti e categorie restano in ordine, e in fondo c'è chi ha confermato l'ordine e quando.",
+      formati: [
+        { name: "Verticale, due colonne", text: "Il formato di tutti i giorni: tanti prodotti in un foglio." },
+        { name: "Orizzontale, tre colonne", text: "Per le liste lunghe, quando i reparti sono tanti." },
+        { name: "Tabella unica", text: "Una riga per prodotto, con fornitore e quantità." },
+      ],
+    },
   },
   {
     slug: "assistente",

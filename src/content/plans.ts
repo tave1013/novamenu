@@ -1,7 +1,9 @@
+import type { IdPiano } from "@/config/prezzi";
+
+/** I prezzi dei piani stanno in src/config/prezzi.ts, non qui. */
 export type Plan = {
-  id: "base" | "pro" | "premium";
+  id: IdPiano;
   name: string;
-  monthly: number;
   desc: string;
   popular?: boolean;
   highlights: string[];
@@ -11,14 +13,12 @@ export const plans: Plan[] = [
   {
     id: "base",
     name: "Base",
-    monthly: 19,
     desc: "Per avere il menu digitale fatto bene.",
     highlights: ["Menu digitale con QR", "Importazione con l'AI", "Orari, ferie e chiusure", "Logo e colori del locale", "Assistenza in italiano"],
   },
   {
     id: "pro",
     name: "Pro",
-    monthly: 39,
     desc: "Per chi fa asporto e prende prenotazioni.",
     popular: true,
     highlights: ["Tutto quello che c'è in Base", "Ordini su WhatsApp", "Prenotazioni e sala", "Menu tradotto in 4 lingue", "Assistente vocale su Telegram"],
@@ -26,16 +26,11 @@ export const plans: Plan[] = [
   {
     id: "premium",
     name: "Premium",
-    monthly: 69,
     desc: "Per far tornare i clienti, in automatico.",
     highlights: ["Tutto quello che c'è in Pro", "Schede clienti", "Automazioni WhatsApp", "Messaggi a gruppi di clienti", "Dominio del tuo locale"],
   },
 ];
 
-/** Prezzo mensile equivalente con pagamento annuale (2 mesi gratis). */
-export const annualMonthly = (m: number) => Math.round(((m * 10) / 12) * 100) / 100;
-export const fmtEuro = (n: number) =>
-  Number.isInteger(n) ? String(n) : n.toFixed(2).replace(".", ",");
 
 type Cell = boolean | string;
 export const comparison: { group: string; rows: { label: string; base: Cell; pro: Cell; premium: Cell }[] }[] = [
@@ -75,6 +70,7 @@ export const comparison: { group: string; rows: { label: string; base: Cell; pro
     rows: [
       { label: "Statistiche", base: "Base", pro: "Complete", premium: "Complete" },
       { label: "Assistente vocale su Telegram", base: false, pro: true, premium: true },
+      { label: "Lista ordini per i fornitori", base: false, pro: true, premium: true },
       { label: "Accessi per lo staff", base: "1", pro: "3", premium: "Illimitati" },
       { label: "Turni del personale", base: false, pro: false, premium: true },
       { label: "Assistenza in italiano", base: "Email", pro: "Email e WhatsApp", premium: "Prioritaria" },

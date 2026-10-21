@@ -1,6 +1,7 @@
 import type { SectorArt } from "./sectors";
 import { sectorGuides } from "./guides-settori";
 import { withId } from "./util";
+import { formatoPrezzo, prezzoMensile } from "@/config/prezzi";
 
 export type Guide = {
   /** Identificativo interno, uguale in tutte le lingue (è lo slug italiano). */
@@ -118,7 +119,7 @@ const baseGuides: Guide[] = withId<Guide>([
 </div>
 
 <h2>Quanto costa</h2>
-<p>Un menu digitale fatto bene costa meno di una ristampa all'anno. Con ${"{{brand}}"} parti dal piano Base a 19 euro al mese, con importazione tramite AI, QR e aggiornamenti illimitati. Puoi provarlo gratis per 14 giorni.</p>
+<p>Un menu digitale fatto bene costa meno di una ristampa all'anno. Con ${"{{brand}}"} parti dal piano Base a ${formatoPrezzo(prezzoMensile("base", "eur"), "eur", "it-IT")} al mese + IVA, con importazione tramite AI, QR e aggiornamenti illimitati. Puoi provarlo gratis per 14 giorni.</p>
 `,
   },
   {
