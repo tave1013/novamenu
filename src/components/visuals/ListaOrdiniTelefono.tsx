@@ -198,12 +198,16 @@ export function FoglioTelefono({ formato = "verticale", corto = false }: { forma
   if (formato === "orizzontale") {
     return (
       <div className="relative w-full overflow-hidden rounded-[4px]" role="img" aria-label={etichetta}>
-        <div className={`relative w-[165%] rounded-[4px] bg-white p-4 ${ombraFoglio}`} style={{ aspectRatio: "297 / 210" }}>
+        <div className={`relative w-[165%] overflow-hidden rounded-[4px] bg-white p-4 ${ombraFoglio}`} style={{ aspectRatio: "297 / 210" }}>
           <Testata />
+          {/* Tre colonne piene come nel foglio vero: la lista arriva fino in fondo e continua sotto la sfumatura */}
           <div className="grid grid-cols-3 gap-4">
-            {reparti.slice(0, 3).map((r) => (
-              <RepartoFoglio key={r.r} reparto={r} voci={4} />
-            ))}
+            <RepartoFoglio reparto={reparti[0]} categorie={3} voci={6} />
+            <div>
+              <RepartoFoglio reparto={reparti[1]} categorie={2} voci={4} />
+              <RepartoFoglio reparto={reparti[2]} voci={5} />
+            </div>
+            <RepartoFoglio reparto={reparti[3]} voci={4} />
           </div>
           <Sfumatura />
         </div>
