@@ -14,11 +14,19 @@ The data controller is **{{ragioneSociale}}**, a {{tipo}}, registration number {
 
 For any privacy questions and to exercise your rights, you can write to us at **[{{emailPrivacy}}](mailto:{{emailPrivacy}})**. We have not appointed a data protection officer (DPO), because we are not required to do so; the contact above is handled directly by the data controller.
 
+<!--
+RAPPRESENTANTE NELL'UE (art. 27 GDPR): tolto temporaneamente finché non è nominato.
+Per rimetterlo: togli questo commento, rinumera i punti successivi (+1) e aggiorna i link
+a /legale/privacy/#N in cookie.md e privacy-app.md (punto 9 -> 10, punto 10 -> 11),
+e il riferimento "punto 2"/"section 2" in questo file (diventa 3).
+
 ## 2. Representative in the European Union
 
 As the data controller is established in the United Kingdom and offers its services to individuals and businesses in the European Union, it has appointed a representative under Article 27 GDPR: **{{rappresentanteUE}}**. You may contact the representative, as an alternative to the data controller, on all matters relating to the processing of your data.
 
-## 3. Who this notice is for
+-->
+
+## 2. Who this notice is for
 
 This notice covers:
 
@@ -30,7 +38,7 @@ This notice covers:
 
 This notice does **not** cover the data of venues' customers (for example people who order or book through a NovaMenu menu). For that data the data controller is the individual venue, which provides its own privacy notice on its menu, and NovaMenu processes the data only on its behalf as a data processor, under the [Data Processing Agreement (DPA)](/en/legal/dpa/). If you are a customer of a venue, read the notice at the bottom of that venue's menu. For the use of the NovaMenu Business app, the [App privacy notice](/en/legal/app-privacy/) also applies.
 
-## 4. What data we process
+## 3. What data we process
 
 | Category | Data | Who we receive it from |
 | --- | --- | --- |
@@ -43,9 +51,9 @@ This notice does **not** cover the data of venues' customers (for example people
 | Communications and support | Content of messages, support requests, records of choices about marketing communications | From you |
 | Prospective customer data | Venue name, owner's name, public business contact details (website, social media page, venue telephone number) | From public sources or from you |
 
-We do not ask you for special categories of data (for example health data) for the use of the website or of the platform as a Customer. Information on the allergies and intolerances of venues' customers is processed only on behalf of the venues, as explained in section 3.
+We do not ask you for special categories of data (for example health data) for the use of the website or of the platform as a Customer. Information on the allergies and intolerances of venues' customers is processed only on behalf of the venues, as explained in section 2.
 
-## 5. Why we process data and on what legal basis
+## 4. Why we process data and on what legal basis
 
 | Purpose | Legal basis |
 | --- | --- |
@@ -63,11 +71,11 @@ We do not ask you for special categories of data (for example health data) for t
 
 Where we rely on legitimate interest, we have assessed that our interest does not override your rights, taking into account that the data is largely professional and that the activities are those that a Customer or visitor would reasonably expect. You can ask us for details of this assessment.
 
-## 6. Mandatory and optional data
+## 5. Mandatory and optional data
 
 The data marked as mandatory in the forms is needed to register you and provide the service: without it we cannot activate the account. The answers to the initial questionnaire and consent to marketing communications are optional, unless otherwise stated in the form. Non-technical cookies are used only if you give your consent.
 
-## 7. Statistics, analysis and service improvement
+## 6. Statistics, analysis and service improvement
 
 We use data to understand how NovaMenu works and how to improve it, in these ways:
 
@@ -77,11 +85,11 @@ We use data to understand how NovaMenu works and how to improve it, in these way
 
 On the website novamenu.eu, only with your consent, we use Google Analytics and Microsoft Clarity (statistics and page interaction maps, with masking of entered text) and Meta Pixel (advertising measurement). **We do not use these tools on the app.novamenu.eu platform, on venues' public menus or in the app.**
 
-## 8. Automated decisions
+## 7. Automated decisions
 
 We do not take decisions based solely on automated processing that produce legal effects concerning you or similarly significantly affect you (Article 22 GDPR). The activation of accounts is assessed by a person.
 
-## 9. Who we share data with
+## 8. Who we share data with
 
 Data is processed by the data controller and by authorised and instructed persons bound by confidentiality. It may be disclosed to:
 
@@ -93,7 +101,7 @@ Data is processed by the data controller and by authorised and instructed person
 
 We do not sell your personal data.
 
-## 10. Transfers of data outside the European Economic Area
+## 9. Transfers of data outside the European Economic Area
 
 The data controller is established in the United Kingdom. Data is transferred from the European Union to the United Kingdom on the basis of the adequacy decision adopted by the European Commission for the United Kingdom (Article 45 GDPR). The platform's database is located in the European Union (Frankfurt, Germany).
 
@@ -104,7 +112,7 @@ Some providers are established, or process data, in the United States or in othe
 
 You can ask us for a copy of the safeguards adopted by writing to [{{emailPrivacy}}](mailto:{{emailPrivacy}}).
 
-## 11. How long we keep data
+## 10. How long we keep data
 
 | Data | Retention period |
 | --- | --- |
@@ -121,11 +129,11 @@ You can ask us for a copy of the safeguards adopted by writing to [{{emailPrivac
 
 At the end of these periods the data is deleted or irreversibly anonymised. We may keep it for longer only where necessary to defend a legal claim or to comply with a legal obligation.
 
-## 12. How we protect data
+## 11. How we protect data
 
 We adopt technical and organisational measures appropriate to the risk (Article 32 GDPR), including: encrypted connections (HTTPS/TLS), encryption of stored data at the database provider, passwords stored only in encrypted form with robust algorithms, role-based access control and separation of each venue's data, two-step verification for administrative access, periodic backups, logging of access and procedures for handling data breaches. No system is 100% secure: if a breach affecting you occurs, we will inform you in the cases and within the time limits required by law.
 
-## 13. Your rights
+## 12. Your rights
 
 Within the limits provided by law, you have the right to:
 
@@ -141,18 +149,18 @@ To exercise your rights, write to **[{{emailPrivacy}}](mailto:{{emailPrivacy}})*
 
 If you are a customer of a venue and your request concerns data collected through that venue's menu, contact the venue, which is the data controller. If you write to us, we will forward the request to the venue and help it reply to you.
 
-## 14. Complaints to the supervisory authority
+## 13. Complaints to the supervisory authority
 
 If you believe that the processing of your data infringes the law, you can lodge a complaint with the supervisory authority of the country where you live, work or where the alleged infringement took place. In Italy it is the **Garante per la protezione dei dati personali** ([www.garanteprivacy.it](https://www.garanteprivacy.it)). In the United Kingdom it is the **Information Commissioner's Office** ([ico.org.uk](https://ico.org.uk)). We ask you, if possible, to write to us first: we will try to resolve the problem.
 
-## 15. Minors
+## 14. Minors
 
 NovaMenu is a service for businesses and professionals and is not aimed at persons under 18. We do not knowingly collect data from minors. If you believe a minor has provided us with data, write to us and we will delete it.
 
-## 16. Changes to this notice
+## 15. Changes to this notice
 
 We may update this notice, for example if the features of the service, the providers or the law change. The version date at the top shows the latest update. If the changes are significant, we will inform Customers through a message on the platform or by email before they apply. Previous versions are available in the [archive of legal documents](/en/legal/archive/).
 
-## 17. Contact
+## 16. Contact
 
 {{ragioneSociale}} (NovaMenu), {{sedeLegale}}. Email: [{{emailPrivacy}}](mailto:{{emailPrivacy}}).

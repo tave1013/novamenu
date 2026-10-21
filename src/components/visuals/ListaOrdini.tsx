@@ -344,6 +344,27 @@ export function ListaOrdiniHero() {
   );
 }
 
+/* ---------- sezione grande della home ---------- */
+
+/**
+ * Telefono con la lista, notifica e foglio A4 in un'unica immagine, come nell'apertura della pagina.
+ * Da tablet in su il foglio sta dietro il telefono; su telefono va sotto, a tutta larghezza, per restare leggibile.
+ */
+export function ListaOrdiniHome() {
+  return (
+    <Scena>
+      <div className="relative mx-auto flex max-w-[560px] items-end justify-center pt-16 sm:justify-between sm:pt-0">
+        <FoglioA4 className="absolute right-0 top-4 hidden w-[58%] rotate-[3deg] sm:block" />
+        <div className="relative z-10 sm:ml-2">
+          <TelefonoLista />
+        </div>
+        <NotificaLista className="absolute -top-2 left-1/2 z-20 -translate-x-1/2 sm:left-auto sm:right-2 sm:top-auto sm:bottom-6 sm:translate-x-0" />
+      </div>
+      <FoglioA4 className="relative z-20 mx-auto -mt-1 w-full max-w-[420px] rotate-[-1.5deg] sm:hidden" />
+    </Scena>
+  );
+}
+
 /* ---------- come funziona: tre piccole illustrazioni ---------- */
 
 function Mini({ children }: { children: React.ReactNode }) {

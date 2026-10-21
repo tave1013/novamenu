@@ -93,7 +93,8 @@ export function leggiSorgente(percorso: string, lingua: Lingua): { meta: MetaDoc
       versione: dati.versione ?? "",
       dataInVigore: riempi(dati.dataInVigore ?? "", lingua),
     },
-    markdown: riempi(corpo, lingua),
+    // i commenti <!-- ... --> sono note per chi modifica i testi (per esempio parti tolte per ora): non vanno né nella pagina né nel PDF
+    markdown: riempi(corpo.replace(/<!--[\s\S]*?-->/g, ""), lingua),
   };
 }
 

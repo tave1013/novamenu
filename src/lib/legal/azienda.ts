@@ -20,6 +20,10 @@ export const AZIENDA = {
   },
   partitaIva: "[PARTITA IVA / VAT NUMBER, se presente]",
   registrazioneICO: "[NUMERO DI REGISTRAZIONE ICO]",
+  /**
+   * Per ora non c'è: la riga e il paragrafo del rappresentante sono commentati (<!-- -->) in
+   * note-legali.md, privacy.md e privacy-app.md (it ed en). Quando c'è, scrivilo qui e togli i commenti.
+   */
   rappresentanteUE: "[NOME E INDIRIZZO DEL RAPPRESENTANTE NELL'UE (art. 27 GDPR)]",
   emailContatto: "info@novamenu.eu",
   emailPrivacy: "info@novamenu.eu",

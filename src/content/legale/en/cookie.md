@@ -53,7 +53,7 @@ Third-party providers process data under their own privacy notices:
 - Meta Pixel: [www.facebook.com/privacy/policy](https://www.facebook.com/privacy/policy)
 - Stripe: [stripe.com/gb/privacy](https://stripe.com/gb/privacy)
 
-Some of these providers may transfer data to the United States. Transfers take place on the basis of the EU-U.S. Data Privacy Framework or the Standard Contractual Clauses, as explained in the [Privacy notice (section 10)](/en/legal/privacy/#10). For Meta Pixel, NovaMenu and Meta Platforms Ireland Limited are joint controllers of the collection and transmission of the data.
+Some of these providers may transfer data to the United States. Transfers take place on the basis of the EU-U.S. Data Privacy Framework or the Standard Contractual Clauses, as explained in the [Privacy notice (section 9)](/en/legal/privacy/#9). For Meta Pixel, NovaMenu and Meta Platforms Ireland Limited are joint controllers of the collection and transmission of the data.
 
 ## 7. Changes
 

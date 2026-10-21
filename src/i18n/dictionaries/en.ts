@@ -1288,4 +1288,11 @@ export const en: Record<MessageKey, string> = {
   "Venerdì 10 ottobre": "Friday 10 October",
   "Verdure di stagione": "Seasonal vegetables",
   "14 giorni gratis con il piano che scegli, o il Pro se non ne scegli uno. Senza carta.": "14 days free with the plan you choose, or Pro if you don't choose one. No card needed.",
+  "La lista della spesa del tuo locale, sempre in ordine": "Your venue's shopping list, always in order",
+  "I tuoi dipendenti segnano dal telefono cosa manca, tu ricevi la notifica, controlli e stampi l'ordine in un foglio A4. Niente più fogli persi o messaggi su WhatsApp.": "Your staff mark what's running low on their phone, you get a notification, check it and print the order on one A4 sheet. No more lost notes or WhatsApp messages.",
+  "Ogni dipendente con il suo account e i suoi reparti": "Each member of staff with their own account and sections",
+  "Le modifiche si vedono in rosso, decidi tu": "Changes show up in red, you decide",
+  "Stampa o PDF in un foglio solo": "Print or PDF on a single sheet",
+  "Scopri la Lista ordini": "Discover the Order list",
+  "Inclusa nei piani Pro e Premium": "Included in the Pro and Premium plans",
 };

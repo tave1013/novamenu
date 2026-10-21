@@ -10,7 +10,7 @@ Questa informativa riguarda l'app **NovaMenu Business** per iPhone, iPad, Apple 
 
 ## 1. Titolare
 
-Il titolare del trattamento è **{{ragioneSociale}}** (NovaMenu), {{sedeLegale}}, numero di registrazione {{numeroSocieta}}. Contatto: [{{emailPrivacy}}](mailto:{{emailPrivacy}}). Rappresentante nell'UE: {{rappresentanteUE}}.
+Il titolare del trattamento è **{{ragioneSociale}}** (NovaMenu), {{sedeLegale}}, numero di registrazione {{numeroSocieta}}. Contatto: [{{emailPrivacy}}](mailto:{{emailPrivacy}}).<!-- RAPPRESENTANTE NELL'UE (art. 27 GDPR): tolto temporaneamente finché non è nominato. Per rimetterlo togli il commento e lascia la frase: Rappresentante nell'UE: {{rappresentanteUE}}. -->
 
 ## 2. Due ruoli diversi
 
@@ -49,11 +49,11 @@ Nell'app non si acquistano abbonamenti e non si effettuano pagamenti. Gli abbona
 
 ## 8. Eliminare l'account
 
-Puoi eliminare l'account in qualsiasi momento dall'app: **Altro, Account, Elimina account**. Per sicurezza ti chiediamo di scrivere il nome del locale e ti mandiamo un'email di conferma. Hai **[7] giorni** per annullare l'eliminazione dal link nell'email; dopo questo periodo eliminiamo l'account del locale, il menu e tutti i dati collegati, compresi i dati dei clienti del locale, secondo i tempi indicati nell'[Informativa privacy (punto 11)](/legale/privacy/#11) e nel [DPA](/legale/dpa/). Restano solo i dati che dobbiamo conservare per legge, come i documenti di fatturazione. Prima di eliminare l'account puoi esportare i tuoi dati dalla piattaforma. Eliminare l'app dal telefono non elimina l'account.
+Puoi eliminare l'account in qualsiasi momento dall'app: **Altro, Account, Elimina account**. Per sicurezza ti chiediamo di scrivere il nome del locale e ti mandiamo un'email di conferma. Hai **[7] giorni** per annullare l'eliminazione dal link nell'email; dopo questo periodo eliminiamo l'account del locale, il menu e tutti i dati collegati, compresi i dati dei clienti del locale, secondo i tempi indicati nell'[Informativa privacy (punto 10)](/legale/privacy/#10) e nel [DPA](/legale/dpa/). Restano solo i dati che dobbiamo conservare per legge, come i documenti di fatturazione. Prima di eliminare l'account puoi esportare i tuoi dati dalla piattaforma. Eliminare l'app dal telefono non elimina l'account.
 
 ## 9. Dove sono i dati e trasferimenti
 
-I dati della piattaforma sono conservati nell'Unione europea (Francoforte, Germania). Per i trasferimenti verso il Regno Unito e verso altri paesi valgono le garanzie descritte nell'[Informativa privacy (punto 10)](/legale/privacy/#10).
+I dati della piattaforma sono conservati nell'Unione europea (Francoforte, Germania). Per i trasferimenti verso il Regno Unito e verso altri paesi valgono le garanzie descritte nell'[Informativa privacy (punto 9)](/legale/privacy/#9).
 
 ## 10. Conservazione, diritti e reclami
 

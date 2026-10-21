@@ -53,7 +53,7 @@ I fornitori terzi trattano i dati secondo le proprie informative:
 - Meta Pixel: [www.facebook.com/privacy/policy](https://www.facebook.com/privacy/policy)
 - Stripe: [stripe.com/it/privacy](https://stripe.com/it/privacy)
 
-Alcuni di questi fornitori possono trasferire dati negli Stati Uniti. I trasferimenti avvengono sulla base dell'EU-U.S. Data Privacy Framework o delle Clausole contrattuali standard, come spiegato nell'[Informativa privacy (punto 10)](/legale/privacy/#10). Per Meta Pixel, NovaMenu e Meta Platforms Ireland Limited sono contitolari della raccolta e della trasmissione dei dati.
+Alcuni di questi fornitori possono trasferire dati negli Stati Uniti. I trasferimenti avvengono sulla base dell'EU-U.S. Data Privacy Framework o delle Clausole contrattuali standard, come spiegato nell'[Informativa privacy (punto 9)](/legale/privacy/#9). Per Meta Pixel, NovaMenu e Meta Platforms Ireland Limited sono contitolari della raccolta e della trasmissione dei dati.
 
 ## 7. Modifiche
 

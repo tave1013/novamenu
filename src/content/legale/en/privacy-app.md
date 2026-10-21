@@ -10,7 +10,7 @@ This notice covers the **NovaMenu Business** app for iPhone, iPad, Apple Watch a
 
 ## 1. Data controller
 
-The data controller is **{{ragioneSociale}}** (NovaMenu), {{sedeLegale}}, registration number {{numeroSocieta}}. Contact: [{{emailPrivacy}}](mailto:{{emailPrivacy}}). EU representative: {{rappresentanteUE}}.
+The data controller is **{{ragioneSociale}}** (NovaMenu), {{sedeLegale}}, registration number {{numeroSocieta}}. Contact: [{{emailPrivacy}}](mailto:{{emailPrivacy}}).<!-- RAPPRESENTANTE NELL'UE (art. 27 GDPR): tolto temporaneamente finché non è nominato. Per rimetterlo togli il commento e lascia la frase: EU representative: {{rappresentanteUE}}. -->
 
 ## 2. Two different roles
 
@@ -49,11 +49,11 @@ Subscriptions cannot be purchased and payments cannot be made in the app. Subscr
 
 ## 8. Deleting your account
 
-You can delete your account at any time from the app: **More, Account, Delete account**. For security, we ask you to type the venue's name and we send you a confirmation email. You have **[7] days** to cancel the deletion using the link in the email; after this period we delete the venue's account, the menu and all linked data, including the data of the venue's customers, within the time limits set out in the [Privacy notice (section 11)](/en/legal/privacy/#11) and in the [DPA](/en/legal/dpa/). Only the data we are required to keep by law, such as billing records, is retained. Before deleting your account you can export your data from the platform. Deleting the app from your phone does not delete the account.
+You can delete your account at any time from the app: **More, Account, Delete account**. For security, we ask you to type the venue's name and we send you a confirmation email. You have **[7] days** to cancel the deletion using the link in the email; after this period we delete the venue's account, the menu and all linked data, including the data of the venue's customers, within the time limits set out in the [Privacy notice (section 10)](/en/legal/privacy/#10) and in the [DPA](/en/legal/dpa/). Only the data we are required to keep by law, such as billing records, is retained. Before deleting your account you can export your data from the platform. Deleting the app from your phone does not delete the account.
 
 ## 9. Where data is stored and transfers
 
-Platform data is stored in the European Union (Frankfurt, Germany). For transfers to the United Kingdom and to other countries, the safeguards described in the [Privacy notice (section 10)](/en/legal/privacy/#10) apply.
+Platform data is stored in the European Union (Frankfurt, Germany). For transfers to the United Kingdom and to other countries, the safeguards described in the [Privacy notice (section 9)](/en/legal/privacy/#9) apply.
 
 ## 10. Retention, rights and complaints
 

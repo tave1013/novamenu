@@ -6,7 +6,7 @@ export const plans: Plan[] = [
     id: "base",
     name: "Base",
     desc: "For a digital menu done properly.",
-    highlights: ["QR code digital menu", "AI menu import", "Opening hours, holidays and closures", "Your logo and colours", "Email support"],
+    highlights: ["QR code digital menu", "AI menu import", "Opening hours, holidays and closures", "Your logo and colours", "Email support in English"],
   },
   {
     id: "pro",
@@ -63,7 +63,7 @@ export const comparison: typeof comparisonIt = [
       { label: "Supplier order list", base: false, pro: true, premium: true },
       { label: "Staff logins", base: "1", pro: "3", premium: "Unlimited" },
       { label: "Staff rotas", base: false, pro: false, premium: true },
-      { label: "Support", base: "By email", pro: "Email and WhatsApp", premium: "Priority" },
+      { label: "Support", base: "Email support in English", pro: "Email and WhatsApp", premium: "Priority" },
     ],
   },
 ];

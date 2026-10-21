@@ -15,6 +15,7 @@ import { Bento } from "@/components/Bento";
 import { Pricing } from "@/components/Pricing";
 import { Reviews } from "@/components/Reviews";
 import { FeatureComposite } from "@/components/StaticArt";
+import { ListaOrdiniHome } from "@/components/visuals/ListaOrdini";
 import { PhotoSplit } from "@/components/PhotoReveal";
 import { ArtSplit, PhotoSlot } from "@/components/Servizi";
 import { featureById, getGeneralFaq, getSectors } from "@/content";
@@ -224,6 +225,49 @@ export default async function Home() {
             </section>
           );
         })}
+
+        {/* Lista ordini: dopo le altre sezioni grandi, con il testo dall'altra parte rispetto a quella prima */}
+        <section id="f-lista-ordini" className="border-t border-line-soft py-12 md:py-16">
+          <div className="wrap grid items-center gap-8 md:gap-10 lg:grid-cols-2 lg:gap-14">
+            <Reveal className="min-w-0 lg:order-1">
+              <span className={`inline-flex items-center gap-2 rounded-full px-2.5 py-1 text-[13px] font-medium ${toneClass.amber.bg} ${toneClass.amber.ink}`}>
+                <Icon name="clipboard" size={14} stroke={2} />
+                {tr("Lista ordini")}
+              </span>
+              <h3 className="h-block mt-4 max-md:text-[1.75rem] max-md:leading-[1.15]">{tr("La lista della spesa del tuo locale, sempre in ordine")}</h3>
+              <p className="mt-3.5 text-[16px] leading-relaxed text-muted md:text-[17px]">
+                {tr("I tuoi dipendenti segnano dal telefono cosa manca, tu ricevi la notifica, controlli e stampi l'ordine in un foglio A4. Niente più fogli persi o messaggi su WhatsApp.")}
+              </p>
+              <ul className="mt-5 flex flex-col gap-3 text-[15px] text-text">
+                {([
+                  ["users", tr("Ogni dipendente con il suo account e i suoi reparti")],
+                  ["layers", tr("Le modifiche si vedono in rosso, decidi tu")],
+                  ["printer", tr("Stampa o PDF in un foglio solo")],
+                ] as const).map(([icon, p]) => (
+                  <li key={p} className="flex items-start gap-3">
+                    <span className={`flex h-7 w-7 flex-none items-center justify-center rounded-[8px] ${toneClass.amber.bg} ${toneClass.amber.ink}`}>
+                      <Icon name={icon} size={15} stroke={2} />
+                    </span>
+                    <span className="pt-1">{p}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-6 flex flex-col gap-2.5 sm:flex-row">
+                <Link href={to("feature", "lista-ordini")} className="btn btn-dark">
+                  {tr("Scopri la Lista ordini")}
+                  <Icon name="arrowRight" size={16} stroke={2} />
+                </Link>
+                <a href={signupUrl} className="btn btn-light">
+                  {tr("Prova gratis 14 giorni")}
+                </a>
+              </div>
+              <p className="mt-3 text-[13.5px] text-muted">{tr("Inclusa nei piani Pro e Premium")}</p>
+            </Reveal>
+            <Reveal delay={150} className="min-w-0 lg:order-2">
+              <ListaOrdiniHome />
+            </Reveal>
+          </div>
+        </section>
       </section>
 
       {/* E non è finita qui */}

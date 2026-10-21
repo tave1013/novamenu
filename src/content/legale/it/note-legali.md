@@ -1,7 +1,7 @@
 ---
 titolo: Note legali
 etichetta: Note legali
-descrizione: Note legali di NovaMenu: dati della società Ma & Co LTD, sede, registrazioni, rappresentante nell'UE, proprietà intellettuale e segnalazioni.
+descrizione: Note legali di NovaMenu: dati della società Ma & Co LTD, sede, registrazioni, proprietà intellettuale e segnalazioni.
 versione: 1.0
 dataInVigore: "{{dataInVigore}}"
 ---
@@ -17,7 +17,9 @@ Registrazione presso l'Information Commissioner's Office (ICO): {{registrazioneI
 Email: [{{emailContatto}}](mailto:{{emailContatto}})<br>
 Sito: {{sito}}
 
+<!-- RAPPRESENTANTE NELL'UE (art. 27 GDPR): tolto temporaneamente finché non è nominato. Per rimetterlo togli il commento. Rimetti anche "rappresentante nell'UE" / "EU representative" nella descrizione qui sopra.
 **Rappresentante nell'Unione europea per la protezione dei dati** (art. 27 del Regolamento UE 2016/679): {{rappresentanteUE}}.
+-->
 
 **Proprietà intellettuale.** I testi, la grafica, il logo, il software e gli altri contenuti di novamenu.eu e della piattaforma NovaMenu appartengono a {{ragioneSociale}} o ai suoi licenzianti e sono protetti dalle leggi sul diritto d'autore e sui marchi. Non possono essere copiati, modificati o distribuiti senza autorizzazione scritta, salvo i casi permessi dalla legge. I contenuti caricati dai locali (menu, foto, loghi) restano dei rispettivi titolari.
 

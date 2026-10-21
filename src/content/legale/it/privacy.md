@@ -14,11 +14,19 @@ Il titolare del trattamento è **{{ragioneSociale}}**, {{tipo}}, numero di regis
 
 Per qualsiasi domanda sulla privacy e per esercitare i tuoi diritti puoi scriverci a **[{{emailPrivacy}}](mailto:{{emailPrivacy}})**. Non abbiamo nominato un responsabile della protezione dei dati (DPO), perché non siamo tenuti a farlo; il contatto indicato è seguito direttamente dal titolare.
 
+<!--
+RAPPRESENTANTE NELL'UE (art. 27 GDPR): tolto temporaneamente finché non è nominato.
+Per rimetterlo: togli questo commento, rinumera i punti successivi (+1) e aggiorna i link
+a /legale/privacy/#N in cookie.md e privacy-app.md (punto 9 -> 10, punto 10 -> 11),
+e il riferimento "punto 2"/"section 2" in questo file (diventa 3).
+
 ## 2. Rappresentante nell'Unione europea
 
 Poiché il titolare ha sede nel Regno Unito e offre i propri servizi a persone e imprese nell'Unione europea, ha nominato un rappresentante ai sensi dell'art. 27 del GDPR: **{{rappresentanteUE}}**. Puoi rivolgerti al rappresentante, in alternativa al titolare, per tutte le questioni relative al trattamento dei tuoi dati.
 
-## 3. A chi si rivolge questa informativa
+-->
+
+## 2. A chi si rivolge questa informativa
 
 Questa informativa riguarda:
 
@@ -30,7 +38,7 @@ Questa informativa riguarda:
 
 Questa informativa **non** riguarda i dati dei clienti dei locali (per esempio chi ordina o prenota su un menu NovaMenu). Per quei dati il titolare è il singolo locale, che fornisce la propria informativa sul suo menu, e NovaMenu tratta i dati solo per suo conto come responsabile del trattamento, secondo l'[Accordo sul trattamento dei dati (DPA)](/legale/dpa/). Se sei un cliente di un locale, leggi l'informativa che trovi in fondo al menu del locale. Per l'uso dell'app NovaMenu Business valgono anche le indicazioni dell'[Informativa privacy dell'app](/legale/privacy-app/).
 
-## 4. Quali dati trattiamo
+## 3. Quali dati trattiamo
 
 | Categoria | Dati | Da chi li riceviamo |
 | --- | --- | --- |
@@ -43,9 +51,9 @@ Questa informativa **non** riguarda i dati dei clienti dei locali (per esempio c
 | Comunicazioni e assistenza | Contenuto dei messaggi, richieste di assistenza, registrazioni delle scelte su comunicazioni commerciali | Da te |
 | Dati dei potenziali clienti | Nome del locale, nome del titolare, contatti professionali pubblici (sito, pagina social, telefono del locale) | Da fonti pubbliche o da te |
 
-Non ti chiediamo dati appartenenti a categorie particolari (per esempio dati sulla salute) per l'uso del sito o della piattaforma come Cliente. Le informazioni su allergie e intolleranze dei clienti dei locali sono trattate solo per conto dei locali, come spiegato al punto 3.
+Non ti chiediamo dati appartenenti a categorie particolari (per esempio dati sulla salute) per l'uso del sito o della piattaforma come Cliente. Le informazioni su allergie e intolleranze dei clienti dei locali sono trattate solo per conto dei locali, come spiegato al punto 2.
 
-## 5. Perché trattiamo i dati e su quale base giuridica
+## 4. Perché trattiamo i dati e su quale base giuridica
 
 | Finalità | Base giuridica |
 | --- | --- |
@@ -63,11 +71,11 @@ Non ti chiediamo dati appartenenti a categorie particolari (per esempio dati sul
 
 Quando ci basiamo sul legittimo interesse, abbiamo valutato che il nostro interesse non prevale sui tuoi diritti, tenendo conto che i dati sono in gran parte professionali e che le attività sono quelle che un Cliente o un visitatore si aspetta ragionevolmente. Puoi chiederci i dettagli di questa valutazione.
 
-## 6. Dati obbligatori e facoltativi
+## 5. Dati obbligatori e facoltativi
 
 I dati contrassegnati come obbligatori nei moduli servono per registrarti e fornirti il servizio: senza di essi non possiamo attivare l'account. Le risposte al questionario iniziale e il consenso alle comunicazioni commerciali sono facoltativi, salvo dove indicato diversamente nel modulo. I cookie non tecnici si usano solo se dai il consenso.
 
-## 7. Statistiche, analisi e miglioramento del servizio
+## 6. Statistiche, analisi e miglioramento del servizio
 
 Usiamo i dati per capire come funziona NovaMenu e come migliorarlo, in questi modi:
 
@@ -77,11 +85,11 @@ Usiamo i dati per capire come funziona NovaMenu e come migliorarlo, in questi mo
 
 Sul sito novamenu.eu, solo con il tuo consenso, usiamo Google Analytics e Microsoft Clarity (statistiche e mappe di interazione con le pagine, con mascheramento dei testi inseriti) e Meta Pixel (misura delle pubblicità). **Nella piattaforma app.novamenu.eu, nei menu pubblici dei locali e nell'app non usiamo questi strumenti.**
 
-## 8. Decisioni automatizzate
+## 7. Decisioni automatizzate
 
 Non prendiamo decisioni basate unicamente su trattamenti automatizzati che producano effetti giuridici o che incidano in modo analogo significativamente su di te (art. 22 GDPR). L'attivazione degli account è valutata da una persona.
 
-## 9. A chi comunichiamo i dati
+## 8. A chi comunichiamo i dati
 
 I dati sono trattati dal titolare e da persone autorizzate e istruite, tenute alla riservatezza. Possono essere comunicati a:
 
@@ -93,7 +101,7 @@ I dati sono trattati dal titolare e da persone autorizzate e istruite, tenute al
 
 Non vendiamo i tuoi dati personali.
 
-## 10. Trasferimenti dei dati fuori dallo Spazio economico europeo
+## 9. Trasferimenti dei dati fuori dallo Spazio economico europeo
 
 Il titolare ha sede nel Regno Unito. Il trasferimento di dati dall'Unione europea al Regno Unito avviene sulla base della decisione di adeguatezza adottata dalla Commissione europea per il Regno Unito (art. 45 GDPR). Il database della piattaforma si trova nell'Unione europea (Francoforte, Germania).
 
@@ -104,7 +112,7 @@ Alcuni fornitori hanno sede o trattano dati negli Stati Uniti o in altri paesi. 
 
 Puoi chiederci copia delle garanzie adottate scrivendo a [{{emailPrivacy}}](mailto:{{emailPrivacy}}).
 
-## 11. Per quanto tempo conserviamo i dati
+## 10. Per quanto tempo conserviamo i dati
 
 | Dati | Durata |
 | --- | --- |
@@ -121,11 +129,11 @@ Puoi chiederci copia delle garanzie adottate scrivendo a [{{emailPrivacy}}](mail
 
 Alla fine di questi periodi i dati sono cancellati o resi anonimi in modo irreversibile. Possiamo conservarli più a lungo solo se serve per difendere un diritto in giudizio o per un obbligo di legge.
 
-## 12. Come proteggiamo i dati
+## 11. Come proteggiamo i dati
 
 Adottiamo misure tecniche e organizzative adeguate al rischio (art. 32 GDPR), tra cui: connessioni cifrate (HTTPS/TLS), cifratura dei dati archiviati presso il fornitore del database, password conservate solo in forma cifrata con algoritmi robusti, controllo degli accessi per ruolo e separazione dei dati di ogni locale, verifica in due passaggi per gli accessi amministrativi, copie di sicurezza periodiche, registrazione degli accessi e procedure per gestire le violazioni dei dati. Nessun sistema è sicuro al 100%: se si verifica una violazione che ti riguarda, ti avvisiamo nei casi e nei tempi previsti dalla legge.
 
-## 13. I tuoi diritti
+## 12. I tuoi diritti
 
 Nei limiti previsti dalla legge, hai diritto di:
 
@@ -141,18 +149,18 @@ Per esercitare i diritti scrivi a **[{{emailPrivacy}}](mailto:{{emailPrivacy}})*
 
 Se sei il cliente di un locale e la tua richiesta riguarda i dati raccolti tramite il menu di quel locale, rivolgiti al locale, che è il titolare. Se ci scrivi, inoltriamo la richiesta al locale e lo aiutiamo a risponderti.
 
-## 14. Reclamo all'autorità di controllo
+## 13. Reclamo all'autorità di controllo
 
 Se ritieni che il trattamento dei tuoi dati violi la normativa, puoi presentare reclamo all'autorità di controllo del paese in cui vivi, lavori o in cui è avvenuta la presunta violazione. In Italia è il **Garante per la protezione dei dati personali** ([www.garanteprivacy.it](https://www.garanteprivacy.it)). Nel Regno Unito è l'**Information Commissioner's Office** ([ico.org.uk](https://ico.org.uk)). Ti chiediamo, se possibile, di scriverci prima: cercheremo di risolvere il problema.
 
-## 15. Minori
+## 14. Minori
 
 NovaMenu è un servizio per imprese e professionisti e non è rivolto ai minori di 18 anni. Non raccogliamo consapevolmente dati di minori. Se pensi che ci abbia fornito dati un minore, scrivici e li cancelleremo.
 
-## 16. Modifiche a questa informativa
+## 15. Modifiche a questa informativa
 
 Possiamo aggiornare questa informativa, per esempio se cambiano le funzioni del servizio, i fornitori o la legge. La data di versione in alto indica l'ultimo aggiornamento. Se le modifiche sono rilevanti, avvisiamo i Clienti con un messaggio nella piattaforma o per email prima che si applichino. Le versioni precedenti sono consultabili nell'[archivio dei documenti legali](/legale/archivio/).
 
-## 17. Contatti
+## 16. Contatti
 
 {{ragioneSociale}} (NovaMenu), {{sedeLegale}}. Email: [{{emailPrivacy}}](mailto:{{emailPrivacy}}).
