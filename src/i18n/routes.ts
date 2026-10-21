@@ -18,9 +18,9 @@ export type PageKey =
   | "guide"
   | "contact"
   | "demo"
-  | "privacy"
-  | "terms"
-  | "cookies";
+  | "legal"
+  | "legalDoc"
+  | "legalArchive";
 
 /** [id] è il segmento che cambia: viene sostituito con lo slug della lingua. */
 export const routes: Record<PageKey, Record<Locale, string>> = {
@@ -36,12 +36,12 @@ export const routes: Record<PageKey, Record<Locale, string>> = {
   guide: { it: "/guide/[id]/", en: "/guides/[id]/" },
   contact: { it: "/contatti/", en: "/contact/" },
   demo: { it: "/demo/", en: "/demo/" },
-  privacy: { it: "/privacy/", en: "/privacy/" },
-  terms: { it: "/termini/", en: "/terms/" },
-  cookies: { it: "/cookie/", en: "/cookies/" },
+  legal: { it: "/legale/", en: "/legal/" },
+  legalDoc: { it: "/legale/[id]/", en: "/legal/[id]/" },
+  legalArchive: { it: "/legale/archivio/", en: "/legal/archive/" },
 };
 
-type Collection = "feature" | "sector" | "service" | "guide";
+type Collection = "feature" | "sector" | "service" | "guide" | "legalDoc";
 
 /**
  * Slug delle pagine con indirizzo variabile. La chiave è l'identificativo interno
@@ -77,6 +77,15 @@ export const slugs: Record<Collection, Record<string, Partial<Record<Locale, str
     "foto-e-video": { en: "photo-and-video" },
     "gestione-social": { en: "social-media-management" },
     "presenza-online": { en: "online-presence" },
+  },
+  legalDoc: {
+    "note-legali": { en: "legal-notice" },
+    privacy: { en: "privacy" },
+    "privacy-app": { en: "app-privacy" },
+    cookie: { en: "cookies" },
+    termini: { en: "terms" },
+    dpa: { en: "dpa" },
+    "sub-responsabili": { en: "sub-processors" },
   },
   guide: {
     "come-creare-menu-digitale-qr": { en: "how-to-create-a-qr-code-digital-menu" },

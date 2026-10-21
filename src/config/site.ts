@@ -1,3 +1,5 @@
+import { AZIENDA } from "@/lib/legal/azienda";
+
 /**
  * Dati del sito in un solo posto.
  * Per cambiare nome alla piattaforma basta modificare `name` qui sotto.
@@ -11,14 +13,8 @@ export const site = {
   url: (process.env.NEXT_PUBLIC_SITE_URL || "https://www.novamenu.eu").replace(/\/$/, ""),
   appUrl: (process.env.NEXT_PUBLIC_APP_URL || "https://app.novamenu.eu").replace(/\/$/, ""),
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP || "393000000000",
-  email: "info@novamenu.eu",
-  /** Dati legali: da completare prima della pubblicazione. */
-  company: {
-    legalName: "[Ragione sociale]",
-    vat: "[Partita IVA]",
-    address: "[Indirizzo della sede], Acqui Terme (AL)",
-    pec: "[PEC]",
-  },
+  /** Dati della società: in src/lib/legal/azienda.ts. */
+  email: AZIENDA.emailContatto,
   locale: "it_IT",
 };
 

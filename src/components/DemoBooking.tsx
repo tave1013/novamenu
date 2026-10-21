@@ -200,11 +200,11 @@ export function DemoBooking({ compact = false }: { compact?: boolean }) {
                 <input type="checkbox" checked={data.privacy} onChange={(e) => set("privacy", e.target.checked)} className="mt-0.5 h-[18px] w-[18px] flex-none accent-[#0b0b0c]" />
                 <span>
                   {tr("Accetto la")}{" "}
-                  <Link href={lp("/privacy/")} className="font-medium text-ink underline underline-offset-2">
+                  <Link href={lp("/legale/privacy/")} className="font-medium text-ink underline underline-offset-2">
                     {tr("privacy policy")}
                   </Link>{" "}
                   {tr("e i")}{" "}
-                  <Link href={lp("/termini/")} className="font-medium text-ink underline underline-offset-2">
+                  <Link href={lp("/legale/termini/")} className="font-medium text-ink underline underline-offset-2">
                     {tr("termini del servizio")}
                   </Link>
                 </span>

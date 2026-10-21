@@ -150,7 +150,7 @@ export function LeadForm({ kind, compact = false }: { kind: "demo" | "contatto";
         </span>
         <span>
           {tr("Ho letto l'")}
-          <a href={lp("/privacy/")} className="text-ink underline underline-offset-2">
+          <a href={lp("/legale/privacy/")} className="text-ink underline underline-offset-2">
             {tr("informativa privacy")}
           </a>{" "}
           {tr("e voglio essere ricontattato.")}

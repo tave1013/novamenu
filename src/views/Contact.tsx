@@ -1,4 +1,5 @@
-import { t, tr } from "@/i18n";
+import { AZIENDA, sedeLegale } from "@/lib/legal/azienda";
+import { getLocale, t, tr } from "@/i18n";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { site, waLink } from "@/config/site";
@@ -64,9 +65,9 @@ export default function ContattiPage() {
               })}
             </ul>
             <div className="mt-10 border-t border-line pt-6 text-[14.5px] leading-relaxed text-muted">
-              <p className="font-medium text-ink">{site.company.legalName}</p>
-              <p>{site.company.address}</p>
-              <p>{tr("P. IVA")}{" "}{site.company.vat}</p>
+              <p className="font-medium text-ink">{AZIENDA.ragioneSociale}</p>
+              <p>{sedeLegale(getLocale())}</p>
+              <p>{tr("Società registrata in Inghilterra e Galles n. {n}", { n: AZIENDA.numeroSocieta })}</p>
             </div>
           </div>
           <div className="anim-fade-up" style={{ animationDelay: "160ms" }}>

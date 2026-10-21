@@ -24,7 +24,11 @@ const pages = [
   ["guide-articolo", "/guide/pizzeria-ore-perse-al-telefono/", "/en/guides/pizzeria-hours-lost-on-the-phone/"],
   ["contatti", "/contatti/", "/en/contact/"],
   ["demo", "/demo/", "/en/demo/"],
-  ["privacy", "/privacy/", "/en/privacy/"],
+  ["legale", "/legale/", "/en/legal/"],
+  ["legale-privacy", "/legale/privacy/", "/en/legal/privacy/"],
+  ["legale-cookie", "/legale/cookie/", "/en/legal/cookies/"],
+  ["legale-termini", "/legale/termini/", "/en/legal/terms/"],
+  ["legale-sub", "/legale/sub-responsabili/", "/en/legal/sub-processors/"],
 ];
 const widths = [1440, 375];
 const browser = await chromium.launch({ channel: "chrome" });

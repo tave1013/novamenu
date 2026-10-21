@@ -11,8 +11,6 @@ import { sectors as sectorsIt, type Sector } from "./sectors";
 import { guides as guidesIt, type Guide } from "./guides";
 import { services as servicesIt, type Service } from "./services";
 import { reviews as reviewsIt } from "./reviews";
-import { cookieHtml as cookieIt, privacyHtml as privacyIt, termsHtml as termsIt } from "./legal";
-import { cookieHtml as cookieEn, privacyHtml as privacyEn, termsHtml as termsEn } from "./en/legal";
 
 /*
  * Contenuti del sito nella lingua richiesta. Ogni lingua ha gli stessi dati con la stessa forma:
@@ -32,7 +30,6 @@ const content: Record<Locale, {
   guides: Guide[];
   services: Service[];
   reviews: typeof reviewsIt;
-  legal: { privacy: string; cookies: string; terms: string };
 }> = {
   it: {
     features: featuresIt,
@@ -40,7 +37,6 @@ const content: Record<Locale, {
     guides: guidesIt,
     services: servicesIt,
     reviews: reviewsIt,
-    legal: { privacy: privacyIt, cookies: cookieIt, terms: termsIt },
   },
   en: {
     features: withSlug("feature", "en", featuresEn),
@@ -48,7 +44,6 @@ const content: Record<Locale, {
     guides: withSlug("guide", "en", guidesEn),
     services: withSlug("service", "en", servicesEn),
     reviews: reviewsEn,
-    legal: { privacy: privacyEn, cookies: cookieEn, terms: termsEn },
   },
 };
 
@@ -60,7 +55,6 @@ export const getGuides = (locale?: Locale) => pick(locale).guides;
 export const getServices = (locale?: Locale) => pick(locale).services;
 export { getComparison, getGeneralFaq, getPlans } from "./plansByLocale";
 export const getReviews = (locale?: Locale) => pick(locale).reviews;
-export const getLegal = (locale?: Locale) => pick(locale).legal;
 
 export const featureById = (id: string, locale?: Locale) => getFeatures(locale).find((x) => x.id === id);
 export const featureBySlug = (slug: string, locale?: Locale) => getFeatures(locale).find((x) => x.slug === slug);

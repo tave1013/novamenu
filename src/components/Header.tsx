@@ -127,6 +127,7 @@ export function Header({ nav }: { nav: HeaderNav }) {
   return (
     <>
       <header
+        data-no-print
         className={`sticky top-0 z-50 border-b backdrop-blur-xl backdrop-saturate-150 transition-colors duration-500 ${
           mobile ? "border-line bg-[#fafaf8]" : scrolled || open ? "border-line bg-[#fafaf8]/90" : "border-transparent bg-[#fafaf8]"
         }`}

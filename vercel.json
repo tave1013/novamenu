@@ -1,4 +1,18 @@
 {
+  "redirects": [
+    { "source": "/privacy", "destination": "/legale/privacy/", "permanent": true },
+    { "source": "/privacy/", "destination": "/legale/privacy/", "permanent": true },
+    { "source": "/cookie", "destination": "/legale/cookie/", "permanent": true },
+    { "source": "/cookie/", "destination": "/legale/cookie/", "permanent": true },
+    { "source": "/termini", "destination": "/legale/termini/", "permanent": true },
+    { "source": "/termini/", "destination": "/legale/termini/", "permanent": true },
+    { "source": "/en/privacy", "destination": "/en/legal/privacy/", "permanent": true },
+    { "source": "/en/privacy/", "destination": "/en/legal/privacy/", "permanent": true },
+    { "source": "/en/cookies", "destination": "/en/legal/cookies/", "permanent": true },
+    { "source": "/en/cookies/", "destination": "/en/legal/cookies/", "permanent": true },
+    { "source": "/en/terms", "destination": "/en/legal/terms/", "permanent": true },
+    { "source": "/en/terms/", "destination": "/en/legal/terms/", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/images/(.*)",

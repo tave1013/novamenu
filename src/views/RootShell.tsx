@@ -6,6 +6,7 @@ import "@/app/globals.css";
 import { site } from "@/config/site";
 import { Header, type HeaderNav } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { CookieBanner } from "@/components/consenso/CookieBanner";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { JsonLd } from "@/components/ui";
 import { alternateLanguages, ogImage, siteDescription, siteTagline } from "@/config/seo";
@@ -97,6 +98,7 @@ export function RootShell({ locale, children }: { locale: Locale; children: Reac
           <Header nav={headerNav(locale)} />
           <main id="contenuto">{children}</main>
           <Footer />
+          <CookieBanner lingua={locale} cookiePolicyHref={href("legalDoc", locale, "cookie")} privacyHref={href("legalDoc", locale, "privacy")} />
         </LocaleProvider>
         <JsonLd
           data={[

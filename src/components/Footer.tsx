@@ -1,4 +1,6 @@
-import { tr } from "@/i18n";
+import { getLocale, tr } from "@/i18n";
+import { AZIENDA, rigaSocieta } from "@/lib/legal/azienda";
+import { PreferenzeCookieLink } from "./consenso/CookieBanner";
 import Link from "next/link";
 import { loginUrl, site } from "@/config/site";
 import { LogoMark } from "./Logo";
@@ -53,15 +55,21 @@ export function Footer() {
           </FooterCol>
 
           <FooterCol title={tr("Legale")}>
-            <FooterLink href={lp("/privacy/")}>{tr("Privacy")}</FooterLink>
-            <FooterLink href={lp("/cookie/")}>{tr("Cookie")}</FooterLink>
-            <FooterLink href={lp("/termini/")}>{tr("Termini del servizio")}</FooterLink>
+            <FooterLink href={to("legalDoc", "note-legali")}>{tr("Note legali")}</FooterLink>
+            <FooterLink href={to("legalDoc", "privacy")}>{tr("Privacy")}</FooterLink>
+            <FooterLink href={to("legalDoc", "cookie")}>{tr("Cookie")}</FooterLink>
+            <FooterLink href={to("legalDoc", "termini")}>{tr("Termini")}</FooterLink>
+            <li>
+              <PreferenzeCookieLink className="inline-flex min-h-8 items-center text-left text-[14px] transition-colors hover:text-white">
+                {tr("Preferenze cookie")}
+              </PreferenzeCookieLink>
+            </li>
           </FooterCol>
         </div>
 
         <div className="mt-14 flex flex-col gap-3 border-t border-white/10 pt-6 text-[13px] md:flex-row md:items-center md:justify-between">
           <p>
-            © {year} {site.company.legalName}{tr(". P. IVA")}{" "}{site.company.vat}
+            © {year} {AZIENDA.ragioneSociale}. {rigaSocieta(getLocale())}.
           </p>
           <p>{tr("Fatto in Italia, per la ristorazione.")}</p>
         </div>
