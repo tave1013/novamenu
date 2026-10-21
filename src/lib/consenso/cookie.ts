@@ -28,7 +28,7 @@ export const COOKIE: VoceCookie[] = [
     nome: "nm_preferenze",
     fornitore: { it: "NovaMenu (prima parte)", en: "NovaMenu (first party)" },
     categoria: "necessari",
-    scopo: { it: "Ricorda la lingua che hai scelto", en: "Remembers the language you chose" },
+    scopo: { it: "Ricorda la lingua e la valuta che hai scelto", en: "Remembers the language and currency you chose" },
     durata: { it: "12 mesi", en: "12 months" },
   },
   {

@@ -1,19 +1,25 @@
 import type { Locale } from "./config";
+import type { Valuta } from "@/config/prezzi";
 
 /**
- * Cookie tecnico delle preferenze, 12 mesi: la lingua scelta dal selettore del sito.
- * Formato: "lingua=it". Si scrive solo quando l'utente sceglie.
- * La valuta non si sceglie: dipende dal paese (vedi src/components/Valuta.tsx).
+ * Cookie tecnico delle preferenze, 12 mesi: lingua e valuta scelte dai selettori del sito.
+ * Formato: "lingua=en&valuta=gbp". Si scrive solo quando l'utente sceglie.
+ * Scegliere la bandiera cambia anche la valuta (inglese in sterline, italiano in euro);
+ * poi si può sempre cambiare la valuta dal selettore € / £ (vedi src/components/Valuta.tsx).
  */
 export const COOKIE_PREFERENZE = "nm_preferenze";
 export const DURATA_COOKIE_PREFERENZE = 365 * 24 * 60 * 60;
 
-export type Preferenze = { lingua?: Locale };
+export type Preferenze = { lingua?: Locale; valuta?: Valuta };
 
 export function leggiPreferenze(valore: string | null | undefined): Preferenze {
   const p = new URLSearchParams(valore ?? "");
   const lingua = p.get("lingua");
-  return { lingua: lingua === "it" || lingua === "en" ? lingua : undefined };
+  const valuta = p.get("valuta");
+  return {
+    lingua: lingua === "it" || lingua === "en" ? lingua : undefined,
+    valuta: valuta === "eur" || valuta === "gbp" ? valuta : undefined,
+  };
 }
 
 /** Preferenze salvate nel browser. */
@@ -28,9 +34,14 @@ export function salvaPreferenza(nuova: Preferenze) {
   const valore = new URLSearchParams(Object.entries(p).filter(([, v]) => v) as [string, string][]).toString();
   const secure = location.protocol === "https:" ? "; Secure" : "";
   document.cookie = `${COOKIE_PREFERENZE}=${encodeURIComponent(valore)}; Max-Age=${DURATA_COOKIE_PREFERENZE}; Path=/; SameSite=Lax${secure}`;
+  window.dispatchEvent(new Event(EVENTO_PREFERENZE));
 }
 
-export const salvaLingua = (lingua: Locale) => salvaPreferenza({ lingua });
+/** Avvisa i componenti della pagina (per esempio i prezzi) che le preferenze sono cambiate. */
+export const EVENTO_PREFERENZE = "nm:preferenze";
+
+/** Scegliere la bandiera cambia anche la valuta: inglese in sterline, italiano in euro. */
+export const salvaLingua = (lingua: Locale) => salvaPreferenza({ lingua, valuta: lingua === "en" ? "gbp" : "eur" });
 
 /** Paesi in cui la home resta in italiano. */
 const PAESI_ITALIANO = new Set(["IT", "SM", "VA"]);

@@ -4,7 +4,7 @@ import { tr } from "@/i18n";
 import { useState } from "react";
 import { mensileConAnnuale, prezzoAnnuale, prezzoMensile, type Listino } from "@/config/prezzi";
 import { signupUrl } from "@/config/site";
-import { useValuta } from "./Valuta";
+import { SelettoreValuta, useValuta } from "./Valuta";
 import { Check } from "./ui";
 import { HandNote } from "./HandNote";
 import { getPlans } from "@/content/plansByLocale";
@@ -36,6 +36,7 @@ export function Pricing({ listino }: { listino: Listino }) {
             </button>
           ))}
         </div>
+        <SelettoreValuta />
       </div>
 
       <div className="relative mt-10 grid gap-4 lg:mt-24 lg:grid-cols-3">

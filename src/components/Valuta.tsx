@@ -3,12 +3,15 @@
 import { useCallback, useSyncExternalStore } from "react";
 import { getLocale, tr } from "@/i18n";
 import { localeInfo } from "@/i18n/config";
-import { formatoPrezzo, valutaPerPaese, type Valuta } from "@/config/prezzi";
+import { VALUTE, formatoPrezzo, valutaPerPaese, type Valuta } from "@/config/prezzi";
+import { EVENTO_PREFERENZE, preferenzeBrowser, salvaPreferenza } from "@/i18n/lingua-iniziale";
 
 /*
- * Valuta dei prezzi, condivisa da tutti i componenti della pagina. Non si sceglie a mano:
- * decide il paese dell'IP (euro nell'Unione europea, sterline nel Regno Unito e nel resto del mondo).
- * Se il paese non arriva, decide la lingua della pagina.
+ * Valuta dei prezzi, condivisa da tutti i componenti della pagina.
+ * 1. Se l'utente ha scelto la valuta dal selettore € / £, o una lingua dalla bandiera
+ *    (inglese in sterline, italiano in euro), vale l'ultima scelta (cookie nm_preferenze).
+ * 2. Altrimenti decide il paese dell'IP: euro nell'Unione europea, sterline nel Regno Unito
+ *    e nel resto del mondo. Se il paese non arriva, decide la lingua della pagina.
  * Finché il paese non è noto i prezzi restano nascosti, così non si vede il cambio di valuta.
  */
 type Stato = { valuta: Valuta; pronta: boolean };
@@ -24,12 +27,21 @@ function imposta(nuovo: Stato) {
 function avvia() {
   if (avviata) return;
   avviata = true;
+  window.addEventListener(EVENTO_PREFERENZE, () => {
+    const v = preferenzeBrowser().valuta;
+    if (v) imposta({ valuta: v, pronta: true });
+  });
+  const scelta = preferenzeBrowser().valuta;
+  if (scelta) return imposta({ valuta: scelta, pronta: true });
   const lingua = getLocale() === "en" ? "en" : "it";
   const daLingua = () => imposta({ valuta: valutaPerPaese(null, lingua), pronta: true });
   const riserva = window.setTimeout(daLingua, 1500);
   fetch("/api/paese/", { cache: "no-store" })
     .then((r) => r.json())
-    .then((j: { paese?: string | null }) => imposta({ valuta: valutaPerPaese(j.paese, lingua), pronta: true }))
+    .then((j: { paese?: string | null }) => {
+      if (preferenzeBrowser().valuta) return;
+      imposta({ valuta: valutaPerPaese(j.paese, lingua), pronta: true });
+    })
     .catch(daLingua)
     .finally(() => window.clearTimeout(riserva));
 }
@@ -44,8 +56,33 @@ const dalServer: Stato = { valuta: "eur", pronta: false };
 
 export function useValuta() {
   const s = useSyncExternalStore(iscriviti, () => stato, () => dalServer);
+  const scegli = useCallback((v: Valuta) => salvaPreferenza({ valuta: v }), []);
   const formato = useCallback((importo: number) => formatoPrezzo(importo, s.valuta, localeInfo[getLocale()].intl), [s.valuta]);
-  return { ...s, formato };
+  return { ...s, scegli, formato };
+}
+
+/** Selettore € / £ accanto ai prezzi. */
+export function SelettoreValuta({ className = "" }: { className?: string }) {
+  const { valuta, scegli } = useValuta();
+  return (
+    <div role="radiogroup" aria-label={tr("Valuta dei prezzi")} className={`inline-flex rounded-[12px] border border-line bg-white p-1 ${className}`}>
+      {(Object.keys(VALUTE) as Valuta[]).map((v) => (
+        <button
+          key={v}
+          type="button"
+          role="radio"
+          aria-checked={valuta === v}
+          aria-label={v === "eur" ? tr("Euro") : tr("Sterline")}
+          onClick={() => scegli(v)}
+          className={`flex h-10 min-w-11 items-center justify-center rounded-[9px] px-3 text-[15px] font-medium transition-all duration-300 ${
+            valuta === v ? "bg-forest text-white" : "text-muted hover:text-ink"
+          }`}
+        >
+          {VALUTE[v].simbolo}
+        </button>
+      ))}
+    </div>
+  );
 }
 
 /** Prezzo mensile di un piano, per la tabella di confronto. */

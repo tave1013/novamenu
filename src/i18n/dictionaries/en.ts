@@ -1293,4 +1293,7 @@ export const en: Record<MessageKey, string> = {
   "Scopri la Lista ordini": "Discover the Order list",
   "Inclusa nei piani Pro e Premium": "Included in the Pro and Premium plans",
   "Dashboard": "Dashboard",
+  "Euro": "Euros",
+  "Sterline": "Pounds sterling",
+  "Valuta dei prezzi": "Price currency",
 };

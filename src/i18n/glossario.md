@@ -82,9 +82,10 @@ solo a un posto dove si beve alcol.
 - I prezzi dei piani non sono scritti nel sito: arrivano dalla piattaforma
   (`src/lib/prezzi/listino.ts`), in euro e in sterline, mensili e annuali, e si
   aggiornano da soli ogni ora. Le sterline sono un listino a parte, mai una
-  conversione. La valuta non dipende dalla lingua e non si sceglie: dipende dal
-  paese dell'IP, euro nell'Unione europea (e nei paesi con l'euro), sterline nel
-  Regno Unito e in tutti gli altri paesi. Il prezzo mensile dell'annuale si
+  conversione. La valuta segue l'ultima scelta dell'utente: il selettore € / £,
+  oppure la bandiera (inglese in sterline, italiano in euro), salvate nel cookie
+  `nm_preferenze`. Senza una scelta decide il paese dell'IP: euro nell'Unione
+  europea (e nei paesi con l'euro), sterline nel Regno Unito e in tutti gli altri. Il prezzo mensile dell'annuale si
   arrotonda all'unità (590 € l'anno: 49 € al mese). Accanto al prezzo: "al mese + IVA", in inglese "per month,
   excl. VAT". Nelle guide i prezzi si scrivono come `{{prezzo:base:eur}}`.
 - Negli esempi (prezzi dei piatti nelle illustrazioni e nelle guide) l'inglese usa
