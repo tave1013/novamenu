@@ -43,8 +43,8 @@ export const COOKIE: VoceCookie[] = [
     fornitore: { it: "NovaMenu (prima parte)", en: "NovaMenu (first party)" },
     categoria: "necessari",
     scopo: {
-      it: "Indica al sito che hai già fatto l'accesso alla piattaforma, per mostrarti il link alla dashboard. Non contiene dati personali",
-      en: "Tells the website you are already signed in to the platform, so it can show you the link to the dashboard. It contains no personal data",
+      it: "Indica al sito che hai già fatto l'accesso alla piattaforma e l'indirizzo del tuo locale, per portarti dritto alla dashboard. Non contiene dati personali",
+      en: "Tells the website you are already signed in to the platform and your venue's address, so it can take you straight to the dashboard. It contains no personal data",
     },
     durata: { it: "Fino all'uscita dalla piattaforma, al massimo 30 giorni", en: "Until you sign out of the platform, up to 30 days" },
   },
