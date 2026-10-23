@@ -43,8 +43,8 @@ export const COOKIE: VoceCookie[] = [
     fornitore: { it: "NovaMenu (prima parte)", en: "NovaMenu (first party)" },
     categoria: "necessari",
     scopo: {
-      it: "Indica al sito che hai già fatto l'accesso alla piattaforma e l'indirizzo del tuo locale, per portarti dritto alla dashboard. Non contiene dati personali",
-      en: "Tells the website you are already signed in to the platform and your venue's address, so it can take you straight to the dashboard. It contains no personal data",
+      it: "Indica al sito che hai già fatto l'accesso alla piattaforma, così al posto di «Accedi» compare «Dashboard». Contiene solo il nome del tuo locale nell'indirizzo del menu (per esempio pizzeria-fiore), lo stesso già pubblico; nessuna password, email o chiave di accesso. Lo scrive la piattaforma quando entri e lo cancella quando esci",
+      en: "Tells the website you are already signed in to the platform, so it shows “Dashboard” instead of “Log in”. It only contains your venue's name as it appears in your menu address (for example pizzeria-fiore), which is already public; no password, email or access key. The platform sets it when you sign in and deletes it when you sign out",
     },
     durata: { it: "Fino all'uscita dalla piattaforma, al massimo 30 giorni", en: "Until you sign out of the platform, up to 30 days" },
   },
