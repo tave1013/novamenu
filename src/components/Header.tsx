@@ -332,9 +332,11 @@ export function Header({ nav }: { nav: HeaderNav }) {
         </div>
       </header>
 
+      {/* data-lenis-prevent: con la pagina ferma, Lenis bloccherebbe anche lo scorrimento dentro il menu */}
       {mobile && (
         <div
           id="menu-mobile"
+          data-lenis-prevent
           className="fixed inset-x-0 bottom-0 top-16 z-[60] flex flex-col overflow-hidden bg-[#fafaf8] lg:hidden [animation:fadeIn_.2s_ease_both]"
         >
           <div className="relative min-h-0 flex-1 overflow-hidden">
