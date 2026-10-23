@@ -339,7 +339,7 @@ export const en: Record<MessageKey, string> = {
   "Fasce di ritiro con limite di ordini": "Collection slots with an order limit",
   "Fate anche le sponsorizzate?": "Do you run paid ads too?",
   "Fatto": "Done",
-  "Fatto in Italia, per la ristorazione.": "Made in Italy, for hospitality.",
+  "Fatto per la ristorazione.": "Made for hospitality.",
   "Fatto, tavolo 7 assegnato. Domani avete 42 coperti.": "Done, table 7 assigned. You have 42 covers tomorrow.",
   "Fatto. Menu e orari sono aggiornati, anche sul QR dei tavoli. Stasera hai 38 coperti prenotati, tutti prima delle 21.": "Done. Menu and opening hours are updated, on the table QR codes too. You have 38 covers booked tonight, all before 21:00.",
   "Ferie": "Holidays",

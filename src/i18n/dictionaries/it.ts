@@ -382,7 +382,7 @@ export const it = [
   "Fasce di ritiro con limite di ordini",
   "Fate anche le sponsorizzate?",
   "Fatto",
-  "Fatto in Italia, per la ristorazione.",
+  "Fatto per la ristorazione.",
   "Fatto, tavolo 7 assegnato. Domani avete 42 coperti.",
   "Fatto. Menu e orari sono aggiornati, anche sul QR dei tavoli. Stasera hai 38 coperti prenotati, tutti prima delle 21.",
   "Fatturato ogni mese",

@@ -73,7 +73,7 @@ export function Footer() {
           <p>
             © {year} {AZIENDA.ragioneSociale}. {rigaSocieta(getLocale())}.
           </p>
-          <p>{tr("Fatto in Italia, per la ristorazione.")}</p>
+          <p>{tr("Fatto per la ristorazione.")}</p>
         </div>
       </div>
     </footer>
