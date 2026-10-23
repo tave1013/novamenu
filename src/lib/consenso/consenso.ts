@@ -1,19 +1,12 @@
+import { VERSIONI } from "@/lib/legal/azienda";
+
 /**
  * Gestione del consenso ai cookie, senza servizi esterni.
  * - La scelta sta nel cookie tecnico nm_consenso per 6 mesi.
  * - Google Analytics, Microsoft Clarity e Meta Pixel si caricano solo dopo il consenso alla loro categoria.
- * - Ogni scelta viene mandata al registro dei consensi (tabella consensi_cookie) senza indirizzo IP.
+ * - Ogni scelta viene mandata al registro dei consensi tramite /api/consenso/, senza indirizzo IP né dati personali.
  * Funziona solo nel browser.
  */
-
-/** Cambia questo valore quando cambiano categorie o fornitori: il banner ricompare a tutti. */
-export const VERSIONE_CONSENSO = "1";
-export const COOKIE_CONSENSO = "nm_consenso";
-const DURATA_GIORNI = 182; // 6 mesi
-
-export type Azione = "accetta_tutti" | "rifiuta" | "personalizza" | "chiusura_x" | "revoca";
-export type Scelte = { statistiche: boolean; marketing: boolean };
-export type Consenso = Scelte & { versione: string; idBrowser: string; data: number };
 
 /** Strumenti collegati. Senza identificativo lo strumento non viene mai caricato. */
 export type Strumenti = { ga4?: string; clarity?: string; metaPixel?: string };
@@ -24,8 +17,24 @@ export const STRUMENTI_SITO: Strumenti = {
   metaPixel: process.env.NEXT_PUBLIC_META_PIXEL_ID || undefined,
 };
 
-/** Indirizzo della funzione che scrive nel registro dei consensi (Supabase, con service role). */
-export const REGISTRO_CONSENSI = process.env.NEXT_PUBLIC_CONSENSO_ENDPOINT || "";
+/**
+ * Versione del consenso: cambia da sola quando si collegano o si tolgono strumenti
+ * (così il banner ricompare a tutti e nessuno strumento nuovo parte con un consenso vecchio).
+ * Alza il numero anche quando cambiano in modo rilevante le categorie o i fornitori.
+ */
+export const VERSIONE_CONSENSO = `2-${(["ga4", "clarity", "metaPixel"] as const).filter((k) => STRUMENTI_SITO[k]).join("+") || "tecnici"}`;
+export const COOKIE_CONSENSO = "nm_consenso";
+const DURATA_GIORNI = 182; // 6 mesi
+
+export type Azione = "accetta_tutti" | "rifiuta" | "personalizza" | "chiusura_x" | "revoca";
+export type Scelte = { statistiche: boolean; marketing: boolean };
+export type Consenso = Scelte & { versione: string; idBrowser: string; data: number };
+
+/**
+ * Il browser manda ogni scelta alla nostra funzione /api/consenso/ (stesso dominio, nessun servizio esterno),
+ * che aggiunge data, ora e paese e la inoltra al registro dei consensi della piattaforma.
+ */
+export const REGISTRO_CONSENSI = "/api/consenso/";
 
 /** Evento che riapre il pannello: lo usa il link "Preferenze cookie" del footer. */
 export const EVENTO_PREFERENZE = "nm:preferenze-cookie";
@@ -187,29 +196,19 @@ function spegni(revocate: Scelte, strumenti: Strumenti) {
 
 /* ---------- registro dei consensi ---------- */
 
-/** User agent abbreviato: solo browser e sistema, per esempio "Chrome 141 / macOS". */
-function userAgentBreve(): string {
-  const ua = navigator.userAgent;
-  const m = ua.match(/(Edg|OPR|SamsungBrowser|Firefox|FxiOS|CriOS|Chrome)\/(\d+)/);
-  const safari = ua.match(/Version\/(\d+).*Safari\//);
-  const b = m ? `${m[1]} ${m[2]}` : safari ? `Safari ${safari[1]}` : "altro";
-  const os = /iPhone|iPad|iPod/.test(ua) ? "iOS" : /Android/.test(ua) ? "Android" : /Mac OS X/.test(ua) ? "macOS" : /Windows/.test(ua) ? "Windows" : /Linux/.test(ua) ? "Linux" : "altro";
-  return `${b} / ${os}`.slice(0, 60);
-}
-
-function registra(c: Consenso, azione: Azione, lingua: string, utenteId?: string | null) {
-  if (!REGISTRO_CONSENSI) return;
+/**
+ * Una riga del registro: identificativo casuale del browser (non collegato a nome, email o IP),
+ * scelte, versioni, lingua. Data, ora e paese li aggiunge il server.
+ */
+function registra(c: Consenso, azione: Azione, lingua: string) {
   const body = JSON.stringify({
-    id_browser: c.idBrowser,
-    utente_id: utenteId ?? null,
-    dominio: location.hostname,
-    versione_consenso: c.versione,
-    necessari: true,
+    id: c.idBrowser,
+    azione,
     statistiche: c.statistiche,
     marketing: c.marketing,
-    azione,
+    versione_consenso: c.versione,
+    versione_cookie_policy: VERSIONI.cookie.versione,
     lingua,
-    user_agent: userAgentBreve(),
   });
   try {
     fetch(REGISTRO_CONSENSI, { method: "POST", headers: { "Content-Type": "application/json" }, body, keepalive: true, credentials: "omit" }).catch(() => {});
@@ -228,7 +227,7 @@ export function salvaScelta(scelte: Scelte, azione: Azione, opzioni: { lingua: s
   const revocate: Scelte = { statistiche: !!prima?.statistiche && !scelte.statistiche, marketing: !!prima?.marketing && !scelte.marketing };
   const azioneReale: Azione = (revocate.statistiche || revocate.marketing) && azione === "personalizza" ? "revoca" : azione;
   scriviConsenso(c);
-  registra(c, azioneReale, opzioni.lingua, opzioni.utenteId);
+  registra(c, azioneReale, opzioni.lingua);
   if (revocate.statistiche || revocate.marketing) {
     aggiornaConsentMode(scelte);
     spegni(revocate, opzioni.strumenti);

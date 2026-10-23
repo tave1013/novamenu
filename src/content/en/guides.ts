@@ -263,7 +263,7 @@ const baseGuides: Omit<Guide, "slug">[] = [
 <li><strong>An away message</strong> outside opening hours, explaining when you reopen and how to place an order for tomorrow.</li>
 <li><strong>Quick replies</strong> for the phrases you write most often, such as the order confirmation.</li>
 </ul>
-<blockquote><p>Hi! To order, use our menu: choose your pizzas and collection time, and it all reaches us here. [link] We reply within a few minutes.</p></blockquote>
+<blockquote><p>Hi! To order, use our menu: choose your pizzas and collection time, and it all reaches us here. yourvenue.novamenu.eu We reply within a few minutes.</p></blockquote>
 
 <h2>Always confirm, in a few seconds</h2>
 <p>A customer who has ordered wants to know the order has arrived. A short confirmation, with the time, is enough. If there's a problem, such as a product that has run out, suggest an alternative straight away instead of asking "what would you like to do?".</p>

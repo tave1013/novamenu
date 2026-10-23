@@ -2,20 +2,19 @@
 titolo: NovaMenu Business app privacy notice
 etichetta: App privacy notice
 descrizione: Privacy notice for the NovaMenu Business app for iPhone, iPad and Android: data processed, phone permissions, notifications and account deletion.
-versione: 1.0
-dataInVigore: "{{dataInVigore}}"
 ---
 
-This notice covers the **NovaMenu Business** app for iPhone, iPad, Apple Watch and Android, which NovaMenu's customer venues and their staff use to manage orders, bookings, menus and customers. It supplements NovaMenu's general **[Privacy notice](/en/legal/privacy/)**, which also applies to the app and which we invite you to read: here you will find only what is specific to the app.
+This notice covers the **NovaMenu Business** app for iPhone, iPad, Apple Watch and Android, which NovaMenu's customer venues and their staff use to manage orders, bookings, menus and customers. It supplements NovaMenu's general **[Privacy notice](/en/legal/privacy/)**, which also applies to the app and which we invite you to read: here you will find only what is specific to the app. Like the general notice, it applies to people in the European Union (GDPR) and to people in the United Kingdom (UK GDPR and Data Protection Act 2018).
 
 ## 1. Data controller
 
-The data controller is **{{ragioneSociale}}** (NovaMenu), {{sedeLegale}}, registration number {{numeroSocieta}}. Contact: [{{emailPrivacy}}](mailto:{{emailPrivacy}}).<!-- RAPPRESENTANTE NELL'UE (art. 27 GDPR): tolto temporaneamente finché non è nominato. Per rimetterlo togli il commento e lascia la frase: EU representative: {{rappresentanteUE}}. -->
+The data controller is **{{ragioneSociale}}** (NovaMenu), {{sedeLegale}}, Companies House registration number {{numeroSocieta}}. Contact: [{{emailPrivacy}}](mailto:{{emailPrivacy}}).{{#se rappresentanteUE}} EU representative (Article 27 GDPR): {{rappresentanteUE}}{{#se emailRappresentanteUE}}, [{{emailRappresentanteUE}}](mailto:{{emailRappresentanteUE}}){{/se}}.{{/se}}
 
 ## 2. Two different roles
 
 - For your **account** data (name, email, telephone, role in the venue) and for the app's technical data, NovaMenu is the **data controller**.
 - For the data of **your venue's customers** that you see and manage in the app (orders, bookings, contact details, allergies, notes), the **data controller is the venue** and NovaMenu processes it only on its behalf, under the [Data Processing Agreement (DPA)](/en/legal/dpa/).
+- Customers' **allergies and intolerances** are data concerning health: they are saved only with the customer's explicit consent, collected by the venue, and are used only to prepare and serve the meal safely.
 
 ## 3. Data processed by the app
 
@@ -49,7 +48,7 @@ Subscriptions cannot be purchased and payments cannot be made in the app. Subscr
 
 ## 8. Deleting your account
 
-You can delete your account at any time from the app: **More, Account, Delete account**. For security, we ask you to type the venue's name and we send you a confirmation email. You have **[7] days** to cancel the deletion using the link in the email; after this period we delete the venue's account, the menu and all linked data, including the data of the venue's customers, within the time limits set out in the [Privacy notice (section 10)](/en/legal/privacy/#10) and in the [DPA](/en/legal/dpa/). Only the data we are required to keep by law, such as billing records, is retained. Before deleting your account you can export your data from the platform. Deleting the app from your phone does not delete the account.
+You can delete your account at any time from the app: **More, Account, Delete account**. For security, we ask you to type the venue's name and we send you a confirmation email. You have **{{giorniAnnullaEliminazione}} days** to cancel the deletion using the link in the email; after this period we delete the venue's account, the menu and all linked data, including the data of the venue's customers, within the time limits set out in the [Privacy notice (section 10)](/en/legal/privacy/#10) and in the [DPA](/en/legal/dpa/). Only the data we are required to keep by law, such as billing records, is retained. Before deleting your account you can export your data from the platform. Deleting the app from your phone does not delete the account.
 
 ## 9. Where data is stored and transfers
 
@@ -57,11 +56,11 @@ Platform data is stored in the European Union (Frankfurt, Germany). For transfer
 
 ## 10. Retention, rights and complaints
 
-The retention periods, rights and complaint procedures described in the [Privacy notice](/en/legal/privacy/) (sections 11, 13 and 14) apply. To exercise your rights, write to [{{emailPrivacy}}](mailto:{{emailPrivacy}}).
+The retention periods, rights and complaint procedures described in the [Privacy notice](/en/legal/privacy/) (sections 10, 12 and 13) apply: complaints go to the Garante per la protezione dei dati personali if you are in Italy (or to the authority of your country if you are in another European Union country) and to the Information Commissioner's Office if you are in the United Kingdom. To exercise your rights, write to [{{emailPrivacy}}](mailto:{{emailPrivacy}}).
 
 ## 11. Minors
 
-The app is intended for professionals and for venue staff aged 18 or over.
+The app is intended for professionals and for venue staff aged 18 or over. It is not aimed at children under 14 in Italy or under 13 in the United Kingdom.
 
 ## 12. Changes
 

@@ -263,7 +263,7 @@ export const sectorGuides: Guide[] = withId<Guide>([
 
 <h2>Messaggi d'esempio da copiare</h2>
 <p>Ogni mattina, nello stato di WhatsApp o nelle storie:</p>
-<blockquote><p>🍝 Oggi al banco: lasagna al forno, vitello tonnato, pollo arrosto e verdure grigliate. Ordina entro le 11:30 e ritira senza coda: [link]</p></blockquote>
+<blockquote><p>🍝 Oggi al banco: lasagna al forno, vitello tonnato, pollo arrosto e verdure grigliate. Ordina entro le 11:30 e ritira senza coda: nomelocale.novamenu.eu</p></blockquote>
 <p>Agli uffici vicini, una volta sola, con il biglietto e il QR:</p>
 <blockquote><p>Ciao! Siamo la gastronomia qui di fianco. Se in ufficio pranzate spesso insieme, potete ordinare dal nostro menu entro le 11 e passare a ritirare tutto in un'unica volta alle 12:30.</p></blockquote>
 
@@ -539,7 +539,7 @@ export const sectorGuides: Guide[] = withId<Guide>([
 <h2>10. Prepara i messaggi in anticipo</h2>
 <p>A dicembre non avrai tempo di scrivere con calma. Prepara a ottobre i tre messaggi che ti servono.</p>
 <p>Per l'apertura degli ordini, ai clienti che hanno dato il consenso:</p>
-<blockquote><p>🎄 Da domani si prenota la pasta di Natale! Agnolotti del plin, tajarin, ravioli di magro e i nostri sughi. Scegli il giorno di ritiro dal 20 al 24 dicembre: i posti per il 23 finiscono presto. [link]</p></blockquote>
+<blockquote><p>🎄 Da domani si prenota la pasta di Natale! Agnolotti del plin, tajarin, ravioli di magro e i nostri sughi. Scegli il giorno di ritiro dal 20 al 24 dicembre: i posti per il 23 finiscono presto. nomelocale.novamenu.eu</p></blockquote>
 <p>Come conferma dell'ordine:</p>
 <blockquote><p>Grazie Giovanna, il tuo ordine è confermato per lunedì 22 alle 10:00. Puoi modificarlo fino a sabato rispondendo a questo messaggio.</p></blockquote>
 <p>A gennaio, per riportare in negozio chi è passato solo per le feste:</p>

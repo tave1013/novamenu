@@ -7,14 +7,28 @@ import { signupUrl, site, waLink } from "@/config/site";
 import { Icon } from "./Icon";
 import { HandNote } from "./HandNote";
 import { lp } from "@/i18n/link";
+import { registraRichiesta, rigaRicontatto } from "@/lib/moduli/richieste";
+
+/** Al posto della casella "accetto": per chiedere una demo non si accettano Termini e Privacy. */
+export function RigaPrivacy({ className = "" }: { className?: string }) {
+  return (
+    <p className={`text-[14px] leading-normal text-[#3f3f46] ${className}`}>
+      {rigaRicontatto()}{" "}
+      <Link href={lp("/legale/privacy/")} className="font-medium text-ink underline underline-offset-2">
+        {tr("Informativa privacy")}
+      </Link>
+    </p>
+  );
+}
 
 const types = () => ([tr("Pizzeria"), tr("Ristorante o trattoria"), tr("Pub o birreria"), tr("Bar o caffetteria"), tr("Gelateria"), tr("Pastificio"), tr("Panetteria o pasticceria"), tr("Gastronomia o rosticceria"), tr("Altro")]);
 const goals = () => ([tr("Menu digitale e QR"), tr("Più prenotazioni"), tr("Ordini da asporto"), tr("Far tornare i clienti"), tr("Un po' di tutto")]);
 const times = ["10:00", "10:30", "11:00", "11:30", "15:00", "15:30", "16:00", "17:30"];
 const dayShort = () => ([tr("Dom"), tr("Lun"), tr("Mar"), tr("Mer"), tr("Gio"), tr("Ven"), tr("Sab")]);
 
-type Data = { nome: string; attivita: string; email: string; tel: string; tipo: string; obiettivo: string; modo: "video" | "tel"; privacy: boolean; wa: boolean };
-const empty: Data = { nome: "", attivita: "", email: "", tel: "", tipo: "", obiettivo: "", modo: "video", privacy: false, wa: true };
+type Data = { nome: string; attivita: string; email: string; tel: string; tipo: string; obiettivo: string; modo: "video" | "tel"; wa: boolean };
+// La casella WhatsApp parte sempre vuota: il consenso lo dà solo chi la spunta.
+const empty: Data = { nome: "", attivita: "", email: "", tel: "", tipo: "", obiettivo: "", modo: "video", wa: false };
 
 /** Prossimi 5 giorni lavorativi a partire da domani. */
 function nextWorkdays() {
@@ -52,7 +66,6 @@ export function DemoBooking({ compact = false }: { compact?: boolean }) {
 
   function toStep2() {
     if (!data.nome.trim() || !data.attivita.trim() || !data.tel.trim()) return setErr(tr("Compila nome, attività e telefono per continuare."));
-    if (!data.privacy) return setErr(tr("Per continuare accetta la privacy policy e i termini."));
     setErr(null);
     setStep(2);
   }
@@ -71,6 +84,15 @@ export function DemoBooking({ compact = false }: { compact?: boolean }) {
     ]
       .filter((x) => x !== "")
       .join("\n");
+    registraRichiesta({
+      tipo: "demo",
+      nome: data.nome,
+      attivita: `${data.attivita}${data.tipo ? ` (${data.tipo})` : ""}`,
+      email: data.email,
+      telefono: data.tel,
+      messaggio: [`${when} ${time}`, data.modo === "video" ? "video" : "telefono", data.obiettivo].filter(Boolean).join(", "),
+      consensi: { whatsapp: data.wa },
+    });
     window.open(waLink(msg), "_blank", "noopener");
     setStep(3);
   }
@@ -197,22 +219,10 @@ export function DemoBooking({ compact = false }: { compact?: boolean }) {
             </fieldset>
             <div className="flex flex-col gap-3 pt-1">
               <label className="flex cursor-pointer items-start gap-2.5 text-[14px] leading-normal text-[#3f3f46]">
-                <input type="checkbox" checked={data.privacy} onChange={(e) => set("privacy", e.target.checked)} className="mt-0.5 h-[18px] w-[18px] flex-none accent-[#0b0b0c]" />
-                <span>
-                  {tr("Accetto la")}{" "}
-                  <Link href={lp("/legale/privacy/")} className="font-medium text-ink underline underline-offset-2">
-                    {tr("privacy policy")}
-                  </Link>{" "}
-                  {tr("e i")}{" "}
-                  <Link href={lp("/legale/termini/")} className="font-medium text-ink underline underline-offset-2">
-                    {tr("termini del servizio")}
-                  </Link>
-                </span>
-              </label>
-              <label className="flex cursor-pointer items-start gap-2.5 text-[14px] leading-normal text-[#3f3f46]">
                 <input type="checkbox" checked={data.wa} onChange={(e) => set("wa", e.target.checked)} className="mt-0.5 h-[18px] w-[18px] flex-none accent-[#0b0b0c]" />
                 {tr("Sì, scrivetemi su WhatsApp per organizzare la demo. Posso smettere quando voglio.")}
               </label>
+              <RigaPrivacy />
             </div>
             {err && (
               <p role="alert" className="rounded-[10px] bg-p-red px-3.5 py-2.5 text-[14px] text-p-red-ink">
@@ -299,6 +309,7 @@ export function DemoBooking({ compact = false }: { compact?: boolean }) {
               {tr("Conferma la demo")}
             </button>
           </div>
+          <RigaPrivacy className="mt-3 text-center !text-[13.5px] !text-muted" />
         </div>
       )}
 

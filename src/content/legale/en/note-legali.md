@@ -1,9 +1,7 @@
 ---
 titolo: Legal notice
 etichetta: Legal notice
-descrizione: NovaMenu legal notice: details of Ma & Co LTD, registered office, registrations, intellectual property and reports.
-versione: 1.0
-dataInVigore: "{{dataInVigore}}"
+descrizione: NovaMenu legal notice: details of MA & CO LIMITED, registered office, registrations, intellectual property and reports.
 ---
 
 **NovaMenu** is a trade mark and a service of:
@@ -12,14 +10,14 @@ dataInVigore: "{{dataInVigore}}"
 {{Tipo}}<br>
 Registration number (Companies House): {{numeroSocieta}}<br>
 Registered office: {{sedeLegale}}<br>
-Partita IVA / VAT number: {{partitaIva}}<br>
-Registration with the Information Commissioner's Office (ICO): {{registrazioneICO}}<br>
+{{#se partitaIva}}VAT number: {{partitaIva}}<br>{{/se}}
+{{#se numeroICO}}Registration with the Information Commissioner's Office (ICO): {{numeroICO}}<br>{{/se}}
 Email: [{{emailContatto}}](mailto:{{emailContatto}})<br>
 Website: {{sito}}
 
-<!-- RAPPRESENTANTE NELL'UE (art. 27 GDPR): tolto temporaneamente finché non è nominato. Per rimetterlo togli il commento. Rimetti anche "rappresentante nell'UE" / "EU representative" nella descrizione qui sopra.
-**Representative in the European Union for data protection** (Article 27 of Regulation (EU) 2016/679): {{rappresentanteUE}}.
--->
+{{#se rappresentanteUE}}
+**Representative in the European Union for data protection** (Article 27 of Regulation (EU) 2016/679): {{rappresentanteUE}}{{#se emailRappresentanteUE}}, [{{emailRappresentanteUE}}](mailto:{{emailRappresentanteUE}}){{/se}}.
+{{/se}}
 
 **Intellectual property.** The text, graphics, logo, software and other content of novamenu.eu and of the NovaMenu platform belong to {{ragioneSociale}} or its licensors and are protected by copyright and trade mark law. They may not be copied, modified or distributed without written permission, except where permitted by law. Content uploaded by venues (menus, photos, logos) remains the property of the respective owners.
 

@@ -5,6 +5,8 @@
 export type TestiBanner = {
   titolo: string;
   testo: string;
+  /** Testo usato quando non è collegato nessuno strumento di statistica o marketing. */
+  testoSoloTecnici: string;
   cookiePolicy: string;
   informativaPrivacy: string;
   rifiuta: string;
@@ -25,6 +27,8 @@ export const TESTI_BANNER: Record<"it" | "en", TestiBanner> = {
     titolo: "Usiamo i cookie con il tuo permesso",
     testo:
       "Usiamo cookie tecnici per far funzionare il sito. Con il tuo consenso usiamo anche cookie di statistica, per capire come viene usato il sito, e di marketing, per misurare le nostre pubblicità. Se chiudi con la X, usiamo solo quelli tecnici. Puoi cambiare idea quando vuoi da \"Preferenze cookie\" in fondo alla pagina.",
+    testoSoloTecnici:
+      "Per ora usiamo solo cookie tecnici, che servono a far funzionare il sito e non richiedono il consenso. Non usiamo cookie di statistica o di marketing: se in futuro li useremo, te lo chiederemo qui prima di attivarli. Puoi rivedere le tue scelte quando vuoi da \"Preferenze cookie\" in fondo alla pagina.",
     cookiePolicy: "Cookie policy",
     informativaPrivacy: "Informativa privacy",
     rifiuta: "Rifiuta",
@@ -53,6 +57,8 @@ export const TESTI_BANNER: Record<"it" | "en", TestiBanner> = {
     titolo: "We use cookies with your permission",
     testo:
       "We use technical cookies to make the site work. With your consent we also use statistics cookies, to understand how the site is used, and marketing cookies, to measure our advertising. If you close with the X, we only use the technical ones. You can change your mind at any time from \"Cookie preferences\" at the bottom of the page.",
+    testoSoloTecnici:
+      "For now we only use technical cookies, which make the site work and do not require consent. We do not use statistics or marketing cookies: if we use them in the future, we will ask you here before turning them on. You can review your choices at any time from \"Cookie preferences\" at the bottom of the page.",
     cookiePolicy: "Cookie policy",
     informativaPrivacy: "Privacy notice",
     rifiuta: "Reject",

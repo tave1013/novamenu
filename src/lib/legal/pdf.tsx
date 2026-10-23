@@ -24,18 +24,18 @@ export const nomePdf = (documento: DocumentoPdf, lingua: Lingua, versione: strin
 export const urlPdf = (documento: DocumentoPdf, lingua: Lingua, versione: string) =>
   `${lingua === "en" ? "/en/legal/pdf/" : "/legale/pdf/"}${nomePdf(documento, lingua, versione)}`;
 
-type VocePdf = { nome: string; documento: DocumentoPdf; versione: string; percorso: string };
+type VocePdf = { nome: string; documento: DocumentoPdf; versione: string; percorso: string; attuale: boolean };
 
 /** Tutti i PDF di una lingua: versione in vigore più quelle archiviate. */
 export function elencoPdf(lingua: Lingua): VocePdf[] {
   const attuali = DOCUMENTI_PDF.map((d) => {
     const percorso = percorsoDocumento(d, lingua);
-    const { versione } = leggiSorgente(percorso, lingua).meta;
-    return { nome: nomePdf(d, lingua, versione), documento: d, versione, percorso };
+    const { versione } = leggiSorgente(percorso, lingua, d).meta;
+    return { nome: nomePdf(d, lingua, versione), documento: d, versione, percorso, attuale: true };
   });
   const archiviati = versioniArchiviate(lingua)
     .filter((v): v is typeof v & { documento: DocumentoPdf } => (DOCUMENTI_PDF as string[]).includes(v.documento))
-    .map((v) => ({ nome: nomePdf(v.documento, lingua, v.versione), documento: v.documento, versione: v.versione, percorso: v.percorso }));
+    .map((v) => ({ nome: nomePdf(v.documento, lingua, v.versione), documento: v.documento, versione: v.versione, percorso: v.percorso, attuale: false }));
   return [...attuali, ...archiviati];
 }
 
@@ -189,9 +189,18 @@ function Blocchi({ tokens }: { tokens: Token[] }) {
 const NOTA_EN =
   "This English version is provided for convenience. In case of conflict, the Italian version prevails, except for customers established in the United Kingdom, for whom the English version prevails.";
 
+/** "Versione 1.0, in vigore dal 1 dicembre 2026": senza data, solo "Versione 1.0". */
+export function rigaVersione(meta: MetaDocumento, lingua: Lingua): string {
+  const en = lingua === "en";
+  let r = en ? `Version ${meta.versione}` : `Versione ${meta.versione}`;
+  if (meta.dataInVigore) r += en ? `, in force from ${meta.dataInVigore}` : `, in vigore dal ${meta.dataInVigore}`;
+  if (meta.dataInVigore && meta.dataFine) r += en ? ` to ${meta.dataFine}` : ` al ${meta.dataFine}`;
+  return r;
+}
+
 function Pdf({ meta, markdown, lingua }: { meta: MetaDocumento; markdown: string; lingua: Lingua }) {
   const en = lingua === "en";
-  const versione = en ? `Version ${meta.versione}, in force from ${meta.dataInVigore}` : `Versione ${meta.versione}, in vigore dal ${meta.dataInVigore}`;
+  const versione = rigaVersione(meta, lingua);
   const societa = en
     ? `${AZIENDA.ragioneSociale}, ${sedeLegale("en")}. Registered in England and Wales, no. ${AZIENDA.numeroSocieta}. ${AZIENDA.emailContatto}`
     : `${AZIENDA.ragioneSociale}, ${sedeLegale("it")}. Società registrata in Inghilterra e Galles n. ${AZIENDA.numeroSocieta}. ${AZIENDA.emailContatto}`;
@@ -214,7 +223,7 @@ function Pdf({ meta, markdown, lingua }: { meta: MetaDocumento; markdown: string
 }
 
 export async function generaPdf(voce: VocePdf, lingua: Lingua): Promise<Buffer> {
-  const { meta, markdown } = leggiSorgente(voce.percorso, lingua);
+  const { meta, markdown } = leggiSorgente(voce.percorso, lingua, voce.attuale ? voce.documento : undefined);
   return renderToBuffer(<Pdf meta={meta} markdown={markdown} lingua={lingua} />);
 }
 

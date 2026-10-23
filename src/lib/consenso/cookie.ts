@@ -4,10 +4,14 @@
  * "Personalizza" del banner. Così i due elenchi non possono essere diversi.
  * Nomi e durate vanno tenuti allineati alla scansione reale (scripts/scansione-cookie.mjs).
  */
+import { STRUMENTI_SITO, type Strumenti } from "./consenso";
+
 export type Categoria = "necessari" | "statistiche" | "marketing";
 type Testo = { it: string; en: string };
 
 export type VoceCookie = {
+  /** Strumento che lo installa: la riga compare solo se lo strumento è collegato (ha il suo ID). */
+  strumento?: keyof Strumenti;
   /** Nome tecnico; se contiene una spiegazione, una versione per lingua. */
   nome: string | Testo;
   fornitore: Testo;
@@ -77,6 +81,7 @@ export const COOKIE: VoceCookie[] = [
   },
   {
     nome: "_ga",
+    strumento: "ga4",
     fornitore: { it: "Google Ireland Limited (Google Analytics)", en: "Google Ireland Limited (Google Analytics)" },
     categoria: "statistiche",
     scopo: { it: "Distingue i visitatori in forma pseudonima", en: "Distinguishes visitors on a pseudonymous basis" },
@@ -84,6 +89,7 @@ export const COOKIE: VoceCookie[] = [
   },
   {
     nome: "_ga_[ID]",
+    strumento: "ga4",
     fornitore: { it: "Google Ireland Limited (Google Analytics)", en: "Google Ireland Limited (Google Analytics)" },
     categoria: "statistiche",
     scopo: { it: "Mantiene lo stato della sessione", en: "Keeps the session state" },
@@ -91,6 +97,7 @@ export const COOKIE: VoceCookie[] = [
   },
   {
     nome: "_clck",
+    strumento: "clarity",
     fornitore: { it: "Microsoft (Clarity)", en: "Microsoft (Clarity)" },
     categoria: "statistiche",
     scopo: { it: "Identificativo pseudonimo del visitatore per Clarity", en: "Pseudonymous visitor identifier for Clarity" },
@@ -98,6 +105,7 @@ export const COOKIE: VoceCookie[] = [
   },
   {
     nome: "_clsk",
+    strumento: "clarity",
     fornitore: { it: "Microsoft (Clarity)", en: "Microsoft (Clarity)" },
     categoria: "statistiche",
     scopo: { it: "Collega le pagine viste in una stessa sessione", en: "Links the pages viewed in the same session" },
@@ -105,6 +113,7 @@ export const COOKIE: VoceCookie[] = [
   },
   {
     nome: "CLID, MUID",
+    strumento: "clarity",
     fornitore: { it: "Microsoft (Clarity)", en: "Microsoft (Clarity)" },
     categoria: "statistiche",
     scopo: { it: "Identificano il browser tra più siti che usano Clarity", en: "Identify the browser across sites that use Clarity" },
@@ -112,6 +121,7 @@ export const COOKIE: VoceCookie[] = [
   },
   {
     nome: "_fbp",
+    strumento: "metaPixel",
     fornitore: { it: "Meta Platforms Ireland Limited (Meta Pixel)", en: "Meta Platforms Ireland Limited (Meta Pixel)" },
     categoria: "marketing",
     scopo: { it: "Misura le visite e le conversioni delle pubblicità di NovaMenu", en: "Measures visits and conversions from NovaMenu ads" },
@@ -119,12 +129,24 @@ export const COOKIE: VoceCookie[] = [
   },
   {
     nome: "fr",
+    strumento: "metaPixel",
     fornitore: { it: "Meta Platforms Ireland Limited", en: "Meta Platforms Ireland Limited" },
     categoria: "marketing",
     scopo: { it: "Pubblicità e misurazione su Facebook e Instagram", en: "Advertising and measurement on Facebook and Instagram" },
     durata: { it: "3 mesi", en: "3 months" },
   },
 ];
+
+/**
+ * Cookie davvero in uso: quelli degli strumenti senza ID non si dichiarano, né nella cookie policy
+ * né nel pannello "Personalizza". Quando si aggiunge un ID (NEXT_PUBLIC_GA4_ID, NEXT_PUBLIC_CLARITY_ID,
+ * NEXT_PUBLIC_META_PIXEL_ID) le righe tornano da sole al build successivo.
+ */
+export const cookieInUso = (strumenti: Strumenti = STRUMENTI_SITO) => COOKIE.filter((c) => !c.strumento || !!strumenti[c.strumento]);
+
+/** Categorie con almeno un cookie in uso: i "necessari" ci sono sempre. */
+export const categorieInUso = (strumenti: Strumenti = STRUMENTI_SITO): Categoria[] =>
+  (["necessari", "statistiche", "marketing"] as Categoria[]).filter((cat) => cookieInUso(strumenti).some((c) => c.categoria === cat));
 
 const intestazioni = {
   it: ["Nome", "Fornitore", "Categoria", "Scopo", "Durata"],
@@ -145,7 +167,7 @@ const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replac
 /** Tabella HTML della cookie policy, generata dalla stessa lista del banner. */
 export function tabellaCookieHtml(lingua: "it" | "en"): string {
   const th = intestazioni[lingua].map((h) => `<th scope="col">${h}</th>`).join("");
-  const rows = COOKIE.map(
+  const rows = cookieInUso().map(
     (c) =>
       `<tr><td><code>${esc(nomeCookie(c, lingua))}</code></td><td>${esc(c.fornitore[lingua])}</td><td>${esc(nomeCategoria[c.categoria][lingua])}</td><td>${esc(c.scopo[lingua])}</td><td>${esc(c.durata[lingua])}</td></tr>`,
   ).join("");

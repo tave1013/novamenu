@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { site } from "./site";
+import { AZIENDA } from "@/lib/legal/azienda";
 import { VALUTE, prezzoMensile, type Listino, type Valuta } from "./prezzi";
 import { getPlans } from "@/content";
 import { t } from "@/i18n";
@@ -68,6 +69,28 @@ export function pageMeta({
   };
 }
 
+/** Chi vende NovaMenu, per Google: dati presi da src/lib/legal/azienda.ts. */
+export function organizzazioneLd() {
+  const sede = AZIENDA.sedeLegale;
+  return {
+    "@type": "Organization",
+    name: site.name,
+    legalName: AZIENDA.ragioneSociale,
+    url: site.url,
+    email: AZIENDA.emailContatto,
+    identifier: { "@type": "PropertyValue", propertyID: "Companies House", value: AZIENDA.numeroSocieta },
+    ...(AZIENDA.partitaIva ? { vatID: AZIENDA.partitaIva } : {}),
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: sede.righe.join(", "),
+      addressLocality: sede.citta,
+      addressRegion: sede.contea,
+      postalCode: sede.cap,
+      addressCountry: "GB",
+    },
+  };
+}
+
 /** Dati strutturati della piattaforma, con i prezzi presi da plans.ts. */
 export function softwareApplicationLd(locale: Locale, listino: Listino) {
   const pricing = `${site.url}${href("pricing", locale)}`;
@@ -80,7 +103,7 @@ export function softwareApplicationLd(locale: Locale, listino: Listino) {
     operatingSystem: "Web",
     inLanguage: localeInfo[locale].intl,
     description: siteDescription(locale),
-    publisher: { "@type": "Organization", name: site.name, url: site.url },
+    publisher: organizzazioneLd(),
     // Un'offerta per piano e per valuta: euro nell'Unione europea, sterline nel Regno Unito e negli altri paesi. Prezzi IVA esclusa.
     offers: getPlans(locale).flatMap((p) =>
       (Object.keys(VALUTE) as Valuta[]).map((v) => ({
@@ -90,6 +113,7 @@ export function softwareApplicationLd(locale: Locale, listino: Listino) {
         price: String(prezzoMensile(listino, p.id, v)),
         priceCurrency: VALUTE[v].codice,
         url: pricing,
+        seller: { "@type": "Organization", name: AZIENDA.ragioneSociale },
         priceSpecification: {
           "@type": "UnitPriceSpecification",
           price: String(prezzoMensile(listino, p.id, v)),

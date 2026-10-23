@@ -258,7 +258,7 @@ export const sectorGuides: Omit<Guide, "slug">[] = [
 
 <h2>Sample messages to copy</h2>
 <p>Every morning, in your WhatsApp status or stories:</p>
-<blockquote><p>🍝 On the counter today: baked lasagne, vitello tonnato, roast chicken and grilled vegetables. Order by 11:30 and collect without queuing: [link]</p></blockquote>
+<blockquote><p>🍝 On the counter today: baked lasagne, vitello tonnato, roast chicken and grilled vegetables. Order by 11:30 and collect without queuing: yourvenue.novamenu.eu</p></blockquote>
 <p>To nearby offices, just once, with the card and the QR code:</p>
 <blockquote><p>Hi! We're the deli next door. If you often have lunch together at the office, you can order from our menu by 11:00 and come and collect everything in one go at 12:30.</p></blockquote>
 
@@ -534,7 +534,7 @@ export const sectorGuides: Omit<Guide, "slug">[] = [
 <h2>10. Prepare the messages in advance</h2>
 <p>In December you won't have time to write calmly. In October, prepare the three messages you'll need.</p>
 <p>For the opening of orders, to customers who have given consent:</p>
-<blockquote><p>🎄 From tomorrow you can order your Christmas pasta! Agnolotti del plin, tajarin, ravioli di magro and our sauces. Choose your collection day from 20 to 24 December: places for the 23rd go quickly. [link]</p></blockquote>
+<blockquote><p>🎄 From tomorrow you can order your Christmas pasta! Agnolotti del plin, tajarin, ravioli di magro and our sauces. Choose your collection day from 20 to 24 December: places for the 23rd go quickly. yourvenue.novamenu.eu</p></blockquote>
 <p>As an order confirmation:</p>
 <blockquote><p>Thank you Giovanna, your order is confirmed for Monday 22 at 10:00. You can change it until Saturday by replying to this message.</p></blockquote>
 <p>In January, to bring back those who only came by for the holidays:</p>

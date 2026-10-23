@@ -2,8 +2,6 @@
 titolo: Data Processing Agreement (DPA)
 etichetta: Data Processing Agreement (DPA)
 descrizione: NovaMenu Data Processing Agreement under Article 28 GDPR and UK GDPR: how we process, on behalf of venues, the data of their customers.
-versione: 1.0
-dataInVigore: "{{dataInVigore}}"
 ---
 
 **under Article 28 of Regulation (EU) 2016/679 and Article 28 of the UK GDPR**
@@ -47,9 +45,9 @@ The Processor ensures that persons authorised to process the data have committed
 
 ## 6. Sub-processors
 
-6.1. The Controller grants the Processor a **general written authorisation** to engage the sub-processors listed on the page **[novamenu.eu/legale/sub-responsabili](/en/legal/sub-processors/)**, which forms part of this Agreement.
+6.1. The Controller grants the Processor a **general written authorisation** to engage the sub-processors {{#se fornitori}}listed on the page **[novamenu.eu/en/legal/suppliers](/en/legal/suppliers/)**{{/se}}{{#senza fornitori}}in the list that the Processor provides to the Controller on request at [{{emailPrivacy}}](mailto:{{emailPrivacy}}){{/senza}}, which forms part of this Agreement.
 
-6.2. The Processor informs the Controller of any addition or replacement of sub-processors at least **30 days** in advance, by updating the page and sending a notice by email or on the Platform. The Controller may object on reasonable grounds relating to data protection within 15 days of the notice. In the event of an objection, the parties seek a solution in good faith; if they do not find one, the Controller may terminate the Terms with immediate effect and obtain a refund of the part of the fee paid and not used. In urgent cases (for example to replace a provider that no longer guarantees security) the notice period may be shorter.
+6.2. The Processor informs the Controller of any addition or replacement of sub-processors at least **30 days** in advance, by updating the list and sending a notice by email or on the Platform. The Controller may object on reasonable grounds relating to data protection within 15 days of the notice. In the event of an objection, the parties seek a solution in good faith; if they do not find one, the Controller may terminate the Terms with immediate effect and obtain a refund of the part of the fee paid and not used. In urgent cases (for example to replace a provider that no longer guarantees security) the notice period may be shorter.
 
 6.3. The Processor imposes on each sub-processor, by written contract, data protection obligations substantially equivalent to those of this Agreement, and remains fully liable to the Controller for their performance.
 
@@ -116,7 +114,7 @@ In the event of conflict between this Agreement and the Terms as regards the pro
 | **Categories of data** | First name and surname; telephone number and WhatsApp identifier; email if provided; delivery address; content, amount, status, changes, discounts and history of orders; date, time, number of people, table, occasion (for example a birthday) and status of bookings (arrived, no-show); preferences, notes and tags entered by the Controller; inclusion in the blacklist and the related internal reason; date of birth or birthday if provided; consents and their dates; messages exchanged through the Service; technical form data (date, time, device) |
 | **Special categories of data** | Information on **food allergies and intolerances** (data concerning health), only if provided by the End Customer with their explicit consent collected by the Controller |
 | **Duration** | Term of the Terms, plus the periods in clause 10 |
-| **Place of processing** | Database in the European Union (Frankfurt, Germany); access from the United Kingdom by the Processor; sub-processors as per the published list |
+| **Place of processing** | Database in the European Union (Frankfurt, Germany); access from the United Kingdom by the Processor; sub-processors as per the list in clause 6.1 |
 
 ## Annex 2: technical and organisational measures {#allegato-2}
 

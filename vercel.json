@@ -1,5 +1,7 @@
 {
   "redirects": [
+    { "source": "/legale/sub-responsabili/", "destination": "/legale/fornitori/", "permanent": false },
+    { "source": "/en/legal/sub-processors/", "destination": "/en/legal/suppliers/", "permanent": false },
     { "source": "/privacy", "destination": "/legale/privacy/", "permanent": true },
     { "source": "/privacy/", "destination": "/legale/privacy/", "permanent": true },
     { "source": "/cookie", "destination": "/legale/cookie/", "permanent": true },

@@ -2,20 +2,19 @@
 titolo: Informativa privacy dell'app NovaMenu Business
 etichetta: Informativa privacy dell'app
 descrizione: Informativa privacy dell'app NovaMenu Business per iPhone, iPad e Android: dati trattati, permessi del telefono, notifiche, eliminazione dell'account.
-versione: 1.0
-dataInVigore: "{{dataInVigore}}"
 ---
 
-Questa informativa riguarda l'app **NovaMenu Business** per iPhone, iPad, Apple Watch e Android, che i locali clienti di NovaMenu e il loro staff usano per gestire ordini, prenotazioni, menu e clienti. Completa l'**[Informativa privacy](/legale/privacy/)** generale di NovaMenu, che vale anche per l'app e che ti invitiamo a leggere: qui trovi solo quello che è specifico dell'app.
+Questa informativa riguarda l'app **NovaMenu Business** per iPhone, iPad, Apple Watch e Android, che i locali clienti di NovaMenu e il loro staff usano per gestire ordini, prenotazioni, menu e clienti. Completa l'**[Informativa privacy](/legale/privacy/)** generale di NovaMenu, che vale anche per l'app e che ti invitiamo a leggere: qui trovi solo quello che è specifico dell'app. Come l'informativa generale, vale per chi si trova nell'Unione europea (GDPR) e per chi si trova nel Regno Unito (UK GDPR e Data Protection Act 2018).
 
 ## 1. Titolare
 
-Il titolare del trattamento è **{{ragioneSociale}}** (NovaMenu), {{sedeLegale}}, numero di registrazione {{numeroSocieta}}. Contatto: [{{emailPrivacy}}](mailto:{{emailPrivacy}}).<!-- RAPPRESENTANTE NELL'UE (art. 27 GDPR): tolto temporaneamente finché non è nominato. Per rimetterlo togli il commento e lascia la frase: Rappresentante nell'UE: {{rappresentanteUE}}. -->
+Il titolare del trattamento è **{{ragioneSociale}}** (NovaMenu), {{sedeLegale}}, numero di registrazione presso Companies House {{numeroSocieta}}. Contatto: [{{emailPrivacy}}](mailto:{{emailPrivacy}}).{{#se rappresentanteUE}} Rappresentante nell'UE (art. 27 GDPR): {{rappresentanteUE}}{{#se emailRappresentanteUE}}, [{{emailRappresentanteUE}}](mailto:{{emailRappresentanteUE}}){{/se}}.{{/se}}
 
 ## 2. Due ruoli diversi
 
 - Per i dati del tuo **account** (nome, email, telefono, ruolo nel locale) e per i dati tecnici dell'app, NovaMenu è **titolare**.
 - Per i dati dei **clienti del tuo locale** che vedi e gestisci nell'app (ordini, prenotazioni, contatti, allergie, note), il **titolare è il locale** e NovaMenu li tratta solo per suo conto, secondo l'[Accordo sul trattamento dei dati (DPA)](/legale/dpa/).
+- Le **allergie e intolleranze** dei clienti sono dati relativi alla salute: si salvano solo con il consenso esplicito del cliente, raccolto dal locale, e servono solo a preparare e servire il pasto in sicurezza.
 
 ## 3. Dati che l'app tratta
 
@@ -49,7 +48,7 @@ Nell'app non si acquistano abbonamenti e non si effettuano pagamenti. Gli abbona
 
 ## 8. Eliminare l'account
 
-Puoi eliminare l'account in qualsiasi momento dall'app: **Altro, Account, Elimina account**. Per sicurezza ti chiediamo di scrivere il nome del locale e ti mandiamo un'email di conferma. Hai **[7] giorni** per annullare l'eliminazione dal link nell'email; dopo questo periodo eliminiamo l'account del locale, il menu e tutti i dati collegati, compresi i dati dei clienti del locale, secondo i tempi indicati nell'[Informativa privacy (punto 10)](/legale/privacy/#10) e nel [DPA](/legale/dpa/). Restano solo i dati che dobbiamo conservare per legge, come i documenti di fatturazione. Prima di eliminare l'account puoi esportare i tuoi dati dalla piattaforma. Eliminare l'app dal telefono non elimina l'account.
+Puoi eliminare l'account in qualsiasi momento dall'app: **Altro, Account, Elimina account**. Per sicurezza ti chiediamo di scrivere il nome del locale e ti mandiamo un'email di conferma. Hai **{{giorniAnnullaEliminazione}} giorni** per annullare l'eliminazione dal link nell'email; dopo questo periodo eliminiamo l'account del locale, il menu e tutti i dati collegati, compresi i dati dei clienti del locale, secondo i tempi indicati nell'[Informativa privacy (punto 10)](/legale/privacy/#10) e nel [DPA](/legale/dpa/). Restano solo i dati che dobbiamo conservare per legge, come i documenti di fatturazione. Prima di eliminare l'account puoi esportare i tuoi dati dalla piattaforma. Eliminare l'app dal telefono non elimina l'account.
 
 ## 9. Dove sono i dati e trasferimenti
 
@@ -57,11 +56,11 @@ I dati della piattaforma sono conservati nell'Unione europea (Francoforte, Germa
 
 ## 10. Conservazione, diritti e reclami
 
-Valgono i tempi di conservazione, i diritti e le modalità di reclamo descritti nell'[Informativa privacy](/legale/privacy/) (punti 11, 13 e 14). Per esercitare i diritti scrivi a [{{emailPrivacy}}](mailto:{{emailPrivacy}}).
+Valgono i tempi di conservazione, i diritti e le modalità di reclamo descritti nell'[Informativa privacy](/legale/privacy/) (punti 10, 12 e 13): il reclamo si presenta al Garante per la protezione dei dati personali se ti trovi in Italia (o all'autorità del tuo paese se ti trovi in un altro paese dell'Unione europea) e all'Information Commissioner's Office se ti trovi nel Regno Unito. Per esercitare i diritti scrivi a [{{emailPrivacy}}](mailto:{{emailPrivacy}}).
 
 ## 11. Minori
 
-L'app è destinata a professionisti e al personale dei locali maggiorenne.
+L'app è destinata a professionisti e al personale dei locali maggiorenne. Non è rivolta ai minori di 14 anni in Italia e ai minori di 13 anni nel Regno Unito.
 
 ## 12. Modifiche
 

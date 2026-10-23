@@ -7,16 +7,18 @@ import { getLocale, t, tr } from "@/i18n";
 import type { Locale } from "@/i18n/config";
 import { localizeLinks, to } from "@/i18n/link";
 import { idOf, slugOf } from "@/i18n/routes";
-import { AZIENDA } from "@/lib/legal/azienda";
-import { DOCUMENTI_PDF, urlPdf, type DocumentoPdf } from "@/lib/legal/pdf";
-import { DOCUMENTI, leggiDocumento, versioniArchiviate, type IdDocumento } from "@/lib/legal/documenti";
+import { DOCUMENTI_PDF, rigaVersione, urlPdf, type DocumentoPdf } from "@/lib/legal/pdf";
+import { ModuloRichiestaPrivacy } from "@/components/legal/ModuloRichiestaPrivacy";
+import { emailPrivacy } from "@/lib/legal/azienda";
+import { documentiVisibili, leggiArchiviato, leggiDocumento, versioniArchiviate, type IdDocumento, type MetaDocumento } from "@/lib/legal/documenti";
 
 /* Sezione Legale: indice (/legale/), un documento per pagina (/legale/<documento>/) e archivio. */
 
 const NOTA_EN =
   "This English version is provided for convenience. In case of conflict, the Italian version prevails, except for customers established in the United Kingdom, for whom the English version prevails.";
 
-export const staticParams = (locale: Locale) => DOCUMENTI.map((id) => ({ slug: slugOf("legalDoc", id, locale) }));
+export const staticParams = (locale: Locale) => documentiVisibili().map((id) => ({ slug: slugOf("legalDoc", id, locale) }));
+export const staticParamsArchivio = (locale: Locale) => versioniArchiviate(locale).map((v) => ({ file: v.file.replace(/\.md$/, "") }));
 const docId = (locale: Locale, slug: string) => idOf("legalDoc", slug, locale) as IdDocumento;
 
 export function metaDoc(locale: Locale, slug: string): Metadata {
@@ -34,18 +36,16 @@ export function metaArchivio(locale: Locale): Metadata {
   return pageMeta({
     locale,
     page: "legalArchive",
-    title: t(locale, "Archivio dei documenti legali"),
-    description: t(locale, "Versioni precedenti dei documenti legali di NovaMenu: informative privacy, cookie policy, termini di servizio e accordo sul trattamento dei dati."),
+    title: t(locale, "Versioni dei documenti"),
+    description: t(locale, "Versione in vigore e versioni precedenti dei documenti legali di NovaMenu: informative privacy, cookie policy, termini di servizio e accordo sul trattamento dei dati."),
   });
 }
 
-function Intestazione({ titolo, versione, dataInVigore, pdf }: { titolo: string; versione?: string; dataInVigore?: string; pdf?: string }) {
+function Intestazione({ titolo, meta, pdf }: { titolo: string; meta?: MetaDocumento; pdf?: string }) {
   return (
     <header>
       <h1 className="text-[clamp(2rem,1.5rem+2vw,3rem)] font-semibold leading-[1.1] tracking-[-0.035em]">{titolo}</h1>
-      {versione && (
-        <p className="mt-4 text-[15px] font-medium text-text">{tr("Versione {v}, in vigore dal {data}", { v: versione, data: dataInVigore ?? "" })}</p>
-      )}
+      {meta?.versione && <p className="mt-4 text-[15px] font-medium text-text">{rigaVersione(meta, getLocale())}</p>}
       {pdf && (
         <a href={pdf} download className="mt-1.5 inline-flex min-h-8 items-center gap-1.5 text-[14px] font-medium text-ink underline underline-offset-4 decoration-line hover:decoration-ink">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -54,7 +54,6 @@ function Intestazione({ titolo, versione, dataInVigore, pdf }: { titolo: string;
           {tr("Scarica PDF")}
         </a>
       )}
-      <p className="mt-1 text-[15px] text-muted">{tr("Ultimo aggiornamento: {data}", { data: AZIENDA.ultimoAggiornamento })}</p>
     </header>
   );
 }
@@ -90,7 +89,7 @@ function AltriDocumenti({ corrente }: { corrente?: IdDocumento }) {
             {tr("Indice dei documenti legali")}
           </Link>
         </li>
-        {DOCUMENTI.filter((d) => d !== corrente).map((d) => (
+        {documentiVisibili().filter((d) => d !== corrente).map((d) => (
           <li key={d}>
             <Link href={to("legalDoc", d)} className="inline-flex min-h-10 items-center text-[15.5px] text-ink underline underline-offset-4 decoration-line hover:decoration-ink">
               {leggiDocumento(d, locale).meta.etichetta}
@@ -99,7 +98,7 @@ function AltriDocumenti({ corrente }: { corrente?: IdDocumento }) {
         ))}
         <li>
           <Link href={to("legalArchive")} className="inline-flex min-h-10 items-center text-[15.5px] text-ink underline underline-offset-4 decoration-line hover:decoration-ink">
-            {tr("Archivio delle versioni precedenti")}
+            {tr("Versioni dei documenti")}
           </Link>
         </li>
       </ul>
@@ -151,8 +150,7 @@ export function LegalDocView({ slug }: { slug: string }) {
           <article className={conIndice ? "min-w-0" : "mx-auto max-w-[720px]"}>
             <Intestazione
               titolo={doc.meta.titolo}
-              versione={doc.meta.versione}
-              dataInVigore={doc.meta.dataInVigore}
+              meta={doc.meta}
               pdf={(DOCUMENTI_PDF as string[]).includes(id) ? urlPdf(id as DocumentoPdf, locale, doc.meta.versione) : undefined}
             />
             {conIndice && <Indice sezioni={doc.sezioni} mobile />}
@@ -174,7 +172,7 @@ export function LegalIndexView() {
       <div className="wrap">
         <Breadcrumbs items={[{ name: tr("Legale"), href: to("legal") }]} />
         <article className="mx-auto mt-10 max-w-[720px]">
-          <Intestazione titolo={doc.meta.titolo} versione={doc.meta.versione} dataInVigore={doc.meta.dataInVigore} />
+          <Intestazione titolo={doc.meta.titolo} meta={doc.meta} />
           <div className="prose-legal mt-8 border-t border-line pt-2" dangerouslySetInnerHTML={{ __html: localizeLinks(doc.html) }} />
           <Chiusura />
         </article>
@@ -183,39 +181,113 @@ export function LegalIndexView() {
   );
 }
 
+/** Versioni dei documenti: per ognuno la versione in vigore e quelle precedenti, consultabili. */
 export function LegalArchiveView() {
   const locale = getLocale();
-  const versioni = versioniArchiviate(locale);
+  const archivio = versioniArchiviate(locale);
   return (
     <section className="legal-page pb-20 pt-8 md:pb-28 md:pt-12">
       <MessaggioStampa />
       <div className="wrap">
-        <Breadcrumbs items={[{ name: tr("Legale"), href: to("legal") }, { name: tr("Archivio"), href: to("legalArchive") }]} />
+        <Breadcrumbs items={[{ name: tr("Legale"), href: to("legal") }, { name: tr("Versioni dei documenti"), href: to("legalArchive") }]} />
         <article className="mx-auto mt-10 max-w-[720px]">
-          <Intestazione titolo={tr("Archivio dei documenti legali")} />
+          <Intestazione titolo={tr("Versioni dei documenti")} />
           <div className="prose-legal mt-8 border-t border-line pt-2">
-            <p>{tr("Qui restano consultabili le versioni precedenti dei documenti legali, con il periodo in cui sono state in vigore.")}</p>
-            {versioni.length === 0 ? (
-              <p>{tr("Non ci sono ancora versioni precedenti: tutti i documenti sono alla prima versione ({v}).", { v: AZIENDA.versioneDocumenti })}</p>
-            ) : (
-              <ul>
-                {versioni.map((v) => (
-                  <li key={v.file}>
-                    {v.meta.titolo}, {tr("versione")} {v.versione}
-                    {(DOCUMENTI_PDF as string[]).includes(v.documento) && (
+            <p>{tr("Per ogni documento trovi la versione in vigore e le versioni precedenti, con il periodo in cui sono state in vigore.")}</p>
+            {documentiVisibili().map((d) => {
+              const { meta } = leggiDocumento(d, locale);
+              const precedenti = archivio.filter((v) => v.documento === d);
+              return (
+                <div key={d}>
+                  <h2 id={d}>{meta.etichetta}</h2>
+                  <p>
+                    <strong>{tr("In vigore")}:</strong> <Link href={to("legalDoc", d)}>{rigaVersione(meta, locale)}</Link>
+                    {(DOCUMENTI_PDF as string[]).includes(d) && (
                       <>
-                        {" "}
-                        (
-                        <a href={urlPdf(v.documento as DocumentoPdf, locale, v.versione)} download>
-                          {tr("Scarica PDF")}
-                        </a>
-                        )
+                        {" "}(<a href={urlPdf(d as DocumentoPdf, locale, meta.versione)} download>{tr("Scarica PDF")}</a>)
                       </>
                     )}
-                  </li>
-                ))}
-              </ul>
-            )}
+                  </p>
+                  {precedenti.length === 0 ? (
+                    <p>{tr("Versioni precedenti: nessuna, questa è la prima versione.")}</p>
+                  ) : (
+                    <ul>
+                      {precedenti.map((v) => (
+                        <li key={v.file}>
+                          <Link href={`${to("legalArchive")}${v.file.replace(/\.md$/, "")}/`}>{rigaVersione(v.meta, locale)}</Link>
+                          {(DOCUMENTI_PDF as string[]).includes(v.documento) && (
+                            <>
+                              {" "}(<a href={urlPdf(v.documento as DocumentoPdf, locale, v.versione)} download>{tr("Scarica PDF")}</a>)
+                            </>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+          <AltriDocumenti />
+          <Chiusura />
+        </article>
+      </div>
+    </section>
+  );
+}
+
+/** Una versione precedente di un documento, consultabile com'era. */
+export function LegalArchivedView({ file }: { file: string }) {
+  const locale = getLocale();
+  const doc = leggiArchiviato(file, locale);
+  if (!doc) return null;
+  return (
+    <section className="legal-page pb-20 pt-8 md:pb-28 md:pt-12">
+      <MessaggioStampa />
+      <div className="wrap">
+        <Breadcrumbs items={[{ name: tr("Legale"), href: to("legal") }, { name: tr("Versioni dei documenti"), href: to("legalArchive") }, { name: `${doc.meta.etichetta} ${doc.meta.versione}`, href: `${to("legalArchive")}${file}/` }]} />
+        <article className="mx-auto mt-10 max-w-[720px]">
+          <p className="mb-4 rounded-xl border border-line bg-card px-4 py-3 text-[15px]">
+            {tr("Questa versione non è più in vigore.")} <Link href={to("legalDoc", doc.documento)}>{tr("Leggi la versione in vigore")}</Link>
+          </p>
+          <Intestazione titolo={doc.meta.titolo} meta={doc.meta} />
+          <div className="prose-legal mt-8 border-t border-line pt-2" dangerouslySetInnerHTML={{ __html: localizeLinks(doc.html) }} />
+          <Chiusura />
+        </article>
+      </div>
+    </section>
+  );
+}
+
+export function metaRichieste(locale: Locale): Metadata {
+  return pageMeta({
+    locale,
+    page: "legalRequests",
+    title: t(locale, "Richieste privacy"),
+    description: t(locale, "Chiedi a NovaMenu accesso, correzione, cancellazione, opposizione o portabilità dei tuoi dati personali. Ti rispondiamo entro 30 giorni."),
+  });
+}
+
+/** Richieste privacy: modulo per esercitare i diritti. Si pubblica solo quando c'è l'email privacy. */
+export function LegalRequestsView() {
+  const locale = getLocale();
+  return (
+    <section className="legal-page pb-20 pt-8 md:pb-28 md:pt-12">
+      <MessaggioStampa />
+      <div className="wrap">
+        <Breadcrumbs items={[{ name: tr("Legale"), href: to("legal") }, { name: tr("Richieste privacy"), href: to("legalRequests") }]} />
+        <article className="mx-auto mt-10 max-w-[720px]">
+          <Intestazione titolo={tr("Richieste privacy")} />
+          <div className="prose-legal mt-8 border-t border-line pt-2">
+            <p>
+              {tr("Con questo modulo puoi chiederci di accedere ai tuoi dati, correggerli, cancellarli, opporti a un trattamento o riceverli in un file. Ti rispondiamo entro 30 giorni. Potremmo chiederti informazioni per verificare la tua identità.")}
+            </p>
+            <p>
+              {tr("Se sei cliente di un ristorante e la richiesta riguarda i dati che hai lasciato al ristorante, indica quale: inoltriamo la richiesta al locale, che è il titolare di quei dati.")}{" "}
+              <Link href={to("legalDoc", "privacy")}>{tr("Informativa privacy")}</Link>
+            </p>
+            <ModuloRichiestaPrivacy emailPrivacy={emailPrivacy()} />
+            <p className="mt-6">{tr("Puoi anche scriverci a {email}.", { email: emailPrivacy() })}</p>
           </div>
           <AltriDocumenti />
           <Chiusura />

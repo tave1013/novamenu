@@ -1,7 +1,8 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/config/site";
 import { getFeatures, getGuides, getSectors, getServices } from "@/content";
-import { DOCUMENTI } from "@/lib/legal/documenti";
+import { documentiVisibili } from "@/lib/legal/documenti";
+import { richiestePrivacyAttive } from "@/lib/legal/visibilita";
 import { defaultLocale, localeInfo, locales } from "@/i18n/config";
 import { href, type PageKey } from "@/i18n/routes";
 
@@ -38,7 +39,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     entry("demo", 0.7),
     entry("contact", 0.5),
     entry("legal", 0.3, "yearly"),
-    ...DOCUMENTI.map((d) => entry("legalDoc", 0.2, "yearly", d)),
+    ...documentiVisibili().map((d) => entry("legalDoc", 0.2, "yearly", d)),
     entry("legalArchive", 0.1, "yearly"),
+    ...(richiestePrivacyAttive() ? [entry("legalRequests", 0.1, "yearly")] : []),
   ].flat();
 }

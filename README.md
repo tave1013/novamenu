@@ -16,7 +16,7 @@ Poi apri http://localhost:3000
 | Cosa | File |
 | --- | --- |
 | Nome della piattaforma, indirizzi | `src/config/site.ts` |
-| Dati della società (ragione sociale, numero, sede...) | `src/lib/legal/azienda.ts` |
+| Dati della società, versioni e date dei documenti legali | `src/lib/legal/azienda.ts` (i dati che mancano restano `null` e le frasi che li usano non si vedono) |
 | Testi delle funzionalità | `src/content/features.ts` |
 | Testi dei settori | `src/content/sectors.ts` |
 | Piani, confronto, domande frequenti | `src/content/plans.ts` |
@@ -26,7 +26,10 @@ Poi apri http://localhost:3000
 | Elenco dei cookie (cookie policy e banner) | `src/lib/consenso/cookie.ts` |
 | Testi del banner dei cookie | `src/lib/consenso/testi.ts` |
 | PDF scaricabili di Termini e DPA (generati a ogni build) | `src/lib/legal/pdf.tsx` |
-| Versioni precedenti dei documenti legali | `src/content/legale/archivio/<lingua>/<documento>-<versione>.md` |
+| Versioni precedenti dei documenti legali | `src/content/legale/archivio/<lingua>/<documento>-<versione>.md` (pagina /legale/archivio/) |
+| Elenco dei fornitori (pagina Fornitori) | `src/content/legale/fornitori.ts` |
+| Bozze per l'avvocato e istruzioni per la piattaforma | `docs/legale/` (`python3 scripts/confronto-legale.py` rigenera i confronti) |
+| Controllo dei rimandi interni dei documenti | `node scripts/controlla-rimandi.mjs` |
 | Animazioni delle pagine | `src/components/visuals/` |
 | Immagine per le anteprime social | `public/og.png` |
 
@@ -50,7 +53,7 @@ Fa il build (prima legge i prezzi dalla piattaforma), ricrea la cartella `out/` 
 
 ## Prima di andare online
 
-- Completare i dati tra parentesi quadre in `src/lib/legal/azienda.ts`.
+- Completare in `src/lib/legal/azienda.ts` i dati che sono ancora `null` (numero ICO, partita IVA, email privacy, rappresentante UE, data di entrata in vigore).
 - Far verificare i documenti legali a un consulente.
 - Nella dashboard servono le pagine `/registrati` e `/accedi` (i pulsanti "Prova gratis" e "Accedi" puntano lì).
 - Quando c'è il dominio definitivo: aggiornare `NEXT_PUBLIC_SITE_URL` e inviare la sitemap (`/sitemap.xml`) a Google Search Console.

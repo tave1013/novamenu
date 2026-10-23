@@ -1,4 +1,5 @@
 import { site } from "./site";
+import { AZIENDA, rigaSocieta, sedeLegale } from "@/lib/legal/azienda";
 import { featureGroups } from "@/content/features";
 import { formatoPrezzo, mensileConAnnuale, prezzoAnnuale, prezzoMensile, type Listino } from "./prezzi";
 import { getListino } from "@/lib/prezzi/listino";
@@ -18,7 +19,11 @@ const g = (n: number) => formatoPrezzo(n, "gbp", "it-IT");
 const intro = () => [
   `# ${site.name}`,
   "",
-  `> ${site.name} è una piattaforma italiana per piccoli locali della ristorazione: menu digitale con QR, ordini da asporto su WhatsApp e prenotazioni dei tavoli online. Il locale paga solo l'abbonamento, senza commissioni su ordini e prenotazioni. Si prova gratis per 14 giorni, senza carta di credito.`,
+  `> ${site.name} è una piattaforma per piccoli locali della ristorazione, in italiano e in inglese: menu digitale con QR, ordini da asporto su WhatsApp e prenotazioni dei tavoli online. Il locale paga solo l'abbonamento, senza commissioni su ordini e prenotazioni. Si prova gratis per 14 giorni, senza carta di credito.`,
+  "",
+  "## Chi vende NovaMenu",
+  "",
+  `${rigaSocieta("it")}, con sede legale in ${sedeLegale("it")}. È ${AZIENDA.ragioneSociale} che vende l'abbonamento e firma il contratto con il locale.`,
   "",
   "## Per chi è",
   "",

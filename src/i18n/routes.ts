@@ -20,7 +20,8 @@ export type PageKey =
   | "demo"
   | "legal"
   | "legalDoc"
-  | "legalArchive";
+  | "legalArchive"
+  | "legalRequests";
 
 /** [id] è il segmento che cambia: viene sostituito con lo slug della lingua. */
 export const routes: Record<PageKey, Record<Locale, string>> = {
@@ -39,6 +40,7 @@ export const routes: Record<PageKey, Record<Locale, string>> = {
   legal: { it: "/legale/", en: "/legal/" },
   legalDoc: { it: "/legale/[id]/", en: "/legal/[id]/" },
   legalArchive: { it: "/legale/archivio/", en: "/legal/archive/" },
+  legalRequests: { it: "/legale/richieste-privacy/", en: "/legal/privacy-requests/" },
 };
 
 type Collection = "feature" | "sector" | "service" | "guide" | "legalDoc";
@@ -86,7 +88,7 @@ export const slugs: Record<Collection, Record<string, Partial<Record<Locale, str
     cookie: { en: "cookies" },
     termini: { en: "terms" },
     dpa: { en: "dpa" },
-    "sub-responsabili": { en: "sub-processors" },
+    fornitori: { en: "suppliers" },
   },
   guide: {
     "come-creare-menu-digitale-qr": { en: "how-to-create-a-qr-code-digital-menu" },

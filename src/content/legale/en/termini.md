@@ -1,9 +1,7 @@
 ---
 titolo: NovaMenu Terms of Service
 etichetta: Terms of Service
-descrizione: NovaMenu Terms of Service: the contract between Ma & Co LTD and the venues that use the platform, covering the trial, plans, payments, renewal and termination.
-versione: 1.0
-dataInVigore: "{{dataInVigore}}"
+descrizione: NovaMenu Terms of Service: the contract between MA & CO LIMITED and the venues that use the platform, covering the trial, plans, payments, renewal and termination.
 ---
 
 These Terms of Service ("Terms") govern the contract between **{{ragioneSociale}}**, a {{tipo}}, registration number {{numeroSocieta}}, with its registered office at {{sedeLegale}}, which provides the service under the NovaMenu brand ("NovaMenu", "we", "us"), and the business that registers for the service ("Customer", "you"). Please read them carefully, in particular the clauses listed in [clause 33](#33).
@@ -64,7 +62,7 @@ These Terms of Service ("Terms") govern the contract between **{{ragioneSociale}
 
 6.4. Subscriptions are taken out and managed **only on the website novamenu.eu**. No purchases are made in the NovaMenu Business app.
 
-6.5. If a payment fails, NovaMenu notifies the Customer and retries the charge. If payment is not made good within 7 days of the notice, NovaMenu may suspend the Service until payment under clause 18. Data is not deleted during suspension for non-payment, except as provided in clause 19.4.
+6.5. If a payment fails, NovaMenu notifies the Customer and retries the charge. If payment is not made good within 7 days of the notice, NovaMenu may suspend the Service until payment under clause 18. Data is not deleted during suspension for non-payment. If the contract is terminated under clause 19.3(b), data is deleted in accordance with clause 20.
 
 6.6. Voluntary temporary suspension (pausing) of the subscription is not available.
 

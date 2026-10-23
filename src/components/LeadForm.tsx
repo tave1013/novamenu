@@ -4,7 +4,8 @@ import { messageTag, tr } from "@/i18n";
 import { useState } from "react";
 import { site, waLink } from "@/config/site";
 import { Icon } from "./Icon";
-import { lp } from "@/i18n/link";
+import { registraRichiesta } from "@/lib/moduli/richieste";
+import { RigaPrivacy } from "./DemoBooking";
 
 const types = () => ([tr("Pizzeria"), tr("Ristorante o trattoria"), tr("Pub o birreria"), tr("Bar o caffetteria"), tr("Gelateria"), tr("Pastificio"), tr("Panetteria o pasticceria"), tr("Gastronomia o rosticceria"), tr("Altro")]);
 
@@ -26,10 +27,6 @@ export function LeadForm({ kind, compact = false }: { kind: "demo" | "contatto";
       setErr(tr("Compila nome, nome del locale e telefono per continuare."));
       return;
     }
-    if (!fd.get("privacy")) {
-      setErr(tr("Per continuare accetta l'informativa privacy."));
-      return;
-    }
     setErr(null);
     const lines =
       kind === "demo"
@@ -49,6 +46,14 @@ export function LeadForm({ kind, compact = false }: { kind: "demo" | "contatto";
             "",
             String(fd.get("messaggio") || ""),
           ];
+    registraRichiesta({
+      tipo: kind,
+      nome: name,
+      attivita: venue,
+      telefono: phone,
+      messaggio: kind === "contatto" ? String(fd.get("messaggio") || "") : String(fd.get("quando") || ""),
+      consensi: { whatsapp: false },
+    });
     window.open(waLink(lines.filter(Boolean).join("\n")), "_blank", "noopener");
     setSent(true);
   }
@@ -143,19 +148,7 @@ export function LeadForm({ kind, compact = false }: { kind: "demo" | "contatto";
         )}
       </div>
 
-      <label className="mt-5 flex cursor-pointer items-start gap-3 text-[13.5px] leading-snug text-muted">
-        <input type="checkbox" name="privacy" className="peer sr-only" />
-        <span className="mt-px flex h-5 w-5 flex-none items-center justify-center rounded-[5px] border-[1.5px] border-[#c7c7cc] bg-white text-transparent transition-colors peer-checked:border-black peer-checked:bg-black peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-black peer-focus-visible:ring-offset-2">
-          <Icon name="check" size={13} stroke={3} />
-        </span>
-        <span>
-          {tr("Ho letto l'")}
-          <a href={lp("/legale/privacy/")} className="text-ink underline underline-offset-2">
-            {tr("informativa privacy")}
-          </a>{" "}
-          {tr("e voglio essere ricontattato.")}
-        </span>
-      </label>
+      <RigaPrivacy className="mt-5 !text-[13.5px] !text-muted" />
 
       {err && (
         <p role="alert" className="mt-4 rounded-[12px] bg-p-red px-3.5 py-2.5 text-[14px] text-p-red-ink">

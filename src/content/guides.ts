@@ -282,7 +282,7 @@ const baseGuides: Guide[] = withId<Guide>([
 <li><strong>Messaggio di assenza</strong> fuori orario, che spiega quando riapri e come prenotare un ordine per domani.</li>
 <li><strong>Risposte rapide</strong> per le frasi che scrivi più spesso, come la conferma dell'ordine.</li>
 </ul>
-<blockquote><p>Ciao! Per ordinare usa il nostro menu: scegli le pizze e l'orario di ritiro, ci arriva tutto qui. [link] Rispondiamo in pochi minuti.</p></blockquote>
+<blockquote><p>Ciao! Per ordinare usa il nostro menu: scegli le pizze e l'orario di ritiro, ci arriva tutto qui. nomelocale.novamenu.eu Rispondiamo in pochi minuti.</p></blockquote>
 
 <h2>Conferma sempre, in pochi secondi</h2>
 <p>Il cliente che ha ordinato vuole sapere che l'ordine è arrivato. Una conferma breve, con l'orario, basta. Se c'è un problema, come un prodotto finito, proponi subito un'alternativa invece di chiedere "cosa vuole fare?".</p>

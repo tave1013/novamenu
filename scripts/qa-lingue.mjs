@@ -28,7 +28,7 @@ const pages = [
   ["legale-privacy", "/legale/privacy/", "/en/legal/privacy/"],
   ["legale-cookie", "/legale/cookie/", "/en/legal/cookies/"],
   ["legale-termini", "/legale/termini/", "/en/legal/terms/"],
-  ["legale-sub", "/legale/sub-responsabili/", "/en/legal/sub-processors/"],
+  ["legale-versioni", "/legale/archivio/", "/en/legal/archive/"],
 ];
 const widths = [1440, 375];
 const browser = await chromium.launch({ channel: "chrome" });

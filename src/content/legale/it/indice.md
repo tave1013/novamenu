@@ -2,8 +2,6 @@
 titolo: Documenti legali
 etichetta: Documenti legali
 descrizione: Tutti i documenti legali di NovaMenu: note legali, informative privacy, cookie policy, termini di servizio, accordo sul trattamento dei dati e fornitori.
-versione: 1.0
-dataInVigore: "{{dataInVigore}}"
 ---
 
 Qui trovi tutti i documenti che regolano l'uso di NovaMenu e il trattamento dei dati personali. NovaMenu è un servizio di {{ragioneSociale}}.
@@ -14,8 +12,9 @@ Qui trovi tutti i documenti che regolano l'uso di NovaMenu e il trattamento dei 
 - **[Cookie policy](/legale/cookie/)**: quali cookie usiamo e come scegliere.
 - **[Termini e condizioni di servizio](/legale/termini/)**: il contratto tra NovaMenu e i locali che usano la piattaforma.
 - **[Accordo sul trattamento dei dati (DPA)](/legale/dpa/)**: come trattiamo, per conto dei locali, i dati dei loro clienti.
-- **[Fornitori che trattano dati](/legale/sub-responsabili/)**: l'elenco dei nostri sub-responsabili.
+{{#se fornitori}}- **[Fornitori](/legale/fornitori/)**: i servizi che trattano dati per NovaMenu, con il paese e le garanzie.{{/se}}
+{{#se richiestePrivacy}}- **[Richieste privacy](/legale/richieste-privacy/)**: il modulo per chiedere accesso, correzione o cancellazione dei tuoi dati.{{/se}}
+- **[Versioni dei documenti](/legale/archivio/)**: la versione in vigore di ogni documento e le versioni precedenti.
 
 Per qualsiasi domanda scrivi a [{{emailContatto}}](mailto:{{emailContatto}}).
 
-Versione dei documenti: {{versione}}, in vigore dal {{dataInVigore}}. Le versioni precedenti sono nell'[archivio](/legale/archivio/).

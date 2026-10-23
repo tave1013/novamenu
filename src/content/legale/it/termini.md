@@ -1,9 +1,7 @@
 ---
 titolo: Termini e condizioni di servizio di NovaMenu
 etichetta: Termini e condizioni di servizio
-descrizione: Termini e condizioni di servizio di NovaMenu: il contratto tra Ma & Co LTD e i locali che usano la piattaforma, con prova, piani, pagamenti, rinnovo e recesso.
-versione: 1.0
-dataInVigore: "{{dataInVigore}}"
+descrizione: Termini e condizioni di servizio di NovaMenu: il contratto tra MA & CO LIMITED e i locali che usano la piattaforma, con prova, piani, pagamenti, rinnovo e recesso.
 ---
 
 Questi Termini e condizioni ("Termini") regolano il contratto tra **{{ragioneSociale}}**, {{tipo}}, numero di registrazione {{numeroSocieta}}, con sede legale in {{sedeLegale}}, che offre il servizio con il marchio NovaMenu ("NovaMenu", "noi"), e l'impresa che si registra al servizio ("Cliente", "tu"). Ti chiediamo di leggerli con attenzione, in particolare le clausole indicate all'[articolo 33](#33).
@@ -64,7 +62,7 @@ Questi Termini e condizioni ("Termini") regolano il contratto tra **{{ragioneSoc
 
 6.4. Gli abbonamenti si sottoscrivono e si gestiscono **solo sul sito novamenu.eu**. Nell'app NovaMenu Business non si effettuano acquisti.
 
-6.5. Se un pagamento non va a buon fine, NovaMenu avvisa il Cliente e ritenta l'addebito. Se il pagamento non viene regolarizzato entro 7 giorni dall'avviso, NovaMenu può sospendere il Servizio fino al pagamento, ai sensi dell'articolo 18. I dati non vengono cancellati durante la sospensione per mancato pagamento, salvo quanto previsto dall'articolo 19.4.
+6.5. Se un pagamento non va a buon fine, NovaMenu avvisa il Cliente e ritenta l'addebito. Se il pagamento non viene regolarizzato entro 7 giorni dall'avviso, NovaMenu può sospendere il Servizio fino al pagamento, ai sensi dell'articolo 18. I dati non vengono cancellati durante la sospensione per mancato pagamento. Se il contratto viene risolto ai sensi dell'articolo 19.3, lettera (b), i dati sono cancellati secondo l'articolo 20.
 
 6.6. Non è prevista la sospensione temporanea volontaria (pausa) dell'abbonamento.
 

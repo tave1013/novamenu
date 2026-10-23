@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useId, useRef, useState } from "react";
-import { COOKIE, nomeCookie, type Categoria } from "@/lib/consenso/cookie";
+import { categorieInUso, cookieInUso, nomeCookie, type Categoria } from "@/lib/consenso/cookie";
 import {
   EVENTO_PREFERENZE,
   STRUMENTI_SITO,
@@ -29,8 +29,6 @@ type Props = {
   utenteId?: string | null;
   testi?: TestiBanner;
 };
-
-const CATEGORIE: Categoria[] = ["necessari", "statistiche", "marketing"];
 
 export function CookieBanner({ lingua, cookiePolicyHref, privacyHref, strumenti = STRUMENTI_SITO, utenteId = null, testi }: Props) {
   const t = testi ?? TESTI_BANNER[lingua];
@@ -117,7 +115,7 @@ export function CookieBanner({ lingua, cookiePolicyHref, privacyHref, strumenti 
               {t.titolo}
             </h2>
             <p id={testoId} className="mt-3 text-[15px] leading-relaxed text-muted">
-              {t.testo}{" "}
+              {categorieInUso(strumenti).length > 1 ? t.testo : t.testoSoloTecnici}{" "}
               <a href={cookiePolicyHref} className="font-medium text-ink underline underline-offset-2">
                 {t.cookiePolicy}
               </a>
@@ -146,11 +144,12 @@ export function CookieBanner({ lingua, cookiePolicyHref, privacyHref, strumenti 
               {t.titoloPannello}
             </h2>
             <ul className="mt-4 flex flex-col divide-y divide-line">
-              {CATEGORIE.map((cat) => {
+              {/* solo le categorie con strumenti collegati: non si dichiarano strumenti che non usiamo */}
+              {categorieInUso(strumenti).map((cat) => {
                 const fissa = cat === "necessari";
                 const on = fissa ? true : scelte[cat];
                 const info = t.categorie[cat];
-                const voci = COOKIE.filter((c) => c.categoria === cat);
+                const voci = cookieInUso(strumenti).filter((c) => c.categoria === cat);
                 const idDettagli = `nm-cookie-dettagli-${cat}`;
                 const idNome = `nm-cookie-nome-${cat}`;
                 return (

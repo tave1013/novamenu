@@ -4,6 +4,7 @@ import { PreferenzeCookieLink } from "./consenso/CookieBanner";
 import Link from "next/link";
 import { site } from "@/config/site";
 import { LinkAccesso } from "./Accesso";
+import { FORNITORI } from "@/content/legale/fornitori";
 import { LogoMark } from "./Logo";
 import { getFeatures, getSectors } from "@/content";
 import { to, lp } from "@/i18n/link";
@@ -57,6 +58,8 @@ export function Footer() {
             <FooterLink href={to("legalDoc", "note-legali")}>{tr("Note legali")}</FooterLink>
             <FooterLink href={to("legalDoc", "privacy")}>{tr("Privacy")}</FooterLink>
             <FooterLink href={to("legalDoc", "cookie")}>{tr("Cookie")}</FooterLink>
+            {/* compare quando c'è l'elenco dei fornitori della piattaforma */}
+            {FORNITORI.length > 0 && <FooterLink href={to("legalDoc", "fornitori")}>{tr("Fornitori")}</FooterLink>}
             <FooterLink href={to("legalDoc", "termini")}>{tr("Termini")}</FooterLink>
             <li>
               <PreferenzeCookieLink className="inline-flex min-h-8 items-center text-left text-[14px] transition-colors hover:text-white">

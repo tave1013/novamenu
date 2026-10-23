@@ -2,8 +2,6 @@
 titolo: Accordo sul trattamento dei dati personali (DPA)
 etichetta: Accordo sul trattamento dei dati (DPA)
 descrizione: Accordo sul trattamento dei dati (DPA) di NovaMenu ai sensi dell'art. 28 GDPR e UK GDPR: come trattiamo, per conto dei locali, i dati dei loro clienti.
-versione: 1.0
-dataInVigore: "{{dataInVigore}}"
 ---
 
 **ai sensi dell'art. 28 del Regolamento (UE) 2016/679 e dell'art. 28 dello UK GDPR**
@@ -47,9 +45,9 @@ Il Responsabile garantisce che le persone autorizzate al trattamento si sono imp
 
 ## 6. Sub-responsabili
 
-6.1. Il Titolare concede al Responsabile un'**autorizzazione scritta generale** a ricorrere ai sub-responsabili elencati nella pagina **[novamenu.eu/legale/sub-responsabili](/legale/sub-responsabili/)**, che fa parte di questo Accordo.
+6.1. Il Titolare concede al Responsabile un'**autorizzazione scritta generale** a ricorrere ai sub-responsabili {{#se fornitori}}elencati nella pagina **[novamenu.eu/legale/fornitori](/legale/fornitori/)**{{/se}}{{#senza fornitori}}dell'elenco che il Responsabile fornisce al Titolare su richiesta a [{{emailPrivacy}}](mailto:{{emailPrivacy}}){{/senza}}, che fa parte di questo Accordo.
 
-6.2. Il Responsabile informa il Titolare di ogni aggiunta o sostituzione di sub-responsabili con almeno **30 giorni** di preavviso, aggiornando la pagina e inviando una comunicazione per email o nella Piattaforma. Il Titolare può opporsi per motivi ragionevoli legati alla protezione dei dati entro 15 giorni dalla comunicazione. In caso di opposizione, le parti cercano in buona fede una soluzione; se non la trovano, il Titolare può recedere dai Termini con effetto immediato e ottenere il rimborso della parte di corrispettivo pagata e non goduta. Nei casi urgenti (per esempio per sostituire un fornitore che non garantisce più la sicurezza) il preavviso può essere più breve.
+6.2. Il Responsabile informa il Titolare di ogni aggiunta o sostituzione di sub-responsabili con almeno **30 giorni** di preavviso, aggiornando l'elenco e inviando una comunicazione per email o nella Piattaforma. Il Titolare può opporsi per motivi ragionevoli legati alla protezione dei dati entro 15 giorni dalla comunicazione. In caso di opposizione, le parti cercano in buona fede una soluzione; se non la trovano, il Titolare può recedere dai Termini con effetto immediato e ottenere il rimborso della parte di corrispettivo pagata e non goduta. Nei casi urgenti (per esempio per sostituire un fornitore che non garantisce più la sicurezza) il preavviso può essere più breve.
 
 6.3. Il Responsabile impone a ogni sub-responsabile, con un contratto scritto, obblighi di protezione dei dati sostanzialmente equivalenti a quelli di questo Accordo, e resta pienamente responsabile verso il Titolare del loro adempimento.
 
@@ -116,7 +114,7 @@ In caso di conflitto tra questo Accordo e i Termini per quanto riguarda la prote
 | **Categorie di dati** | Nome e cognome; numero di telefono e identificativo WhatsApp; email se fornita; indirizzo di consegna; contenuto, importo, stato, modifiche, sconti e storico degli ordini; data, ora, numero di persone, tavolo, occasione (per esempio compleanno) e stato delle prenotazioni (arrivato, no-show); preferenze, note e tag inseriti dal Titolare; inserimento in blacklist e relativo motivo interno; data di nascita o del compleanno se fornita; consensi e relative date; messaggi scambiati tramite il Servizio; dati tecnici dei moduli (data, ora, dispositivo) |
 | **Categorie particolari di dati** | Informazioni su **allergie e intolleranze alimentari** (dati relativi alla salute), solo se fornite dal Cliente finale con il suo consenso esplicito raccolto dal Titolare |
 | **Durata** | Durata dei Termini, più i periodi dell'articolo 10 |
-| **Luogo del trattamento** | Database nell'Unione europea (Francoforte, Germania); accessi dal Regno Unito da parte del Responsabile; sub-responsabili come da elenco pubblicato |
+| **Luogo del trattamento** | Database nell'Unione europea (Francoforte, Germania); accessi dal Regno Unito da parte del Responsabile; sub-responsabili come da elenco del punto 6.1 |
 
 ## Allegato 2: misure tecniche e organizzative {#allegato-2}
 
