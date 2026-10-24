@@ -38,6 +38,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...getServices(it).map((s) => entry("service", 0.7, "monthly", s.id)),
     entry("demo", 0.7),
     entry("contact", 0.5),
+    entry("security", 0.5),
     entry("legal", 0.3, "yearly"),
     ...documentiVisibili().map((d) => entry("legalDoc", 0.2, "yearly", d)),
     entry("legalArchive", 0.1, "yearly"),

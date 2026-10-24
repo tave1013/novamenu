@@ -21,7 +21,8 @@ export type PageKey =
   | "legal"
   | "legalDoc"
   | "legalArchive"
-  | "legalRequests";
+  | "legalRequests"
+  | "security";
 
 /** [id] è il segmento che cambia: viene sostituito con lo slug della lingua. */
 export const routes: Record<PageKey, Record<Locale, string>> = {
@@ -41,6 +42,7 @@ export const routes: Record<PageKey, Record<Locale, string>> = {
   legalDoc: { it: "/legale/[id]/", en: "/legal/[id]/" },
   legalArchive: { it: "/legale/archivio/", en: "/legal/archive/" },
   legalRequests: { it: "/legale/richieste-privacy/", en: "/legal/privacy-requests/" },
+  security: { it: "/sicurezza-e-privacy/", en: "/security-and-privacy/" },
 };
 
 type Collection = "feature" | "sector" | "service" | "guide" | "legalDoc";

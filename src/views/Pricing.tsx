@@ -10,7 +10,8 @@ import { pageMeta, softwareApplicationLd } from "@/config/seo";
 import { Pricing } from "@/components/Pricing";
 import { Reveal } from "@/components/Reveal";
 import { getComparison, getGeneralFaq, getPlans } from "@/content";
-import { lp } from "@/i18n/link";
+import { lp, to } from "@/i18n/link";
+import Link from "next/link";
 import { localeInfo, type Locale } from "@/i18n/config";
 
 /** Prezzi in euro (e in sterline per la versione inglese) per titolo e descrizione della pagina. */
@@ -146,6 +147,29 @@ export default async function PrezziPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Sicurezza e privacy: link alla pagina dedicata */}
+      <section className="py-12 md:py-16">
+        <div className="wrap">
+          <Reveal className="flex flex-col items-start gap-4 rounded-[24px] border border-line bg-white p-6 md:flex-row md:items-center md:justify-between md:p-8">
+            <div className="flex items-start gap-4">
+              <span className="flex h-11 w-11 flex-none items-center justify-center rounded-[12px] bg-p-green text-p-green-ink">
+                <Icon name="shield" size={20} stroke={2} />
+              </span>
+              <div>
+                <h2 className="text-[19px] font-semibold tracking-[-0.02em] text-ink">{tr("I dati del tuo locale sono al sicuro")}</h2>
+                <p className="mt-1 max-w-[560px] text-[15px] leading-relaxed text-muted">
+                  {tr("Verifica in due passaggi, permessi per lo staff, dati dei clienti che restano tuoi e 90 giorni per scaricare tutto se disdici.")}
+                </p>
+              </div>
+            </div>
+            <Link href={to("security")} className="btn btn-light flex-none">
+              {tr("Sicurezza e privacy")}
+              <Icon name="arrowRight" size={16} stroke={2} />
+            </Link>
+          </Reveal>
         </div>
       </section>
 

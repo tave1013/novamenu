@@ -57,6 +57,7 @@ export function Footer() {
           <FooterCol title={tr("Legale")}>
             <FooterLink href={to("legalDoc", "note-legali")}>{tr("Note legali")}</FooterLink>
             <FooterLink href={to("legalDoc", "privacy")}>{tr("Privacy")}</FooterLink>
+            <FooterLink href={to("security")}>{tr("Sicurezza e privacy")}</FooterLink>
             <FooterLink href={to("legalDoc", "cookie")}>{tr("Cookie")}</FooterLink>
             {/* compare quando c'è l'elenco dei fornitori della piattaforma */}
             {FORNITORI.length > 0 && <FooterLink href={to("legalDoc", "fornitori")}>{tr("Fornitori")}</FooterLink>}
