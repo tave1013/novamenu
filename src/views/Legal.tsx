@@ -10,7 +10,7 @@ import { idOf, slugOf } from "@/i18n/routes";
 import { DOCUMENTI_PDF, rigaVersione, urlPdf, type DocumentoPdf } from "@/lib/legal/pdf";
 import { ModuloRichiestaPrivacy } from "@/components/legal/ModuloRichiestaPrivacy";
 import { emailPrivacy } from "@/lib/legal/azienda";
-import { documentiVisibili, leggiArchiviato, leggiDocumento, versioniArchiviate, type IdDocumento, type MetaDocumento } from "@/lib/legal/documenti";
+import { documentiVisibili, leggiArchiviato, slugArchiviato, leggiDocumento, versioniArchiviate, type IdDocumento, type MetaDocumento } from "@/lib/legal/documenti";
 
 /* Sezione Legale: indice (/legale/), un documento per pagina (/legale/<documento>/) e archivio. */
 
@@ -18,7 +18,7 @@ const NOTA_EN =
   "This English version is provided for convenience. In case of conflict, the Italian version prevails, except for customers established in the United Kingdom, for whom the English version prevails.";
 
 export const staticParams = (locale: Locale) => documentiVisibili().map((id) => ({ slug: slugOf("legalDoc", id, locale) }));
-export const staticParamsArchivio = (locale: Locale) => versioniArchiviate(locale).map((v) => ({ file: v.file.replace(/\.md$/, "") }));
+export const staticParamsArchivio = (locale: Locale) => versioniArchiviate(locale).map((v) => ({ file: slugArchiviato(v.file) }));
 const docId = (locale: Locale, slug: string) => idOf("legalDoc", slug, locale) as IdDocumento;
 
 export function metaDoc(locale: Locale, slug: string): Metadata {
@@ -214,7 +214,7 @@ export function LegalArchiveView() {
                     <ul>
                       {precedenti.map((v) => (
                         <li key={v.file}>
-                          <Link href={`${to("legalArchive")}${v.file.replace(/\.md$/, "")}/`}>{rigaVersione(v.meta, locale)}</Link>
+                          <Link href={to("legalArchived", slugArchiviato(v.file))}>{rigaVersione(v.meta, locale)}</Link>
                           {(DOCUMENTI_PDF as string[]).includes(v.documento) && (
                             <>
                               {" "}(<a href={urlPdf(v.documento as DocumentoPdf, locale, v.versione)} download>{tr("Scarica PDF")}</a>)
@@ -245,7 +245,7 @@ export function LegalArchivedView({ file }: { file: string }) {
     <section className="legal-page pb-20 pt-8 md:pb-28 md:pt-12">
       <MessaggioStampa />
       <div className="wrap">
-        <Breadcrumbs items={[{ name: tr("Legale"), href: to("legal") }, { name: tr("Versioni dei documenti"), href: to("legalArchive") }, { name: `${doc.meta.etichetta} ${doc.meta.versione}`, href: `${to("legalArchive")}${file}/` }]} />
+        <Breadcrumbs items={[{ name: tr("Legale"), href: to("legal") }, { name: tr("Versioni dei documenti"), href: to("legalArchive") }, { name: `${doc.meta.etichetta} ${doc.meta.versione}`, href: to("legalArchived", file) }]} />
         <article className="mx-auto mt-10 max-w-[720px]">
           <p className="mb-4 rounded-xl border border-line bg-card px-4 py-3 text-[15px]">
             {tr("Questa versione non è più in vigore.")} <Link href={to("legalDoc", doc.documento)}>{tr("Leggi la versione in vigore")}</Link>

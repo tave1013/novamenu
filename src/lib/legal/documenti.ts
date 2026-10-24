@@ -190,9 +190,15 @@ export function versioniArchiviate(lingua: Lingua): { file: string; percorso: st
     });
 }
 
-/** Una versione archiviata, già pronta da mostrare: "privacy-1.0" -> documento, metadati e testo. */
-export function leggiArchiviato(file: string, lingua: Lingua): { documento: IdDocumento; meta: MetaDocumento; html: string } | null {
-  const v = versioniArchiviate(lingua).find((x) => x.file === `${file}.md`);
+/**
+ * Nome di una versione archiviata nell'indirizzo: "privacy-1.0.md" diventa "privacy-1-0"
+ * (senza punti, che farebbero trattare l'indirizzo come un file).
+ */
+export const slugArchiviato = (file: string) => file.replace(/\.md$/, "").replace(/\./g, "-");
+
+/** Una versione archiviata, già pronta da mostrare: "privacy-1-0" -> documento, metadati e testo. */
+export function leggiArchiviato(slug: string, lingua: Lingua): { documento: IdDocumento; meta: MetaDocumento; html: string } | null {
+  const v = versioniArchiviate(lingua).find((x) => slugArchiviato(x.file) === slug);
   if (!v || !(DOCUMENTI as readonly string[]).includes(v.documento)) return null;
   const { meta, markdown } = leggiSorgente(v.percorso, lingua);
   return { documento: v.documento as IdDocumento, meta, html: rendiMarkdown(markdown).html };

@@ -85,7 +85,7 @@ export const slugs: Record<Collection, Record<string, Partial<Record<Locale, str
     "gestione-social": { en: "social-media-management" },
     "presenza-online": { en: "online-presence" },
   },
-  // versioni archiviate dei documenti legali: lo stesso nome nelle due lingue (per esempio "termini-1.0")
+  // versioni archiviate dei documenti legali: lo stesso nome nelle due lingue (per esempio "termini-1-0")
   legalArchived: {},
   legalDoc: {
     "note-legali": { en: "legal-notice" },
@@ -120,7 +120,7 @@ export function slugOf(collection: Collection, id: string, locale: Locale): stri
 /** Identificativo di una pagina a partire dallo slug che compare nell'indirizzo. */
 export function idOf(collection: Collection, slug: string, locale: Locale): string | undefined {
   // versioni archiviate: lo stesso nome in tutte le lingue
-  if (collection === "legalArchived") return /^[a-z-]+-\d+(\.\d+)*$/.test(slug) ? slug : undefined;
+  if (collection === "legalArchived") return /^[a-z-]+-\d+(-\d+)*$/.test(slug) ? slug : undefined;
   if (locale === defaultLocale) return slug in slugs[collection] ? slug : undefined;
   return Object.keys(slugs[collection]).find((id) => slugs[collection][id][locale] === slug);
 }
