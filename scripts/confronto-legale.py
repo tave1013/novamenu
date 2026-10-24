@@ -9,10 +9,14 @@ le parti tolte in rosso barrato e quelle aggiunte in verde.
 - Le parti che il sito mostra solo quando c'è un dato ({{#se ...}}) restano visibili e segnalate.
 
 Uso: python3 scripts/confronto-legale.py [ramo]      (predefinito: main)
+     python3 scripts/confronto-legale.py --bozze NOME
+     confronta il testo attuale con le bozze in docs/legale/bozze/<documento>-<lingua>.md (non pubblicate)
+     e crea docs/legale/<documento>-<lingua>-bozza-NOME.html
 """
 import difflib, html, re, subprocess, sys, pathlib, datetime
 
-RAMO = sys.argv[1] if len(sys.argv) > 1 else "main"
+BOZZE = sys.argv[2] if len(sys.argv) > 2 and sys.argv[1] == "--bozze" else None
+RAMO = "main" if BOZZE else (sys.argv[1] if len(sys.argv) > 1 else "main")
 RADICE = pathlib.Path(__file__).resolve().parent.parent
 USCITA = RADICE / "docs" / "legale"
 DOCUMENTI = ["note-legali", "privacy", "privacy-app", "cookie", "termini", "dpa", "fornitori", "indice"]
@@ -88,8 +92,34 @@ del{background:#fde2e2;color:#9b1c1c;text-decoration:line-through} ins{backgroun
 """
 
 
+def main_bozze() -> None:
+    creati = []
+    for lingua in ("it", "en"):
+        for doc in DOCUMENTI:
+            bozza = USCITA / "bozze" / f"{doc}-{lingua}.md"
+            if not bozza.exists():
+                continue
+            prima, dopo = prepara(leggi(f"src/content/legale/{lingua}/{doc}.md", None)), prepara(bozza.read_text())
+            if prima == dopo:
+                continue
+            nome = f"{doc}-{lingua}-bozza-{BOZZE}.html"
+            titolo = TITOLI[doc] + (" (inglese)" if lingua == "en" else "")
+            (USCITA / nome).write_text(
+                f"<!doctype html><html lang='{lingua}'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>"
+                f"<title>{html.escape(titolo)}: bozza</title><style>{STILE}</style></head><body>"
+                f"<h1>{html.escape(titolo)}: bozza non pubblicata</h1>"
+                f"<p class='nota'>Bozza per l'avvocato ({BOZZE}). Confronto tra il testo online e la bozza in docs/legale/bozze/, generato il {datetime.date.today().isoformat()}. Non è pubblicata e la versione non è stata alzata.</p>"
+                f"<p class='legenda'><span style='background:#fde2e2'>testo tolto</span><span style='background:#dcfce7'>testo aggiunto</span></p>"
+                f"<pre>{confronto_html(prima, dopo)}</pre></body></html>"
+            )
+            creati.append(nome)
+    print("\n".join(creati))
+
+
 def main() -> None:
     USCITA.mkdir(parents=True, exist_ok=True)
+    if BOZZE:
+        return main_bozze()
     creati = []
     for lingua in ("it", "en"):
         for doc in DOCUMENTI:

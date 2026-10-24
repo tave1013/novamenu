@@ -102,7 +102,7 @@ export const it = [
   "Alcuni messaggi hanno un costo fissato da Meta, di pochi centesimi. Lo vedi prima di ogni invio.",
   "Alcuni servizi anche negli Stati Uniti",
   "Alimentari",
-  "Alla fine dell'abbonamento il menu va offline, ma per 90 giorni puoi entrare, vedere e scaricare tutti i tuoi dati, e riattivare ritrovando tutto com'era. Dopo i 90 giorni i dati vengono eliminati, tranne quelli che la legge ci chiede di conservare, come le fatture.",
+  "Alla fine dell'abbonamento il menu va offline. Per 90 giorni entri nella dashboard in sola lettura, vedi e scarichi da solo tutti i tuoi dati, e puoi riattivare ritrovando tutto com'era. Ti avvisiamo per email quando disdici, alla fine dell'abbonamento e 30, 7 e 1 giorno prima della cancellazione. Dopo i 90 giorni i dati vengono cancellati, tranne i dati fiscali e di fatturazione, che teniamo per il tempo previsto dalla legge.",
   "Alle 18:00 parte l'aperitivo",
   "alle 19:40",
   "Allergeni",

@@ -1311,7 +1311,6 @@ export const en: Record<MessageKey, string> = {
   "Limitazione: voglio che per ora non usiate i miei dati": "Restriction: I want you to stop using my data for now",
   "Revoca del consenso: ritiro un consenso che avevo dato": "Withdrawal of consent: I withdraw a consent I gave",
   "Alcuni servizi anche negli Stati Uniti": "Some services also in the United States",
-  "Alla fine dell'abbonamento il menu va offline, ma per 90 giorni puoi entrare, vedere e scaricare tutti i tuoi dati, e riattivare ritrovando tutto com'era. Dopo i 90 giorni i dati vengono eliminati, tranne quelli che la legge ci chiede di conservare, come le fatture.": "When your subscription ends the menu goes offline, but for 90 days you can sign in, view and download all your data, and reactivate to find everything as it was. After 90 days the data is deleted, except what the law requires us to keep, such as invoices.",
   "Allergie solo con il consenso": "Allergies only with consent",
   "Assistenza solo se la chiedi": "Support only when you ask",
   "Backup automatici giornalieri": "Automatic daily backups",
@@ -1360,4 +1359,5 @@ export const en: Record<MessageKey, string> = {
   "Vedi i fornitori": "See the providers",
   "Verifica in due passaggi": "Two-step verification",
   "Verifica in due passaggi, permessi per lo staff, dati dei clienti che restano tuoi e 90 giorni per scaricare tutto se disdici.": "Two-step verification, staff permissions, customer data that stays yours and 90 days to download everything if you cancel.",
+  "Alla fine dell'abbonamento il menu va offline. Per 90 giorni entri nella dashboard in sola lettura, vedi e scarichi da solo tutti i tuoi dati, e puoi riattivare ritrovando tutto com'era. Ti avvisiamo per email quando disdici, alla fine dell'abbonamento e 30, 7 e 1 giorno prima della cancellazione. Dopo i 90 giorni i dati vengono cancellati, tranne i dati fiscali e di fatturazione, che teniamo per il tempo previsto dalla legge.": "When your subscription ends the menu goes offline. For 90 days you can sign in to the dashboard in read-only mode, view and download all your data yourself, and reactivate to find everything as it was. We email you when you cancel, when the subscription ends and 30, 7 and 1 day before deletion. After the 90 days the data is deleted, except tax and billing data, which we keep for the period required by law.",
 };
