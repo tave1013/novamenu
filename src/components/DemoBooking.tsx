@@ -1,7 +1,7 @@
 "use client";
 
 import { messageTag, tr, weekdayDate } from "@/i18n";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { signupUrl, site, waLink } from "@/config/site";
 import { Icon } from "./Icon";
@@ -54,6 +54,10 @@ export function DemoBooking({ compact = false }: { compact?: boolean }) {
   const [days, setDays] = useState<Date[]>([]);
   const [day, setDay] = useState(0);
   const [time, setTime] = useState<string | null>(null);
+  // quando è comparso il modulo e quando è stata spuntata la casella WhatsApp: si salvano con la richiesta
+  const inizio = useRef(Date.now());
+  const [waIl, setWaIl] = useState<string | null>(null);
+  const [trappola, setTrappola] = useState("");
 
   useEffect(() => setDays(nextWorkdays()), []);
   const set = <K extends keyof Data>(k: K, v: Data[K]) => setData((d) => ({ ...d, [k]: v }));
@@ -85,13 +89,19 @@ export function DemoBooking({ compact = false }: { compact?: boolean }) {
       .filter((x) => x !== "")
       .join("\n");
     registraRichiesta({
-      tipo: "demo",
       nome: data.nome,
-      attivita: `${data.attivita}${data.tipo ? ` (${data.tipo})` : ""}`,
       email: data.email,
       telefono: data.tel,
-      messaggio: [`${when} ${time}`, data.modo === "video" ? "video" : "telefono", data.obiettivo].filter(Boolean).join(", "),
-      consensi: { whatsapp: data.wa },
+      messaggio: [
+        `Demo: ${when} ${time}, ${data.modo === "video" ? "videochiamata" : "telefono"}`,
+        `Attività: ${data.attivita}${data.tipo ? ` (${data.tipo})` : ""}`,
+        data.obiettivo ? `Obiettivo: ${data.obiettivo}` : "",
+      ]
+        .filter(Boolean)
+        .join("\n"),
+      inizio: inizio.current,
+      website: trappola,
+      consensi: [{ tipo: "whatsapp", valore: data.wa, data: waIl ?? undefined, testo: tr("Sì, scrivetemi su WhatsApp per organizzare la demo. Posso smettere quando voglio.") }],
     });
     window.open(waLink(msg), "_blank", "noopener");
     setStep(3);
@@ -219,10 +229,12 @@ export function DemoBooking({ compact = false }: { compact?: boolean }) {
             </fieldset>
             <div className="flex flex-col gap-3 pt-1">
               <label className="flex cursor-pointer items-start gap-2.5 text-[14px] leading-normal text-[#3f3f46]">
-                <input type="checkbox" checked={data.wa} onChange={(e) => set("wa", e.target.checked)} className="mt-0.5 h-[18px] w-[18px] flex-none accent-[#0b0b0c]" />
+                <input type="checkbox" checked={data.wa} onChange={(e) => { set("wa", e.target.checked); setWaIl(e.target.checked ? new Date().toISOString() : null); }} className="mt-0.5 h-[18px] w-[18px] flex-none accent-[#0b0b0c]" />
                 {tr("Sì, scrivetemi su WhatsApp per organizzare la demo. Posso smettere quando voglio.")}
               </label>
               <RigaPrivacy />
+              {/* campo trappola: le persone non lo vedono, i programmi automatici lo compilano */}
+              <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" value={trappola} onChange={(e) => setTrappola(e.target.value)} className="absolute -left-[9999px] h-px w-px opacity-0" />
             </div>
             {err && (
               <p role="alert" className="rounded-[10px] bg-p-red px-3.5 py-2.5 text-[14px] text-p-red-ink">

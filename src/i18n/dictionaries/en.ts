@@ -1309,4 +1309,6 @@ export const en: Record<MessageKey, string> = {
   "Versione in vigore e versioni precedenti dei documenti legali di NovaMenu: informative privacy, cookie policy, termini di servizio e accordo sul trattamento dei dati.": "Version in force and previous versions of NovaMenu's legal documents: privacy notices, cookie policy, Terms of Service and Data Processing Agreement.",
   "Versioni dei documenti": "Document versions",
   "Versioni precedenti: nessuna, questa è la prima versione.": "Previous versions: none, this is the first version.",
+  "Limitazione: voglio che per ora non usiate i miei dati": "Restriction: I want you to stop using my data for now",
+  "Revoca del consenso: ritiro un consenso che avevo dato": "Withdrawal of consent: I withdraw a consent I gave",
 };

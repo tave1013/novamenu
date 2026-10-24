@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { getLocale, tr } from "@/i18n";
+import { tr } from "@/i18n";
 import type { TipoRichiesta } from "@/lib/moduli/inoltro";
 
 /*
@@ -14,10 +14,12 @@ export function ModuloRichiestaPrivacy({ emailPrivacy }: { emailPrivacy: string 
   const [errore, setErrore] = useState<string | null>(null);
   const tipi: { v: TipoRichiesta; l: string }[] = [
     { v: "accesso", l: tr("Accesso: voglio sapere quali dati avete su di me e averne una copia") },
-    { v: "correzione", l: tr("Correzione: alcuni miei dati sono sbagliati o incompleti") },
+    { v: "rettifica", l: tr("Correzione: alcuni miei dati sono sbagliati o incompleti") },
     { v: "cancellazione", l: tr("Cancellazione: voglio che cancelliate i miei dati") },
     { v: "opposizione", l: tr("Opposizione: non voglio che usiate i miei dati per un certo scopo") },
     { v: "portabilita", l: tr("Portabilità: voglio i miei dati in un file da portare altrove") },
+    { v: "limitazione", l: tr("Limitazione: voglio che per ora non usiate i miei dati") },
+    { v: "revoca_consenso", l: tr("Revoca del consenso: ritiro un consenso che avevo dato") },
     { v: "altro", l: tr("Altro") },
   ];
 
@@ -40,9 +42,8 @@ export function ModuloRichiestaPrivacy({ emailPrivacy }: { emailPrivacy: string 
           tipo: fd.get("tipo"),
           locale: fd.get("locale"),
           messaggio,
-          sito: fd.get("sito"),
-          lingua: getLocale(),
-          aperto_da_ms: Date.now() - aperto.current,
+          website: fd.get("website"),
+          t: Date.now() - aperto.current,
         }),
       });
       if (!r.ok) throw new Error();
@@ -92,7 +93,7 @@ export function ModuloRichiestaPrivacy({ emailPrivacy }: { emailPrivacy: string 
       <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
         <label>
           Sito web
-          <input name="sito" tabIndex={-1} autoComplete="off" />
+          <input name="website" tabIndex={-1} autoComplete="off" />
         </label>
       </div>
       {errore && (

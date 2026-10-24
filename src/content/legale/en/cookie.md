@@ -38,7 +38,7 @@ Cookies can be **first-party**, if they are set by the website you are visiting,
 
 ## 4. How you give and withdraw consent
 
-On your first visit to novamenu.eu a banner appears with three choices: **Accept all**, **Reject** and **Customise**. If you close the banner with the **X**, it is as if you had rejected: only technical cookies remain active. Continuing to browse or scrolling the page does not count as consent.
+On your first visit to novamenu.eu a banner appears at the bottom with three choices: **Reject**, **Customise** and **Accept**. If you close the banner with the **X**, it is as if you had rejected: only technical cookies remain active. Continuing to browse or scrolling the page does not count as consent.
 
 With **Customise** you can choose category by category. We remember your choice for **6 months**; we ask you again only after this period or if we significantly change the cookies we use.
 

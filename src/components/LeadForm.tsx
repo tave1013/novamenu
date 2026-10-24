@@ -1,7 +1,7 @@
 "use client";
 
 import { messageTag, tr } from "@/i18n";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { site, waLink } from "@/config/site";
 import { Icon } from "./Icon";
 import { registraRichiesta } from "@/lib/moduli/richieste";
@@ -16,6 +16,7 @@ const types = () => ([tr("Pizzeria"), tr("Ristorante o trattoria"), tr("Pub o bi
 export function LeadForm({ kind, compact = false }: { kind: "demo" | "contatto"; compact?: boolean }) {
   const [sent, setSent] = useState(false);
   const [err, setErr] = useState<string | null>(null);
+  const inizio = useRef(Date.now());
 
   function send(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -47,12 +48,14 @@ export function LeadForm({ kind, compact = false }: { kind: "demo" | "contatto";
             String(fd.get("messaggio") || ""),
           ];
     registraRichiesta({
-      tipo: kind,
       nome: name,
-      attivita: venue,
       telefono: phone,
-      messaggio: kind === "contatto" ? String(fd.get("messaggio") || "") : String(fd.get("quando") || ""),
-      consensi: { whatsapp: false },
+      messaggio: [kind === "contatto" ? "Modulo contatti" : "Richiesta demo", venue ? `Attività: ${venue}` : "", String(fd.get(kind === "contatto" ? "messaggio" : "quando") || "")]
+        .filter(Boolean)
+        .join("\n"),
+      inizio: inizio.current,
+      website: String(fd.get("website") || ""),
+      consensi: [],
     });
     window.open(waLink(lines.filter(Boolean).join("\n")), "_blank", "noopener");
     setSent(true);
@@ -149,6 +152,8 @@ export function LeadForm({ kind, compact = false }: { kind: "demo" | "contatto";
       </div>
 
       <RigaPrivacy className="mt-5 !text-[13.5px] !text-muted" />
+      {/* campo trappola: le persone non lo vedono, i programmi automatici lo compilano */}
+      <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" className="absolute -left-[9999px] h-px w-px opacity-0" />
 
       {err && (
         <p role="alert" className="mt-4 rounded-[12px] bg-p-red px-3.5 py-2.5 text-[14px] text-p-red-ink">

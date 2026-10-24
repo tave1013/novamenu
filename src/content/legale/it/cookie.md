@@ -38,7 +38,7 @@ I cookie possono essere **di prima parte**, se li installa il sito che stai visi
 
 ## 4. Come dai e revochi il consenso
 
-Alla prima visita di novamenu.eu compare un banner con tre scelte: **Accetta tutti**, **Rifiuta** e **Personalizza**. Se chiudi il banner con la **X**, è come se avessi rifiutato: restano attivi solo i cookie tecnici. Continuare a navigare o scorrere la pagina non vale come consenso.
+Alla prima visita di novamenu.eu compare in basso un banner con tre scelte: **Rifiuta**, **Personalizza** e **Accetta**. Se chiudi il banner con la **X**, è come se avessi rifiutato: restano attivi solo i cookie tecnici. Continuare a navigare o scorrere la pagina non vale come consenso.
 
 Con **Personalizza** puoi scegliere categoria per categoria. Ricordiamo la tua scelta per **6 mesi**; ti chiediamo di nuovo solo dopo questo periodo o se cambiamo in modo rilevante i cookie che usiamo.
 

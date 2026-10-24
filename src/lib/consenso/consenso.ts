@@ -202,13 +202,13 @@ function spegni(revocate: Scelte, strumenti: Strumenti) {
  */
 function registra(c: Consenso, azione: Azione, lingua: string) {
   const body = JSON.stringify({
-    id: c.idBrowser,
+    identificativo: c.idBrowser,
     azione,
     statistiche: c.statistiche,
     marketing: c.marketing,
-    versione_consenso: c.versione,
-    versione_cookie_policy: VERSIONI.cookie.versione,
+    versione_policy: VERSIONI.cookie.versione,
     lingua,
+    website: "",
   });
   try {
     fetch(REGISTRO_CONSENSI, { method: "POST", headers: { "Content-Type": "application/json" }, body, keepalive: true, credentials: "omit" }).catch(() => {});

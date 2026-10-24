@@ -12,6 +12,10 @@ export type TestiBanner = {
   rifiuta: string;
   personalizza: string;
   accettaTutti: string;
+  /** Pulsante della barra in basso. */
+  accetta: string;
+  /** Frase in cima al pannello quando ci sono solo cookie tecnici. */
+  soloTecniciPannello: string;
   chiudi: string;
   titoloPannello: string;
   salvaScelte: string;
@@ -34,6 +38,8 @@ export const TESTI_BANNER: Record<"it" | "en", TestiBanner> = {
     rifiuta: "Rifiuta",
     personalizza: "Personalizza",
     accettaTutti: "Accetta tutti",
+    accetta: "Accetta",
+    soloTecniciPannello: "Usiamo solo cookie tecnici necessari al funzionamento del sito. Non usiamo cookie di statistica o pubblicità.",
     chiudi: "Chiudi: usa solo i cookie tecnici",
     titoloPannello: "Scegli quali cookie usare",
     salvaScelte: "Salva le scelte",
@@ -64,6 +70,8 @@ export const TESTI_BANNER: Record<"it" | "en", TestiBanner> = {
     rifiuta: "Reject",
     personalizza: "Customise",
     accettaTutti: "Accept all",
+    accetta: "Accept",
+    soloTecniciPannello: "We only use technical cookies that are necessary for the website to work. We do not use statistics or advertising cookies.",
     chiudi: "Close: use technical cookies only",
     titoloPannello: "Choose which cookies to use",
     salvaScelte: "Save my choices",
