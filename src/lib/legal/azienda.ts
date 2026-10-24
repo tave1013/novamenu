@@ -60,11 +60,11 @@ export const AZIENDA = {
  */
 export const VERSIONI = {
   "note-legali": { versione: "1.0", inVigoreDal: null as string | null },
-  privacy: { versione: "1.0", inVigoreDal: null as string | null },
+  privacy: { versione: "1.1", inVigoreDal: "2026-10-24" as string | null },
   "privacy-app": { versione: "1.0", inVigoreDal: null as string | null },
   cookie: { versione: "1.0", inVigoreDal: null as string | null },
-  termini: { versione: "1.0", inVigoreDal: null as string | null },
-  dpa: { versione: "1.0", inVigoreDal: null as string | null },
+  termini: { versione: "1.1", inVigoreDal: "2026-10-24" as string | null },
+  dpa: { versione: "1.1", inVigoreDal: "2026-10-24" as string | null },
   fornitori: { versione: "1.0", inVigoreDal: null as string | null },
   indice: { versione: "1.0", inVigoreDal: null as string | null },
 };

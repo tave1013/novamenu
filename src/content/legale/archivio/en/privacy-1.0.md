@@ -1,4 +1,6 @@
 ---
+versione: 1.0
+inVigoreFinoAl: 2026-10-23
 titolo: Privacy notice
 etichetta: Privacy notice
 descrizione: NovaMenu privacy notice: what data we process on the website and the platform, why, for how long, who we share it with and what rights you have.
@@ -125,7 +127,7 @@ The data controller is established in the United Kingdom and the platform's data
 | Platform security and access logs | Up to 12 months |
 | Cookies and statistics tools | As stated in the [Cookie policy](/en/legal/cookies/); the consent record for 24 months |
 | Incomplete or non-activated registrations | 24 months from the last contact, then deleted or anonymised |
-| Customer and User account data | For the whole term of the contract. When the subscription ends the menu goes offline; for 90 days the Customer can sign in in read-only mode, view and download all the data and reactivate to find everything as it was. We notify the Customer by email on cancellation, when the subscription ends and 30, 7 and 1 day before deletion. After the 90 days the data is deleted, except tax and billing data. Backup copies are overwritten within 90 days of deletion |
+| Customer and User account data | For the whole term of the contract; after termination, 30 days to allow export, then deletion within the following 60 days. Backup copies are overwritten within 90 days |
 | Acceptances of the Terms and consents | Term of the contract plus 6 years, to protect legal rights |
 | Billing data and accounting records | For the period required by applicable tax and accounting rules (normally 6 years from the end of the financial year in the United Kingdom, or the longer period required by applicable law) |
 | Support communications | 24 months from closure of the request |

@@ -195,6 +195,7 @@ export function rigaVersione(meta: MetaDocumento, lingua: Lingua): string {
   let r = en ? `Version ${meta.versione}` : `Versione ${meta.versione}`;
   if (meta.dataInVigore) r += en ? `, in force from ${meta.dataInVigore}` : `, in vigore dal ${meta.dataInVigore}`;
   if (meta.dataInVigore && meta.dataFine) r += en ? ` to ${meta.dataFine}` : ` al ${meta.dataFine}`;
+  else if (meta.dataFine) r += en ? `, in force until ${meta.dataFine}` : `, in vigore fino al ${meta.dataFine}`;
   return r;
 }
 

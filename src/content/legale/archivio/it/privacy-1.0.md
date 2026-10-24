@@ -1,4 +1,6 @@
 ---
+versione: 1.0
+inVigoreFinoAl: 2026-10-23
 titolo: Informativa privacy
 etichetta: Informativa privacy
 descrizione: Informativa privacy di NovaMenu: quali dati trattiamo sul sito e nella piattaforma, perché, per quanto tempo, a chi li comunichiamo e quali diritti hai.
@@ -125,7 +127,7 @@ Il titolare ha sede nel Regno Unito e il database della piattaforma si trova nel
 | Log di sicurezza e di accesso alla piattaforma | Fino a 12 mesi |
 | Cookie e strumenti di statistica | Secondo la durata indicata nella [Cookie policy](/legale/cookie/); il registro dei consensi per 24 mesi |
 | Registrazioni non completate o non attivate | 24 mesi dall'ultimo contatto, poi cancellate o rese anonime |
-| Dati dell'account del Cliente e degli Utenti | Per tutta la durata del contratto. Alla fine dell'abbonamento il menu va offline; per 90 giorni il Cliente può entrare in sola lettura, vedere e scaricare tutti i dati e riattivare ritrovando tutto. Lo avvisiamo per email alla disdetta, alla fine dell'abbonamento e 30, 7 e 1 giorno prima della cancellazione. Dopo i 90 giorni i dati vengono cancellati, tranne i dati fiscali e di fatturazione. Le copie di sicurezza (backup) si sovrascrivono entro 90 giorni dalla cancellazione |
+| Dati dell'account del Cliente e degli Utenti | Per tutta la durata del contratto; dopo la cessazione, 30 giorni per permettere l'esportazione, poi cancellazione entro i successivi 60 giorni. Le copie di sicurezza (backup) si sovrascrivono entro 90 giorni |
 | Accettazioni dei Termini e dei consensi | Durata del contratto più 6 anni, per la tutela dei diritti |
 | Dati di fatturazione e documenti contabili | Per il periodo previsto dalle norme fiscali e contabili applicabili (di norma 6 anni dalla fine dell'esercizio nel Regno Unito, o il periodo più lungo previsto dalla legge applicabile) |
 | Comunicazioni di assistenza | 24 mesi dalla chiusura della richiesta |

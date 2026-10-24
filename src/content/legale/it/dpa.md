@@ -79,7 +79,7 @@ Il Responsabile garantisce che le persone autorizzate al trattamento si sono imp
 
 10.1. Questo Accordo dura quanto i Termini.
 
-10.2. Alla cessazione dei Termini, il Titolare può esportare i dati secondo l'articolo 20 dei Termini entro 30 giorni. Trascorso questo periodo, il Responsabile **cancella i dati** entro i successivi 60 giorni, salvo che la legge ne imponga la conservazione. Le copie di sicurezza sono sovrascritte entro 90 giorni e, fino ad allora, restano protette e non sono usate.
+10.2. Alla cessazione dei Termini il menu del Titolare va offline. Per **90 giorni** il Titolare può entrare nella Piattaforma in sola lettura, vedere e scaricare da solo tutti i dati, compresi quelli dei Clienti finali, e riattivare il Servizio ritrovando tutto, secondo l'articolo 20 dei Termini. Il Responsabile avvisa il Titolare per email alla disdetta, alla cessazione e 30, 7 e 1 giorno prima della cancellazione. Trascorsi i 90 giorni, il Responsabile **cancella i dati**, salvo quelli che la legge impone di conservare (dati fiscali e di fatturazione, per il tempo previsto dalla legge). Le copie di sicurezza sono sovrascritte entro 90 giorni dalla cancellazione e, fino ad allora, restano protette e non sono usate.
 
 10.3. Durante il rapporto, il Titolare può cancellare in qualsiasi momento i dati dei singoli Clienti finali dalla Piattaforma. Il Titolare imposta e rispetta i propri tempi di conservazione; in mancanza di diversa impostazione, la Piattaforma propone la cancellazione o l'anonimizzazione dei dati dei Clienti finali inattivi da 24 mesi.
 

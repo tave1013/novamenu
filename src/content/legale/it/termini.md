@@ -184,7 +184,7 @@ Questi Termini e condizioni ("Termini") regolano il contratto tra **{{ragioneSoc
 
 20.1. Alla cessazione del contratto, per qualsiasi causa, il diritto di usare il Servizio termina e il menu pubblico del Cliente non è più raggiungibile.
 
-20.2. Per **30 giorni** dalla cessazione il Cliente può chiedere a [{{emailContatto}}](mailto:{{emailContatto}}) l'esportazione dei Contenuti del Cliente in un formato di uso comune, oppure esportarli dalla Piattaforma se la funzione è disponibile. Trascorso questo periodo, NovaMenu cancella i Contenuti del Cliente entro i successivi 60 giorni, salvo i dati che deve conservare per legge. Le copie di sicurezza si sovrascrivono entro 90 giorni.
+20.2. Per **90 giorni** dalla cessazione il Cliente può entrare nella Piattaforma in sola lettura, vedere e scaricare da solo tutti i Contenuti del Cliente in un formato di uso comune, e riattivare l'abbonamento ritrovando tutto com'era. NovaMenu avvisa il Cliente per email quando chiede la disdetta, alla cessazione e 30, 7 e 1 giorno prima della cancellazione. Trascorsi i 90 giorni, NovaMenu cancella i Contenuti del Cliente, salvo i dati fiscali e di fatturazione, che conserva per il tempo previsto dalla legge. Le copie di sicurezza si sovrascrivono entro 90 giorni dalla cancellazione.
 
 20.3. Restano in vigore dopo la cessazione gli articoli che per loro natura devono continuare ad avere effetto, tra cui gli articoli 8, 16, 20, 22, 24, 25, 31 e 32.
 

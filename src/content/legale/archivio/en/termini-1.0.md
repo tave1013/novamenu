@@ -1,4 +1,6 @@
 ---
+versione: 1.0
+inVigoreFinoAl: 2026-10-23
 titolo: NovaMenu Terms of Service
 etichetta: Terms of Service
 descrizione: NovaMenu Terms of Service: the contract between MA & CO LIMITED and the venues that use the platform, covering the trial, plans, payments, renewal and termination.
@@ -184,7 +186,7 @@ These Terms of Service ("Terms") govern the contract between **{{ragioneSociale}
 
 20.1. On termination of the contract, for any reason, the right to use the Service ends and the Customer's public menu is no longer accessible.
 
-20.2. For **90 days** from termination the Customer may sign in to the Platform in read-only mode, view and download all the Customer Content itself in a commonly used format, and reactivate the subscription to find everything as it was. NovaMenu notifies the Customer by email when it requests cancellation, on termination and 30, 7 and 1 day before deletion. After the 90 days, NovaMenu deletes the Customer Content, except tax and billing data, which it keeps for the period required by law. Backup copies are overwritten within 90 days of deletion.
+20.2. For **30 days** from termination the Customer may ask [{{emailContatto}}](mailto:{{emailContatto}}) to export the Customer Content in a commonly used format, or export it from the Platform if the feature is available. After this period, NovaMenu deletes the Customer Content within the following 60 days, except for data it is required to keep by law. Backup copies are overwritten within 90 days.
 
 20.3. Clauses which by their nature must continue to have effect survive termination, including clauses 8, 16, 20, 22, 24, 25, 31 and 32.
 

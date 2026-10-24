@@ -79,7 +79,7 @@ The Processor ensures that persons authorised to process the data have committed
 
 10.1. This Agreement lasts as long as the Terms.
 
-10.2. On termination of the Terms, the Controller may export the data under clause 20 of the Terms within 30 days. After this period, the Processor **deletes the data** within the following 60 days, unless the law requires it to be kept. Backup copies are overwritten within 90 days and, until then, remain protected and are not used.
+10.2. On termination of the Terms the Controller's menu goes offline. For **90 days** the Controller may sign in to the Platform in read-only mode, view and download all the data itself, including End Customer data, and reactivate the Service to find everything as it was, under clause 20 of the Terms. The Processor notifies the Controller by email on cancellation, on termination and 30, 7 and 1 day before deletion. After the 90 days, the Processor **deletes the data**, except data that the law requires to be kept (tax and billing data, for the period required by law). Backup copies are overwritten within 90 days of deletion and, until then, remain protected and are not used.
 
 10.3. During the relationship, the Controller may delete the data of individual End Customers from the Platform at any time. The Controller sets and complies with its own retention periods; unless otherwise set, the Platform proposes the deletion or anonymisation of the data of End Customers who have been inactive for 24 months.
 

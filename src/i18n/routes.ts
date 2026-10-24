@@ -22,7 +22,8 @@ export type PageKey =
   | "legalDoc"
   | "legalArchive"
   | "legalRequests"
-  | "security";
+  | "security"
+  | "legalArchived";
 
 /** [id] è il segmento che cambia: viene sostituito con lo slug della lingua. */
 export const routes: Record<PageKey, Record<Locale, string>> = {
@@ -43,9 +44,10 @@ export const routes: Record<PageKey, Record<Locale, string>> = {
   legalArchive: { it: "/legale/archivio/", en: "/legal/archive/" },
   legalRequests: { it: "/legale/richieste-privacy/", en: "/legal/privacy-requests/" },
   security: { it: "/sicurezza-e-privacy/", en: "/security-and-privacy/" },
+  legalArchived: { it: "/legale/archivio/[id]/", en: "/legal/archive/[id]/" },
 };
 
-type Collection = "feature" | "sector" | "service" | "guide" | "legalDoc";
+type Collection = "feature" | "sector" | "service" | "guide" | "legalDoc" | "legalArchived";
 
 /**
  * Slug delle pagine con indirizzo variabile. La chiave è l'identificativo interno
@@ -83,6 +85,8 @@ export const slugs: Record<Collection, Record<string, Partial<Record<Locale, str
     "gestione-social": { en: "social-media-management" },
     "presenza-online": { en: "online-presence" },
   },
+  // versioni archiviate dei documenti legali: lo stesso nome nelle due lingue (per esempio "termini-1.0")
+  legalArchived: {},
   legalDoc: {
     "note-legali": { en: "legal-notice" },
     privacy: { en: "privacy" },
@@ -115,6 +119,8 @@ export function slugOf(collection: Collection, id: string, locale: Locale): stri
 
 /** Identificativo di una pagina a partire dallo slug che compare nell'indirizzo. */
 export function idOf(collection: Collection, slug: string, locale: Locale): string | undefined {
+  // versioni archiviate: lo stesso nome in tutte le lingue
+  if (collection === "legalArchived") return /^[a-z-]+-\d+(\.\d+)*$/.test(slug) ? slug : undefined;
   if (locale === defaultLocale) return slug in slugs[collection] ? slug : undefined;
   return Object.keys(slugs[collection]).find((id) => slugs[collection][id][locale] === slug);
 }
