@@ -311,3 +311,14 @@ html.lenis, html.lenis body { height: auto; }
   .legal-page { padding: 0 !important; }
   .legal-page .stampa-non-disponibile { display: block !important; margin: 2cm 1.5cm; font-size: 14pt; line-height: 1.5; color: #000; }
 }
+
+/* Tabelle dei documenti legali con molte colonne (Fornitori): su telefono una scheda per riga. */
+@media (max-width: 639px) {
+  .prose-legal .tabella-schede { overflow: visible; border: 0; }
+  .prose-legal .tabella-schede table, .prose-legal .tabella-schede tbody, .prose-legal .tabella-schede tr, .prose-legal .tabella-schede td { display: block; width: 100%; min-width: 0; }
+  .prose-legal .tabella-schede thead { display: none; }
+  .prose-legal .tabella-schede tr { margin: 0 0 12px; border: 1px solid var(--color-line); border-radius: 14px; padding: 6px 14px; background: var(--color-card, #fff); }
+  .prose-legal .tabella-schede td { border: 0; padding: 6px 0; }
+  .prose-legal .tabella-schede td::before { content: attr(data-etichetta); display: block; font-size: 13px; font-weight: 600; color: var(--color-muted); }
+  .prose-legal .tabella-schede td:first-child::before { display: none; }
+}

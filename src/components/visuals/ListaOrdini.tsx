@@ -584,14 +584,3 @@ export function VisAvvisi() {
     </Scena>
   );
 }
-
-/* ---------- piccola anteprima per la griglia della home ---------- */
-
-export function ListaOrdiniMini() {
-  return (
-    <div className="flex items-end gap-3">
-      <FoglioA4 className="w-[120px] -rotate-2" />
-      <NotificaLista className="!w-[250px]" />
-    </div>
-  );
-}

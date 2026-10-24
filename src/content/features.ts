@@ -512,7 +512,7 @@ export const features: Feature[] = withId<Feature>([
     ],
     faq: [
       { q: "Devo inserire i clienti a mano?", a: "No, non devi inserire i clienti a mano: le schede si creano da prenotazioni e ordini. Puoi anche importare una lista esistente." },
-      { q: "I dati sono al sicuro?", a: "Sì, i dati sono al sicuro: stanno su server in Europa e li vedete solo tu e lo staff che autorizzi." },
+      { q: "I dati sono al sicuro?", a: "Sì. Il database è nell'Unione europea, a Francoforte, e i dati li vedete solo tu e lo staff che autorizzi. Alcuni servizi, come le email automatiche e l'assistente, trattano dati anche negli Stati Uniti con le garanzie previste dalla legge: l'elenco è nella pagina Fornitori dei documenti legali." },
     ],
     related: ["automazioni-whatsapp", "prenotazioni", "statistiche"],
   },

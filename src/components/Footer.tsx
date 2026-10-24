@@ -21,7 +21,7 @@ export function Footer() {
               <span className="text-[17px] font-semibold tracking-[-0.03em] text-white">{site.name}</span>
             </Link>
             <p className="mt-4 max-w-[300px] text-[14.5px] leading-relaxed">
-              {tr("Menu digitale, ordini, prenotazioni e clienti per la ristorazione. Senza commissioni, in italiano.")}
+              {tr("Menu digitale, ordini, prenotazioni e clienti per la ristorazione. Senza commissioni.")}
             </p>
           </div>
 

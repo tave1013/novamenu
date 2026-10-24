@@ -3,7 +3,6 @@ import Link from "next/link";
 import { Icon, type IconName } from "./Icon";
 import { Qr } from "./HeroArt";
 import { WaLoop } from "./WaLoop";
-import { ListaOrdiniMini } from "./visuals/ListaOrdini";
 import { Reveal } from "./Reveal";
 import { lp } from "@/i18n/link";
 
@@ -319,9 +318,6 @@ export function Bento() {
         <ClosuresArt />
       </Tile>
 
-      <Tile delay={0} theme="soft" title={tr("Lista ordini")} text={tr("I dipendenti segnano cosa manca, tu controlli e stampi l'ordine per i fornitori.")} href={lp("/funzionalita/lista-ordini/")} className="sm:col-span-2 lg:col-span-3" row>
-        <ListaOrdiniMini />
-      </Tile>
     </div>
   );
 }

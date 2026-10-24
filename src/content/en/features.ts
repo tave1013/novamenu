@@ -470,7 +470,7 @@ export const features: Omit<Feature, "slug">[] = [
     ],
     faq: [
       { q: "Do I have to enter customers by hand?", a: "No, you don't have to enter customers by hand: profiles are created from bookings and orders. You can also import an existing list." },
-      { q: "Is the data safe?", a: "Yes, the data is safe: it sits on servers in Europe and only you and the staff you authorise can see it." },
+      { q: "Is the data safe?", a: "Yes. The database is in the European Union, in Frankfurt, and only you and the staff you authorise can see the data. Some services, such as automatic emails and the assistant, also process data in the United States with the safeguards required by law: the list is on the Suppliers page of the legal documents." },
     ],
     related: ["automazioni-whatsapp", "prenotazioni", "statistiche"],
   },

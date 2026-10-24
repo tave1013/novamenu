@@ -75,5 +75,5 @@ export const generalFaq: typeof generalFaqIt = [
   { q: "Is there a minimum term?", a: "No. On the monthly plan you can cancel whenever you like, from the dashboard. The subscription stays active until the end of the period you have already paid for." },
   { q: "How does the free trial work?", a: "14 days free with the plan you choose, or Pro if you don't choose one. No card needed." },
   { q: "Does it also work for a fresh pasta shop, a café or a deli?", a: "Yes. It works for any food and drink business: those with tables, and those selling takeaway, by weight or to order." },
-  { q: "Where is my data kept?", a: "On servers in Europe. Your customers' data is yours: you can export it whenever you like." },
+  { q: "Where is my data kept?", a: "The database with your venue's and your customers' data is in the European Union, in Frankfurt. Some services also process data in the United States, for example sending automatic emails and the artificial intelligence features, always with the safeguards required by law. The full list, with country and safeguards, is on the Suppliers page of the legal documents. Your customers' data is yours: you can export it whenever you like." },
 ];

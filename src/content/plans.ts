@@ -85,5 +85,5 @@ export const generalFaq = [
   { q: "C'è un vincolo di durata?", a: "No. Con il piano mensile disdici quando vuoi, dalla dashboard. L'abbonamento resta attivo fino alla fine del periodo già pagato." },
   { q: "Come funziona la prova gratuita?", a: "14 giorni gratis con il piano che scegli, o il Pro se non ne scegli uno. Senza carta." },
   { q: "Funziona anche per un pastificio, un bar o una gastronomia?", a: "Sì. Va bene per qualsiasi attività della ristorazione: chi ha tavoli, chi vende da asporto, a peso o su prenotazione." },
-  { q: "Dove sono i miei dati?", a: "Su server in Europa. I dati dei tuoi clienti sono tuoi: puoi esportarli quando vuoi." },
+  { q: "Dove sono i miei dati?", a: "Il database con i dati del tuo locale e dei tuoi clienti è nell'Unione europea, a Francoforte. Alcuni servizi trattano dati anche negli Stati Uniti, per esempio l'invio delle email automatiche e le funzioni con l'intelligenza artificiale, sempre con le garanzie previste dalla legge. L'elenco completo, con paese e garanzie, è nella pagina Fornitori dei documenti legali. I dati dei tuoi clienti sono tuoi: puoi esportarli quando vuoi." },
 ];
